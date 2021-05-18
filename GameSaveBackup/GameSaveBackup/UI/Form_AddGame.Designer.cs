@@ -129,7 +129,7 @@
             this.pbExePathDialog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbExePathDialog.TabIndex = 7;
             this.pbExePathDialog.TabStop = false;
-            this.pbExePathDialog.Click += new System.EventHandler(this.pbExePathDialog_Click);
+            this.pbExePathDialog.Click += new System.EventHandler(this.PbExePathDialog_Click);
             // 
             // pbScriptFileDialog
             // 
@@ -140,7 +140,7 @@
             this.pbScriptFileDialog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbScriptFileDialog.TabIndex = 8;
             this.pbScriptFileDialog.TabStop = false;
-            this.pbScriptFileDialog.Click += new System.EventHandler(this.pbScriptFileDialog_Click);
+            this.pbScriptFileDialog.Click += new System.EventHandler(this.PbScriptFileDialog_Click);
             // 
             // btValider
             // 
@@ -153,7 +153,7 @@
             this.btValider.TabIndex = 9;
             this.btValider.Text = "Validate";
             this.btValider.UseVisualStyleBackColor = false;
-            this.btValider.Click += new System.EventHandler(this.btValider_Click);
+            this.btValider.Click += new System.EventHandler(this.BtValider_Click);
             // 
             // Form_AddGame
             // 

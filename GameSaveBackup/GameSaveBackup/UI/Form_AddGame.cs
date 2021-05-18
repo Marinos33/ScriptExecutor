@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameSaveBackup.Model;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -12,8 +13,7 @@ namespace GameSaveBackup
     public partial class Form_AddGame : Form
     {
         private Game game; //the game to add
-
-        internal Game Game { get => game; set => game = value; }
+        internal Game Game { get; set; }
 
         //when click on AddGame on the main form
         public Form_AddGame()
@@ -36,7 +36,7 @@ namespace GameSaveBackup
             FileExe.FileName = game.ExecutablePath;
         }
 
-        private void pbExePathDialog_Click(object sender, EventArgs e)
+        private void PbExePathDialog_Click(object sender, EventArgs e)
         {
             //if the file has been selected, get is name
             if (FileExe.ShowDialog() == DialogResult.OK)
@@ -45,7 +45,7 @@ namespace GameSaveBackup
             }
         }
 
-        private void pbScriptFileDialog_Click(object sender, EventArgs e)
+        private void PbScriptFileDialog_Click(object sender, EventArgs e)
         {
             //if the file has been selected, get is name
             if (FileScript.ShowDialog() == DialogResult.OK)
@@ -54,10 +54,10 @@ namespace GameSaveBackup
             }
         }
 
-        private void btValider_Click(object sender, EventArgs e)
+        private void BtValider_Click(object sender, EventArgs e)
         {
             //check if the script exists or not
-            if (File.Exists(tbPathScript.Text) || tbPathScript.Text == "")
+            if (File.Exists(tbPathScript.Text) || tbPathScript.Text?.Length == 0)
             {
                 FileScript.CheckFileExists = true;
             }
@@ -72,7 +72,12 @@ namespace GameSaveBackup
                 //create or edit the game
                 if (game == null)
                 {
-                    game = new Game(tbName.Text, tbPathExe.Text, tbPathScript.Text);
+                    game = new Game
+                    {
+                        Name = tbName.Text,
+                        ExecutablePath = tbPathExe.Text,
+                        ScriptPath = tbPathScript.Text
+                    };
                 }
                 else
                 {
@@ -80,8 +85,8 @@ namespace GameSaveBackup
                     game.ExecutablePath = tbPathExe.Text;
                     game.ScriptPath = tbPathScript.Text;
                 }
-                this.DialogResult = DialogResult.OK; //tell the software that a game will be added
-                this.Close();
+                DialogResult = DialogResult.OK; //tell the software that a game will be added
+                Close();
             }
         }
     }

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using GameSaveBackup.Interfaces;
+using System;
 
-namespace GameSaveBackup
+namespace GameSaveBackup.Model
 {
     public class Game : IObservable, ICloneable
     {
@@ -8,17 +9,6 @@ namespace GameSaveBackup
         public string ExecutablePath { get; set; }
         public string ScriptPath { get; set; }
         public bool Enabled { get; set; } = true;
-
-        public Game()
-        {
-        }
-
-        public Game(string name, string executablePath, string scriptPath)
-        {
-            this.Name = name;
-            this.ExecutablePath = executablePath;
-            this.ScriptPath = scriptPath;
-        }
 
         //from the interface
         public event EventHandler SomethingHappened; //the event which fire the handler event from the form_main
@@ -28,7 +18,7 @@ namespace GameSaveBackup
         //do a copy without reference (deep copy)
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 }

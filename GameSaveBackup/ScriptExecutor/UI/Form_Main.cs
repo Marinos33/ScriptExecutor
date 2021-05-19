@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace GameSaveBackup
+namespace ScriptExecutor.UI
 {
     public partial class Form_Main : Form, IObserver
     {
@@ -37,7 +37,7 @@ namespace GameSaveBackup
             PopulateGridView();
 
             //launch the thread, in background, responsible to find the game to backup
-            Thread myThread = new Thread(new ThreadStart(SearchProcess))
+            Thread myThread = new(new ThreadStart(SearchProcess))
             {
                 IsBackground = true
             };
@@ -163,7 +163,7 @@ namespace GameSaveBackup
         {
             if (scriptPath != "")
             {
-                string scriptName = scriptPath.Substring(scriptPath.LastIndexOf("\\") + 1);
+                string scriptName = scriptPath[(scriptPath.LastIndexOf("\\") + 1)..];
                 if (File.Exists(scriptPath))
                 {
                     try
@@ -208,7 +208,7 @@ namespace GameSaveBackup
                         picture = new Bitmap(Resource.error);
                     }
 
-                    Button button = new Button
+                    Button button = new()
                     {
                         Text = "Edit",
                         AutoSize = true,
@@ -216,7 +216,7 @@ namespace GameSaveBackup
                         ForeColor = Color.White
                     };
 
-                    Button button2 = new Button
+                    Button button2 = new()
                     {
                         Text = "Delete",
                         AutoSize = true,
@@ -305,6 +305,7 @@ namespace GameSaveBackup
         }
 
         /*event fired when the current game change*/
+
         public void HandleEvent(object sender, EventArgs args)
         {
             string text;

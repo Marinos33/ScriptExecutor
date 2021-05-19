@@ -1,14 +1,16 @@
 ﻿using GameSaveBackup.Model;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/**
- * This is the form to add a game to the software
- *
- */
-
-namespace GameSaveBackup
+namespace ScriptExecutor.UI
 {
     public partial class Form_AddGame : Form
     {

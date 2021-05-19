@@ -22,11 +22,9 @@ namespace GameSaveBackup.Services
         public void AddLog(string text)
         {
             string previousText = ReadLog();
-            using (StreamWriter sw = File.CreateText(LOGFILENAME))
-            {
-                sw.WriteLine(text);
-                sw.WriteLine(previousText);
-            }
+            using StreamWriter sw = File.CreateText(LOGFILENAME);
+            sw.WriteLine(text);
+            sw.WriteLine(previousText);
         }
     }
 }

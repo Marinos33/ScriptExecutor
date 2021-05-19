@@ -68,14 +68,13 @@ namespace GameSaveBackup.Services
             {
                 HasHeaderRecord = false,
             };
-            using (var writer = new StreamWriter(CSV_PATH))
-            using (var csv = new CsvWriter(writer, config))
-            {
-                csv.WriteRecords(records);
-            }
+            using var writer = new StreamWriter(CSV_PATH);
+            using var csv = new CsvWriter(writer, config);
+            csv.WriteRecords(records);
         }
 
         /*read the whole CSV*/
+
         private void ReadCsv()
         {
             if (File.Exists(CSV_PATH))
@@ -85,12 +84,10 @@ namespace GameSaveBackup.Services
                     HasHeaderRecord = false,
                 };
 
-                using (var reader = new StreamReader(CSV_PATH))
-                using (var csv = new CsvReader(reader, config))
-                {
-                    var records = csv.GetRecords<Game>(); // a record contains the content of the CSV
-                    ListOfGame = records.ToList(); //pass all record to the list
-                }
+                using var reader = new StreamReader(CSV_PATH);
+                using var csv = new CsvReader(reader, config);
+                var records = csv.GetRecords<Game>(); // a record contains the content of the CSV
+                ListOfGame = records.ToList(); //pass all record to the list
             }
         }
     }

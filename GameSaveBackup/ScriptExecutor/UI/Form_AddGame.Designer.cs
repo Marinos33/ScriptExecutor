@@ -1,4 +1,5 @@
-﻿namespace GameSaveBackup
+﻿
+namespace ScriptExecutor.UI
 {
     partial class Form_AddGame
     {
@@ -47,9 +48,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(68, 9);
+            this.label1.Location = new System.Drawing.Point(79, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 39);
             this.label1.TabIndex = 0;
@@ -58,17 +60,19 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(17, 104);
+            this.tbName.Location = new System.Drawing.Point(20, 120);
+            this.tbName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(207, 20);
+            this.tbName.Size = new System.Drawing.Size(241, 23);
             this.tbName.TabIndex = 1;
             // 
             // lbGameName
             // 
             this.lbGameName.AutoSize = true;
-            this.lbGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbGameName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbGameName.Location = new System.Drawing.Point(12, 76);
+            this.lbGameName.Location = new System.Drawing.Point(14, 88);
+            this.lbGameName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbGameName.Name = "lbGameName";
             this.lbGameName.Size = new System.Drawing.Size(187, 25);
             this.lbGameName.TabIndex = 2;
@@ -77,9 +81,10 @@
             // lbExePath
             // 
             this.lbExePath.AutoSize = true;
-            this.lbExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbExePath.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbExePath.Location = new System.Drawing.Point(12, 159);
+            this.lbExePath.Location = new System.Drawing.Point(14, 183);
+            this.lbExePath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbExePath.Name = "lbExePath";
             this.lbExePath.Size = new System.Drawing.Size(227, 25);
             this.lbExePath.TabIndex = 3;
@@ -88,9 +93,10 @@
             // lbScript
             // 
             this.lbScript.AutoSize = true;
-            this.lbScript.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbScript.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbScript.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbScript.Location = new System.Drawing.Point(12, 258);
+            this.lbScript.Location = new System.Drawing.Point(14, 298);
+            this.lbScript.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbScript.Name = "lbScript";
             this.lbScript.Size = new System.Drawing.Size(174, 25);
             this.lbScript.TabIndex = 4;
@@ -108,24 +114,27 @@
             // 
             // tbPathExe
             // 
-            this.tbPathExe.Location = new System.Drawing.Point(17, 188);
+            this.tbPathExe.Location = new System.Drawing.Point(20, 217);
+            this.tbPathExe.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbPathExe.Name = "tbPathExe";
-            this.tbPathExe.Size = new System.Drawing.Size(207, 20);
+            this.tbPathExe.Size = new System.Drawing.Size(241, 23);
             this.tbPathExe.TabIndex = 5;
             // 
             // tbPathScript
             // 
-            this.tbPathScript.Location = new System.Drawing.Point(17, 297);
+            this.tbPathScript.Location = new System.Drawing.Point(20, 343);
+            this.tbPathScript.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbPathScript.Name = "tbPathScript";
-            this.tbPathScript.Size = new System.Drawing.Size(207, 20);
+            this.tbPathScript.Size = new System.Drawing.Size(241, 23);
             this.tbPathScript.TabIndex = 6;
             // 
             // pbExePathDialog
             // 
-            this.pbExePathDialog.Image = global::GameSaveBackup.Resource.index;
-            this.pbExePathDialog.Location = new System.Drawing.Point(230, 187);
+            this.pbExePathDialog.Image = global::ScriptExecutor.Resource.index;
+            this.pbExePathDialog.Location = new System.Drawing.Point(268, 216);
+            this.pbExePathDialog.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbExePathDialog.Name = "pbExePathDialog";
-            this.pbExePathDialog.Size = new System.Drawing.Size(39, 30);
+            this.pbExePathDialog.Size = new System.Drawing.Size(46, 35);
             this.pbExePathDialog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbExePathDialog.TabIndex = 7;
             this.pbExePathDialog.TabStop = false;
@@ -133,10 +142,11 @@
             // 
             // pbScriptFileDialog
             // 
-            this.pbScriptFileDialog.Image = global::GameSaveBackup.Resource.index;
-            this.pbScriptFileDialog.Location = new System.Drawing.Point(230, 297);
+            this.pbScriptFileDialog.Image = global::ScriptExecutor.Resource.index;
+            this.pbScriptFileDialog.Location = new System.Drawing.Point(268, 343);
+            this.pbScriptFileDialog.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbScriptFileDialog.Name = "pbScriptFileDialog";
-            this.pbScriptFileDialog.Size = new System.Drawing.Size(39, 30);
+            this.pbScriptFileDialog.Size = new System.Drawing.Size(46, 35);
             this.pbScriptFileDialog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbScriptFileDialog.TabIndex = 8;
             this.pbScriptFileDialog.TabStop = false;
@@ -145,11 +155,12 @@
             // btValider
             // 
             this.btValider.BackColor = System.Drawing.Color.Gray;
-            this.btValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btValider.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btValider.Location = new System.Drawing.Point(75, 347);
+            this.btValider.Location = new System.Drawing.Point(88, 400);
+            this.btValider.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btValider.Name = "btValider";
-            this.btValider.Size = new System.Drawing.Size(124, 54);
+            this.btValider.Size = new System.Drawing.Size(145, 62);
             this.btValider.TabIndex = 9;
             this.btValider.Text = "Validate";
             this.btValider.UseVisualStyleBackColor = false;
@@ -157,10 +168,10 @@
             // 
             // Form_AddGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(317, 425);
+            this.ClientSize = new System.Drawing.Size(370, 490);
             this.Controls.Add(this.btValider);
             this.Controls.Add(this.pbScriptFileDialog);
             this.Controls.Add(this.pbExePathDialog);
@@ -171,6 +182,7 @@
             this.Controls.Add(this.lbGameName);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form_AddGame";
             this.Text = "Form_AddGame";
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).EndInit();

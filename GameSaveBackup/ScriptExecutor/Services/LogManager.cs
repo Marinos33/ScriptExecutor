@@ -1,5 +1,7 @@
 ﻿using ScriptExecutor.Interfaces;
+using System;
 using System.IO;
+using System.Threading.Tasks;
 
 //the file to manage the log
 namespace ScriptExecutor.Services
@@ -9,22 +11,29 @@ namespace ScriptExecutor.Services
         private const string LOGFILENAME = "log GameSave_Backup.txt"; //the path to the log file
 
         //read the whole log file
-        public string ReadLog()
+        public async Task<string> ReadLog()
         {
             if (File.Exists(LOGFILENAME))
             {
-                return File.ReadAllText(LOGFILENAME);
+                return await File.ReadAllTextAsync(LOGFILENAME).ConfigureAwait(false);
             }
-            return null;
+            return "";
         }
 
         //(re)write the entire log file
-        public void AddLog(string text)
+        public async void AddLog(string text)
         {
-            string previousText = ReadLog();
-            using StreamWriter sw = File.CreateText(LOGFILENAME);
-            sw.WriteLine(text);
-            sw.WriteLine(previousText);
+            var previousText = ReadLog();
+            try
+            {
+                using StreamWriter sw = File.CreateText(LOGFILENAME);
+                await sw.WriteLineAsync(text).ConfigureAwait(false);
+                await sw.WriteLineAsync(previousText.Result).ConfigureAwait(false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

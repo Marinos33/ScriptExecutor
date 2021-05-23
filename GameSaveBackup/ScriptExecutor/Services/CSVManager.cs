@@ -22,7 +22,7 @@ namespace ScriptExecutor.Services
         }
 
         //(re)write the entire csv
-        public void WriteCsv()
+        public async void WriteCsv()
         {
             var records = _data.ListOfGame;
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -31,7 +31,7 @@ namespace ScriptExecutor.Services
             };
             using var writer = new StreamWriter(CSV_PATH);
             using var csv = new CsvWriter(writer, config);
-            csv.WriteRecords(records);
+            await csv.WriteRecordsAsync(records).ConfigureAwait(false);
         }
 
         /*read the whole CSV*/

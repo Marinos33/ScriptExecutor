@@ -1,6 +1,7 @@
 using GameSaveBackup.Interfaces;
 using GameSaveBackup.Services;
 using Microsoft.Extensions.DependencyInjection;
+using ScriptExecutor.Controllers;
 using ScriptExecutor.Interfaces;
 using ScriptExecutor.Persistence;
 using ScriptExecutor.UI;
@@ -32,7 +33,9 @@ namespace ScriptExecutor
         {
             services.AddSingleton<IData, Data>()
                     .AddScoped<ICSVManager, CSVManager>()
-                    .AddScoped<ILogManager, LogManager>();
+                    .AddScoped<ILogManager, LogManager>()
+                    .AddScoped<IForm_MainController, Form_MainController>()
+                    .AddScoped<IForm_AddGameController, Form_AddGameController>();
 
             services.AddScoped<Form_Main>();
         }

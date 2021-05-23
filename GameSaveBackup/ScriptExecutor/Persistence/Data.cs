@@ -10,6 +10,7 @@ namespace ScriptExecutor.Persistence
         public Game CurrentGame { get; set; }
 
         /*used to say to the program : there are no program from the list who is running*/
+
         public void ResetCurrentGame()
         {
             CurrentGame.Name = null;

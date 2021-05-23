@@ -3,7 +3,6 @@ using CsvHelper.Configuration;
 using GameSaveBackup.Interfaces;
 using GameSaveBackup.Model;
 using ScriptExecutor.Interfaces;
-using ScriptExecutor.Persistence;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -37,6 +36,7 @@ namespace GameSaveBackup.Services
         }
 
         /*read the whole CSV*/
+
         public IEnumerable<Game> ReadCsv()
         {
             if (File.Exists(CSV_PATH))

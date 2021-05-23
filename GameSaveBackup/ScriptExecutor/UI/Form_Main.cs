@@ -1,8 +1,7 @@
 ﻿using GameSaveBackup.Interfaces;
 using GameSaveBackup.Model;
-using GameSaveBackup.Services;
+using ScriptExecutor.Controllers;
 using ScriptExecutor.Interfaces;
-using ScriptExecutor.Persistence;
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -25,14 +24,17 @@ namespace ScriptExecutor.UI
 
         private readonly ICSVManager _csvManager; //the model from MVC pattern
         private readonly ILogManager _logManager; //the model from MVC pattern
-        private readonly IData _data;
+        private readonly IData _data; //the model wihch contains the data
+        private readonly IForm_MainController _form_MainController;
 
         private bool isExist = false; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
-        public Form_Main(ICSVManager csvManager, ILogManager logManager, IData data )
+
+        public Form_Main(ICSVManager csvManager, ILogManager logManager, IData data, IForm_MainController form_MainController)
         {
             _csvManager = csvManager;
             _logManager = logManager;
             _data = data;
+            _form_MainController = form_MainController;
             Init();
         }
 
@@ -42,6 +44,7 @@ namespace ScriptExecutor.UI
         ///*************///
         /// </summary>
         /*event to fire before the form closing*/
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //if click on the cross, the software will stay on the system tray. if click on exit, the software will really be closed
@@ -245,10 +248,8 @@ namespace ScriptExecutor.UI
             form_AddGame = new Form_AddGame(); //reset every input of the form to add game
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {
-                _data.AddGame(form_AddGame.Game);
-                _csvManager.WriteCsv();
+                _form_MainController.AddGame(form_AddGame.Game);
                 PopulateGridView();
-                _logManager.AddLog(DateTime.Now.ToString() + " > the game : " + form_AddGame.Game.Name + " has been added");
             }
         }
 
@@ -260,29 +261,15 @@ namespace ScriptExecutor.UI
 
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {
-                //replace the oldGame with a new one
-                _data.ListOfGame[index] = form_AddGame.Game;
-                _data.ListOfGame.Sort((x, y) => x.Name.CompareTo(y.Name));
+                _form_MainController.OnModifyClick(form_AddGame.Game, index);
                 PopulateGridView(); //recreate grid
-                _csvManager.WriteCsv();
-                _logManager.AddLog(DateTime.Now.ToString() + "> the game : " + game.Name + " has been modified");
             }
         }
 
         private void OnDeleteClick(int index)
         {
-            string oldGame = _data.ListOfGame[index].Name; //get the game name to delete for the log
-            //remove the game
-            _data.RemoveGame(index);
-            _csvManager.WriteCsv();
+            _form_MainController.OnDeleteClick(index);
             dgvGame.Rows.RemoveAt(index);
-            _logManager.AddLog(DateTime.Now.ToString() + "> the game : " + oldGame + " has been deleted");
-        }
-
-        private void OnCheck(int index, bool c)
-        {
-            _data.ListOfGame[index].Enabled = c;
-            _csvManager.WriteCsv();
         }
 
         private void OnCellContentClick(DataGridView dgv, int colIndex, int rowIndex)
@@ -299,7 +286,8 @@ namespace ScriptExecutor.UI
                     break;
 
                 case 4:
-                    OnCheck(rowIndex, (bool)dgv.Rows[rowIndex].Cells[colIndex].EditedFormattedValue); //the second arg is to get the status of the checkbox as a boolean
+                    //the second arg is to get the status of the checkbox as a boolean
+                    _form_MainController.OnCheck(rowIndex, (bool)dgv.Rows[rowIndex].Cells[colIndex].EditedFormattedValue);
                     break;
             }
         }
@@ -318,6 +306,7 @@ namespace ScriptExecutor.UI
         }
 
         /*event fired when the current game change*/
+
         public void HandleEvent(object sender, EventArgs args)
         {
             string text;

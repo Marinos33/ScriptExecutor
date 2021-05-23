@@ -1,6 +1,8 @@
 ﻿using GameSaveBackup.Interfaces;
 using GameSaveBackup.Model;
 using GameSaveBackup.Services;
+using ScriptExecutor.Interfaces;
+using ScriptExecutor.Persistence;
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -21,30 +23,17 @@ namespace ScriptExecutor.UI
         /// </summary>
         private Form_AddGame form_AddGame; //the form to add a game
 
-        private readonly ICSVManager csvManager = new CSVManager(); //the model from MVC pattern
-        private readonly ILogManager logManager = new LogManager(); //the model from MVC pattern
+        private readonly ICSVManager _csvManager; //the model from MVC pattern
+        private readonly ILogManager _logManager; //the model from MVC pattern
+        private readonly IData _data;
 
         private bool isExist = false; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
-
-        public Form_Main()
+        public Form_Main(ICSVManager csvManager, ILogManager logManager, IData data )
         {
-            InitializeComponent();
-
-            FormClosing += Form1_FormClosing; //add event when click on the cross of the form
-
-            notifyIcon.Icon = Resource.logo;
-
-            PopulateGridView();
-
-            //launch the thread, in background, responsible to find the game to backup
-            Thread myThread = new(new ThreadStart(SearchProcess))
-            {
-                IsBackground = true
-            };
-
-            myThread.Start();
-
-            logManager.AddLog(DateTime.Now.ToString() + " > the program has been started");
+            _csvManager = csvManager;
+            _logManager = logManager;
+            _data = data;
+            Init();
         }
 
         /// <summary>
@@ -53,7 +42,6 @@ namespace ScriptExecutor.UI
         ///*************///
         /// </summary>
         /*event to fire before the form closing*/
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //if click on the cross, the software will stay on the system tray. if click on exit, the software will really be closed
@@ -120,18 +108,18 @@ namespace ScriptExecutor.UI
             int i = 0;
             while (!found) //until a game has been found
             {
-                if (csvManager.GetListOfGame().Count > 0 && Process.GetProcessesByName(Path.ChangeExtension(csvManager.GetListOfGame()[i].ExecutablePath, null)).Length != 0)
+                if (_data.ListOfGame.Count > 0 && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutablePath, null)).Length != 0)
                 {
                     found = true;
-                    csvManager.SetCurrentGame((Game)csvManager.GetListOfGame()[i].Clone());//take the game actually running in memory
-                    csvManager.GetCurrentGame().SomethingHappened += HandleEvent; //event for observer pattern
-                    csvManager.GetCurrentGame().Update();
+                    _data.CurrentGame = (Game)_data.ListOfGame[i].Clone();//take the game actually running in memory
+                    _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
+                    _data.CurrentGame.Update();
                     break; //stop the loop
                 }
 
                 i++;
 
-                if (i >= csvManager.GetListOfGame().Count) //go back to the start of the list
+                if (i >= _data.ListOfGame.Count) //go back to the start of the list
                 {
                     i = 0;
                 }
@@ -139,7 +127,7 @@ namespace ScriptExecutor.UI
                 Thread.Sleep(2000); //wait 5 seconds
             }
 
-            Process pname = (from p in Process.GetProcesses() where p.ProcessName == Path.ChangeExtension(csvManager.GetCurrentGame().ExecutablePath, null) select p).FirstOrDefault(); //select the first process with the given name in the process running
+            Process pname = (from p in Process.GetProcesses() where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutablePath, null) select p).FirstOrDefault(); //select the first process with the given name in the process running
 
             //update the text label inside antoher thread than the ui one, source : https://stackoverflow.com/questions/661561/how-do-i-update-the-gui-from-another-thread
             /* string newText = "Waiting for " + gameFound.ExecutablePath + " to close";
@@ -151,10 +139,10 @@ namespace ScriptExecutor.UI
 
             pname.WaitForExit(); //the thread wait until the process has stopped
 
-            RunScript(csvManager.GetCurrentGame().ScriptPath); //run a script
+            RunScript(_data.CurrentGame.ScriptPath); //run a script
 
-            csvManager.ResetCurrentGame();
-            csvManager.GetCurrentGame().SomethingHappened += HandleEvent; //event for observer pattern
+            _data.ResetCurrentGame();
+            _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
 
             SearchProcess();
         }
@@ -169,17 +157,17 @@ namespace ScriptExecutor.UI
                     try
                     {
                         Process.Start(scriptPath);
-                        logManager.AddLog(DateTime.Now.ToString() + "> the script : " + scriptName + " has been launched");
+                        _logManager.AddLog(DateTime.Now.ToString() + "> the script : " + scriptName + " has been launched");
                     }
                     catch
                     {
                         MessageBox.Show("GameSave_Backup: unable to run the script to backup");
-                        logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script " + scriptName + " to backup");
+                        _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script " + scriptName + " to backup");
                     }
                 }
                 else
                 {
-                    logManager.AddLog(DateTime.Now.ToString() + "> the script " + scriptName + " is specified but cannot be found");
+                    _logManager.AddLog(DateTime.Now.ToString() + "> the script " + scriptName + " is specified but cannot be found");
                 }
             }
         }
@@ -189,13 +177,36 @@ namespace ScriptExecutor.UI
         ///custom method part///
         ///*****************///
         /// </summary>
+        private void Init()
+        {
+            _data.ListOfGame = _csvManager.ReadCsv().ToList();
+
+            InitializeComponent();
+
+            FormClosing += Form1_FormClosing; //add event when click on the cross of the form
+
+            notifyIcon.Icon = Resource.logo;
+
+            PopulateGridView();
+
+            //launch the thread, in background, responsible to find the game to backup
+            Thread myThread = new(new ThreadStart(SearchProcess))
+            {
+                IsBackground = true
+            };
+
+            myThread.Start();
+
+            _logManager.AddLog(DateTime.Now.ToString() + " > the program has been started");
+        }
+
         private void PopulateGridView()
         {
-            if (csvManager.GetListOfGame().Count > 0)
+            if (_data.ListOfGame.Count > 0)
             {
                 dgvGame.Rows.Clear();
 
-                foreach (Game game in csvManager.GetListOfGame())
+                foreach (Game game in _data.ListOfGame)
                 {
                     //if the game added has been setup properly, use a green check, if not use a red cross
                     Bitmap picture;
@@ -224,7 +235,7 @@ namespace ScriptExecutor.UI
                         ForeColor = Color.White
                     };
 
-                    dgvGame.Rows.Add(new Object[] { game.Name, picture, button, button2, game.Enabled });
+                    dgvGame.Rows.Add(new object[] { game.Name, picture, button, button2, game.Enabled });
                 }
             }
         }
@@ -234,42 +245,44 @@ namespace ScriptExecutor.UI
             form_AddGame = new Form_AddGame(); //reset every input of the form to add game
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {
-                csvManager.AddGame(form_AddGame.Game);
+                _data.AddGame(form_AddGame.Game);
+                _csvManager.WriteCsv();
                 PopulateGridView();
-                logManager.AddLog(DateTime.Now.ToString() + " > the game : " + form_AddGame.Game.Name + " has been added");
+                _logManager.AddLog(DateTime.Now.ToString() + " > the game : " + form_AddGame.Game.Name + " has been added");
             }
         }
 
         private void OnModifyClick(int index)
         {
             //get the game to edit
-            Game game = csvManager.GetListOfGame()[index];
+            Game game = _data.ListOfGame[index];
             form_AddGame = new Form_AddGame(game);
 
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {
                 //replace the oldGame with a new one
-                csvManager.GetListOfGame()[index] = form_AddGame.Game;
-                csvManager.GetListOfGame().Sort((x, y) => x.Name.CompareTo(y.Name));
+                _data.ListOfGame[index] = form_AddGame.Game;
+                _data.ListOfGame.Sort((x, y) => x.Name.CompareTo(y.Name));
                 PopulateGridView(); //recreate grid
-                csvManager.WriteCsv();
-                logManager.AddLog(DateTime.Now.ToString() + "> the game : " + game.Name + " has been modified");
+                _csvManager.WriteCsv();
+                _logManager.AddLog(DateTime.Now.ToString() + "> the game : " + game.Name + " has been modified");
             }
         }
 
         private void OnDeleteClick(int index)
         {
-            string oldGame = csvManager.GetListOfGame()[index].Name; //get the game name to delete for the log
+            string oldGame = _data.ListOfGame[index].Name; //get the game name to delete for the log
             //remove the game
-            csvManager.RemoveGame(index);
+            _data.RemoveGame(index);
+            _csvManager.WriteCsv();
             dgvGame.Rows.RemoveAt(index);
-            logManager.AddLog(DateTime.Now.ToString() + "> the game : " + oldGame + " has been deleted");
+            _logManager.AddLog(DateTime.Now.ToString() + "> the game : " + oldGame + " has been deleted");
         }
 
         private void OnCheck(int index, bool c)
         {
-            csvManager.GetListOfGame()[index].Enabled = c;
-            csvManager.WriteCsv();
+            _data.ListOfGame[index].Enabled = c;
+            _csvManager.WriteCsv();
         }
 
         private void OnCellContentClick(DataGridView dgv, int colIndex, int rowIndex)
@@ -278,11 +291,11 @@ namespace ScriptExecutor.UI
             switch (colIndex)
             {
                 case 2:
-                    OnModifyClick(rowIndex);
+                    OnDeleteClick(rowIndex);
                     break;
 
                 case 3:
-                    OnDeleteClick(rowIndex);
+                    OnModifyClick(rowIndex);
                     break;
 
                 case 4:
@@ -294,7 +307,7 @@ namespace ScriptExecutor.UI
         private void OnExit()
         {
             isExist = true;
-            logManager.AddLog(DateTime.Now.ToString() + "> the program has been shutdown");
+            _logManager.AddLog(DateTime.Now.ToString() + "> the program has been shutdown");
             Close();
         }
 
@@ -305,17 +318,16 @@ namespace ScriptExecutor.UI
         }
 
         /*event fired when the current game change*/
-
         public void HandleEvent(object sender, EventArgs args)
         {
             string text;
-            if (csvManager.GetCurrentGame().Name == null && csvManager.GetCurrentGame().ExecutablePath == null && csvManager.GetCurrentGame().ScriptPath == null)
+            if (_data.CurrentGame.Name == null && _data.CurrentGame.ExecutablePath == null && _data.CurrentGame.ScriptPath == null)
             {
                 text = "";
             }
             else
             {
-                text = "Waiting for " + csvManager.GetCurrentGame().ExecutablePath + " to close";
+                text = "Waiting for " + _data.CurrentGame.ExecutablePath + " to close";
             }
             //to change te text in the UI thread by another thread
             lbGameObserved.Invoke((MethodInvoker)(() => lbGameObserved.Text = text));

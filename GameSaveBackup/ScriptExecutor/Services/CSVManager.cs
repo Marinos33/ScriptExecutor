@@ -2,6 +2,8 @@
 using CsvHelper.Configuration;
 using GameSaveBackup.Interfaces;
 using GameSaveBackup.Model;
+using ScriptExecutor.Interfaces;
+using ScriptExecutor.Persistence;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -13,57 +15,18 @@ namespace GameSaveBackup.Services
     public class CSVManager : ICSVManager
     {
         private const string CSV_PATH = "Data.csv"; //the path to the CSV which contains all the game (use to do the save system)
-        internal List<Game> ListOfGame { get; set; } = new List<Game>();
-        internal Game CurrentGame { get; set; } = new Game();
 
-        public CSVManager()
+        private readonly IData _data;
+
+        public CSVManager(IData data)
         {
-            ReadCsv();
-        }
-
-        /*used to say to the program : there are no program from the list who is running*/
-
-        public void ResetCurrentGame()
-        {
-            CurrentGame.Name = null;
-            CurrentGame.ScriptPath = null;
-            CurrentGame.ExecutablePath = null;
-            CurrentGame.Update();
-        }
-
-        public void AddGame(Game game)
-        {
-            ListOfGame.Add(game); //add the game to the list
-            ListOfGame.Sort((x, y) => x.Name.CompareTo(y.Name)); //alphabetical sort
-            WriteCsv();
-        }
-
-        public void RemoveGame(int index)
-        {
-            ListOfGame.RemoveAt(index); //add the game to the list
-            ListOfGame.Sort((x, y) => x.Name.CompareTo(y.Name)); //alphabetical sort
-            WriteCsv();
-        }
-
-        public List<Game> GetListOfGame()
-        {
-            return ListOfGame;
-        }
-
-        public Game GetCurrentGame()
-        {
-            return CurrentGame;
-        }
-
-        public void SetCurrentGame(Game currentGame)
-        {
-            CurrentGame = currentGame;
+            _data = data;
         }
 
         //(re)write the entire csv
         public void WriteCsv()
         {
-            var records = ListOfGame;
+            var records = _data.ListOfGame;
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = false,
@@ -74,8 +37,7 @@ namespace GameSaveBackup.Services
         }
 
         /*read the whole CSV*/
-
-        private void ReadCsv()
+        public IEnumerable<Game> ReadCsv()
         {
             if (File.Exists(CSV_PATH))
             {
@@ -87,8 +49,9 @@ namespace GameSaveBackup.Services
                 using var reader = new StreamReader(CSV_PATH);
                 using var csv = new CsvReader(reader, config);
                 var records = csv.GetRecords<Game>(); // a record contains the content of the CSV
-                ListOfGame = records.ToList(); //pass all record to the list
+                return records.ToList(); //pass all record to the list
             }
+            return Enumerable.Empty<Game>();
         }
     }
 }

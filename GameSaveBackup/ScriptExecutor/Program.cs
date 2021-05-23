@@ -31,6 +31,7 @@ namespace ScriptExecutor
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<IData, Data>()
+                    .AddSingleton<IThreadSystem, ThreadSystem>()
                     .AddScoped<ICSVManager, CSVManager>()
                     .AddScoped<ILogManager, LogManager>()
                     .AddScoped<IForm_MainController, Form_MainController>()

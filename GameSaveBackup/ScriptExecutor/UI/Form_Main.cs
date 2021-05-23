@@ -2,10 +2,7 @@
 using ScriptExecutor.Interfaces;
 using ScriptExecutor.Model;
 using System;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -25,15 +22,17 @@ namespace ScriptExecutor.UI
         private readonly ILogManager _logManager; //the model from MVC pattern
         private readonly IData _data; //the model wihch contains the data
         private readonly IForm_MainController _form_MainController;
+        private readonly IThreadSystem _threadSystem;
 
-        private bool isExist = false; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
+        private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(ICSVManager csvManager, ILogManager logManager, IData data, IForm_MainController form_MainController)
+        public Form_Main(ICSVManager csvManager, ILogManager logManager, IData data, IForm_MainController form_MainController, IThreadSystem threadSystem)
         {
             _csvManager = csvManager;
             _logManager = logManager;
             _data = data;
             _form_MainController = form_MainController;
+            _threadSystem = threadSystem;
             Init();
         }
 
@@ -96,85 +95,6 @@ namespace ScriptExecutor.UI
         }
 
         /// <summary>
-        /// **********************///
-        ///thread background part///
-        ///*********************///
-        /// </summary>
-        private void SearchProcess()
-        {
-            Thread.Sleep(2000); //wait 2 seconds
-
-            //function to use with the thread
-            bool found = false;
-
-            int i = 0;
-            while (!found) //until a game has been found
-            {
-                if (_data.ListOfGame.Count > 0 && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutablePath, null)).Length != 0)
-                {
-                    found = true;
-                    _data.CurrentGame = (Game)_data.ListOfGame[i].Clone();//take the game actually running in memory
-                    _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
-                    _data.CurrentGame.Update();
-                    break; //stop the loop
-                }
-
-                i++;
-
-                if (i >= _data.ListOfGame.Count) //go back to the start of the list
-                {
-                    i = 0;
-                }
-
-                Thread.Sleep(2000); //wait 5 seconds
-            }
-
-            Process pname = (from p in Process.GetProcesses() where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutablePath, null) select p).FirstOrDefault(); //select the first process with the given name in the process running
-
-            //update the text label inside antoher thread than the ui one, source : https://stackoverflow.com/questions/661561/how-do-i-update-the-gui-from-another-thread
-            /* string newText = "Waiting for " + gameFound.ExecutablePath + " to close";
-             lbGameObserved.Invoke((MethodInvoker)delegate
-             {
-                 // Running on the UI thread
-                 lbGameObserved.Text = newText;
-             });*/
-
-            pname.WaitForExit(); //the thread wait until the process has stopped
-
-            RunScript(_data.CurrentGame.ScriptPath); //run a script
-
-            _data.ResetCurrentGame();
-            _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
-
-            SearchProcess();
-        }
-
-        private void RunScript(string scriptPath)
-        {
-            if (scriptPath != "")
-            {
-                string scriptName = scriptPath[(scriptPath.LastIndexOf("\\") + 1)..];
-                if (File.Exists(scriptPath))
-                {
-                    try
-                    {
-                        Process.Start(scriptPath);
-                        _logManager.AddLog(DateTime.Now.ToString() + "> the script : " + scriptName + " has been launched");
-                    }
-                    catch
-                    {
-                        MessageBox.Show("GameSave_Backup: unable to run the script to backup");
-                        _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script " + scriptName + " to backup");
-                    }
-                }
-                else
-                {
-                    _logManager.AddLog(DateTime.Now.ToString() + "> the script " + scriptName + " is specified but cannot be found");
-                }
-            }
-        }
-
-        /// <summary>
         /// *******************///
         ///custom method part///
         ///*****************///
@@ -192,7 +112,7 @@ namespace ScriptExecutor.UI
             PopulateGridView();
 
             //launch the thread, in background, responsible to find the game to backup
-            Thread myThread = new(new ThreadStart(SearchProcess))
+            Thread myThread = new(() => _threadSystem.SearchProcess(HandleEvent))
             {
                 IsBackground = true
             };

@@ -1,7 +1,7 @@
-﻿using GameSaveBackup.Model;
+﻿using ScriptExecutor.Model;
 using System.Collections.Generic;
 
-namespace GameSaveBackup.Interfaces
+namespace ScriptExecutor.Interfaces
 {
     public interface ICSVManager
     {

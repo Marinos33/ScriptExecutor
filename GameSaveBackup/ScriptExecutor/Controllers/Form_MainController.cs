@@ -1,6 +1,5 @@
-﻿using GameSaveBackup.Interfaces;
-using GameSaveBackup.Model;
-using ScriptExecutor.Interfaces;
+﻿using ScriptExecutor.Interfaces;
+using ScriptExecutor.Model;
 using System;
 
 namespace ScriptExecutor.Controllers

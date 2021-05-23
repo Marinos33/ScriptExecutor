@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameSaveBackup.Interfaces
+namespace ScriptExecutor.Interfaces
 {
     internal interface IObserver
     {

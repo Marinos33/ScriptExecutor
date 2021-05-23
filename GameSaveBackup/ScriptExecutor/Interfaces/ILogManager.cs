@@ -1,4 +1,4 @@
-﻿namespace GameSaveBackup.Interfaces
+﻿namespace ScriptExecutor.Interfaces
 {
     public interface ILogManager
     {

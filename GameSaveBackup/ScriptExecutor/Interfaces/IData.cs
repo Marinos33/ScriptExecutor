@@ -1,4 +1,4 @@
-﻿using GameSaveBackup.Model;
+﻿using ScriptExecutor.Model;
 using System.Collections.Generic;
 
 namespace ScriptExecutor.Interfaces

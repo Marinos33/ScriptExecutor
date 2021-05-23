@@ -1,8 +1,8 @@
-﻿using GameSaveBackup.Interfaces;
+﻿using ScriptExecutor.Interfaces;
 using System.IO;
 
 //the file to manage the log
-namespace GameSaveBackup.Services
+namespace ScriptExecutor.Services
 {
     public class LogManager : ILogManager
     {

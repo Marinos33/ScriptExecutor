@@ -1,15 +1,14 @@
 ﻿using CsvHelper; //third part library to use CSV
 using CsvHelper.Configuration;
-using GameSaveBackup.Interfaces;
-using GameSaveBackup.Model;
 using ScriptExecutor.Interfaces;
+using ScriptExecutor.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 
 //the file to manage the csv with the games'list
-namespace GameSaveBackup.Services
+namespace ScriptExecutor.Services
 {
     public class CSVManager : ICSVManager
     {

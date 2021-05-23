@@ -1,7 +1,7 @@
-﻿using GameSaveBackup.Interfaces;
+﻿using ScriptExecutor.Interfaces;
 using System;
 
-namespace GameSaveBackup.Model
+namespace ScriptExecutor.Model
 {
     public class Game : IObservable, ICloneable
     {

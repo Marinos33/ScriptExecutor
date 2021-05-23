@@ -14,8 +14,7 @@ namespace ScriptExecutor.UI
 {
     public partial class Form_AddGame : Form
     {
-        private Game game; //the game to add
-        internal Game Game { get; set; }
+        public Game Game { get; set; } //the game to add
 
         //when click on AddGame on the main form
         public Form_AddGame()
@@ -27,15 +26,15 @@ namespace ScriptExecutor.UI
         public Form_AddGame(Game oldGame)
         {
             InitializeComponent();
-            game = oldGame;
+            Game = oldGame;
 
             //set the text field to match the one which is currently modifying
-            tbName.Text = game.Name;
-            tbPathExe.Text = game.ExecutablePath;
-            tbPathScript.Text = game.ScriptPath;
+            tbName.Text = Game.Name;
+            tbPathExe.Text = Game.ExecutablePath;
+            tbPathScript.Text = Game.ScriptPath;
 
-            FileScript.FileName = game.ScriptPath;
-            FileExe.FileName = game.ExecutablePath;
+            FileScript.FileName = Game.ScriptPath;
+            FileExe.FileName = Game.ExecutablePath;
         }
 
         private void PbExePathDialog_Click(object sender, EventArgs e)
@@ -72,9 +71,9 @@ namespace ScriptExecutor.UI
             if (FileScript.CheckFileExists)
             {
                 //create or edit the game
-                if (game == null)
+                if (Game == null)
                 {
-                    game = new Game
+                    Game = new Game
                     {
                         Name = tbName.Text,
                         ExecutablePath = tbPathExe.Text,
@@ -83,9 +82,9 @@ namespace ScriptExecutor.UI
                 }
                 else
                 {
-                    game.Name = tbName.Text;
-                    game.ExecutablePath = tbPathExe.Text;
-                    game.ScriptPath = tbPathScript.Text;
+                    Game.Name = tbName.Text;
+                    Game.ExecutablePath = tbPathExe.Text;
+                    Game.ScriptPath = tbPathScript.Text;
                 }
                 DialogResult = DialogResult.OK; //tell the software that a game will be added
                 Close();

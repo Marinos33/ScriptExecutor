@@ -29,13 +29,12 @@ namespace ScriptExecutor.Services
             {
                 HasHeaderRecord = false,
             };
-            using var writer = new StreamWriter(CSV_PATH);
+            using var writer = new StreamWriter(File.Open(CSV_PATH, FileMode.OpenOrCreate));
             using var csv = new CsvWriter(writer, config);
             await csv.WriteRecordsAsync(records).ConfigureAwait(false);
         }
 
         /*read the whole CSV*/
-
         public IEnumerable<Game> ReadCsv()
         {
             if (File.Exists(CSV_PATH))

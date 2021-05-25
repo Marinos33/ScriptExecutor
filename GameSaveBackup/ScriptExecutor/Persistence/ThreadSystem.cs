@@ -30,7 +30,7 @@ namespace ScriptExecutor.Persistence
             int i = 0;
             while (!found) //until a game has been found
             {
-                if (_data.ListOfGame.Count > 0 && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutablePath, null)).Length != 0)
+                if (_data.ListOfGame.Count > 0 && i <= _data.ListOfGame.Count && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutablePath, null)).Length != 0)
                 {
                     found = true;
                     _data.CurrentGame = (Game)_data.ListOfGame[i].Clone();//take the game actually running in memory

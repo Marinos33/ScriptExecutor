@@ -32,8 +32,8 @@ namespace ScriptExecutor
         {
             services.AddSingleton<IData, Data>()
                     .AddSingleton<IThreadSystem, ThreadSystem>()
-                    .AddScoped<ICSVManager, CSVManager>()
                     .AddScoped<ILogManager, LogManager>()
+                    .AddScoped<IJsonManager, JsonManager>()
                     .AddScoped<IForm_MainController, Form_MainController>()
                     .AddScoped<IForm_AddGameController, Form_AddGameController>();
 

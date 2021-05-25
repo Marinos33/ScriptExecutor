@@ -18,7 +18,7 @@ namespace ScriptExecutor.UI
         /// </summary>
         private Form_AddGame form_AddGame; //the form to add a game
 
-        private readonly ICSVManager _csvManager; //the model from MVC pattern
+        private readonly IJsonManager _jsonManager; //the model from MVC pattern
         private readonly ILogManager _logManager; //the model from MVC pattern
         private readonly IData _data; //the model wihch contains the data
         private readonly IForm_MainController _form_MainController;
@@ -26,9 +26,9 @@ namespace ScriptExecutor.UI
 
         private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(ICSVManager csvManager, ILogManager logManager, IData data, IForm_MainController form_MainController, IThreadSystem threadSystem)
+        public Form_Main(IJsonManager jsonManager, ILogManager logManager, IData data, IForm_MainController form_MainController, IThreadSystem threadSystem)
         {
-            _csvManager = csvManager;
+            _jsonManager = jsonManager;
             _logManager = logManager;
             _data = data;
             _form_MainController = form_MainController;
@@ -101,7 +101,7 @@ namespace ScriptExecutor.UI
         /// </summary>
         private void Init()
         {
-            _data.ListOfGame = _csvManager.ReadCsv().ToList();
+            _data.ListOfGame = _jsonManager.ReadJson().Result.ToList();
 
             InitializeComponent();
 

@@ -27,15 +27,14 @@ namespace ScriptExecutor.Controllers
         public void OnModifyClick(Game game, int index)
         {
             //replace the oldGame with a new one
-            _data.ListOfGame[index] = game;
-            _data.ListOfGame.Sort((x, y) => x.Name.CompareTo(y.Name));
+            _data.EditGame(game, index);
             _jsonManager.WriteJson();
             _logManager.AddLog(DateTime.Now.ToString() + "> the game : " + game.Name + " has been modified");
         }
 
         public void OnDeleteClick(int index)
         {
-            string oldGame = _data.ListOfGame[index].Name; //get the game name to delete for the log
+            string oldGame = _data.ListOfGame[index].Name; //get the game's name to delete for the log
             //remove the game
             _data.RemoveGame(index);
             _jsonManager.WriteJson();

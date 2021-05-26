@@ -8,9 +8,11 @@ namespace ScriptExecutor.Services
 {
     public class LogManager : ILogManager
     {
-        private const string LOGFILENAME = "log GameSave_Backup.txt"; //the path to the log file
+        /// <summary>
+        /// the path to the log file
+        /// </summary>
+        private const string LOGFILENAME = "log GameSave_Backup.txt";
 
-        //read the whole log file
         public async Task<string> ReadLog()
         {
             if (File.Exists(LOGFILENAME))
@@ -20,7 +22,6 @@ namespace ScriptExecutor.Services
             return "";
         }
 
-        //(re)write the entire log file
         public async void AddLog(string text)
         {
             var previousText = ReadLog();

@@ -24,13 +24,15 @@ namespace ScriptExecutor.Persistence
         {
             Thread.Sleep(2000); //wait 2 seconds
 
-            //function to use with the thread
-            bool found = false;
+            bool found = false; //boolean to verify if a game has been found
 
+            //iteration through list
             int i = 0;
             while (!found) //until a game has been found
             {
-                if (_data.ListOfGame.Count > 0 && i <= _data.ListOfGame.Count && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutableFile, null)).Length != 0)
+                if (_data.ListOfGame.Count > 0
+                    && i <= _data.ListOfGame.Count
+                    && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutableFile, null)).Length != 0) //check if the game to observe is not null or ""
                 {
                     found = true;
                     _data.CurrentGame = (Game)_data.ListOfGame[i].Clone();//take the game actually running in memory
@@ -69,22 +71,30 @@ namespace ScriptExecutor.Persistence
             SearchProcess(HandleEvent);
         }
 
+        /// <summary>
+        /// the method to run the script associated with process curretnly observed
+        /// </summary>
+        /// <param name="script">the script to run</param>
         private void RunScript(string script)
         {
             if (script != "")
             {
-                var fileName = Guid.NewGuid().ToString() + ".bat";
-                var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName);
+                /*
+                 * generate a file with the script => run the script => delete the file with the script
+                 * **/
 
-                var batchCode = script;
+                var fileName = Guid.NewGuid().ToString() + ".bat"; //generate random name for the file
+                var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName); //set the path of the file to write in the appdata/temp
+
+                var batchCode = script; //the script
 
                 try
                 {
-                    File.WriteAllTextAsync(batchPath, batchCode);
+                    File.WriteAllTextAsync(batchPath, batchCode); //create the file in appdata/temp with the script as content
 
-                    Process.Start(batchPath).WaitForExit();
+                    Process.Start(batchPath).WaitForExit(); //run the script
 
-                    File.Delete(batchPath);
+                    File.Delete(batchPath); //delete the script
                     _logManager.AddLog(DateTime.Now.ToString() + "> script : " + fileName + " has been launched");
                 }
                 catch

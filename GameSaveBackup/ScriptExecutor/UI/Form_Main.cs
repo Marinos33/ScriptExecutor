@@ -11,11 +11,6 @@ namespace ScriptExecutor.UI
 {
     public partial class Form_Main : Form, IObserver
     {
-        /// <summary>
-        /// ******************************///
-        ///variable and constructor part///
-        ///****************************///
-        /// </summary>
         private Form_AddGame form_AddGame; //the form to add a game
 
         private readonly IJsonManager _jsonManager; //the model from MVC pattern
@@ -36,11 +31,6 @@ namespace ScriptExecutor.UI
             Init();
         }
 
-        /// <summary>
-        /// ***************///
-        ///UI input parts///
-        ///*************///
-        /// </summary>
         /*event to fire before the form closing*/
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -94,11 +84,6 @@ namespace ScriptExecutor.UI
             OnCellContentClick(dgv, columnIndex, rowIndex);
         }
 
-        /// <summary>
-        /// *******************///
-        ///custom method part///
-        ///*****************///
-        /// </summary>
         private void Init()
         {
             _data.ListOfGame = _jsonManager.ReadJson().Result.ToList();

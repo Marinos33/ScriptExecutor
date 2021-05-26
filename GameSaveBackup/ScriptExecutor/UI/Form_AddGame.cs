@@ -6,15 +6,23 @@ namespace ScriptExecutor.UI
 {
     public partial class Form_AddGame : Form
     {
-        public Game Game { get; set; } //the game to add
+        /// <summary>
+        /// the game to add or edit
+        /// </summary>
+        public Game Game { get; set; }
 
-        //when click on AddGame on the main form
+        /// <summary>
+        /// when click on AddGame on the main form
+        /// </summary>
         public Form_AddGame()
         {
             InitializeComponent();
         }
 
-        //when click on modify on the main form
+        /// <summary>
+        /// when click on modify on the main form
+        /// </summary>
+        /// <param name="oldGame">the data of the game to edit if click on edit button in the grid of main form</param>
         public Form_AddGame(Game oldGame)
         {
             InitializeComponent();
@@ -30,7 +38,7 @@ namespace ScriptExecutor.UI
 
         private void PbExePathDialog_Click(object sender, EventArgs e)
         {
-            //if the file has been selected, get is name
+            //if the file has been selected, get its name
             if (FileExe.ShowDialog() == DialogResult.OK)
             {
                 tbExeFile.Text = FileExe.SafeFileName; //get the filename and his ext
@@ -39,7 +47,7 @@ namespace ScriptExecutor.UI
 
         private void BtValider_Click(object sender, EventArgs e)
         {
-            //create or edit the game
+            //create the game
             if (Game == null)
             {
                 Game = new Game
@@ -49,6 +57,7 @@ namespace ScriptExecutor.UI
                     Script = tbScript.Text
                 };
             }
+            //edit the game
             else
             {
                 Game.Name = tbName.Text;

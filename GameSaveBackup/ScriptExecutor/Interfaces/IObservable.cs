@@ -4,8 +4,14 @@ namespace ScriptExecutor.Interfaces
 {
     internal interface IObservable
     {
-        event EventHandler SomethingHappened; //the 'variable' which contain another event to fire when this one is invoked
+        /// <summary>
+        /// the 'variable' which contain another event to fire when this one is invoked
+        /// </summary>
+        event EventHandler SomethingHappened;
 
-        void Update(); //notify that the observable has changed
+        /// <summary>
+        /// notify that the observable has changed
+        /// </summary>
+        void Update();
     }
 }

@@ -10,7 +10,10 @@ namespace ScriptExecutor.Services
 {
     public class JsonManager : IJsonManager
     {
-        private const string CSV_PATH = "Data.json"; //the path to the CSV which contains all the game (use to do the save system)
+        /// <summary>
+        /// the path to the CSV which contains all the game (use to do the save system)
+        /// </summary>
+        private const string CSV_PATH = "Data.json";
 
         private readonly IData _data;
 

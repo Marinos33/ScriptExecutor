@@ -15,7 +15,10 @@ namespace ScriptExecutor.Model
 
         public void Update() => SomethingHappened?.Invoke(this, EventArgs.Empty); //lambda, use Invoke if needed (invoke is used to to do something in the ui thread while in another thread)
 
-        //do a copy without reference (deep copy)
+        /// <summary>
+        /// do a copy without reference (deep copy)
+        /// </summary>
+        /// <returns>return a clone of the game</returns>
         public object Clone()
         {
             return MemberwiseClone();

@@ -6,8 +6,8 @@ namespace ScriptExecutor.Model
     public class Game : IObservable, ICloneable
     {
         public string Name { get; set; }
-        public string ExecutablePath { get; set; }
-        public string ScriptPath { get; set; }
+        public string ExecutableFile { get; set; }
+        public string Script { get; set; }
         public bool Enabled { get; set; } = true;
 
         //from the interface

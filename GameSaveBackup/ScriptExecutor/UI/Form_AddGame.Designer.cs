@@ -35,14 +35,11 @@ namespace ScriptExecutor.UI
             this.lbExePath = new System.Windows.Forms.Label();
             this.lbScript = new System.Windows.Forms.Label();
             this.FileExe = new System.Windows.Forms.OpenFileDialog();
-            this.FileScript = new System.Windows.Forms.OpenFileDialog();
-            this.tbPathExe = new System.Windows.Forms.TextBox();
-            this.tbPathScript = new System.Windows.Forms.TextBox();
+            this.tbExeFile = new System.Windows.Forms.TextBox();
             this.pbExePathDialog = new System.Windows.Forms.PictureBox();
-            this.pbScriptFileDialog = new System.Windows.Forms.PictureBox();
             this.btValider = new System.Windows.Forms.Button();
+            this.tbScript = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbScriptFileDialog)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -98,35 +95,22 @@ namespace ScriptExecutor.UI
             this.lbScript.Location = new System.Drawing.Point(14, 298);
             this.lbScript.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbScript.Name = "lbScript";
-            this.lbScript.Size = new System.Drawing.Size(174, 25);
+            this.lbScript.Size = new System.Drawing.Size(128, 25);
             this.lbScript.TabIndex = 4;
-            this.lbScript.Text = "Path of the script";
+            this.lbScript.Text = "Script to run";
             // 
             // FileExe
             // 
             this.FileExe.Filter = "Fichier executable|*.exe";
             this.FileExe.Title = "exe";
             // 
-            // FileScript
+            // tbExeFile
             // 
-            this.FileScript.Filter = "Script shell|*.bat|Tous les fichiers|*.*";
-            this.FileScript.Title = "script";
-            // 
-            // tbPathExe
-            // 
-            this.tbPathExe.Location = new System.Drawing.Point(20, 217);
-            this.tbPathExe.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tbPathExe.Name = "tbPathExe";
-            this.tbPathExe.Size = new System.Drawing.Size(241, 23);
-            this.tbPathExe.TabIndex = 5;
-            // 
-            // tbPathScript
-            // 
-            this.tbPathScript.Location = new System.Drawing.Point(20, 343);
-            this.tbPathScript.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tbPathScript.Name = "tbPathScript";
-            this.tbPathScript.Size = new System.Drawing.Size(241, 23);
-            this.tbPathScript.TabIndex = 6;
+            this.tbExeFile.Location = new System.Drawing.Point(20, 217);
+            this.tbExeFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tbExeFile.Name = "tbExeFile";
+            this.tbExeFile.Size = new System.Drawing.Size(241, 23);
+            this.tbExeFile.TabIndex = 5;
             // 
             // pbExePathDialog
             // 
@@ -140,24 +124,12 @@ namespace ScriptExecutor.UI
             this.pbExePathDialog.TabStop = false;
             this.pbExePathDialog.Click += new System.EventHandler(this.PbExePathDialog_Click);
             // 
-            // pbScriptFileDialog
-            // 
-            this.pbScriptFileDialog.Image = global::ScriptExecutor.Resource.index;
-            this.pbScriptFileDialog.Location = new System.Drawing.Point(268, 343);
-            this.pbScriptFileDialog.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.pbScriptFileDialog.Name = "pbScriptFileDialog";
-            this.pbScriptFileDialog.Size = new System.Drawing.Size(46, 35);
-            this.pbScriptFileDialog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbScriptFileDialog.TabIndex = 8;
-            this.pbScriptFileDialog.TabStop = false;
-            this.pbScriptFileDialog.Click += new System.EventHandler(this.PbScriptFileDialog_Click);
-            // 
             // btValider
             // 
             this.btValider.BackColor = System.Drawing.Color.Gray;
             this.btValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btValider.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btValider.Location = new System.Drawing.Point(88, 400);
+            this.btValider.Location = new System.Drawing.Point(96, 542);
             this.btValider.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btValider.Name = "btValider";
             this.btValider.Size = new System.Drawing.Size(145, 62);
@@ -166,17 +138,27 @@ namespace ScriptExecutor.UI
             this.btValider.UseVisualStyleBackColor = false;
             this.btValider.Click += new System.EventHandler(this.BtValider_Click);
             // 
+            // tbScript
+            // 
+            this.tbScript.AcceptsTab = true;
+            this.tbScript.DetectUrls = false;
+            this.tbScript.Location = new System.Drawing.Point(20, 326);
+            this.tbScript.Name = "tbScript";
+            this.tbScript.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.tbScript.Size = new System.Drawing.Size(324, 186);
+            this.tbScript.TabIndex = 10;
+            this.tbScript.Text = "";
+            // 
             // Form_AddGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(370, 490);
+            this.ClientSize = new System.Drawing.Size(370, 646);
+            this.Controls.Add(this.tbScript);
             this.Controls.Add(this.btValider);
-            this.Controls.Add(this.pbScriptFileDialog);
             this.Controls.Add(this.pbExePathDialog);
-            this.Controls.Add(this.tbPathScript);
-            this.Controls.Add(this.tbPathExe);
+            this.Controls.Add(this.tbExeFile);
             this.Controls.Add(this.lbScript);
             this.Controls.Add(this.lbExePath);
             this.Controls.Add(this.lbGameName);
@@ -186,7 +168,6 @@ namespace ScriptExecutor.UI
             this.Name = "Form_AddGame";
             this.Text = "Form_AddGame";
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbScriptFileDialog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,11 +181,9 @@ namespace ScriptExecutor.UI
         private System.Windows.Forms.Label lbExePath;
         private System.Windows.Forms.Label lbScript;
         private System.Windows.Forms.OpenFileDialog FileExe;
-        private System.Windows.Forms.OpenFileDialog FileScript;
-        private System.Windows.Forms.TextBox tbPathExe;
-        private System.Windows.Forms.TextBox tbPathScript;
+        private System.Windows.Forms.TextBox tbExeFile;
         private System.Windows.Forms.PictureBox pbExePathDialog;
-        private System.Windows.Forms.PictureBox pbScriptFileDialog;
         private System.Windows.Forms.Button btValider;
+        private System.Windows.Forms.RichTextBox tbScript;
     }
 }

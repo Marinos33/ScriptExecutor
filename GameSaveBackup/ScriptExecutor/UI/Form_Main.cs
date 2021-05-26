@@ -132,7 +132,7 @@ namespace ScriptExecutor.UI
                 {
                     //if the game added has been setup properly, use a green check, if not use a red cross
                     Bitmap picture;
-                    if (!game.ExecutablePath.Equals("") && !game.ScriptPath.Equals(""))
+                    if (!game.ExecutableFile.Equals("") && !game.Script.Equals(""))
                     {
                         picture = new Bitmap(Resource.check);
                     }
@@ -229,13 +229,13 @@ namespace ScriptExecutor.UI
         public void HandleEvent(object sender, EventArgs args)
         {
             string text;
-            if (_data.CurrentGame.Name == null && _data.CurrentGame.ExecutablePath == null && _data.CurrentGame.ScriptPath == null)
+            if (_data.CurrentGame.Name == null && _data.CurrentGame.ExecutableFile == null && _data.CurrentGame.Script == null)
             {
                 text = "";
             }
             else
             {
-                text = "Waiting for " + _data.CurrentGame.ExecutablePath + " to close";
+                text = "Waiting for " + _data.CurrentGame.ExecutableFile + " to close";
             }
             //to change te text in the UI thread by another thread
             lbGameObserved.Invoke((MethodInvoker)(() => lbGameObserved.Text = text));

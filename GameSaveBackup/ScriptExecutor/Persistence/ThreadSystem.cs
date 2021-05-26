@@ -30,7 +30,7 @@ namespace ScriptExecutor.Persistence
             int i = 0;
             while (!found) //until a game has been found
             {
-                if (_data.ListOfGame.Count > 0 && i <= _data.ListOfGame.Count && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutablePath, null)).Length != 0)
+                if (_data.ListOfGame.Count > 0 && i <= _data.ListOfGame.Count && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutableFile, null)).Length != 0)
                 {
                     found = true;
                     _data.CurrentGame = (Game)_data.ListOfGame[i].Clone();//take the game actually running in memory
@@ -49,7 +49,7 @@ namespace ScriptExecutor.Persistence
                 Thread.Sleep(2000); //wait 2 seconds
             }
 
-            Process pname = (from p in Process.GetProcesses() where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutablePath, null) select p).FirstOrDefault(); //select the first process with the given name in the process running
+            Process pname = (from p in Process.GetProcesses() where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutableFile, null) select p).FirstOrDefault(); //select the first process with the given name in the process running
 
             //update the text label inside antoher thread than the ui one, source : https://stackoverflow.com/questions/661561/how-do-i-update-the-gui-from-another-thread
             /* string newText = "Waiting for " + gameFound.ExecutablePath + " to close";
@@ -61,7 +61,7 @@ namespace ScriptExecutor.Persistence
 
             pname.WaitForExit(); //the thread wait until the process has stopped
 
-            RunScript(_data.CurrentGame.ScriptPath); //run a script
+            RunScript(_data.CurrentGame.Script); //run a script
 
             _data.ResetCurrentGame();
             _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
@@ -69,27 +69,28 @@ namespace ScriptExecutor.Persistence
             SearchProcess(HandleEvent);
         }
 
-        private void RunScript(string scriptPath)
+        private void RunScript(string script)
         {
-            if (scriptPath != "")
+            if (script != "")
             {
-                string scriptName = scriptPath[(scriptPath.LastIndexOf("\\") + 1)..];
-                if (File.Exists(scriptPath))
+                var fileName = Guid.NewGuid().ToString() + ".bat";
+                var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName);
+
+                var batchCode = script;
+
+                try
                 {
-                    try
-                    {
-                        Process.Start(scriptPath);
-                        _logManager.AddLog(DateTime.Now.ToString() + "> the script : " + scriptName + " has been launched");
-                    }
-                    catch
-                    {
-                        MessageBox.Show("GameSave_Backup: unable to run the script");
-                        _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script " + scriptName);
-                    }
+                    File.WriteAllTextAsync(batchPath, batchCode);
+
+                    Process.Start(batchPath).WaitForExit();
+
+                    File.Delete(batchPath);
+                    _logManager.AddLog(DateTime.Now.ToString() + "> script : " + fileName + " has been launched");
                 }
-                else
+                catch
                 {
-                    _logManager.AddLog(DateTime.Now.ToString() + "> the script " + scriptName + " is specified but cannot be found");
+                    MessageBox.Show("ScriptExecutor: unable to run the script");
+                    _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script " + fileName);
                 }
             }
         }

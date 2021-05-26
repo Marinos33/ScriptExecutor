@@ -14,8 +14,8 @@ namespace ScriptExecutor.Persistence
         public void ResetCurrentGame()
         {
             CurrentGame.Name = null;
-            CurrentGame.ScriptPath = null;
-            CurrentGame.ExecutablePath = null;
+            CurrentGame.Script = null;
+            CurrentGame.ExecutableFile = null;
             CurrentGame.Update();
         }
 

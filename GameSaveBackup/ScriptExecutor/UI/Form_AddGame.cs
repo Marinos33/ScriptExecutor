@@ -1,6 +1,5 @@
 ﻿using ScriptExecutor.Model;
 using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ScriptExecutor.UI
@@ -23,11 +22,10 @@ namespace ScriptExecutor.UI
 
             //set the text field to match the one which is currently modifying
             tbName.Text = Game.Name;
-            tbPathExe.Text = Game.ExecutablePath;
-            tbPathScript.Text = Game.ScriptPath;
+            tbExeFile.Text = Game.ExecutableFile;
+            tbScript.Text = Game.Script;
 
-            FileScript.FileName = Game.ScriptPath;
-            FileExe.FileName = Game.ExecutablePath;
+            FileExe.FileName = Game.ExecutableFile;
         }
 
         private void PbExePathDialog_Click(object sender, EventArgs e)
@@ -35,53 +33,30 @@ namespace ScriptExecutor.UI
             //if the file has been selected, get is name
             if (FileExe.ShowDialog() == DialogResult.OK)
             {
-                tbPathExe.Text = FileExe.SafeFileName; //get the filename and his ext
-            }
-        }
-
-        private void PbScriptFileDialog_Click(object sender, EventArgs e)
-        {
-            //if the file has been selected, get is name
-            if (FileScript.ShowDialog() == DialogResult.OK)
-            {
-                tbPathScript.Text = FileScript.FileName; //get the full path
+                tbExeFile.Text = FileExe.SafeFileName; //get the filename and his ext
             }
         }
 
         private void BtValider_Click(object sender, EventArgs e)
         {
-            //check if the script exists or not
-            if (File.Exists(tbPathScript.Text) || tbPathScript.Text?.Length == 0)
+            //create or edit the game
+            if (Game == null)
             {
-                FileScript.CheckFileExists = true;
+                Game = new Game
+                {
+                    Name = tbName.Text,
+                    ExecutableFile = tbExeFile.Text,
+                    Script = tbScript.Text
+                };
             }
             else
             {
-                MessageBox.Show("the file script not exists");
-                FileScript.CheckFileExists = false;
+                Game.Name = tbName.Text;
+                Game.ExecutableFile = tbExeFile.Text;
+                Game.Script = tbScript.Text;
             }
-
-            if (FileScript.CheckFileExists)
-            {
-                //create or edit the game
-                if (Game == null)
-                {
-                    Game = new Game
-                    {
-                        Name = tbName.Text,
-                        ExecutablePath = tbPathExe.Text,
-                        ScriptPath = tbPathScript.Text
-                    };
-                }
-                else
-                {
-                    Game.Name = tbName.Text;
-                    Game.ExecutablePath = tbPathExe.Text;
-                    Game.ScriptPath = tbPathScript.Text;
-                }
-                DialogResult = DialogResult.OK; //tell the software that a game will be added
-                Close();
-            }
+            DialogResult = DialogResult.OK; //tell the software that a game will be added
+            Close();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ScriptExecutor.Model;
 
-namespace ScriptExecutor.Controllers
+namespace ScriptExecutor.Interfaces
 {
     public interface IForm_MainController
     {

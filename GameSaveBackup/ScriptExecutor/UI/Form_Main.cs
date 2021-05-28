@@ -1,5 +1,4 @@
-﻿using ScriptExecutor.Controllers;
-using ScriptExecutor.Interfaces;
+﻿using ScriptExecutor.Interfaces;
 using ScriptExecutor.Model;
 using System;
 using System.Drawing;

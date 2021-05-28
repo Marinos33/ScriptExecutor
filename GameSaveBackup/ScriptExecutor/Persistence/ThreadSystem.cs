@@ -1,5 +1,4 @@
 ﻿using ScriptExecutor.Interfaces;
-using ScriptExecutor.Model;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -35,7 +34,7 @@ namespace ScriptExecutor.Persistence
                     && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutableFile, null)).Length != 0) //check if the game to observe is not null or ""
                 {
                     found = true;
-                    _data.CurrentGame = (Game)_data.ListOfGame[i].Clone();//take the game actually running in memory
+                    _data.CurrentGame = _data.ListOfGame[i]; //take the game actually running in memory
                     _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
                     _data.CurrentGame.Update();
                     break; //stop the loop

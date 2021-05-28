@@ -15,7 +15,7 @@ namespace ScriptExecutorTests
     public class ScriptExecutorTests
     {
         [TestMethod]
-        public void AddGame()
+        public void GameCanBeAdded()
         {
             //create fake data
             IData data = new Data
@@ -39,7 +39,7 @@ namespace ScriptExecutorTests
         }
 
         [TestMethod]
-        public void RemoveGame()
+        public void GameCanBeRemoved()
         {
             //create fake data
             IData data = new Data
@@ -65,7 +65,7 @@ namespace ScriptExecutorTests
         }
 
         [TestMethod]
-        public void EditGame()
+        public void GameCanBeEdited()
         {
             //create fake data
             IData data = new Data
@@ -101,7 +101,7 @@ namespace ScriptExecutorTests
         }
 
         [TestMethod]
-        public void ResetCurrentGame()
+        public void CurrentGameCanBeReset()
         {
             //create fake data
             IData data = new Data
@@ -120,20 +120,6 @@ namespace ScriptExecutorTests
             data.ResetCurrentGame();
 
             Assert.IsTrue(data.CurrentGame.Name == null && data.CurrentGame.Script == null && data.CurrentGame.ExecutableFile == null);
-        }
-
-        [TestMethod]
-        public void CloneGame()
-        {
-            Game game = new()
-            {
-                Name = "Test",
-                Enabled = false,
-                Script = "",
-                ExecutableFile = "",
-            };
-
-            Assert.AreEqual(game, game.Clone());
         }
 
         [TestMethod]
@@ -216,6 +202,114 @@ namespace ScriptExecutorTests
             }
 
             Assert.IsTrue(success);
+        }
+
+        [TestMethod]
+        public void JsonCanBeWrited()
+        {
+            //create fake data
+            IData data = new Data
+            {
+                ListOfGame = Enumerable.Empty<Game>().ToList(),
+            };
+
+            Game game = new()
+            {
+                Name = "Cmd",
+                Enabled = false,
+                Script = "echo \"Hello World\"",
+                ExecutableFile = "cmd.exe",
+            };
+
+            data.AddGame(game);
+
+            IJsonManager jsonManager = new JsonManager(data);
+
+            try
+            {
+                jsonManager.WriteJson();
+                File.Delete("Data.json");
+                Assert.IsTrue(true);
+            }
+            catch (Exception e)
+            {
+                Assert.IsTrue(false, e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void JsonCanBeRead()
+        {
+            //create fake data
+            IData data = new Data
+            {
+                ListOfGame = Enumerable.Empty<Game>().ToList(),
+            };
+
+            Game game = new()
+            {
+                Name = "Cmd",
+                Enabled = false,
+                Script = "echo \"Hello World\"",
+                ExecutableFile = "cmd.exe",
+            };
+
+            data.AddGame(game);
+
+            IJsonManager jsonManager = new JsonManager(data);
+
+            jsonManager.WriteJson();
+
+            data.ListOfGame.Clear();
+
+            data.ListOfGame = jsonManager.ReadJson().Result.ToList();
+
+            File.Delete("Data.json");
+
+            Assert.IsTrue(data.ListOfGame.Count > 0);
+        }
+
+        [TestMethod]
+        public void ReadLogIfNotExistTest()
+        {
+            ILogManager logManager = new LogManager();
+
+            string log = logManager.ReadLog().Result;
+
+            Assert.AreEqual(log, string.Empty);
+        }
+
+        [TestMethod]
+        public void LogCanBeWrite()
+        {
+            ILogManager logManager = new LogManager();
+
+            try
+            {
+                logManager.AddLog("test");
+
+                File.Delete("Logs.txt");
+
+                Assert.IsTrue(true);
+            }
+            catch (Exception e)
+            {
+                Assert.IsTrue(false, e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void LogCanBeRead()
+        {
+            ILogManager logManager = new LogManager();
+
+            logManager.AddLog("test");
+
+            string log = logManager.ReadLog().Result;
+
+            File.Delete("Logs.txt");
+
+            Assert.IsFalse(string.IsNullOrEmpty(log));
         }
     }
 }

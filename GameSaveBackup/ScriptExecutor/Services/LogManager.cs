@@ -11,7 +11,7 @@ namespace ScriptExecutor.Services
         /// <summary>
         /// the path to the log file
         /// </summary>
-        private const string LOGFILENAME = "log GameSave_Backup.txt";
+        private const string LOGFILENAME = "Logs.txt";
 
         public async Task<string> ReadLog()
         {
@@ -19,7 +19,7 @@ namespace ScriptExecutor.Services
             {
                 return await File.ReadAllTextAsync(LOGFILENAME).ConfigureAwait(false);
             }
-            return "";
+            return string.Empty;
         }
 
         public async void AddLog(string text)

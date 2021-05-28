@@ -3,7 +3,7 @@ using System;
 
 namespace ScriptExecutor.Model
 {
-    public class Game : IObservable, ICloneable
+    public class Game : IObservable
     {
         public string Name { get; set; }
         public string ExecutableFile { get; set; }
@@ -14,14 +14,5 @@ namespace ScriptExecutor.Model
         public event EventHandler SomethingHappened; //the event which fire the handler event from the form_main
 
         public void Update() => SomethingHappened?.Invoke(this, EventArgs.Empty); //lambda, use Invoke if needed (invoke is used to to do something in the ui thread while in another thread)
-
-        /// <summary>
-        /// do a copy without reference (deep copy)
-        /// </summary>
-        /// <returns>return a clone of the game</returns>
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
     }
 }

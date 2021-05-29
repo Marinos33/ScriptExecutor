@@ -12,6 +12,3 @@ and finally, write the code you want to run.
 Once this is done, if you launch the program previously enter and close it, the script should run.
 
 The app stays in system tray if you close it with the cross on the top-right.
-
-
-The app stays in system tray if you close it with the cross on the top-right.

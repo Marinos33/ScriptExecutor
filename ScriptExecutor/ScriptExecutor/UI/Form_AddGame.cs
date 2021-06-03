@@ -76,8 +76,8 @@ namespace ScriptExecutor.UI
 
         private async void BtnRunScript_ClickAsync(object sender, EventArgs e)
         {
-            bool isSciptRunned = await _scriptRunner.RunScript(tbScript.Text).ConfigureAwait(false); //run a script
-            if (isSciptRunned)
+            bool isSciptExecuted = await _scriptRunner.RunScript(tbScript.Text).ConfigureAwait(false); //run a script
+            if (isSciptExecuted)
             {
                 MessageBox.Show("ScriptExecutor: script correctly runned");
             }

@@ -14,78 +14,62 @@ namespace ScriptExecutorTests
     [TestClass]
     public class ScriptExecutorTests
     {
+        private readonly IData _data;
+        private readonly IJsonManager _jsonManager;
+        private readonly ILogManager _logManager;
+        private readonly IThreadSystem _threadSystem;
+        private readonly IScriptRunner _scriptRunner;
+
+        private readonly Game gameTest = new()
+        {
+            Name = "Cmd",
+            Enabled = false,
+            Script = "echo \"Hello World\"",
+            ExecutableFile = "cmd.exe",
+        };
+
+        public ScriptExecutorTests()
+        {
+            _data = new Data();
+            _logManager = new LogManager();
+            _scriptRunner = new ScriptRunner();
+            _jsonManager = new JsonManager(_data);
+            _threadSystem = new ThreadSystem(_data, _scriptRunner, _logManager);
+
+            //fake data
+            _data.ListOfGame = Enumerable.Empty<Game>().ToList();
+        }
+
         [TestMethod]
         public void GameCanBeAdded()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
+            int startCount = _data.ListOfGame.Count; //get the size of the list of the fake data
 
-            int startCount = data.ListOfGame.Count; //get the size of the list of the fake data
+            _data.AddGame(gameTest);
 
-            Game game = new()
-            {
-                Name = "Test",
-                Enabled = false,
-                Script = "",
-                ExecutableFile = "",
-            };
-
-            data.AddGame(game);
-
-            Assert.IsTrue(startCount < data.ListOfGame.Count); //if the list is larger after the game ahs been added it's OK
+            Assert.IsTrue(startCount < _data.ListOfGame.Count); //if the list is larger after the game ahs been added it's OK
         }
 
         [TestMethod]
         public void GameCanBeRemoved()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
+            _data.AddGame(gameTest);
 
-            Game game = new()
-            {
-                Name = "Test",
-                Enabled = false,
-                Script = "",
-                ExecutableFile = "",
-            };
+            int index = _data.ListOfGame.IndexOf(_data.ListOfGame.Find(game => game.Name.Equals(gameTest.Name))); //get the index of the game with the name "Test"
 
-            data.AddGame(game);
+            _data.RemoveGame(index);
 
-            int index = data.ListOfGame.IndexOf(data.ListOfGame.Find(game => game.Name.Equals("Test"))); //get the index of the game with the name "Test"
-
-            data.RemoveGame(index);
-
-            Assert.IsFalse(data.ListOfGame.Contains(data.ListOfGame.Find(game => game.Name.Equals("Test")))); //if the list of the game does not contains the game "Test" it's OK
+            Assert.IsFalse(_data.ListOfGame.Contains(_data.ListOfGame.Find(game => game.Name.Equals("Test")))); //if the list of the game does not contains the game "Test" it's OK
         }
 
         [TestMethod]
         public void GameCanBeEdited()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
+            _data.AddGame(gameTest);
 
-            Game game = new()
-            {
-                Name = "Test",
-                Enabled = false,
-                Script = "",
-                ExecutableFile = "",
-            };
+            Game oldGame = _data.ListOfGame.Find(game => game.Name.Equals(gameTest.Name)); //get the game with the name "Test"
 
-            data.AddGame(game);
-
-            Game oldGame = data.ListOfGame.Find(game => game.Name.Equals("Test")); //get the game with the name "Test"
-
-            int index = data.ListOfGame.IndexOf(oldGame); //get the index of the game with the name "Test"
+            int index = _data.ListOfGame.IndexOf(oldGame); //get the index of the game with the name "Test"
 
             Game game2 = new()
             {
@@ -95,76 +79,38 @@ namespace ScriptExecutorTests
                 ExecutableFile = "",
             };
 
-            data.EditGame(game2, index);
+            _data.EditGame(game2, index);
 
-            Assert.AreNotEqual(data.ListOfGame[index], oldGame);
+            Assert.AreNotEqual(_data.ListOfGame[index], oldGame);
         }
 
         [TestMethod]
         public void CurrentGameCanBeReset()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
+            _data.CurrentGame = gameTest;
 
-            data.CurrentGame = (Game)(new()
-            {
-                Name = "Test",
-                Enabled = false,
-                Script = "",
-                ExecutableFile = "",
-            });
+            _data.ResetCurrentGame();
 
-            data.ResetCurrentGame();
-
-            Assert.IsTrue(data.CurrentGame.Name == null && data.CurrentGame.Script == null && data.CurrentGame.ExecutableFile == null);
+            Assert.IsTrue(_data.CurrentGame.Name == null && _data.CurrentGame.Script == null && _data.CurrentGame.ExecutableFile == null);
         }
 
         [TestMethod]
         public void GameCanBeDeepCopied()
         {
-            Game game = new()
-            {
-                Name = "Cmd",
-                Enabled = false,
-                Script = "",
-                ExecutableFile = "cmd.exe",
-            };
-
-            Assert.AreEqual(game.Name, game.DeepCopy().Name);
-            Assert.AreEqual(game.Script, game.DeepCopy().Script);
-            Assert.AreEqual(game.ExecutableFile, game.DeepCopy().ExecutableFile);
-            Assert.AreEqual(game.Enabled, game.DeepCopy().Enabled);
+            Assert.AreEqual(gameTest.Name, gameTest.DeepCopy().Name);
+            Assert.AreEqual(gameTest.Script, gameTest.DeepCopy().Script);
+            Assert.AreEqual(gameTest.ExecutableFile, gameTest.DeepCopy().ExecutableFile);
+            Assert.AreEqual(gameTest.Enabled, gameTest.DeepCopy().Enabled);
         }
 
         [TestMethod]
         public void ProcessCanBeFound()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
-
-            Game game = new()
-            {
-                Name = "Cmd",
-                Enabled = false,
-                Script = "",
-                ExecutableFile = "cmd.exe",
-            };
-
-            data.AddGame(game);
-
-            ILogManager logManager = new LogManager();
-            IScriptRunner scriptRunner = new ScriptRunner();
-            IThreadSystem threadSystem = new ThreadSystem(data, scriptRunner, logManager);
+            _data.AddGame(gameTest);
 
             static void HandleEvent(object sender, EventArgs args) => Console.WriteLine("hello world");
 
-            Thread myThread = new(() => threadSystem.SearchProcess(HandleEvent))
+            Thread myThread = new(() => _threadSystem.SearchProcess(HandleEvent))
             {
                 IsBackground = true
             };
@@ -173,50 +119,17 @@ namespace ScriptExecutorTests
             Process.Start("CMD.exe");
             Thread.Sleep(5000);
 
-            Assert.IsNotNull(data.CurrentGame);
+            Assert.IsNotNull(_data.CurrentGame);
         }
 
         [TestMethod]
         public void ScriptCanBeRun()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
+            _data.AddGame(gameTest);
 
-            Game game = new()
-            {
-                Name = "Cmd",
-                Enabled = false,
-                Script = "echo \"Hello World\"",
-                ExecutableFile = "cmd.exe",
-            };
+            _data.CurrentGame = _data.ListOfGame[0];
 
-            data.AddGame(game);
-
-            data.CurrentGame = data.ListOfGame[0];
-
-            bool success;
-
-            var fileName = Guid.NewGuid().ToString() + ".bat"; //generate random name for the file
-            var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName); //set the path of the file to write in the appdata/temp
-
-            var batchCode = data.CurrentGame.Script; //the script
-            try
-            {
-                File.WriteAllTextAsync(batchPath, batchCode); //create the file in appdata/temp with the script as content
-
-                Process.Start(batchPath).WaitForExit(); //run the script
-
-                File.Delete(batchPath); //delete the script
-
-                success = true;
-            }
-            catch
-            {
-                success = false;
-            }
+            bool success = _scriptRunner.RunScript(_data.CurrentGame.Script).ConfigureAwait(false).GetAwaiter().GetResult();
 
             Assert.IsTrue(success);
         }
@@ -224,27 +137,11 @@ namespace ScriptExecutorTests
         [TestMethod]
         public void JsonCanBeWrited()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
-
-            Game game = new()
-            {
-                Name = "Cmd",
-                Enabled = false,
-                Script = "echo \"Hello World\"",
-                ExecutableFile = "cmd.exe",
-            };
-
-            data.AddGame(game);
-
-            IJsonManager jsonManager = new JsonManager(data);
+            _data.AddGame(gameTest);
 
             try
             {
-                jsonManager.WriteJson();
+                _jsonManager.WriteJson();
                 File.Delete("Data.json");
                 Assert.IsTrue(true);
             }
@@ -257,41 +154,23 @@ namespace ScriptExecutorTests
         [TestMethod]
         public void JsonCanBeRead()
         {
-            //create fake data
-            IData data = new Data
-            {
-                ListOfGame = Enumerable.Empty<Game>().ToList(),
-            };
+            _data.AddGame(gameTest);
 
-            Game game = new()
-            {
-                Name = "Cmd",
-                Enabled = false,
-                Script = "echo \"Hello World\"",
-                ExecutableFile = "cmd.exe",
-            };
+            _jsonManager.WriteJson();
 
-            data.AddGame(game);
+            _data.ListOfGame.Clear();
 
-            IJsonManager jsonManager = new JsonManager(data);
-
-            jsonManager.WriteJson();
-
-            data.ListOfGame.Clear();
-
-            data.ListOfGame = jsonManager.ReadJson().Result.ToList();
+            _data.ListOfGame = _jsonManager.ReadJson().Result.ToList();
 
             File.Delete("Data.json");
 
-            Assert.IsTrue(data.ListOfGame.Count > 0);
+            Assert.IsTrue(_data.ListOfGame.Count > 0);
         }
 
         [TestMethod]
         public void ReadLogIfNotExistTest()
         {
-            ILogManager logManager = new LogManager();
-
-            string log = logManager.ReadLog().Result;
+            string log = _logManager.ReadLog().Result;
 
             Assert.AreEqual(log, string.Empty);
         }
@@ -299,11 +178,9 @@ namespace ScriptExecutorTests
         [TestMethod]
         public void LogCanBeWrite()
         {
-            ILogManager logManager = new LogManager();
-
             try
             {
-                logManager.AddLog("test");
+                _logManager.AddLog("test");
 
                 File.Delete("Logs.txt");
 
@@ -318,11 +195,9 @@ namespace ScriptExecutorTests
         [TestMethod]
         public void LogCanBeRead()
         {
-            ILogManager logManager = new LogManager();
+            _logManager.AddLog("test");
 
-            logManager.AddLog("test");
-
-            string log = logManager.ReadLog().Result;
+            string log = _logManager.ReadLog().Result;
 
             File.Delete("Logs.txt");
 

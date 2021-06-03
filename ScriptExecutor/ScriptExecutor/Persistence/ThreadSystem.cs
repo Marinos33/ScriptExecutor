@@ -13,6 +13,7 @@ namespace ScriptExecutor.Persistence
         private readonly IData _data;
         private readonly IScriptRunner _scriptRunner;
         private readonly ILogManager _logManager;
+        private const int timer = 2000;
 
         public ThreadSystem(IData data, IScriptRunner scriptRunner, ILogManager logManager)
         {
@@ -23,7 +24,7 @@ namespace ScriptExecutor.Persistence
 
         public async void SearchProcess(EventHandler HandleEvent)
         {
-            Thread.Sleep(2000); //wait 2 seconds
+            Thread.Sleep(timer); //wait 2 seconds
 
             bool found = false; //boolean to verify if a game has been found
 
@@ -49,23 +50,19 @@ namespace ScriptExecutor.Persistence
                     i = 0;
                 }
 
-                Thread.Sleep(2000); //wait 2 seconds
+                Thread.Sleep(timer); //wait 2 seconds
             }
 
-            Process pname = (from p in Process.GetProcesses() where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutableFile, null) select p).FirstOrDefault(); //select the first process with the given name in the process running
+            Process runningApp = (from p
+                             in Process.GetProcesses()
+                             where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutableFile, null)
+                             select p)
+                             .FirstOrDefault(); //select the first process with the given name in the process running
 
-            //update the text label inside antoher thread than the ui one, source : https://stackoverflow.com/questions/661561/how-do-i-update-the-gui-from-another-thread
-            /* string newText = "Waiting for " + gameFound.ExecutablePath + " to close";
-             lbGameObserved.Invoke((MethodInvoker)delegate
-             {
-                 // Running on the UI thread
-                 lbGameObserved.Text = newText;
-             });*/
+            runningApp.WaitForExit(); //the thread wait until the process has stopped
 
-            pname.WaitForExit(); //the thread wait until the process has stopped
-
-            bool isSciptRunned = await _scriptRunner.RunScript(_data.CurrentGame.Script).ConfigureAwait(false); //run a script
-            if (isSciptRunned)
+            bool isSciptExecuted = await _scriptRunner.RunScript(_data.CurrentGame.Script).ConfigureAwait(false); //run a script
+            if (isSciptExecuted)
             {
                 _logManager.AddLog(DateTime.Now.ToString() + "> script for " + _data.CurrentGame.ExecutableFile + " has been launched");
             }

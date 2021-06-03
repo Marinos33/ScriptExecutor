@@ -1,7 +1,6 @@
 # ScriptExecutor
 
-A simple desktop application which allows you to launch a batch code when a specific software is shutdown.
-This app was originally design to auto-backup the save files of some game after shutdown.
+A simple desktop application which allows you to launch a batch code when a specific software has been shut down. This app was originally design to auto-backup the save files of some game after shut down.
 
 ## How it works
 First, click on "Add Game" to add a game to the list of software to observe.

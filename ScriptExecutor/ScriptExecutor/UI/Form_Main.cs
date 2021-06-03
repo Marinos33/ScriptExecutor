@@ -17,16 +17,18 @@ namespace ScriptExecutor.UI
         private readonly IData _data; //the model wihch contains the data
         private readonly IForm_MainController _form_MainController;
         private readonly IThreadSystem _threadSystem;
+        private readonly IScriptRunner _scriptRunner;
 
         private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(IJsonManager jsonManager, ILogManager logManager, IData data, IForm_MainController form_MainController, IThreadSystem threadSystem)
+        public Form_Main(IJsonManager jsonManager, ILogManager logManager, IData data, IForm_MainController form_MainController, IThreadSystem threadSystem, IScriptRunner scriptRunner)
         {
             _jsonManager = jsonManager;
             _logManager = logManager;
             _data = data;
             _form_MainController = form_MainController;
             _threadSystem = threadSystem;
+            _scriptRunner = scriptRunner;
             Init();
         }
 
@@ -148,7 +150,7 @@ namespace ScriptExecutor.UI
 
         private void AddGame()
         {
-            form_AddGame = new Form_AddGame(); //reset every input of the form to add game
+            form_AddGame = new Form_AddGame(_scriptRunner); //reset every input of the form to add game
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {
                 _form_MainController.AddGame(form_AddGame.Game);
@@ -160,7 +162,7 @@ namespace ScriptExecutor.UI
         {
             //get the game to edit
             Game game = _data.ListOfGame[index];
-            form_AddGame = new Form_AddGame(game);
+            form_AddGame = new Form_AddGame(game, _scriptRunner);
 
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {

@@ -39,6 +39,7 @@ namespace ScriptExecutor.UI
             this.pbExePathDialog = new System.Windows.Forms.PictureBox();
             this.btValider = new System.Windows.Forms.Button();
             this.tbScript = new System.Windows.Forms.RichTextBox();
+            this.btnRunScript = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,7 +130,7 @@ namespace ScriptExecutor.UI
             this.btValider.BackColor = System.Drawing.Color.Gray;
             this.btValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btValider.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btValider.Location = new System.Drawing.Point(96, 542);
+            this.btValider.Location = new System.Drawing.Point(96, 574);
             this.btValider.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btValider.Name = "btValider";
             this.btValider.Size = new System.Drawing.Size(145, 62);
@@ -149,12 +150,25 @@ namespace ScriptExecutor.UI
             this.tbScript.TabIndex = 10;
             this.tbScript.Text = "";
             // 
+            // btnRunScript
+            // 
+            this.btnRunScript.BackColor = System.Drawing.Color.Gray;
+            this.btnRunScript.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRunScript.Location = new System.Drawing.Point(268, 519);
+            this.btnRunScript.Name = "btnRunScript";
+            this.btnRunScript.Size = new System.Drawing.Size(75, 23);
+            this.btnRunScript.TabIndex = 11;
+            this.btnRunScript.Text = "run script";
+            this.btnRunScript.UseVisualStyleBackColor = false;
+            this.btnRunScript.Click += new System.EventHandler(this.BtnRunScript_ClickAsync);
+            // 
             // Form_AddGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(370, 646);
+            this.ClientSize = new System.Drawing.Size(370, 665);
+            this.Controls.Add(this.btnRunScript);
             this.Controls.Add(this.tbScript);
             this.Controls.Add(this.btValider);
             this.Controls.Add(this.pbExePathDialog);
@@ -185,5 +199,6 @@ namespace ScriptExecutor.UI
         private System.Windows.Forms.PictureBox pbExePathDialog;
         private System.Windows.Forms.Button btValider;
         private System.Windows.Forms.RichTextBox tbScript;
+        private System.Windows.Forms.Button btnRunScript;
     }
 }

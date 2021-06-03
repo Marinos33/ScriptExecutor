@@ -11,15 +11,17 @@ namespace ScriptExecutor.Persistence
     public class ThreadSystem : IThreadSystem
     {
         private readonly IData _data;
+        private readonly IScriptRunner _scriptRunner;
         private readonly ILogManager _logManager;
 
-        public ThreadSystem(IData data, ILogManager logManager)
+        public ThreadSystem(IData data, IScriptRunner scriptRunner, ILogManager logManager)
         {
             _data = data;
+            _scriptRunner = scriptRunner;
             _logManager = logManager;
         }
 
-        public void SearchProcess(EventHandler HandleEvent)
+        public async void SearchProcess(EventHandler HandleEvent)
         {
             Thread.Sleep(2000); //wait 2 seconds
 
@@ -34,7 +36,7 @@ namespace ScriptExecutor.Persistence
                     && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutableFile, null)).Length != 0) //check if the game to observe is not null or ""
                 {
                     found = true;
-                    _data.CurrentGame = _data.ListOfGame[i]; //take the game actually running in memory
+                    _data.CurrentGame = _data.ListOfGame[i].DeepCopy(); //take the game actually running in memory
                     _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
                     _data.CurrentGame.Update();
                     break; //stop the loop
@@ -62,46 +64,21 @@ namespace ScriptExecutor.Persistence
 
             pname.WaitForExit(); //the thread wait until the process has stopped
 
-            RunScript(_data.CurrentGame.Script); //run a script
+            bool isSciptRunned = await _scriptRunner.RunScript(_data.CurrentGame.Script).ConfigureAwait(false); //run a script
+            if (isSciptRunned)
+            {
+                _logManager.AddLog(DateTime.Now.ToString() + "> script for " + _data.CurrentGame.ExecutableFile + " has been launched");
+            }
+            else
+            {
+                MessageBox.Show("ScriptExecutor: unable to run the script");
+                _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script for " + _data.CurrentGame.ExecutableFile);
+            }
 
             _data.ResetCurrentGame();
             _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
 
             SearchProcess(HandleEvent);
-        }
-
-        /// <summary>
-        /// the method to run the script associated with process curretnly observed
-        /// </summary>
-        /// <param name="script">the script to run</param>
-        private void RunScript(string script)
-        {
-            if (script != "")
-            {
-                /*
-                 * generate a file with the script => run the script => delete the file with the script
-                 * **/
-
-                var fileName = Guid.NewGuid().ToString() + ".bat"; //generate random name for the file
-                var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName); //set the path of the file to write in the appdata/temp
-
-                var batchCode = script; //the script
-
-                try
-                {
-                    File.WriteAllTextAsync(batchPath, batchCode); //create the file in appdata/temp with the script as content
-
-                    Process.Start(batchPath).WaitForExit(); //run the script
-
-                    File.Delete(batchPath); //delete the script
-                    _logManager.AddLog(DateTime.Now.ToString() + "> script : " + fileName + " has been launched");
-                }
-                catch
-                {
-                    MessageBox.Show("ScriptExecutor: unable to run the script");
-                    _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script " + fileName);
-                }
-            }
         }
     }
 }

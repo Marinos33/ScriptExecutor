@@ -123,6 +123,23 @@ namespace ScriptExecutorTests
         }
 
         [TestMethod]
+        public void GameCanBeDeepCopied()
+        {
+            Game game = new()
+            {
+                Name = "Cmd",
+                Enabled = false,
+                Script = "",
+                ExecutableFile = "cmd.exe",
+            };
+
+            Assert.AreEqual(game.Name, game.DeepCopy().Name);
+            Assert.AreEqual(game.Script, game.DeepCopy().Script);
+            Assert.AreEqual(game.ExecutableFile, game.DeepCopy().ExecutableFile);
+            Assert.AreEqual(game.Enabled, game.DeepCopy().Enabled);
+        }
+
+        [TestMethod]
         public void ProcessCanBeFound()
         {
             //create fake data
@@ -142,8 +159,8 @@ namespace ScriptExecutorTests
             data.AddGame(game);
 
             ILogManager logManager = new LogManager();
-
-            IThreadSystem threadSystem = new ThreadSystem(data, logManager);
+            IScriptRunner scriptRunner = new ScriptRunner();
+            IThreadSystem threadSystem = new ThreadSystem(data, scriptRunner, logManager);
 
             static void HandleEvent(object sender, EventArgs args) => Console.WriteLine("hello world");
 

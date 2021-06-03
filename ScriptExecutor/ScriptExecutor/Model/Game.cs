@@ -14,5 +14,16 @@ namespace ScriptExecutor.Model
         public event EventHandler SomethingHappened; //the event which fire the handler event from the form_main
 
         public void Update() => SomethingHappened?.Invoke(this, EventArgs.Empty); //lambda, use Invoke if needed (invoke is used to to do something in the ui thread while in another thread)
+
+        public Game DeepCopy()
+        {
+            return (Game)(new()
+            {
+                Name = Name,
+                ExecutableFile = ExecutableFile,
+                Script = Script,
+                Enabled = Enabled
+            });
+        }
     }
 }

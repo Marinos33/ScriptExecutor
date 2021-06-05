@@ -15,13 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_52F73715538A4BE38F6E8022E4BD30D9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_63E33DE2C962425B979B52169CA94627"
+        "MsmKey" = "8:_55DA8862EE584E88901AF2CDB9FDCA9D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -124,7 +118,7 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_52F73715538A4BE38F6E8022E4BD30D9"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55DA8862EE584E88901AF2CDB9FDCA9D"
             {
             "SourcePath" = "8:..\\ScriptExecutor\\Resources\\logo.ico"
             "TargetName" = "8:logo.ico"
@@ -201,7 +195,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ScriptExecutor 1.1.0"
         "ProductCode" = "8:{DF1C6CC4-84BD-42BB-846D-1BA4DA2A6F68}"
-        "PackageCode" = "8:{F6CA953D-5FE2-4F48-83D7-0D2CECB655F4}"
+        "PackageCode" = "8:{90E0C74E-5FA3-413A-8185-993F9ACD8EF4}"
         "UpgradeCode" = "8:{82D63EBA-63D3-48D1-9D78-197AEF99C209}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -218,7 +212,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Setup installer for ScriptExecutor"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_52F73715538A4BE38F6E8022E4BD30D9"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -321,18 +315,18 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_77527E73B430460892BE201CA1E6C42B"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AFE5AD8F12134388AD18C0FC01793305"
             {
-            "Name" = "8:ScriptExecutor"
+            "Name" = "8:Shortcut to logo.ico"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_63E33DE2C962425B979B52169CA94627"
+            "Target" = "8:_55DA8862EE584E88901AF2CDB9FDCA9D"
             "Folder" = "8:_226E3D920A3541C7A1DB56C2E73EE3EB"
             "WorkingFolder" = "8:_AFCAEA9219134922AFF18435615835CC"
-            "Icon" = "8:_52F73715538A4BE38F6E8022E4BD30D9"
+            "Icon" = "8:_55DA8862EE584E88901AF2CDB9FDCA9D"
             "Feature" = "8:"
             }
         }
@@ -734,9 +728,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_63E33DE2C962425B979B52169CA94627"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0051D6C999AA4005AF9E8432CD3EB5A9"
             {
-            "SourcePath" = "8:..\\ScriptExecutor\\obj\\Debug\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AFCAEA9219134922AFF18435615835CC"
@@ -754,7 +748,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{F39D9911-32F1-4F24-9405-C7C101684CE4}"
             "ShowKeyOutput" = "11:TRUE"

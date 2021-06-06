@@ -85,6 +85,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -197,7 +205,7 @@
         "UpgradeCode" = "8:{82D63EBA-63D3-48D1-9D78-197AEF99C209}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
@@ -728,7 +736,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_63E33DE2C962425B979B52169CA94627"
             {
-            "SourcePath" = "8:..\\ScriptExecutor\\obj\\Release\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\ScriptExecutor\\obj\\Debug\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AFCAEA9219134922AFF18435615835CC"

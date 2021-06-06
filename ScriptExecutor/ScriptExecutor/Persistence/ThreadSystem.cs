@@ -55,8 +55,8 @@ namespace ScriptExecutor.Persistence
 
             Process runningApp = (from p
                              in Process.GetProcesses()
-                             where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutableFile, null)
-                             select p)
+                                  where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutableFile, null)
+                                  select p)
                              .FirstOrDefault(); //select the first process with the given name in the process running
 
             runningApp.WaitForExit(); //the thread wait until the process has stopped

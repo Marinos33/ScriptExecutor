@@ -20,21 +20,22 @@ namespace ScriptExecutor.Services
                 var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName); //set the path of the file to write in the appdata/temp
 
                 var batchCode = script; //the script
+                await File.WriteAllTextAsync(batchPath, batchCode).ConfigureAwait(false); //create the file in appdata/temp with the script as content
 
-                try
+                Process process = new();
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.FileName = batchPath;
+                process.StartInfo.CreateNoWindow = true;
+
+                //run the script
+                if (process.Start())
                 {
-                    await File.WriteAllTextAsync(batchPath, batchCode).ConfigureAwait(false); //create the file in appdata/temp with the script as content
-
-                    Process.Start(batchPath); //run the script
-
+                    process.WaitForExit();
                     File.Delete(batchPath); //delete the script
-
                     return true;
                 }
-                catch
-                {
-                    return false;
-                }
+
+                return false;
             }
 
             return false;

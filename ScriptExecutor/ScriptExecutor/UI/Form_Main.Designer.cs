@@ -49,6 +49,7 @@ namespace ScriptExecutor.UI
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnLogs = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGame)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,7 @@ namespace ScriptExecutor.UI
             this.btAddGame.BackColor = System.Drawing.Color.Gray;
             this.btAddGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btAddGame.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btAddGame.Location = new System.Drawing.Point(528, 88);
+            this.btAddGame.Location = new System.Drawing.Point(528, 102);
             this.btAddGame.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btAddGame.Name = "btAddGame";
             this.btAddGame.Size = new System.Drawing.Size(119, 40);
@@ -96,6 +97,7 @@ namespace ScriptExecutor.UI
             // 
             // notifyIcon
             // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "GameSave Backup";
             this.notifyIcon.Visible = true;
@@ -115,18 +117,21 @@ namespace ScriptExecutor.UI
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.openToolStripMenuItem.Text = "open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // addGameToolStripMenuItem
             // 
             this.addGameToolStripMenuItem.Name = "addGameToolStripMenuItem";
             this.addGameToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.addGameToolStripMenuItem.Text = "add game";
+            this.addGameToolStripMenuItem.Click += new System.EventHandler(this.AddGameToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.exitToolStripMenuItem.Text = "exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // lbGameObserved
             // 
@@ -217,17 +222,32 @@ namespace ScriptExecutor.UI
             this.Enable.HeaderText = "Enable";
             this.Enable.Name = "Enable";
             // 
+            // btnLogs
+            // 
+            this.btnLogs.BackColor = System.Drawing.Color.Gray;
+            this.btnLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogs.Location = new System.Drawing.Point(528, 63);
+            this.btnLogs.Name = "btnLogs";
+            this.btnLogs.Size = new System.Drawing.Size(119, 33);
+            this.btnLogs.TabIndex = 6;
+            this.btnLogs.Text = "See logs";
+            this.btnLogs.UseVisualStyleBackColor = false;
+            this.btnLogs.Click += new System.EventHandler(this.BtnLogs_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(662, 801);
+            this.Controls.Add(this.btnLogs);
             this.Controls.Add(this.dgvGame);
             this.Controls.Add(this.lbGameObserved);
             this.Controls.Add(this.btExit);
             this.Controls.Add(this.btAddGame);
             this.Controls.Add(this.lbTitle);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form_Main";
             this.Text = "GameSave Backup";
@@ -255,5 +275,6 @@ namespace ScriptExecutor.UI
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
+        private System.Windows.Forms.Button btnLogs;
     }
 }

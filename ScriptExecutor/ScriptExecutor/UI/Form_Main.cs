@@ -51,7 +51,6 @@ namespace ScriptExecutor.UI
             AddGame();
         }
 
-        // the true exit
         private void BtExit_Click(object sender, EventArgs e)
         {
             OnExit();
@@ -75,6 +74,16 @@ namespace ScriptExecutor.UI
         private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             OnToolStripClick();
+        }
+
+        private void BtnLogs_Click(object sender, EventArgs e)
+        {
+            bool isOpened = _form_MainController.OpenLogs();
+
+            if (!isOpened)
+            {
+                MessageBox.Show("No logs yet");
+            }
         }
 
         private void DgvGame_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -197,6 +206,7 @@ namespace ScriptExecutor.UI
             }
         }
 
+        // the true exit
         private void OnExit()
         {
             isExist = true;

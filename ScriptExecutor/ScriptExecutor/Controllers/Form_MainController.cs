@@ -1,11 +1,15 @@
 ﻿using ScriptExecutor.Interfaces;
 using ScriptExecutor.Model;
 using System;
+using System.Diagnostics;
+using System.IO;
 
 namespace ScriptExecutor.Controllers
 {
     public class Form_MainController : IForm_MainController
     {
+        private const string LOGS_PATH = "Logs.txt";
+
         private readonly IJsonManager _jsonManager; //the model from MVC pattern
         private readonly ILogManager _logManager; //the model from MVC pattern
         private readonly IData _data; //the model wihch contains the data
@@ -45,6 +49,22 @@ namespace ScriptExecutor.Controllers
         {
             _data.ListOfGame[index].Enabled = c;
             _jsonManager.WriteJson();
+        }
+
+        public bool OpenLogs()
+        {
+            if (File.Exists(LOGS_PATH))
+            {
+                var p = new Process
+                {
+                    StartInfo = new ProcessStartInfo(LOGS_PATH)
+                    {
+                        UseShellExecute = true
+                    }
+                };
+                return p.Start();
+            }
+            return false;
         }
     }
 }

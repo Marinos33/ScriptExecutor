@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ScriptExecutor.Controllers;
 using ScriptExecutor.Interfaces;
 using ScriptExecutor.Model;
 using ScriptExecutor.Persistence;
@@ -19,6 +20,7 @@ namespace ScriptExecutorTests
         private readonly ILogManager _logManager;
         private readonly IThreadSystem _threadSystem;
         private readonly IScriptRunner _scriptRunner;
+        private readonly IForm_MainController _form_MainController;
 
         private readonly Game gameTest = new()
         {
@@ -35,6 +37,7 @@ namespace ScriptExecutorTests
             _scriptRunner = new ScriptRunner();
             _jsonManager = new JsonManager(_data);
             _threadSystem = new ThreadSystem(_data, _scriptRunner, _logManager);
+            _form_MainController = new Form_MainController(_jsonManager, _logManager, _data);
 
             //fake data
             _data.ListOfGame = Enumerable.Empty<Game>().ToList();
@@ -170,6 +173,7 @@ namespace ScriptExecutorTests
         [TestMethod]
         public void ReadLogIfNotExistTest()
         {
+            File.Delete("Logs.txt");
             string log = _logManager.ReadLog().Result;
 
             Assert.AreEqual(log, string.Empty);
@@ -202,6 +206,20 @@ namespace ScriptExecutorTests
             File.Delete("Logs.txt");
 
             Assert.IsFalse(string.IsNullOrEmpty(log));
+        }
+
+        [TestMethod]
+        public void LogCanBeOpenIfExists()
+        {
+            _logManager.AddLog("test");
+            Assert.IsTrue(_form_MainController.OpenLogs());
+        }
+
+        [TestMethod]
+        public void LogCannotBeOpenIfNotExists()
+        {
+            File.Delete("Logs.txt");
+            Assert.IsFalse(_form_MainController.OpenLogs());
         }
     }
 }

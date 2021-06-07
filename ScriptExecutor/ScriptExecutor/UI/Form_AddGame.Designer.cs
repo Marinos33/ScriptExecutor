@@ -29,6 +29,7 @@ namespace ScriptExecutor.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddGame));
             this.label1 = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lbGameName = new System.Windows.Forms.Label();
@@ -178,6 +179,7 @@ namespace ScriptExecutor.UI
             this.Controls.Add(this.lbGameName);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form_AddGame";
             this.Text = "Form_AddGame";

@@ -28,10 +28,10 @@
     <ROW Property="ARPPRODUCTICON" Value="logo.exe" Type="8"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://sourceforge.net/projects/gamesave-backup/"/>
     <ROW Property="Manufacturer" Value="Marinos33"/>
-    <ROW Property="ProductCode" Value="1033:{AAF17435-5009-47A9-85CF-800A250ABA90} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{FEAE415C-2595-4759-B4A5-EE9F257A2CED} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Script Executor"/>
-    <ROW Property="ProductVersion" Value="1.1.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.3.0" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{107B2148-B8D5-4B9D-9212-B652DB797A1D}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -188,7 +188,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
     <ROW Shortcut="ScriptExecutor" Directory_="SHORTCUTDIR" Name="SCRIPT~1|Script Executor" Component_="ScriptExecutor_PrimaryOutput" Target="[#ScriptExecutor.exe_1]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="ScriptExecutor_Dir"/>
-    <ROW Shortcut="ScriptExecutor_1" Directory_="DesktopFolder" Name="SCRIPT~1|ScriptExecutor" Component_="ScriptExecutor_PrimaryOutput" Target="[#ScriptExecutor.exe_1]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="ScriptExecutor_Dir"/>
+    <ROW Shortcut="ScriptExecutor_1" Directory_="DesktopFolder" Name="SCRIPT~1|ScriptExecutor" Component_="ScriptExecutor_PrimaryOutput" Target="[#ScriptExecutor.exe_1]" Hotkey="0" Icon_="logo.exe" IconIndex="0" ShowCmd="1" WkDir="ScriptExecutor_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>

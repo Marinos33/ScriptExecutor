@@ -37,7 +37,7 @@ namespace ScriptExecutor.UI
             tbExeFile.Text = Game.ExecutableFile;
             tbScript.Text = Game.Script;
 
-            FileExe.FileName = Game.ExecutableFile;
+            openFileExe.FileName = Game.ExecutableFile;
 
             _scriptRunner = scriptRunner;
         }
@@ -45,9 +45,9 @@ namespace ScriptExecutor.UI
         private void PbExePathDialog_Click(object sender, EventArgs e)
         {
             //if the file has been selected, get its name
-            if (FileExe.ShowDialog() == DialogResult.OK)
+            if (openFileExe.ShowDialog() == DialogResult.OK)
             {
-                tbExeFile.Text = FileExe.SafeFileName; //get the filename and his ext
+                tbExeFile.Text = openFileExe.SafeFileName; //get the filename and his ext
             }
         }
 

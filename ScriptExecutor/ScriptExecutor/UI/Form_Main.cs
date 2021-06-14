@@ -88,10 +88,13 @@ namespace ScriptExecutor.UI
 
         private void DgvGame_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var dgv = sender as DataGridView;
-            int columnIndex = e.ColumnIndex;
-            int rowIndex = e.RowIndex;
-            OnCellContentClick(dgv, columnIndex, rowIndex);
+            if (e.RowIndex >= 0)
+            {
+                var dgv = sender as DataGridView;
+                int columnIndex = e.ColumnIndex;
+                int rowIndex = e.RowIndex;
+                OnCellContentClick(dgv, columnIndex, rowIndex);
+            }
         }
 
         private void Init()
@@ -121,7 +124,7 @@ namespace ScriptExecutor.UI
         {
             if (_data.ListOfGame.Count > 0)
             {
-                dgvGame.Rows.Clear();
+                dgvProgram.Rows.Clear();
 
                 foreach (Game game in _data.ListOfGame)
                 {
@@ -152,7 +155,7 @@ namespace ScriptExecutor.UI
                         ForeColor = Color.White
                     };
 
-                    dgvGame.Rows.Add(new object[] { game.Name, picture, button, button2, game.Enabled });
+                    dgvProgram.Rows.Add(new object[] { game.Name, picture, button, button2, game.Enabled });
                 }
             }
         }
@@ -183,7 +186,7 @@ namespace ScriptExecutor.UI
         private void OnDeleteClick(int index)
         {
             _form_MainController.OnDeleteClick(index);
-            dgvGame.Rows.RemoveAt(index);
+            dgvProgram.Rows.RemoveAt(index);
         }
 
         private void OnCellContentClick(DataGridView dgv, int colIndex, int rowIndex)
@@ -234,7 +237,7 @@ namespace ScriptExecutor.UI
                 text = "Waiting for " + _data.CurrentGame.ExecutableFile + " to close";
             }
             //to change te text in the UI thread by another thread
-            lbGameObserved.Invoke((MethodInvoker)(() => lbGameObserved.Text = text));
+            lbProrgamObserved.Invoke((MethodInvoker)(() => lbProrgamObserved.Text = text));
         }
     }
 }

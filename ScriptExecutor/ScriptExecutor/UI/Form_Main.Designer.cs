@@ -34,24 +34,26 @@ namespace ScriptExecutor.UI
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.btAddGame = new System.Windows.Forms.Button();
-            this.btExit = new System.Windows.Forms.Button();
+            this.btnAddProgram = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.systemTrayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbGameObserved = new System.Windows.Forms.Label();
-            this.dgvGame = new System.Windows.Forms.DataGridView();
-            this.Game_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lbProrgamObserved = new System.Windows.Forms.Label();
+            this.dgvProgram = new System.Windows.Forms.DataGridView();
+            this.programColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusColImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deleteColBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.editColBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.enableColCheckBtn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnLogs = new System.Windows.Forms.Button();
-            this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGame)).BeginInit();
+            this.systemTrayMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProgram)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTitle
@@ -59,7 +61,7 @@ namespace ScriptExecutor.UI
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbTitle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbTitle.Location = new System.Drawing.Point(118, 10);
+            this.lbTitle.Location = new System.Drawing.Point(134, 9);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(370, 65);
@@ -67,160 +69,179 @@ namespace ScriptExecutor.UI
             this.lbTitle.Text = "Script Executor";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btAddGame
+            // btnAddProgram
             // 
-            this.btAddGame.BackColor = System.Drawing.Color.Gray;
-            this.btAddGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btAddGame.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btAddGame.Location = new System.Drawing.Point(528, 102);
-            this.btAddGame.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btAddGame.Name = "btAddGame";
-            this.btAddGame.Size = new System.Drawing.Size(119, 40);
-            this.btAddGame.TabIndex = 1;
-            this.btAddGame.Text = "Add Game";
-            this.btAddGame.UseVisualStyleBackColor = false;
-            this.btAddGame.Click += new System.EventHandler(this.BtAddGame_Click);
+            this.btnAddProgram.BackColor = System.Drawing.Color.Gray;
+            this.btnAddProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddProgram.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddProgram.Location = new System.Drawing.Point(528, 102);
+            this.btnAddProgram.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAddProgram.Name = "btnAddProgram";
+            this.btnAddProgram.Size = new System.Drawing.Size(119, 40);
+            this.btnAddProgram.TabIndex = 1;
+            this.btnAddProgram.Text = "Add Program";
+            this.btnAddProgram.UseVisualStyleBackColor = false;
+            this.btnAddProgram.Click += new System.EventHandler(this.BtAddGame_Click);
             // 
-            // btExit
+            // btnExit
             // 
-            this.btExit.BackColor = System.Drawing.Color.Gray;
-            this.btExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btExit.Location = new System.Drawing.Point(528, 733);
-            this.btExit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btExit.Name = "btExit";
-            this.btExit.Size = new System.Drawing.Size(119, 38);
-            this.btExit.TabIndex = 3;
-            this.btExit.Text = "Exit";
-            this.btExit.UseVisualStyleBackColor = false;
-            this.btExit.Click += new System.EventHandler(this.BtExit_Click);
+            this.btnExit.BackColor = System.Drawing.Color.Gray;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExit.Location = new System.Drawing.Point(528, 733);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(119, 38);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.BtExit_Click);
             // 
             // notifyIcon
             // 
-            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon.ContextMenuStrip = this.systemTrayMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "GameSave Backup";
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
             // 
-            // contextMenuStrip1
+            // systemTrayMenuStrip
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.systemTrayMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
-            this.addGameToolStripMenuItem,
+            this.addProgramToolStripMenuItem,
             this.exitToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 70);
+            this.systemTrayMenuStrip.Name = "contextMenuStrip1";
+            this.systemTrayMenuStrip.Size = new System.Drawing.Size(144, 70);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.openToolStripMenuItem.Text = "open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
-            // addGameToolStripMenuItem
+            // addProgramToolStripMenuItem
             // 
-            this.addGameToolStripMenuItem.Name = "addGameToolStripMenuItem";
-            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.addGameToolStripMenuItem.Text = "add game";
-            this.addGameToolStripMenuItem.Click += new System.EventHandler(this.AddGameToolStripMenuItem_Click);
+            this.addProgramToolStripMenuItem.Name = "addProgramToolStripMenuItem";
+            this.addProgramToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.addProgramToolStripMenuItem.Text = "add program";
+            this.addProgramToolStripMenuItem.Click += new System.EventHandler(this.AddGameToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.exitToolStripMenuItem.Text = "exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // lbGameObserved
+            // lbProrgamObserved
             // 
-            this.lbGameObserved.AutoSize = true;
-            this.lbGameObserved.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbGameObserved.Location = new System.Drawing.Point(15, 112);
-            this.lbGameObserved.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbGameObserved.Name = "lbGameObserved";
-            this.lbGameObserved.Size = new System.Drawing.Size(0, 20);
-            this.lbGameObserved.TabIndex = 4;
+            this.lbProrgamObserved.AutoSize = true;
+            this.lbProrgamObserved.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbProrgamObserved.Location = new System.Drawing.Point(15, 112);
+            this.lbProrgamObserved.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbProrgamObserved.Name = "lbProrgamObserved";
+            this.lbProrgamObserved.Size = new System.Drawing.Size(0, 20);
+            this.lbProrgamObserved.TabIndex = 4;
             // 
-            // dgvGame
+            // dgvProgram
             // 
-            this.dgvGame.AllowUserToAddRows = false;
-            this.dgvGame.AllowUserToDeleteRows = false;
-            this.dgvGame.AllowUserToResizeRows = false;
-            this.dgvGame.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvGame.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvGame.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvGame.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dgvGame.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGame.ColumnHeadersVisible = false;
-            this.dgvGame.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Game_Name,
-            this.Status,
-            this.Delete,
-            this.Edit,
-            this.Enable});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvGame.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvGame.Location = new System.Drawing.Point(68, 155);
-            this.dgvGame.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dgvGame.MultiSelect = false;
-            this.dgvGame.Name = "dgvGame";
-            this.dgvGame.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvGame.RowHeadersVisible = false;
-            this.dgvGame.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvGame.Size = new System.Drawing.Size(518, 549);
-            this.dgvGame.TabIndex = 5;
-            this.dgvGame.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvGame_CellContentClick);
+            this.dgvProgram.AllowUserToAddRows = false;
+            this.dgvProgram.AllowUserToDeleteRows = false;
+            this.dgvProgram.AllowUserToResizeRows = false;
+            this.dgvProgram.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvProgram.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dgvProgram.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProgram.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvProgram.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProgram.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProgram.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProgram.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.programColName,
+            this.statusColImage,
+            this.deleteColBtn,
+            this.editColBtn,
+            this.enableColCheckBtn});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProgram.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProgram.Location = new System.Drawing.Point(68, 155);
+            this.dgvProgram.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dgvProgram.MultiSelect = false;
+            this.dgvProgram.Name = "dgvProgram";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProgram.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvProgram.RowHeadersVisible = false;
+            this.dgvProgram.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvProgram.ShowCellErrors = false;
+            this.dgvProgram.ShowCellToolTips = false;
+            this.dgvProgram.Size = new System.Drawing.Size(518, 549);
+            this.dgvProgram.TabIndex = 5;
+            this.dgvProgram.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvGame_CellContentClick);
             // 
-            // Game_Name
+            // programColName
             // 
-            this.Game_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Game_Name.FillWeight = 200.5076F;
-            this.Game_Name.HeaderText = "Game_Name";
-            this.Game_Name.Name = "Game_Name";
-            this.Game_Name.ReadOnly = true;
-            this.Game_Name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.programColName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.programColName.FillWeight = 200.5076F;
+            this.programColName.HeaderText = "Program Name";
+            this.programColName.Name = "programColName";
+            this.programColName.ReadOnly = true;
+            this.programColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Status
+            // statusColImage
             // 
-            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Status.FillWeight = 74.8731F;
-            this.Status.HeaderText = "Status";
-            this.Status.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
+            this.statusColImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.statusColImage.FillWeight = 74.8731F;
+            this.statusColImage.HeaderText = "Status";
+            this.statusColImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.statusColImage.Name = "statusColImage";
+            this.statusColImage.ReadOnly = true;
             // 
-            // Delete
+            // deleteColBtn
             // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Delete.FillWeight = 74.8731F;
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
+            this.deleteColBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.deleteColBtn.FillWeight = 74.8731F;
+            this.deleteColBtn.HeaderText = "Delete";
+            this.deleteColBtn.Name = "deleteColBtn";
+            this.deleteColBtn.ReadOnly = true;
+            this.deleteColBtn.Text = "Delete";
+            this.deleteColBtn.UseColumnTextForButtonValue = true;
             // 
-            // Edit
+            // editColBtn
             // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Edit.FillWeight = 74.8731F;
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.Text = "Edit";
-            this.Edit.UseColumnTextForButtonValue = true;
+            this.editColBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.editColBtn.FillWeight = 74.8731F;
+            this.editColBtn.HeaderText = "Edit";
+            this.editColBtn.Name = "editColBtn";
+            this.editColBtn.ReadOnly = true;
+            this.editColBtn.Text = "Edit";
+            this.editColBtn.UseColumnTextForButtonValue = true;
             // 
-            // Enable
+            // enableColCheckBtn
             // 
-            this.Enable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Enable.FillWeight = 74.8731F;
-            this.Enable.HeaderText = "Enable";
-            this.Enable.Name = "Enable";
+            this.enableColCheckBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.enableColCheckBtn.FillWeight = 74.8731F;
+            this.enableColCheckBtn.HeaderText = "Enable";
+            this.enableColCheckBtn.Name = "enableColCheckBtn";
             // 
             // btnLogs
             // 
@@ -242,17 +263,17 @@ namespace ScriptExecutor.UI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(662, 801);
             this.Controls.Add(this.btnLogs);
-            this.Controls.Add(this.dgvGame);
-            this.Controls.Add(this.lbGameObserved);
-            this.Controls.Add(this.btExit);
-            this.Controls.Add(this.btAddGame);
+            this.Controls.Add(this.dgvProgram);
+            this.Controls.Add(this.lbProrgamObserved);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnAddProgram);
             this.Controls.Add(this.lbTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form_Main";
             this.Text = "GameSave Backup";
-            this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGame)).EndInit();
+            this.systemTrayMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProgram)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,20 +282,20 @@ namespace ScriptExecutor.UI
         #endregion
 
         private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.Button btAddGame;
-        private System.Windows.Forms.Button btExit;
+        private System.Windows.Forms.Button btnAddProgram;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addProgramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label lbGameObserved;
-        private System.Windows.Forms.DataGridView dgvGame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Game_Name;
-        private System.Windows.Forms.DataGridViewImageColumn Status;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private System.Windows.Forms.DataGridViewButtonColumn Edit;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
+        private System.Windows.Forms.ContextMenuStrip systemTrayMenuStrip;
+        private System.Windows.Forms.Label lbProrgamObserved;
+        private System.Windows.Forms.DataGridView dgvProgram;
         private System.Windows.Forms.Button btnLogs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programColName;
+        private System.Windows.Forms.DataGridViewImageColumn statusColImage;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteColBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn editColBtn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn enableColCheckBtn;
     }
 }

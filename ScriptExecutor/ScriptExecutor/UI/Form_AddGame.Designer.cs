@@ -30,32 +30,32 @@ namespace ScriptExecutor.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddGame));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbTitleAddProgram = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.lbGameName = new System.Windows.Forms.Label();
+            this.lbProgramName = new System.Windows.Forms.Label();
             this.lbExePath = new System.Windows.Forms.Label();
             this.lbScript = new System.Windows.Forms.Label();
-            this.FileExe = new System.Windows.Forms.OpenFileDialog();
+            this.openFileExe = new System.Windows.Forms.OpenFileDialog();
             this.tbExeFile = new System.Windows.Forms.TextBox();
             this.pbExePathDialog = new System.Windows.Forms.PictureBox();
-            this.btValider = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
             this.tbScript = new System.Windows.Forms.RichTextBox();
             this.btnRunScript = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lbTitleAddProgram
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(79, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Add Game";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbTitleAddProgram.AutoSize = true;
+            this.lbTitleAddProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbTitleAddProgram.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbTitleAddProgram.Location = new System.Drawing.Point(79, 10);
+            this.lbTitleAddProgram.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTitleAddProgram.Name = "lbTitleAddProgram";
+            this.lbTitleAddProgram.Size = new System.Drawing.Size(232, 39);
+            this.lbTitleAddProgram.TabIndex = 0;
+            this.lbTitleAddProgram.Text = "Add Program";
+            this.lbTitleAddProgram.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tbName
             // 
@@ -65,17 +65,17 @@ namespace ScriptExecutor.UI
             this.tbName.Size = new System.Drawing.Size(241, 23);
             this.tbName.TabIndex = 1;
             // 
-            // lbGameName
+            // lbProgramName
             // 
-            this.lbGameName.AutoSize = true;
-            this.lbGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbGameName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbGameName.Location = new System.Drawing.Point(14, 88);
-            this.lbGameName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbGameName.Name = "lbGameName";
-            this.lbGameName.Size = new System.Drawing.Size(187, 25);
-            this.lbGameName.TabIndex = 2;
-            this.lbGameName.Text = "Name of the game";
+            this.lbProgramName.AutoSize = true;
+            this.lbProgramName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbProgramName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbProgramName.Location = new System.Drawing.Point(14, 88);
+            this.lbProgramName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbProgramName.Name = "lbProgramName";
+            this.lbProgramName.Size = new System.Drawing.Size(213, 25);
+            this.lbProgramName.TabIndex = 2;
+            this.lbProgramName.Text = "Name of the program";
             // 
             // lbExePath
             // 
@@ -101,10 +101,10 @@ namespace ScriptExecutor.UI
             this.lbScript.TabIndex = 4;
             this.lbScript.Text = "Script to run";
             // 
-            // FileExe
+            // openFileExe
             // 
-            this.FileExe.Filter = "Fichier executable|*.exe";
-            this.FileExe.Title = "exe";
+            this.openFileExe.Filter = "Fichier executable|*.exe";
+            this.openFileExe.Title = "exe";
             // 
             // tbExeFile
             // 
@@ -126,19 +126,19 @@ namespace ScriptExecutor.UI
             this.pbExePathDialog.TabStop = false;
             this.pbExePathDialog.Click += new System.EventHandler(this.PbExePathDialog_Click);
             // 
-            // btValider
+            // btnValider
             // 
-            this.btValider.BackColor = System.Drawing.Color.Gray;
-            this.btValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btValider.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btValider.Location = new System.Drawing.Point(96, 574);
-            this.btValider.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btValider.Name = "btValider";
-            this.btValider.Size = new System.Drawing.Size(145, 62);
-            this.btValider.TabIndex = 9;
-            this.btValider.Text = "Validate";
-            this.btValider.UseVisualStyleBackColor = false;
-            this.btValider.Click += new System.EventHandler(this.BtValider_Click);
+            this.btnValider.BackColor = System.Drawing.Color.Gray;
+            this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnValider.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnValider.Location = new System.Drawing.Point(96, 574);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(145, 62);
+            this.btnValider.TabIndex = 9;
+            this.btnValider.Text = "Validate";
+            this.btnValider.UseVisualStyleBackColor = false;
+            this.btnValider.Click += new System.EventHandler(this.BtValider_Click);
             // 
             // tbScript
             // 
@@ -171,14 +171,14 @@ namespace ScriptExecutor.UI
             this.ClientSize = new System.Drawing.Size(370, 665);
             this.Controls.Add(this.btnRunScript);
             this.Controls.Add(this.tbScript);
-            this.Controls.Add(this.btValider);
+            this.Controls.Add(this.btnValider);
             this.Controls.Add(this.pbExePathDialog);
             this.Controls.Add(this.tbExeFile);
             this.Controls.Add(this.lbScript);
             this.Controls.Add(this.lbExePath);
-            this.Controls.Add(this.lbGameName);
+            this.Controls.Add(this.lbProgramName);
             this.Controls.Add(this.tbName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbTitleAddProgram);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form_AddGame";
@@ -191,15 +191,15 @@ namespace ScriptExecutor.UI
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbTitleAddProgram;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.Label lbGameName;
+        private System.Windows.Forms.Label lbProgramName;
         private System.Windows.Forms.Label lbExePath;
         private System.Windows.Forms.Label lbScript;
-        private System.Windows.Forms.OpenFileDialog FileExe;
+        private System.Windows.Forms.OpenFileDialog openFileExe;
         private System.Windows.Forms.TextBox tbExeFile;
         private System.Windows.Forms.PictureBox pbExePathDialog;
-        private System.Windows.Forms.Button btValider;
+        private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.RichTextBox tbScript;
         private System.Windows.Forms.Button btnRunScript;
     }

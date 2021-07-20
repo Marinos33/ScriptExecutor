@@ -34,8 +34,6 @@ namespace ScriptExecutor.Services
                     File.Delete(batchPath); //delete the script
                     return true;
                 }
-
-                return false;
             }
 
             return false;

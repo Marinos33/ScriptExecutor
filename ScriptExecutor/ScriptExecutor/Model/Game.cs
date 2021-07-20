@@ -8,7 +8,8 @@ namespace ScriptExecutor.Model
         public string Name { get; set; }
         public string ExecutableFile { get; set; }
         public string Script { get; set; }
-        public bool Enabled { get; set; } = true;
+        public bool RunOnStart { get; set; }
+        public bool RunAfterShutdown { get; set; } = true;
 
         //from the interface
         public event EventHandler SomethingHappened; //the event which fire the handler event from the form_main
@@ -22,7 +23,8 @@ namespace ScriptExecutor.Model
                 Name = Name,
                 ExecutableFile = ExecutableFile,
                 Script = Script,
-                Enabled = Enabled
+                RunOnStart = RunOnStart,
+                RunAfterShutdown = RunAfterShutdown
             });
         }
     }

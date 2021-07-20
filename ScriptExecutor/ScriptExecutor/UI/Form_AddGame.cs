@@ -36,6 +36,8 @@ namespace ScriptExecutor.UI
             tbName.Text = Game.Name;
             tbExeFile.Text = Game.ExecutableFile;
             tbScript.Text = Game.Script;
+            cbAfterShutdown.Checked = Game.RunAfterShutdown;
+            cbOnLaunch.Checked = Game.RunOnStart;
 
             openFileExe.FileName = Game.ExecutableFile;
 
@@ -60,7 +62,9 @@ namespace ScriptExecutor.UI
                 {
                     Name = tbName.Text,
                     ExecutableFile = tbExeFile.Text,
-                    Script = tbScript.Text
+                    Script = tbScript.Text,
+                    RunAfterShutdown = cbAfterShutdown.Checked,
+                    RunOnStart = cbOnLaunch.Checked
                 };
             }
             //edit the game
@@ -69,6 +73,8 @@ namespace ScriptExecutor.UI
                 Game.Name = tbName.Text;
                 Game.ExecutableFile = tbExeFile.Text;
                 Game.Script = tbScript.Text;
+                Game.RunAfterShutdown = cbAfterShutdown.Checked;
+                Game.RunOnStart = cbOnLaunch.Checked;
             }
             DialogResult = DialogResult.OK; //tell the software that a game will be added
             Close();

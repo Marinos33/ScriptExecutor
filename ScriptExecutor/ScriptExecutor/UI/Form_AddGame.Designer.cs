@@ -41,7 +41,11 @@ namespace ScriptExecutor.UI
             this.btnValider = new System.Windows.Forms.Button();
             this.tbScript = new System.Windows.Forms.RichTextBox();
             this.btnRunScript = new System.Windows.Forms.Button();
+            this.gbChoiceRunningWhen = new System.Windows.Forms.GroupBox();
+            this.cbAfterShutdown = new System.Windows.Forms.CheckBox();
+            this.cbOnLaunch = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).BeginInit();
+            this.gbChoiceRunningWhen.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTitleAddProgram
@@ -131,7 +135,7 @@ namespace ScriptExecutor.UI
             this.btnValider.BackColor = System.Drawing.Color.Gray;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnValider.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnValider.Location = new System.Drawing.Point(96, 574);
+            this.btnValider.Location = new System.Drawing.Point(96, 680);
             this.btnValider.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(145, 62);
@@ -163,12 +167,50 @@ namespace ScriptExecutor.UI
             this.btnRunScript.UseVisualStyleBackColor = false;
             this.btnRunScript.Click += new System.EventHandler(this.BtnRunScript_ClickAsync);
             // 
+            // gbChoiceRunningWhen
+            // 
+            this.gbChoiceRunningWhen.Controls.Add(this.cbOnLaunch);
+            this.gbChoiceRunningWhen.Controls.Add(this.cbAfterShutdown);
+            this.gbChoiceRunningWhen.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gbChoiceRunningWhen.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gbChoiceRunningWhen.Location = new System.Drawing.Point(20, 556);
+            this.gbChoiceRunningWhen.Name = "gbChoiceRunningWhen";
+            this.gbChoiceRunningWhen.Size = new System.Drawing.Size(324, 100);
+            this.gbChoiceRunningWhen.TabIndex = 12;
+            this.gbChoiceRunningWhen.TabStop = false;
+            this.gbChoiceRunningWhen.Text = "When to run the script";
+            // 
+            // cbAfterShutdown
+            // 
+            this.cbAfterShutdown.AutoSize = true;
+            this.cbAfterShutdown.Checked = true;
+            this.cbAfterShutdown.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbAfterShutdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cbAfterShutdown.Location = new System.Drawing.Point(18, 31);
+            this.cbAfterShutdown.Name = "cbAfterShutdown";
+            this.cbAfterShutdown.Size = new System.Drawing.Size(128, 20);
+            this.cbAfterShutdown.TabIndex = 2;
+            this.cbAfterShutdown.Text = "After Shutdown";
+            this.cbAfterShutdown.UseVisualStyleBackColor = true;
+            // 
+            // cbOnLaunch
+            // 
+            this.cbOnLaunch.AutoSize = true;
+            this.cbOnLaunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cbOnLaunch.Location = new System.Drawing.Point(18, 57);
+            this.cbOnLaunch.Name = "cbOnLaunch";
+            this.cbOnLaunch.Size = new System.Drawing.Size(98, 20);
+            this.cbOnLaunch.TabIndex = 3;
+            this.cbOnLaunch.Text = "On Launch";
+            this.cbOnLaunch.UseVisualStyleBackColor = true;
+            // 
             // Form_AddGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(370, 665);
+            this.ClientSize = new System.Drawing.Size(370, 754);
+            this.Controls.Add(this.gbChoiceRunningWhen);
             this.Controls.Add(this.btnRunScript);
             this.Controls.Add(this.tbScript);
             this.Controls.Add(this.btnValider);
@@ -184,6 +226,8 @@ namespace ScriptExecutor.UI
             this.Name = "Form_AddGame";
             this.Text = "Form_AddGame";
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).EndInit();
+            this.gbChoiceRunningWhen.ResumeLayout(false);
+            this.gbChoiceRunningWhen.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +246,8 @@ namespace ScriptExecutor.UI
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.RichTextBox tbScript;
         private System.Windows.Forms.Button btnRunScript;
+        private System.Windows.Forms.GroupBox gbChoiceRunningWhen;
+        private System.Windows.Forms.CheckBox cbOnLaunch;
+        private System.Windows.Forms.CheckBox cbAfterShutdown;
     }
 }

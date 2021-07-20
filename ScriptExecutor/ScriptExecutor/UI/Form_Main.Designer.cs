@@ -44,14 +44,13 @@ namespace ScriptExecutor.UI
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbProrgamObserved = new System.Windows.Forms.Label();
+            this.lbProgamObserved = new System.Windows.Forms.Label();
             this.dgvProgram = new System.Windows.Forms.DataGridView();
+            this.btnLogs = new System.Windows.Forms.Button();
             this.programColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusColImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteColBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.editColBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.enableColCheckBtn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnLogs = new System.Windows.Forms.Button();
             this.systemTrayMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProgram)).BeginInit();
             this.SuspendLayout();
@@ -135,15 +134,16 @@ namespace ScriptExecutor.UI
             this.exitToolStripMenuItem.Text = "exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // lbProrgamObserved
+            // lbProgamObserved
             // 
-            this.lbProrgamObserved.AutoSize = true;
-            this.lbProrgamObserved.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbProrgamObserved.Location = new System.Drawing.Point(15, 112);
-            this.lbProrgamObserved.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbProrgamObserved.Name = "lbProrgamObserved";
-            this.lbProrgamObserved.Size = new System.Drawing.Size(0, 20);
-            this.lbProrgamObserved.TabIndex = 4;
+            this.lbProgamObserved.AutoSize = true;
+            this.lbProgamObserved.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbProgamObserved.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbProgamObserved.Location = new System.Drawing.Point(15, 112);
+            this.lbProgamObserved.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbProgamObserved.Name = "lbProgamObserved";
+            this.lbProgamObserved.Size = new System.Drawing.Size(0, 20);
+            this.lbProgamObserved.TabIndex = 4;
             // 
             // dgvProgram
             // 
@@ -168,8 +168,7 @@ namespace ScriptExecutor.UI
             this.programColName,
             this.statusColImage,
             this.deleteColBtn,
-            this.editColBtn,
-            this.enableColCheckBtn});
+            this.editColBtn});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -197,6 +196,19 @@ namespace ScriptExecutor.UI
             this.dgvProgram.Size = new System.Drawing.Size(518, 549);
             this.dgvProgram.TabIndex = 5;
             this.dgvProgram.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvGame_CellContentClick);
+            // 
+            // btnLogs
+            // 
+            this.btnLogs.BackColor = System.Drawing.Color.Gray;
+            this.btnLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogs.Location = new System.Drawing.Point(528, 63);
+            this.btnLogs.Name = "btnLogs";
+            this.btnLogs.Size = new System.Drawing.Size(119, 33);
+            this.btnLogs.TabIndex = 6;
+            this.btnLogs.Text = "See logs";
+            this.btnLogs.UseVisualStyleBackColor = false;
+            this.btnLogs.Click += new System.EventHandler(this.BtnLogs_Click);
             // 
             // programColName
             // 
@@ -236,26 +248,6 @@ namespace ScriptExecutor.UI
             this.editColBtn.Text = "Edit";
             this.editColBtn.UseColumnTextForButtonValue = true;
             // 
-            // enableColCheckBtn
-            // 
-            this.enableColCheckBtn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.enableColCheckBtn.FillWeight = 74.8731F;
-            this.enableColCheckBtn.HeaderText = "Enable";
-            this.enableColCheckBtn.Name = "enableColCheckBtn";
-            // 
-            // btnLogs
-            // 
-            this.btnLogs.BackColor = System.Drawing.Color.Gray;
-            this.btnLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLogs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogs.Location = new System.Drawing.Point(528, 63);
-            this.btnLogs.Name = "btnLogs";
-            this.btnLogs.Size = new System.Drawing.Size(119, 33);
-            this.btnLogs.TabIndex = 6;
-            this.btnLogs.Text = "See logs";
-            this.btnLogs.UseVisualStyleBackColor = false;
-            this.btnLogs.Click += new System.EventHandler(this.BtnLogs_Click);
-            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -264,7 +256,7 @@ namespace ScriptExecutor.UI
             this.ClientSize = new System.Drawing.Size(662, 801);
             this.Controls.Add(this.btnLogs);
             this.Controls.Add(this.dgvProgram);
-            this.Controls.Add(this.lbProrgamObserved);
+            this.Controls.Add(this.lbProgamObserved);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddProgram);
             this.Controls.Add(this.lbTitle);
@@ -289,13 +281,12 @@ namespace ScriptExecutor.UI
         private System.Windows.Forms.ToolStripMenuItem addProgramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip systemTrayMenuStrip;
-        private System.Windows.Forms.Label lbProrgamObserved;
+        private System.Windows.Forms.Label lbProgamObserved;
         private System.Windows.Forms.DataGridView dgvProgram;
         private System.Windows.Forms.Button btnLogs;
         private System.Windows.Forms.DataGridViewTextBoxColumn programColName;
         private System.Windows.Forms.DataGridViewImageColumn statusColImage;
         private System.Windows.Forms.DataGridViewButtonColumn deleteColBtn;
         private System.Windows.Forms.DataGridViewButtonColumn editColBtn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn enableColCheckBtn;
     }
 }

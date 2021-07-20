@@ -16,6 +16,8 @@ namespace ScriptExecutor.Persistence
             CurrentGame.Name = null;
             CurrentGame.Script = null;
             CurrentGame.ExecutableFile = null;
+            CurrentGame.RunOnStart = false;
+            CurrentGame.RunAfterShutdown = true;
             CurrentGame.Update();
         }
 

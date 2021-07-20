@@ -90,10 +90,9 @@ namespace ScriptExecutor.UI
         {
             if (e.RowIndex >= 0)
             {
-                var dgv = sender as DataGridView;
                 int columnIndex = e.ColumnIndex;
                 int rowIndex = e.RowIndex;
-                OnCellContentClick(dgv, columnIndex, rowIndex);
+                OnCellContentClick(columnIndex, rowIndex);
             }
         }
 
@@ -155,7 +154,7 @@ namespace ScriptExecutor.UI
                         ForeColor = Color.White
                     };
 
-                    dgvProgram.Rows.Add(new object[] { game.Name, picture, button, button2, game.Enabled });
+                    dgvProgram.Rows.Add(new object[] { game.Name, picture, button, button2 });
                 }
             }
         }
@@ -189,7 +188,7 @@ namespace ScriptExecutor.UI
             dgvProgram.Rows.RemoveAt(index);
         }
 
-        private void OnCellContentClick(DataGridView dgv, int colIndex, int rowIndex)
+        private void OnCellContentClick(int colIndex, int rowIndex)
         {
             //check which column and row has been clicked and what to do with
             switch (colIndex)
@@ -200,11 +199,6 @@ namespace ScriptExecutor.UI
 
                 case 3:
                     OnModifyClick(rowIndex);
-                    break;
-
-                case 4:
-                    //the second arg is to get the status of the checkbox as a boolean
-                    _form_MainController.OnCheck(rowIndex, (bool)dgv.Rows[rowIndex].Cells[colIndex].EditedFormattedValue);
                     break;
             }
         }
@@ -237,7 +231,7 @@ namespace ScriptExecutor.UI
                 text = "Waiting for " + _data.CurrentGame.ExecutableFile + " to close";
             }
             //to change te text in the UI thread by another thread
-            lbProrgamObserved.Invoke((MethodInvoker)(() => lbProrgamObserved.Text = text));
+            lbProgamObserved.Invoke((MethodInvoker)(() => lbProgamObserved.Text = text));
         }
     }
 }

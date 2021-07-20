@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScriptExecutor.Persistence
@@ -59,10 +60,33 @@ namespace ScriptExecutor.Persistence
                                   select p)
                              .FirstOrDefault(); //select the first process with the given name in the process running
 
-            runningApp.WaitForExit(); //the thread wait until the process has stopped
+            if (_data.CurrentGame.RunOnStart && _data.CurrentGame.RunAfterShutdown)
+            {
+                await RunScript().ConfigureAwait(false);
+                runningApp.WaitForExit(); //the thread wait until the process has stopped
+                await RunScript().ConfigureAwait(false);
+            }
+            else if (_data.CurrentGame.RunAfterShutdown)
+            {
+                runningApp.WaitForExit(); //the thread wait until the process has stopped
+                await RunScript().ConfigureAwait(false);
+            }
+            else if (_data.CurrentGame.RunOnStart)
+            {
+                await RunScript().ConfigureAwait(false);
+                runningApp.WaitForExit(); //the thread wait until the process has stopped
+            }
 
-            bool isSciptExecuted = await _scriptRunner.RunScript(_data.CurrentGame.Script).ConfigureAwait(false); //run a script
-            if (isSciptExecuted)
+            _data.ResetCurrentGame();
+            _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
+
+            SearchProcess(HandleEvent);
+        }
+
+        private async Task RunScript()
+        {
+            bool isScriptExecuted = await _scriptRunner.RunScript(_data.CurrentGame.Script).ConfigureAwait(false); //run a script
+            if (isScriptExecuted)
             {
                 _logManager.AddLog(DateTime.Now.ToString() + "> script for " + _data.CurrentGame.ExecutableFile + " has been launched");
             }
@@ -71,11 +95,6 @@ namespace ScriptExecutor.Persistence
                 MessageBox.Show("ScriptExecutor: unable to run the script");
                 _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script for " + _data.CurrentGame.ExecutableFile);
             }
-
-            _data.ResetCurrentGame();
-            _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
-
-            SearchProcess(HandleEvent);
         }
     }
 }

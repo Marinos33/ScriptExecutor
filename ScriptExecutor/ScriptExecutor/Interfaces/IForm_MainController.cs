@@ -24,13 +24,6 @@ namespace ScriptExecutor.Interfaces
         void OnDeleteClick(int index);
 
         /// <summary>
-        /// change the state of the game (enabled or not)
-        /// </summary>
-        /// <param name="index">the index of the game for which the state will be changed</param>
-        /// <param name="c">the state (true or false)</param>
-        void OnCheck(int index, bool c);
-
-        /// <summary>
         /// open the logs file
         /// </summary>
         /// <returns> return true if the file has been open. false if not </returns>

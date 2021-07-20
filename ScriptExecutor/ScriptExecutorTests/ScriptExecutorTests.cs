@@ -25,9 +25,10 @@ namespace ScriptExecutorTests
         private readonly Game gameTest = new()
         {
             Name = "Cmd",
-            Enabled = false,
             Script = "echo \"Hello World\"",
             ExecutableFile = "cmd.exe",
+            RunAfterShutdown = true,
+            RunOnStart = false
         };
 
         public ScriptExecutorTests()
@@ -77,9 +78,10 @@ namespace ScriptExecutorTests
             Game game2 = new()
             {
                 Name = "Test2",
-                Enabled = false,
                 Script = "",
                 ExecutableFile = "",
+                RunAfterShutdown = false,
+                RunOnStart = true
             };
 
             _data.EditGame(game2, index);
@@ -103,7 +105,8 @@ namespace ScriptExecutorTests
             Assert.AreEqual(gameTest.Name, gameTest.DeepCopy().Name);
             Assert.AreEqual(gameTest.Script, gameTest.DeepCopy().Script);
             Assert.AreEqual(gameTest.ExecutableFile, gameTest.DeepCopy().ExecutableFile);
-            Assert.AreEqual(gameTest.Enabled, gameTest.DeepCopy().Enabled);
+            Assert.AreEqual(gameTest.RunOnStart, gameTest.DeepCopy().RunOnStart);
+            Assert.AreEqual(gameTest.RunAfterShutdown, gameTest.DeepCopy().RunAfterShutdown);
         }
 
         [TestMethod]

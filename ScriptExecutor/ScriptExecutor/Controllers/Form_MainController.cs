@@ -45,12 +45,6 @@ namespace ScriptExecutor.Controllers
             _logManager.AddLog(DateTime.Now.ToString() + "> the game : " + oldGame + " has been deleted");
         }
 
-        public void OnCheck(int index, bool c)
-        {
-            _data.ListOfGame[index].Enabled = c;
-            _jsonManager.WriteJson();
-        }
-
         public bool OpenLogs()
         {
             if (File.Exists(LOGS_PATH))

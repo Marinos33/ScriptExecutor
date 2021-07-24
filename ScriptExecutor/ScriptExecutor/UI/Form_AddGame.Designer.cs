@@ -42,8 +42,8 @@ namespace ScriptExecutor.UI
             this.tbScript = new System.Windows.Forms.RichTextBox();
             this.btnRunScript = new System.Windows.Forms.Button();
             this.gbChoiceRunningWhen = new System.Windows.Forms.GroupBox();
-            this.cbAfterShutdown = new System.Windows.Forms.CheckBox();
             this.cbOnLaunch = new System.Windows.Forms.CheckBox();
+            this.cbAfterShutdown = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).BeginInit();
             this.gbChoiceRunningWhen.SuspendLayout();
             this.SuspendLayout();
@@ -180,6 +180,17 @@ namespace ScriptExecutor.UI
             this.gbChoiceRunningWhen.TabStop = false;
             this.gbChoiceRunningWhen.Text = "When to run the script";
             // 
+            // cbOnLaunch
+            // 
+            this.cbOnLaunch.AutoSize = true;
+            this.cbOnLaunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cbOnLaunch.Location = new System.Drawing.Point(18, 57);
+            this.cbOnLaunch.Name = "cbOnLaunch";
+            this.cbOnLaunch.Size = new System.Drawing.Size(98, 20);
+            this.cbOnLaunch.TabIndex = 3;
+            this.cbOnLaunch.Text = "On Launch";
+            this.cbOnLaunch.UseVisualStyleBackColor = true;
+            // 
             // cbAfterShutdown
             // 
             this.cbAfterShutdown.AutoSize = true;
@@ -192,17 +203,6 @@ namespace ScriptExecutor.UI
             this.cbAfterShutdown.TabIndex = 2;
             this.cbAfterShutdown.Text = "After Shutdown";
             this.cbAfterShutdown.UseVisualStyleBackColor = true;
-            // 
-            // cbOnLaunch
-            // 
-            this.cbOnLaunch.AutoSize = true;
-            this.cbOnLaunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cbOnLaunch.Location = new System.Drawing.Point(18, 57);
-            this.cbOnLaunch.Name = "cbOnLaunch";
-            this.cbOnLaunch.Size = new System.Drawing.Size(98, 20);
-            this.cbOnLaunch.TabIndex = 3;
-            this.cbOnLaunch.Text = "On Launch";
-            this.cbOnLaunch.UseVisualStyleBackColor = true;
             // 
             // Form_AddGame
             // 
@@ -224,7 +224,7 @@ namespace ScriptExecutor.UI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form_AddGame";
-            this.Text = "Form_AddGame";
+            this.Text = "Script Executor";
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).EndInit();
             this.gbChoiceRunningWhen.ResumeLayout(false);
             this.gbChoiceRunningWhen.PerformLayout();

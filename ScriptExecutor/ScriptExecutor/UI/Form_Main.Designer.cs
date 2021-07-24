@@ -46,11 +46,11 @@ namespace ScriptExecutor.UI
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbProgamObserved = new System.Windows.Forms.Label();
             this.dgvProgram = new System.Windows.Forms.DataGridView();
-            this.btnLogs = new System.Windows.Forms.Button();
             this.programColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusColImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.deleteColBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.editColBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnLogs = new System.Windows.Forms.Button();
             this.systemTrayMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProgram)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +100,7 @@ namespace ScriptExecutor.UI
             // 
             this.notifyIcon.ContextMenuStrip = this.systemTrayMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "GameSave Backup";
+            this.notifyIcon.Text = "Script Executor";
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
             // 
@@ -111,26 +111,26 @@ namespace ScriptExecutor.UI
             this.addProgramToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.systemTrayMenuStrip.Name = "contextMenuStrip1";
-            this.systemTrayMenuStrip.Size = new System.Drawing.Size(144, 70);
+            this.systemTrayMenuStrip.Size = new System.Drawing.Size(181, 92);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // addProgramToolStripMenuItem
             // 
             this.addProgramToolStripMenuItem.Name = "addProgramToolStripMenuItem";
-            this.addProgramToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.addProgramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addProgramToolStripMenuItem.Text = "add program";
             this.addProgramToolStripMenuItem.Click += new System.EventHandler(this.AddGameToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -197,19 +197,6 @@ namespace ScriptExecutor.UI
             this.dgvProgram.TabIndex = 5;
             this.dgvProgram.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvGame_CellContentClick);
             // 
-            // btnLogs
-            // 
-            this.btnLogs.BackColor = System.Drawing.Color.Gray;
-            this.btnLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLogs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogs.Location = new System.Drawing.Point(528, 63);
-            this.btnLogs.Name = "btnLogs";
-            this.btnLogs.Size = new System.Drawing.Size(119, 33);
-            this.btnLogs.TabIndex = 6;
-            this.btnLogs.Text = "See logs";
-            this.btnLogs.UseVisualStyleBackColor = false;
-            this.btnLogs.Click += new System.EventHandler(this.BtnLogs_Click);
-            // 
             // programColName
             // 
             this.programColName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -248,6 +235,19 @@ namespace ScriptExecutor.UI
             this.editColBtn.Text = "Edit";
             this.editColBtn.UseColumnTextForButtonValue = true;
             // 
+            // btnLogs
+            // 
+            this.btnLogs.BackColor = System.Drawing.Color.Gray;
+            this.btnLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogs.Location = new System.Drawing.Point(528, 63);
+            this.btnLogs.Name = "btnLogs";
+            this.btnLogs.Size = new System.Drawing.Size(119, 33);
+            this.btnLogs.TabIndex = 6;
+            this.btnLogs.Text = "See logs";
+            this.btnLogs.UseVisualStyleBackColor = false;
+            this.btnLogs.Click += new System.EventHandler(this.BtnLogs_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -263,7 +263,7 @@ namespace ScriptExecutor.UI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form_Main";
-            this.Text = "GameSave Backup";
+            this.Text = "Script Executor";
             this.systemTrayMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProgram)).EndInit();
             this.ResumeLayout(false);

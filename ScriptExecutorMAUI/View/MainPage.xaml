@@ -1,6 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ScriptExecutorMAUI.MainPage">
+             x:Class="ScriptExecutorMAUI.MainPage"
+             xmlns:model="clr-namespace:ScriptExecutorMAUI.DTOModel"
+             xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
+             x:DataType="viewmodel:MainPageViewModel">
+    <CollectionView 
+        ItemsSource="{Binding Games}" 
+        BackgroundColor="Red"
+        SelectionMode="None">
+        <CollectionView.Header>
+                <Grid 
+                    BackgroundColor="DarkSeaGreen"
+                    Padding="10"
+                    ColumnSpacing="20"
+                    ColumnDefinitions="*,*,*,*"
+                    >
+                    <Label Text="Program Name" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Label Text="Status" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Label Text="Actions" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.ColumnSpan="2"/>
+            </Grid>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:GameDto">
+                <Grid 
+                    BackgroundColor="BlueViolet"
+                    Padding="10"
+                    ColumnSpacing="20"
+                    ColumnDefinitions="*,*,*,*"
+                    >
+                    <Label Text="{Binding Name}" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="50"
+                        Source="{Binding ImagePath}"
+                        WidthRequest="50"
+                        Grid.Column="1"/>
+                    <Button Text="Edit" Grid.Column="2"/>
+                    <Button Text="Delete" Grid.Column="3"/>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 
 </ContentPage>

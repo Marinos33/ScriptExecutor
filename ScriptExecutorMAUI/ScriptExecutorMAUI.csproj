@@ -48,4 +48,15 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Images\check.png" />
+	  <None Remove="Resources\Images\error.png" />
+	  <None Remove="Resources\Raw\Data.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview4" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
+	</ItemGroup>
+
 </Project>

@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "test",
+    "ExecutableFile": "7zFM.exe",
+    "Script": "echo \"hello\"\npause",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Script": "echo \"hello\"\npause",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  }
+]

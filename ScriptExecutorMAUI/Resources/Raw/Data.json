@@ -10,5 +10,70 @@
     "Script": "echo \"hello\"\npause",
     "RunOnStart": false,
     "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
+  },
+  {
+    "Name": "test",
+    "RunOnStart": false,
+    "RunAfterShutdown": true
   }
 ]

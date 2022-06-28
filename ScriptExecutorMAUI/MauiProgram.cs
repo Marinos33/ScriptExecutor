@@ -1,6 +1,9 @@
 ﻿using Microsoft.Maui.LifecycleEvents;
 using ScriptExecutorMAUI.Services;
 using ScriptExecutorMAUI.ViewModel;
+#if WINDOWS
+using WinUIEx;
+#endif
 
 namespace ScriptExecutorMAUI;
 
@@ -17,17 +20,20 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-        builder.ConfigureLifecycleEvents(events =>
-        {
-            events.AddWindows(wndLifeCycleBuilder =>
+#if WINDOWS
+            //used to set the window size on startup
+            builder.ConfigureLifecycleEvents(events =>
             {
-                wndLifeCycleBuilder.OnWindowCreated(window =>
+                events.AddWindows(wndLifeCycleBuilder =>
                 {
-                    //Set size and center on screen using WinUIEx extension method
-                    window.CenterOnScreen(1024, 768);
+                    wndLifeCycleBuilder.OnWindowCreated(window =>
+                    {
+                        //Set size and center on screen using WinUIEx extension method
+                        window.CenterOnScreen(662,950); 
+                    });
                 });
             });
-        });
+#endif
 
         builder.Services.AddSingleton<IDataManager, DataManager>();
 		builder.Services.AddSingleton<MainPageViewModel>();

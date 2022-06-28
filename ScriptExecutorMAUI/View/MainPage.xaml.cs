@@ -1,6 +1,6 @@
 ﻿using ScriptExecutorMAUI.ViewModel;
 
-namespace ScriptExecutorMAUI;
+namespace ScriptExecutorMAUI.View;
 
 public partial class MainPage : ContentPage
 {

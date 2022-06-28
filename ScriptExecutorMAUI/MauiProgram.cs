@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maui.LifecycleEvents;
 using ScriptExecutorMAUI.Services;
+using ScriptExecutorMAUI.View;
 using ScriptExecutorMAUI.ViewModel;
 #if WINDOWS
 using WinUIEx;
@@ -37,7 +38,9 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<IDataManager, DataManager>();
 		builder.Services.AddSingleton<MainPageViewModel>();
+		builder.Services.AddTransient<DetailsPageViewModel>();
 		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddTransient<DetailsPage>();
 
 		return builder.Build();
 	}

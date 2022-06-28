@@ -51,6 +51,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\check.png" />
 	  <None Remove="Resources\Images\error.png" />
+	  <None Remove="Resources\Images\index.png" />
 	  <None Remove="Resources\Raw\Data.json" />
 	</ItemGroup>
 
@@ -63,6 +64,12 @@
 	  <PackageReference Include="WinUIEx">
 	    <Version>1.6.0</Version>
 	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="View\DetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

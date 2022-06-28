@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ScriptExecutorMAUI.MainPage"
+             x:Class="ScriptExecutorMAUI.View.MainPage"
              xmlns:model="clr-namespace:ScriptExecutorMAUI.DTOModel"
              xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
              x:DataType="viewmodel:MainPageViewModel"
@@ -31,7 +31,7 @@
                          X2="50" 
                          Y1="0" 
                          Y2="60" 
-                         Stroke="black" 
+                         Stroke="#d4d4d6" 
                          HorizontalOptions="EndAndExpand" 
                          Scale="5" 
                          Grid.Column="0"/>
@@ -48,7 +48,7 @@
                         X2="50" 
                         Y1="0" 
                         Y2="60" 
-                        Stroke="black" 
+                        Stroke="#d4d4d6" 
                         HorizontalOptions="EndAndExpand" 
                         Scale="5" 
                         Grid.Column="1"/>
@@ -63,7 +63,7 @@
                          VerticalTextAlignment="Center" />
                     <BoxView
                            HeightRequest="5"
-                           Color="black"
+                           Color="#d4d4d6"
                            Grid.ColumnSpan="4"
                            VerticalOptions="End" 
                            TranslationY="10" 
@@ -89,7 +89,7 @@
                                 X2="50" 
                                 Y1="0" 
                                 Y2="120" 
-                                Stroke="black" 
+                                Stroke="#d4d4d6" 
                                 HorizontalOptions="EndAndExpand" 
                                 Grid.Column="0" 
                                 ScaleX="5" 
@@ -107,7 +107,7 @@
                                     X2="50" 
                                     Y1="0" 
                                     Y2="120" 
-                                    Stroke="black" 
+                                    Stroke="#d4d4d6" 
                                     HorizontalOptions="EndAndExpand" 
                                     Grid.Column="1" 
                                     ScaleX="5" 
@@ -120,6 +120,8 @@
                                     BackgroundColor="#03156b"
                                     TextColor="WhiteSmoke"
                                     BorderColor="Black"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToDetailsCommand}"
+                                    CommandParameter="{Binding .}"
                                     FontSize="Small" />
                             <Button 
                                     Text="Delete" 
@@ -131,7 +133,7 @@
                                     FontSize="Small"/>
                             <BoxView 
                                     HeightRequest="5"
-                                    Color="black"
+                                    Color="#d4d4d6"
                                     Grid.ColumnSpan="4"
                                     VerticalOptions="End" 
                                     TranslationY="10" 

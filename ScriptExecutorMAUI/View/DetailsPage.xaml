@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScriptExecutorMAUI.View.DetailsPage"
+             xmlns:model="clr-namespace:ScriptExecutorMAUI.DTOModel"
+             xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
+             x:DataType="viewmodel:DetailsPageViewModel"
+             Title="{Binding Game.Name}"
+             BackgroundColor="Black">
+    <VerticalStackLayout Padding="24" Margin="20,50,20,50" BackgroundColor="#292929">
+        <VerticalStackLayout>
+            <Label 
+                Text="Name of the profile"/>
+            <Entry BackgroundColor="White" TextColor="Black" HeightRequest="40" Text="{Binding Game.Name}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,40,0,0">
+            <Label 
+                Text="Name of the executable" />
+            <HorizontalStackLayout>
+                <Entry BackgroundColor="White" TextColor="Black" WidthRequest="350" Text="{Binding Game.ExecutableFile}"/>
+                <Button ImageSource="index.png"  WidthRequest="50" HeightRequest="40" BorderColor="Black"  HorizontalOptions="Center" Margin="20,0,0,0" ContentLayout="Left,0"  />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,40,0,0">
+            <Label 
+                Text="Script to run" />
+            <Editor BackgroundColor="White" TextColor="#030000" AutoSize="TextChanges" HeightRequest="200" Text="{Binding Game.Script}" />
+            <Button Text="run script" HorizontalOptions="End" Margin="0,10,0,0" BorderColor="Black" TextColor="Black"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,20,0,0">
+            <Label 
+                Text="When to run the script" />
+            <HorizontalStackLayout Margin="0,20,0,0">
+                <CheckBox VerticalOptions="Center" IsChecked="{Binding Game.RunAfterShutdown}"/>
+                <Label Text="After Shutdown" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox VerticalOptions="Center" IsChecked="{Binding Game.RunOnStart}"/>
+                <Label Text="On Launch" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <Button Text="Validate" VerticalOptions="End" BorderColor="Black" TextColor="Black" HorizontalOptions="Center" Margin="0,40,0,0" HeightRequest="80" WidthRequest="150" FontSize="Large"/>
+    </VerticalStackLayout>
+</ContentPage>

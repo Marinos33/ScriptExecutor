@@ -1,4 +1,5 @@
 ﻿using ScriptExecutorMAUI.DTOModel;
+using ScriptExecutorMAUI.View;
 
 namespace ScriptExecutorMAUI.ViewModel
 {
@@ -44,6 +45,18 @@ namespace ScriptExecutorMAUI.ViewModel
                 await Shell.Current.DisplayAlert("Error! Could not read JSON data", e.Message, "OK");
                 //TODO add to logs
             }
+        }
+
+        [RelayCommand]
+        public async Task GoToDetails(GameDto game)
+        {
+            if (game == null)
+                return;
+
+            await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
+            {
+                {"Game", game }
+            });
         }
     }
 }

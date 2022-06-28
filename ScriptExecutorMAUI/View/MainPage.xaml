@@ -8,17 +8,59 @@
     <CollectionView 
         ItemsSource="{Binding Games}" 
         BackgroundColor="Red"
-        SelectionMode="None">
+        SelectionMode="None" 
+        Margin="20,20,20,100">
         <CollectionView.Header>
-                <Grid 
-                    BackgroundColor="DarkSeaGreen"
-                    Padding="10"
-                    ColumnSpacing="20"
-                    ColumnDefinitions="*,*,*,*"
+            <Grid 
+                 BackgroundColor="DarkSeaGreen"
+                 Padding="10"
+                 ColumnSpacing="20"
+                 ColumnDefinitions="*,*,*,*"
                     >
-                    <Label Text="Program Name" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <Label Text="Status" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <Label Text="Actions" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.ColumnSpan="2"/>
+                    <Label 
+                        Text="Program Name" 
+                        Grid.Column="0" 
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center"/>
+                    <Line 
+                        X1="50" 
+                        X2="50" 
+                        Y1="0" 
+                        Y2="60" 
+                        Stroke="pink" 
+                        HorizontalOptions="EndAndExpand" 
+                        Scale="5" 
+                        Grid.Column="0"/>
+                    <Label 
+                        Text="Status" 
+                        Grid.Column="1" 
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" />
+                    <Line 
+                        X1="50" 
+                        X2="50" 
+                        Y1="0" 
+                        Y2="60" 
+                        Stroke="pink" 
+                        HorizontalOptions="EndAndExpand" 
+                        Scale="5" 
+                        Grid.Column="1"/>
+                <Label 
+                    Text="Actions" 
+                    Grid.Column="2"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center" 
+                    Grid.ColumnSpan="2" 
+                    VerticalTextAlignment="Center" />
+                <BoxView
+                    HeightRequest="5"
+                    BackgroundColor="Yellow"
+                    Grid.ColumnSpan="4"
+                    VerticalOptions="End" 
+                    TranslationY="10" 
+                    ScaleX="12"/>
             </Grid>
         </CollectionView.Header>
         <CollectionView.ItemTemplate>
@@ -27,17 +69,60 @@
                     BackgroundColor="BlueViolet"
                     Padding="10"
                     ColumnSpacing="20"
-                    ColumnDefinitions="*,*,*,*"
-                    >
-                    <Label Text="{Binding Name}" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <Image
-                        Aspect="AspectFill"
-                        HeightRequest="50"
-                        Source="{Binding ImagePath}"
-                        WidthRequest="50"
-                        Grid.Column="1"/>
-                    <Button Text="Edit" Grid.Column="2"/>
-                    <Button Text="Delete" Grid.Column="3"/>
+                    ColumnDefinitions="*,*,*,*" 
+                    MaximumHeightRequest="100">
+                        <Label 
+                            Text="{Binding Name}" 
+                            Grid.Column="0"
+                            HorizontalTextAlignment="Center" 
+                            VerticalTextAlignment="Center" 
+                            FontSize="Medium"/>
+                        <Line 
+                            X1="50" 
+                            X2="50" 
+                            Y1="0" 
+                            Y2="120" 
+                            Stroke="pink" 
+                            HorizontalOptions="EndAndExpand" 
+                            Grid.Column="0" 
+                            ScaleX="5" 
+                            ScaleY="1.3" 
+                            TranslationY="-5"/>
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="50"
+                            Source="{Binding ImagePath}"
+                            VerticalOptions="Center"
+                            WidthRequest="50"
+                            Grid.Column="1"/>
+                        <Line 
+                            X1="50" 
+                            X2="50" 
+                            Y1="0" 
+                            Y2="120" 
+                            Stroke="pink" 
+                            HorizontalOptions="EndAndExpand" 
+                            Grid.Column="1" 
+                            ScaleX="5" 
+                            ScaleY="1.3" 
+                            TranslationY="-5"/>
+                        <Button 
+                            Text="Edit" 
+                            Grid.Column="2" 
+                            VerticalOptions="Center" 
+                            FontSize="Small" />
+                        <Button 
+                            Text="Delete" 
+                            Grid.Column="3" 
+                            VerticalOptions="Center"
+                            FontSize="Small"/>
+                        <BoxView 
+                            HeightRequest="5"
+                            BackgroundColor="Yellow"
+                            Grid.ColumnSpan="4"
+                            VerticalOptions="End" 
+                            TranslationY="10" 
+                            ScaleX="12"/>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

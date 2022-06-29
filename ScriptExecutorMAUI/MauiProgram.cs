@@ -37,7 +37,7 @@ public static class MauiProgram
 #endif
 
         builder.Services.AddSingleton<IDataManager, DataManager>();
-
+        builder.Services.AddSingleton<IThreadsService, ThreadsService>();
 		builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<MainPage>();
 
@@ -46,8 +46,15 @@ public static class MauiProgram
 		builder.Services.AddTransient<AddPage>();
         builder.Services.AddTransient<AddPageViewModel>();
 
-        var task = new ThreadsService(TimeSpan.FromMilliseconds(2000));
-        task.Start();
+
+        var serviceProcessingService = builder
+            .Services
+            .BuildServiceProvider()
+            .CreateScope()
+            .ServiceProvider
+            .GetRequiredService<IThreadsService>();
+
+        serviceProcessingService.Start();
 
         return builder.Build();
 	}

@@ -2,15 +2,16 @@
 
 namespace ScriptExecutorMAUI.Services
 {
-    public class ThreadsService
+    public class ThreadsService: IThreadsService
     {
-        private readonly PeriodicTimer _timer;
         private Task _timerTask;
         private readonly CancellationTokenSource _cts = new();
+        private readonly List<ManagementEventWatcher> watcherList = new();
+        private readonly IDataManager _dataManager;
 
-        public ThreadsService(TimeSpan interval)
+        public ThreadsService(IDataManager dataManager)
         {
-            _timer = new PeriodicTimer(interval);
+                _dataManager = dataManager;
         }
 
         public void Start()
@@ -32,21 +33,21 @@ namespace ScriptExecutorMAUI.Services
 
         private async Task RegisterProcess()
         {
-            var dataManager = new DataManager();
-            var processes = await dataManager.ReadJson();
+            var processes = await _dataManager.ReadJson();
 
             foreach (var process in processes.Where(p => !string.IsNullOrEmpty(p.ExecutableFile) && !string.IsNullOrEmpty(p.Script)))
             {
                 if (process.RunOnStart)
                 {
-                    WatchForProcessStart(process.ExecutableFile);
+                    var watcher = WatchForProcessStart(process.ExecutableFile);
+                    watcherList.Add(watcher);
                 }
 
                 if (process.RunAfterShutdown)
                 {
-                    WatchForProcessEnd(process.ExecutableFile);
+                    var watcher = WatchForProcessEnd(process.ExecutableFile);
+                    watcherList.Add(watcher);
                 }
-
             }
         }
 
@@ -113,6 +114,18 @@ namespace ScriptExecutorMAUI.Services
             ManagementBaseObject targetInstance = (ManagementBaseObject)e.NewEvent.Properties["TargetInstance"].Value;
             string processName = targetInstance.Properties["Name"].Value.ToString();
             Debug.WriteLine(string.Format("{0} process ended", processName));
+        }
+
+        public async Task RestartThread()
+        {
+            watcherList.ForEach(watcher =>
+            {
+                watcher.Stop();
+            });
+
+            watcherList.Clear();
+
+            await DoWorkAsync();
         }
 
     }

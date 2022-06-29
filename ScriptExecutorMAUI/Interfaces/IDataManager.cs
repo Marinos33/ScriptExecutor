@@ -11,13 +11,13 @@ namespace ScriptExecutorMAUI.Interfaces
         /// <summary>
         /// rewrite the json with the given list
         /// </summary>
-        /// <param name="gameList">the list of games registered</param>
-        void WriteJson(IEnumerable<Game> gameList);
+        /// <param name="processList">the list of processes registered</param>
+        void WriteJson(IEnumerable<Process> processList);
 
         /// <summary>
-        /// read the Json, convert all entry to Game object and retunr a list of items
+        /// read the Json, convert all entry to Process object and retunr a list of items
         /// </summary>
-        /// <returns>the list of Games from the Json</returns>
-        Task<IEnumerable<Game>> ReadJson();
+        /// <returns>the list of Processes from the Json</returns>
+        Task<IEnumerable<Process>> ReadJson();
     }
 }

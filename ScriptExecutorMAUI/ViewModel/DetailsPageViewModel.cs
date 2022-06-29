@@ -2,10 +2,10 @@
 
 namespace ScriptExecutorMAUI.ViewModel;
 
-[QueryProperty(nameof(Game), "Game")]
+[QueryProperty(nameof(Process), "Process")]
 public partial class DetailsPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    GameDto game;
+    ProcessDto process;
 }
 

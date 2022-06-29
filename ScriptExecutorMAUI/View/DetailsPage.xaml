@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:ScriptExecutorMAUI.DTOModel"
              xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
              x:DataType="viewmodel:DetailsPageViewModel"
-             Title="{Binding Game.Name}"
+             Title="{Binding Process.Name}"
              BackgroundColor="Black">
     <VerticalStackLayout 
         Padding="24" 
@@ -20,7 +20,7 @@
                 BackgroundColor="White" 
                 TextColor="Black" 
                 HeightRequest="40" 
-                Text="{Binding Game.Name}"/>
+                Text="{Binding Process.Name}"/>
         </VerticalStackLayout>
         <VerticalStackLayout 
             Margin="0,40,0,0">
@@ -31,7 +31,7 @@
                     BackgroundColor="White" 
                     TextColor="Black" 
                     WidthRequest="350" 
-                    Text="{Binding Game.ExecutableFile}"/>
+                    Text="{Binding Process.ExecutableFile}"/>
                 <Button 
                     ImageSource="index.png"  
                     WidthRequest="70" 
@@ -51,7 +51,7 @@
                 TextColor="#030000" 
                 AutoSize="TextChanges" 
                 HeightRequest="200" 
-                Text="{Binding Game.Script}" />
+                Text="{Binding Process.Script}" />
             <Button 
                 Text="run script"
                 HorizontalOptions="End" 
@@ -70,7 +70,7 @@
             <HorizontalStackLayout Margin="0,20,0,0">
                 <CheckBox 
                     VerticalOptions="Center" 
-                    IsChecked="{Binding Game.RunAfterShutdown}"/>
+                    IsChecked="{Binding Process.RunAfterShutdown}"/>
                 <Label 
                     Text="After Shutdown" 
                     VerticalOptions="Center"/>
@@ -78,7 +78,7 @@
             <HorizontalStackLayout>
                 <CheckBox 
                     VerticalOptions="Center" 
-                    IsChecked="{Binding Game.RunOnStart}"/>
+                    IsChecked="{Binding Process.RunOnStart}"/>
                 <Label 
                     Text="On Launch" 
                     VerticalOptions="Center"/>

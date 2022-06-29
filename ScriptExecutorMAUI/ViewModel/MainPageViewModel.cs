@@ -5,7 +5,7 @@ namespace ScriptExecutorMAUI.ViewModel
 {
     public partial class MainPageViewModel : ObservableObject
     {
-        public ObservableCollection<GameDto> Games { get; } = new();
+        public ObservableCollection<ProcessDto> Processes { get; } = new();
         private readonly IDataManager _dataManager;
 
         public MainPageViewModel(IDataManager dataManager)
@@ -14,29 +14,29 @@ namespace ScriptExecutorMAUI.ViewModel
         }
 
         [RelayCommand]
-        private async Task GetGames()
+        private async Task GetProcesses()
         {
             try
             {
-                var games = await _dataManager.ReadJson();
-                games = games.OrderBy(x => x.Name).ToList();
+                var processes = await _dataManager.ReadJson();
+                processes = processes.OrderBy(x => x.Name).ToList();
 
-                if (Games.Count != 0)
-                    Games.Clear();
+                if (Processes.Count != 0)
+                    Processes.Clear();
 
-                foreach (var game in games)
+                foreach (var process in processes)
                 {
-                    var g = new GameDto
+                    var g = new ProcessDto
                     {
-                        Name = game.Name,
-                        Script = game.Script,
-                        ExecutableFile = game.ExecutableFile,
-                        RunOnStart = game.RunOnStart,
-                        RunAfterShutdown = game.RunAfterShutdown,
-                        ImagePath = !string.IsNullOrEmpty(game.ExecutableFile) && !string.IsNullOrEmpty(game.Name) ? "check.png" : "error.png"
+                        Name = process.Name,
+                        Script = process.Script,
+                        ExecutableFile = process.ExecutableFile,
+                        RunOnStart = process.RunOnStart,
+                        RunAfterShutdown = process.RunAfterShutdown,
+                        ImagePath = !string.IsNullOrEmpty(process.ExecutableFile) && !string.IsNullOrEmpty(process.Name) ? "check.png" : "error.png"
                     };
 
-                    Games.Add(g);
+                    Processes.Add(g);
                 }
 
             }
@@ -48,14 +48,14 @@ namespace ScriptExecutorMAUI.ViewModel
         }
 
         [RelayCommand]
-        public async Task GoToDetails(GameDto game)
+        public async Task GoToDetails(ProcessDto process)
         {
-            if (game == null)
+            if (process == null)
                 return;
 
             await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
             {
-                {"Game", game }
+                {"Process", process }
             });
         }
 

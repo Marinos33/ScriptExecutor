@@ -8,7 +8,7 @@
              BackgroundColor="Black">
     <Grid >
         <CollectionView 
-                ItemsSource="{Binding Games}" 
+                ItemsSource="{Binding Processes}" 
                 BackgroundColor="#292929"
                 SelectionMode="None"
                 Margin="20,20,20,100">
@@ -71,7 +71,7 @@
                 </Grid>
             </CollectionView.Header>
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:GameDto">
+                <DataTemplate x:DataType="model:ProcessDto">
                     <Grid 
                         BackgroundColor="#696868"
                         Padding="10"

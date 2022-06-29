@@ -8,7 +8,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
-		viewModel.GetGamesCommand.Execute(null);
+		viewModel.GetProcessesCommand.Execute(null);
 	}
 }
 

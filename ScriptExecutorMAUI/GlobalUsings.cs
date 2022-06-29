@@ -8,3 +8,4 @@ global using Newtonsoft.Json;
 global using ScriptExecutorMAUI.Interfaces;
 global using System.Linq;
 global using ScriptExecutorMAUI.Model;
+global using Process = ScriptExecutorMAUI.Model.Process;

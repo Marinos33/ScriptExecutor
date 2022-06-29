@@ -1,22 +1,48 @@
-﻿using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ScriptExecutorMAUI.Services
+﻿namespace ScriptExecutorMAUI.Services
 {
-    public class ThreadsService : BackgroundService
+    public class ThreadsService
     {
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        private readonly PeriodicTimer _timer;
+        private Task _timerTask;
+        private readonly CancellationTokenSource _cts = new();
+
+        public ThreadsService(TimeSpan interval)
         {
-            while (true)
+            _timer = new PeriodicTimer(interval);
+        }
+
+        public void Start()
+        {
+            _timerTask = DoWorkAsync();
+        }
+
+        private async Task DoWorkAsync()
+        {
+            try
             {
-                Console.WriteLine("hello");
+                while (await _timer.WaitForNextTickAsync(_cts.Token))
+                {
+                    Debug.WriteLine(DateTime.Now.ToString("O"));
+                }
+            }
+            catch (OperationCanceledException ex)
+            {
+
+            }
+        }
+
+        public async Task StopAsync()
+        {
+            if (_timerTask is null)
+            {
+                return;
             }
 
-            throw new NotImplementedException();
+            _cts.Cancel();
+            await _timerTask;
+            _cts.Dispose();
+            Debug.WriteLine("Task stop");
         }
+
     }
 }

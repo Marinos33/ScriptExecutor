@@ -13,7 +13,7 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		builder
+        builder
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
@@ -45,6 +45,9 @@ public static class MauiProgram
 		builder.Services.AddTransient<DetailsPage>();
 		builder.Services.AddTransient<AddPage>();
         builder.Services.AddTransient<AddPageViewModel>();
+
+        var task = new ThreadsService(TimeSpan.FromMilliseconds(2000));
+        task.Start();
 
         return builder.Build();
 	}

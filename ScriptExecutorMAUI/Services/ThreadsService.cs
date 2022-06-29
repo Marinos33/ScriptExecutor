@@ -27,7 +27,7 @@
             }
             catch (OperationCanceledException ex)
             {
-
+                Debug.WriteLine(ex.Message);
             }
         }
 

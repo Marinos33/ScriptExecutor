@@ -37,11 +37,15 @@ public static class MauiProgram
 #endif
 
         builder.Services.AddSingleton<IDataManager, DataManager>();
-		builder.Services.AddSingleton<MainPageViewModel>();
-		builder.Services.AddTransient<DetailsPageViewModel>();
-		builder.Services.AddSingleton<MainPage>();
-		builder.Services.AddTransient<DetailsPage>();
 
-		return builder.Build();
+		builder.Services.AddSingleton<MainPageViewModel>();
+        builder.Services.AddSingleton<MainPage>();
+
+        builder.Services.AddTransient<DetailsPageViewModel>();
+		builder.Services.AddTransient<DetailsPage>();
+		builder.Services.AddTransient<AddPage>();
+        builder.Services.AddTransient<AddPageViewModel>();
+
+        return builder.Build();
 	}
 }

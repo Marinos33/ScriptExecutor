@@ -58,5 +58,11 @@ namespace ScriptExecutorMAUI.ViewModel
                 {"Game", game }
             });
         }
+
+        [RelayCommand]
+        public async Task GoToNew()
+        {
+            await Shell.Current.GoToAsync(nameof(AddPage));
+        }
     }
 }

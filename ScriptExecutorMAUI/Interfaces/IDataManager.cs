@@ -12,7 +12,7 @@ namespace ScriptExecutorMAUI.Interfaces
         /// rewrite the json with the given list
         /// </summary>
         /// <param name="processList">the list of processes registered</param>
-        void WriteJson(IEnumerable<Process> processList);
+        Task WriteJson(IEnumerable<Process> processList);
 
         /// <summary>
         /// read the Json, convert all entry to Process object and retunr a list of items

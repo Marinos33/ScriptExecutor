@@ -130,6 +130,8 @@
                                     BackgroundColor="#03156b"
                                     TextColor="WhiteSmoke"
                                     BorderColor="Black"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=RemoveProcessCommand}"
+                                    CommandParameter="{Binding .}"
                                     FontSize="Small"/>
                             <BoxView 
                                     HeightRequest="5"

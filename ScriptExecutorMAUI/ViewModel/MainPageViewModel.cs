@@ -7,10 +7,12 @@ namespace ScriptExecutorMAUI.ViewModel
     {
         public ObservableCollection<ProcessDto> Processes { get; } = new();
         private readonly IDataManager _dataManager;
+        private readonly IThreadsService _threadsService;
 
-        public MainPageViewModel(IDataManager dataManager)
+        public MainPageViewModel(IDataManager dataManager, IThreadsService threadsService)
         {
             _dataManager = dataManager;
+            _threadsService = threadsService;
         }
 
         [RelayCommand]
@@ -45,6 +47,31 @@ namespace ScriptExecutorMAUI.ViewModel
                 await Shell.Current.DisplayAlert("Error! Could not read JSON data", e.Message, "OK");
                 //TODO add to logs
             }
+        }
+
+        [RelayCommand]
+        public async Task RemoveProcess(ProcessDto process)
+        {
+            Processes.Remove(process);
+            var processes = new List<Process>();
+
+            foreach (var proc in Processes)
+            {
+                var g = new Process
+                {
+                    Name = proc.Name,
+                    Script = proc.Script,
+                    ExecutableFile = proc.ExecutableFile,
+                    RunOnStart = proc.RunOnStart,
+                    RunAfterShutdown = proc.RunAfterShutdown
+                };
+
+                processes.Add(g);
+            }
+
+            await _dataManager.WriteJson(processes);
+
+            await _threadsService.RestartThread();
         }
 
         [RelayCommand]

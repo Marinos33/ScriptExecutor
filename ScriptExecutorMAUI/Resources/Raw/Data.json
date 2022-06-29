@@ -1,9 +1,9 @@
 [
   {
     "Name": "test",
-    "ExecutableFile": "7zFM.exe",
+    "ExecutableFile": "notepad.exe",
     "Script": "echo \"hello\"\npause",
-    "RunOnStart": false,
+    "RunOnStart": true,
     "RunAfterShutdown": true
   },
   {

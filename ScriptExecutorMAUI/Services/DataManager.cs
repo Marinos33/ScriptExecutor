@@ -1,25 +1,57 @@
-﻿namespace ScriptExecutorMAUI.Services
+﻿using SQLite;
+
+namespace ScriptExecutorMAUI.Services;
+
+public class DataManager : IDataManager
 {
-    public class DataManager : IDataManager
+    private const string DBNAME = "data";
+    private SQLiteConnection conn;
+
+    public DataManager()
     {
-        private string PATH = $"{FileSystem.Current.AppDataDirectory}\\Data.json";
-
-        public async Task<IEnumerable<Process>> ReadJson()
-        {
-            if (File.Exists(PATH))
-            {
-                string json = await File.ReadAllTextAsync(PATH).ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<IEnumerable<Process>>(json); //pass all record to the list
-            }
-            return Enumerable.Empty<Process>();
-        }
-
-        public async Task WriteJson(IEnumerable<Process> gameList)
-        {
-            var records = gameList;
-
-            string json = JsonConvert.SerializeObject(records);
-            await File.WriteAllTextAsync(PATH, json).ConfigureAwait(false);
-        }
+        conn = new SQLiteConnection(DBNAME);
+        conn.CreateTable<Process>();
     }
+
+    public IEnumerable<Process> GetAllProcess()
+    {
+        return conn.Table<Process>().ToList();
+    }
+
+    public Process GetProcess(int id)
+    {
+        return conn.Table<Process>().First(x => x.Id == id);
+    }
+
+    public bool AddProcess(Process process)
+    {
+        var result = conn.Insert(process);
+        if(result > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool RemoveProcess(Process process)
+    {
+        var result = conn.Delete(process);
+        if (result > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool UpdateProcess(Process process)
+    {
+        var result = conn.Update(process);
+        if (result > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }
+

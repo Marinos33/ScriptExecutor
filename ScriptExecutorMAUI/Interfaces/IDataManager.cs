@@ -8,16 +8,10 @@ namespace ScriptExecutorMAUI.Interfaces
 {
     public interface IDataManager
     {
-        /// <summary>
-        /// rewrite the json with the given list
-        /// </summary>
-        /// <param name="processList">the list of processes registered</param>
-        Task WriteJson(IEnumerable<Process> processList);
-
-        /// <summary>
-        /// read the Json, convert all entry to Process object and retunr a list of items
-        /// </summary>
-        /// <returns>the list of Processes from the Json</returns>
-        Task<IEnumerable<Process>> ReadJson();
+        bool AddProcess(Process process);
+        IEnumerable<Process> GetAllProcess();
+        Process GetProcess(int id);
+        bool RemoveProcess(Process process);
+        bool UpdateProcess(Process process);
     }
 }

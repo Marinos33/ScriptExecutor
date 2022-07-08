@@ -20,7 +20,7 @@ namespace ScriptExecutorMAUI.ViewModel
         {
             try
             {
-                var processes = await _dataManager.ReadJson();
+                var processes = await _dataManager.GetAllProcess();
                 processes = processes.OrderBy(x => x.Name).ToList();
 
                 if (Processes.Count != 0)

@@ -28,11 +28,13 @@
                 Text="Name of the executable" />
             <HorizontalStackLayout>
                 <Entry 
+                    x:Name="ExecutableEntry"
                     BackgroundColor="White" 
                     TextColor="Black" 
                     Text="{Binding ExecutableFile}"
                     WidthRequest="350" />
                 <Button 
+                    x:Name="PickExe"
                     ImageSource="index.png"  
                     WidthRequest="70" 
                     HeightRequest="60" 

@@ -53,23 +53,15 @@ namespace ScriptExecutorMAUI.ViewModel
         public async Task RemoveProcess(ProcessDto process)
         {
             Processes.Remove(process);
-            var processes = new List<Process>();
 
-            foreach (var proc in Processes)
+            await _dataManager.RemoveProcess(new Process
             {
-                var g = new Process
-                {
-                    Name = proc.Name,
-                    Script = proc.Script,
-                    ExecutableFile = proc.ExecutableFile,
-                    RunOnStart = proc.RunOnStart,
-                    RunAfterShutdown = proc.RunAfterShutdown
-                };
-
-                processes.Add(g);
-            }
-
-            await _dataManager.WriteJson(processes);
+                Name = process.Name,
+                Script = process.Script,
+                ExecutableFile = process.ExecutableFile,
+                RunOnStart = process.RunOnStart,
+                RunAfterShutdown = process.RunAfterShutdown
+            });
 
             await _threadsService.RestartThread();
         }

@@ -33,7 +33,7 @@ namespace ScriptExecutorMAUI.Services
 
         private async Task RegisterProcess()
         {
-            var processes = await _dataManager.ReadJson();
+            var processes = await _dataManager.GetAllProcess();
 
             foreach (var process in processes.Where(p => !string.IsNullOrEmpty(p.ExecutableFile) && !string.IsNullOrEmpty(p.Script)))
             {

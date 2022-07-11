@@ -8,10 +8,10 @@ namespace ScriptExecutorMAUI.Interfaces
 {
     public interface IDataManager
     {
-        bool AddProcess(Process process);
-        IEnumerable<Process> GetAllProcess();
-        Process GetProcess(int id);
-        bool RemoveProcess(Process process);
-        bool UpdateProcess(Process process);
+        Task<bool> AddProcess(Process process);
+        Task<IEnumerable<Process>> GetAllProcess();
+        Task<Process> GetProcess(int id);
+        Task<bool> RemoveProcess(Process process);
+        Task<bool> UpdateProcess(Process process);
     }
 }

@@ -1,31 +1,33 @@
 ﻿using SQLite;
+using System.Xml.Linq;
 
 namespace ScriptExecutorMAUI.Services;
 
 public class DataManager : IDataManager
 {
     private const string DBNAME = "data";
-    private SQLiteConnection conn;
+    private SQLiteAsyncConnection conn;
 
     public DataManager()
-    {
-        conn = new SQLiteConnection(DBNAME);
-        conn.CreateTable<Process>();
+{
+        var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DBNAME);
+        conn = new SQLiteAsyncConnection(dbPath);
+        conn.CreateTableAsync<Process>();
     }
 
-    public IEnumerable<Process> GetAllProcess()
+    public async Task<IEnumerable<Process>> GetAllProcess()
     {
-        return conn.Table<Process>().ToList();
+        return await conn.Table<Process>().ToListAsync();
     }
 
-    public Process GetProcess(int id)
+    public async Task<Process> GetProcess(int id)
     {
-        return conn.Table<Process>().First(x => x.Id == id);
+        return await conn.Table<Process>().FirstAsync(x => x.Id == id);
     }
 
-    public bool AddProcess(Process process)
+    public async Task<bool> AddProcess(Process process)
     {
-        var result = conn.Insert(process);
+        var result = await conn.InsertAsync(process);
         if(result > 0)
         {
             return true;
@@ -33,9 +35,9 @@ public class DataManager : IDataManager
         return false;
     }
 
-    public bool RemoveProcess(Process process)
+    public async Task<bool> RemoveProcess(Process process)
     {
-        var result = conn.Delete(process);
+        var result = await conn.DeleteAsync(process);
         if (result > 0)
         {
             return true;
@@ -43,9 +45,9 @@ public class DataManager : IDataManager
         return false;
     }
 
-    public bool UpdateProcess(Process process)
+    public async Task<bool> UpdateProcess(Process process)
     {
-        var result = conn.Update(process);
+        var result = await conn.UpdateAsync(process);
         if (result > 0)
         {
             return true;

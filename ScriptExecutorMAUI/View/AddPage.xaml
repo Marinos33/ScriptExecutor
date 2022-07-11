@@ -18,7 +18,8 @@
                 Text="Name of the profile"/>
             <Entry 
                 BackgroundColor="White" 
-                TextColor="Black" 
+                TextColor="Black"
+                Text="{Binding Name}"
                 HeightRequest="40"/>
         </VerticalStackLayout>
         <VerticalStackLayout 
@@ -29,6 +30,7 @@
                 <Entry 
                     BackgroundColor="White" 
                     TextColor="Black" 
+                    Text="{Binding ExecutableFile}"
                     WidthRequest="350" />
                 <Button 
                     ImageSource="index.png"  
@@ -48,6 +50,7 @@
                 BackgroundColor="White" 
                 TextColor="#030000" 
                 AutoSize="TextChanges" 
+                Text="{Binding Script}"
                 HeightRequest="200" />
             <Button 
                 Text="run script"
@@ -66,14 +69,16 @@
                 Text="When to run the script" />
                 <HorizontalStackLayout Margin="0,20,0,0">
                     <CheckBox 
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"
+                    IsChecked="{Binding RunAfterShutdown}"/>
                     <Label 
                     Text="After Shutdown" 
                     VerticalOptions="Center"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <CheckBox 
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"
+                        IsChecked="{Binding RunOnStart}" />
                     <Label 
                     Text="On Launch" 
                     VerticalOptions="Center"/>
@@ -86,6 +91,7 @@
                 HorizontalOptions="Center" 
                 VerticalOptions="End"
                 Margin="0,50,0,0"
+                Command="{Binding AddProcessCommand}"
                 FontSize="Large"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -55,6 +55,7 @@
                 HeightRequest="200" 
                 Text="{Binding Process.Script}" />
             <Button 
+                Command="{Binding TestScriptCommand}"
                 Text="run script"
                 HorizontalOptions="End" 
                 Margin="0,10,0,0" 

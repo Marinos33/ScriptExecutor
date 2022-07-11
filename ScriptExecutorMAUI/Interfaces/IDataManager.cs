@@ -10,7 +10,8 @@ namespace ScriptExecutorMAUI.Interfaces
     {
         Task<bool> AddProcess(Process process);
         Task<IEnumerable<Process>> GetAllProcess();
-        Task<Process> GetProcess(int id);
+        Task<Process> GetProcessByExecutableFileName(string executableFile);
+        Task<Process> GetProcessById(int id);
         Task<bool> RemoveProcess(Process process);
         Task<bool> UpdateProcess(Process process);
     }

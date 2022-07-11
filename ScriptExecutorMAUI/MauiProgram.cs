@@ -6,7 +6,6 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
-//TODO faire marcher les scripts
 //TODO mettre app en systemtray
 //TODO ajouter des logs dans un fichier texte pour les erreurs et les lancement de scripts
 //TODO ajouter ecran pour lire les logs
@@ -44,7 +43,6 @@ public static class MauiProgram
             });
 #endif
 
-        builder.Services.AddSingleton<IDataManager, DataManager>();
         builder.Services.AddSingleton<IThreadsService, ThreadsService>();
 		builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<MainPage>();
@@ -53,6 +51,9 @@ public static class MauiProgram
 		builder.Services.AddTransient<DetailsPage>();
 		builder.Services.AddTransient<AddPage>();
         builder.Services.AddTransient<AddPageViewModel>();
+
+        builder.Services.AddScoped<IDataManager, DataManager>();
+        builder.Services.AddScoped<IScriptRunner, ScriptRunner>();
 
 
         var serviceProcessingService = builder

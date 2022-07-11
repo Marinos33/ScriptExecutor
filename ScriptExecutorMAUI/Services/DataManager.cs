@@ -20,9 +20,14 @@ public class DataManager : IDataManager
         return await conn.Table<Process>().ToListAsync();
     }
 
-    public async Task<Process> GetProcess(int id)
+    public async Task<Process> GetProcessById(int id)
     {
         return await conn.Table<Process>().FirstAsync(x => x.Id == id);
+    }
+
+    public async Task<Process> GetProcessByExecutableFileName(string executableFile)
+    {
+        return await conn.Table<Process>().FirstAsync(x => x.ExecutableFile == executableFile);
     }
 
     public async Task<bool> AddProcess(Process process)

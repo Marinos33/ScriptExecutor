@@ -1,4 +1,5 @@
-﻿using System.Management;
+﻿using ScriptExecutorMAUI.Interfaces;
+using System.Management;
 
 namespace ScriptExecutorMAUI.Services
 {
@@ -8,10 +9,12 @@ namespace ScriptExecutorMAUI.Services
         private readonly CancellationTokenSource _cts = new();
         private readonly List<ManagementEventWatcher> watcherList = new();
         private readonly IDataManager _dataManager;
+        private readonly IScriptRunner _scriptRunner;
 
-        public ThreadsService(IDataManager dataManager)
+        public ThreadsService(IDataManager dataManager, IScriptRunner scriptRunner)
         {
-                _dataManager = dataManager;
+            _dataManager = dataManager;
+            _scriptRunner = scriptRunner;
         }
 
         public void Start()
@@ -106,14 +109,22 @@ namespace ScriptExecutorMAUI.Services
         {
             ManagementBaseObject targetInstance = (ManagementBaseObject)e.NewEvent.Properties["TargetInstance"].Value;
             string processName = targetInstance.Properties["Name"].Value.ToString();
-            Debug.WriteLine(string.Format("{0} process started", processName));
+            Task.Run(async () =>
+            {
+                var process = await _dataManager.GetProcessByExecutableFileName(processName);
+                await _scriptRunner.RunScript(process.Script);
+            });
         }
 
         private void ProcessEnded(object sender, EventArrivedEventArgs e)
         {
             ManagementBaseObject targetInstance = (ManagementBaseObject)e.NewEvent.Properties["TargetInstance"].Value;
             string processName = targetInstance.Properties["Name"].Value.ToString();
-            Debug.WriteLine(string.Format("{0} process ended", processName));
+            Task.Run(async () =>
+            {
+                var process = await _dataManager.GetProcessByExecutableFileName(processName);
+                await _scriptRunner.RunScript(process.Script);
+            });
         }
 
         public async Task RestartThread()

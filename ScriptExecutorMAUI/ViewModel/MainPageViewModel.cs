@@ -30,6 +30,7 @@ namespace ScriptExecutorMAUI.ViewModel
                 {
                     var g = new ProcessDto
                     {
+                        Id = process.Id,
                         Name = process.Name,
                         Script = process.Script,
                         ExecutableFile = process.ExecutableFile,
@@ -45,7 +46,6 @@ namespace ScriptExecutorMAUI.ViewModel
             catch (Exception e)
             {
                 await Shell.Current.DisplayAlert("Error! Could not read JSON data", e.Message, "OK");
-                //TODO add to logs
             }
         }
 
@@ -56,6 +56,7 @@ namespace ScriptExecutorMAUI.ViewModel
 
             await _dataManager.RemoveProcess(new Process
             {
+                Id = process.Id,
                 Name = process.Name,
                 Script = process.Script,
                 ExecutableFile = process.ExecutableFile,

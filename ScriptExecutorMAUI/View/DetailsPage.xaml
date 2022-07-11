@@ -27,12 +27,14 @@
             <Label 
                 Text="Name of the executable" />
             <HorizontalStackLayout>
-                <Entry 
+                <Entry
+                    x:Name="ExecutableEntry"
                     BackgroundColor="White" 
                     TextColor="Black" 
                     WidthRequest="350" 
                     Text="{Binding Process.ExecutableFile}"/>
                 <Button 
+                    x:Name="PickExe"
                     ImageSource="index.png"  
                     WidthRequest="70" 
                     HeightRequest="60" 
@@ -91,6 +93,7 @@
                 HorizontalOptions="Center" 
                 VerticalOptions="End"
                 Margin="0,50,0,0"
+                Command="{Binding UpdateProcessCommand}"
                 FontSize="Large"/>
     </VerticalStackLayout>
 </ContentPage>

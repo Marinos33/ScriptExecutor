@@ -6,6 +6,14 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
+//TODO faire marcher les scripts
+//TODO mettre app en systemtray
+//TODO ajouter des logs dans un fichier texte pour les erreurs et les lancement de scripts
+//TODO ajouter ecran pour lire les logs
+//TODO ajouter popup alert pour le remplissage des form
+//TODO ajouter theming
+//TODO ajouter automapper
+
 namespace ScriptExecutorMAUI;
 
 public static class MauiProgram

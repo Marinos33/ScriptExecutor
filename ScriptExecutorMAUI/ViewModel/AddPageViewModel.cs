@@ -38,7 +38,6 @@ namespace ScriptExecutorMAUI.ViewModel
 
             if (isSucceed)
             {
-                await _threadsService.RestartThread();
                 await Shell.Current.GoToAsync("..");
             }
 

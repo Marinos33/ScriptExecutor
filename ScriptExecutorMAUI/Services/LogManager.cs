@@ -22,7 +22,7 @@ public class LogManager : ILogManager
 
             string currentContent = await ReadLog();
 
-            File.WriteAllText(filePath, logText + currentContent);
+            File.WriteAllText(filePath, $"{logText}{Environment.NewLine}{currentContent}");
         }
         catch (Exception e)
         {

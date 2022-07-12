@@ -8,11 +8,13 @@ namespace ScriptExecutorMAUI.ViewModel
         public ObservableCollection<ProcessDto> Processes { get; } = new();
         private readonly IDataManager _dataManager;
         private readonly IThreadsService _threadsService;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
 
-        public MainPageViewModel(IDataManager dataManager, IThreadsService threadsService)
+        public MainPageViewModel(IDataManager dataManager, IThreadsService threadsService, IServiceScopeFactory serviceScopeFactory)
         {
             _dataManager = dataManager;
             _threadsService = threadsService;
+            _serviceScopeFactory = serviceScopeFactory;
         }
 
         [RelayCommand]
@@ -83,6 +85,20 @@ namespace ScriptExecutorMAUI.ViewModel
         public async Task GoToNew()
         {
             await Shell.Current.GoToAsync(nameof(AddPage));
+        }
+
+        [RelayCommand]
+        public void GoToLogs()
+        {
+            using var serviceScope = _serviceScopeFactory.CreateScope();
+            var page = serviceScope.ServiceProvider.GetService<LogsPage>();
+
+            var logsWindow = new Window
+            {
+                Page = page
+            };
+
+            Application.Current.OpenWindow(logsWindow);
         }
     }
 }

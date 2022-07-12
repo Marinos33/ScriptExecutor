@@ -6,7 +6,6 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
-//TODO ajouter des logs dans un fichier texte pour les erreurs et les lancement de scripts
 //TODO ajouter ecran pour lire les logs
 //TODO ajouter popup alert pour le remplissage des form
 //TODO ajouter theming
@@ -55,6 +54,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<DetailsPage>();
 		builder.Services.AddTransient<AddPage>();
         builder.Services.AddTransient<AddPageViewModel>();
+        builder.Services.AddTransient<LogsPage>();
+        builder.Services.AddTransient<LogsPageViewModel>();
 
         builder.Services.AddScoped<IDataManager, DataManager>();
         builder.Services.AddScoped<IScriptRunner, ScriptRunner>();

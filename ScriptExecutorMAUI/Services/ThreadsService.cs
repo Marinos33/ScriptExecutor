@@ -116,11 +116,11 @@ namespace ScriptExecutorMAUI.Services
                 var isSucceed = await _scriptRunner.RunScript(process.Script);
                 if (isSucceed)
                 {
-                    _logManager.AddLog($"{DateTime.Now.ToString()}> script runned for {processName}");
+                    _logManager.AddLog($"{DateTime.Now}> script runned for {processName}");
                 }
                 else
                 {
-                    _logManager.AddLog($"{DateTime.Now.ToString()}> failed to run script for {processName}");
+                    _logManager.AddLog($"{DateTime.Now}> failed to run script for {processName}");
                 }
             });
         }

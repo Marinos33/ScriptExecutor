@@ -6,7 +6,6 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
-//TODO add comments
 //TODO rajouter un dossier custom pour le stockage des logs et db si la version release ne le fait pas
 
 //TODO mettre app en systemtray (feature missing for now)

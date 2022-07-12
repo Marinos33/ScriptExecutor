@@ -8,7 +8,7 @@ namespace ScriptExecutorMAUI.DTOModel
         public string Name { get; set; }
         public string ExecutableFile { get; set; }
         public string Script { get; set; }
-        public string ImagePath { get; set; }
+        public string ImagePath { get; set; } //determine the image to use
         public bool RunOnStart { get; set; }
         public bool RunAfterShutdown { get; set; } = true;
 

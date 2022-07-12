@@ -6,93 +6,93 @@
              xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
              x:DataType="viewmodel:AddPageViewModel"
              Title="Add a program">
-    <VerticalStackLayout 
-        Padding="24" 
-        Margin="20,50,20,50" 
+    <VerticalStackLayout
+        Padding="24"
+        Margin="20,50,20,50"
         HeightRequest="850"
         WidthRequest="600"
         BackgroundColor="#292929">
         <VerticalStackLayout>
-            <Label 
-                Text="Name of the profile"/>
-            <Entry 
+            <Label
+                Text="Name of the profile" />
+            <Entry
                 Text="{Binding Name}"
-                HeightRequest="40"/>
+                HeightRequest="40" />
         </VerticalStackLayout>
-        <VerticalStackLayout 
+        <VerticalStackLayout
             Margin="0,40,0,0">
-            <Label 
+            <Label
                 Text="Name of the executable" />
             <HorizontalStackLayout>
-                <Entry 
+                <Entry
                     x:Name="ExecutableEntry"
-                    BackgroundColor="White" 
-                    TextColor="Black" 
+                    BackgroundColor="White"
+                    TextColor="Black"
                     Text="{Binding ExecutableFile}"
                     WidthRequest="350" />
-                <Button 
+                <Button
                     x:Name="PickExe"
-                    ImageSource="index.png"  
-                    WidthRequest="70" 
-                    HeightRequest="60" 
-                    BorderColor="Black"  
-                    HorizontalOptions="Center" 
+                    ImageSource="index.png"
+                    WidthRequest="70"
+                    HeightRequest="60"
+                    BorderColor="Black"
+                    HorizontalOptions="Center"
                     BackgroundColor="#5A5A5A"
                     Margin="20,0,0,0"
-                    ContentLayout="Left,0"  />
+                    ContentLayout="Left,0" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
         <VerticalStackLayout Margin="0,40,0,0">
-            <Label 
+            <Label
                 Text="Script to run" />
-            <Editor 
-                BackgroundColor="White" 
-                TextColor="#030000" 
-                AutoSize="TextChanges" 
+            <Editor
+                BackgroundColor="White"
+                TextColor="#030000"
+                AutoSize="TextChanges"
                 Text="{Binding Script}"
                 HeightRequest="200" />
-            <Button 
+            <Button
                 Text="run script"
-                HorizontalOptions="End" 
-                Margin="0,10,0,0" 
+                HorizontalOptions="End"
+                Margin="0,10,0,0"
                 BackgroundColor="WhiteSmoke"
-                BorderColor="Black" 
-                TextColor="Black"/>
+                BorderColor="Black"
+                TextColor="Black" />
         </VerticalStackLayout>
-        <Frame 
-            Margin="0,20,0,0" 
-            WidthRequest="300" 
-            HorizontalOptions="Start" 
+        <Frame
+            Margin="0,20,0,0"
+            WidthRequest="300"
+            HorizontalOptions="Start"
             Padding="8">
             <VerticalStackLayout  BackgroundColor="#5A5A5A" Padding="15">
-                <Label 
+                <Label
                 Text="When to run the script" />
                 <HorizontalStackLayout Margin="0,20,0,0">
-                    <CheckBox 
+                    <CheckBox
                     VerticalOptions="Center"
-                    IsChecked="{Binding RunAfterShutdown}"/>
-                    <Label 
-                    Text="After Shutdown" 
-                    VerticalOptions="Center"/>
+                    IsChecked="{Binding RunAfterShutdown}" />
+                    <Label
+                    Text="After Shutdown"
+                    VerticalOptions="Center" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <CheckBox 
+                    <CheckBox
                     VerticalOptions="Center"
                         IsChecked="{Binding RunOnStart}" />
-                    <Label 
-                    Text="On Launch" 
-                    VerticalOptions="Center"/>
+                    <Label
+                    Text="On Launch"
+                    VerticalOptions="Center" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </Frame>
-        <Button Text="Add" 
-                BorderColor="Black" 
-                TextColor="Black" 
+        <Button Text="Add"
+                BorderColor="Black"
+                TextColor="Black"
                 BackgroundColor="WhiteSmoke"
-                HorizontalOptions="Center" 
+                HorizontalOptions="Center"
                 VerticalOptions="End"
                 Margin="0,50,0,0"
                 Command="{Binding AddProcessCommand}"
-                FontSize="Large"/>
+                FontSize="Large" />
     </VerticalStackLayout>
 </ContentPage>

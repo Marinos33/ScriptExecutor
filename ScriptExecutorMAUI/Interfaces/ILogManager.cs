@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ScriptExecutorMAUI.Interfaces
+﻿namespace ScriptExecutorMAUI.Interfaces
 {
     public interface ILogManager
     {
-
         /// <summary>
         /// add a log a the top of the file
         /// </summary>

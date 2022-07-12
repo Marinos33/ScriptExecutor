@@ -4,9 +4,9 @@ namespace ScriptExecutorMAUI.View;
 
 public partial class DetailsPage : ContentPage
 {
-	public DetailsPage(DetailsPageViewModel viewModel)
-	{
-		InitializeComponent();
+    public DetailsPage(DetailsPageViewModel viewModel)
+    {
+        InitializeComponent();
         BindingContext = viewModel;
 
         PickExe.Clicked += async (sender, args) =>

@@ -1,7 +1,6 @@
-﻿using ScriptExecutorMAUI.DTOModel;
+﻿using AutoMapper;
+using ScriptExecutorMAUI.DTOModel;
 using ScriptExecutorMAUI.View;
-using AutoMapper.QueryableExtensions;
-using AutoMapper;
 
 namespace ScriptExecutorMAUI.ViewModel
 {

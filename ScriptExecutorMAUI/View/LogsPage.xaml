@@ -7,12 +7,12 @@
              xmlns:model="clr-namespace:ScriptExecutorMAUI.Model"
              Title="Logs">
     <VerticalStackLayout Padding="20">
-        <CollectionView 
-                ItemsSource="{Binding Logs}" 
+        <CollectionView
+                ItemsSource="{Binding Logs}"
                 SelectionMode="None"
                 Margin="20,20,20,100">
             <CollectionView.Header>
-                <Label 
+                <Label
                     Text="Logs"
                     FontSize="Header"
                     VerticalOptions="Start"
@@ -27,12 +27,12 @@
                             FontSize="Body"
                             HorizontalTextAlignment="Start"
                             VerticalTextAlignment="Center"
-                            Margin="0,0,0,10"/>
+                            Margin="0,0,0,10" />
                         <BoxView
                             HeightRequest="2"
                             Color="Black"
                             VerticalOptions="End"
-                            ScaleX="12"/>
+                            ScaleX="12" />
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

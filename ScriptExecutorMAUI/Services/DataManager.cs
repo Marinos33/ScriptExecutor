@@ -5,7 +5,7 @@ namespace ScriptExecutorMAUI.Services;
 public class DataManager : IDataManager
 {
     private const string DBNAME = "data";
-    private SQLiteAsyncConnection conn;
+    private readonly SQLiteAsyncConnection conn;
     private readonly ILogManager _logManager;
 
     public DataManager(ILogManager logManager)
@@ -36,7 +36,7 @@ public class DataManager : IDataManager
         var result = await conn.InsertAsync(process);
         if (result > 0)
         {
-            _logManager.AddLog($"{DateTime.Now.ToString()}> the process : {process.Name} for the executable {process.ExecutableFile} has been added");
+            _logManager.AddLog($"{DateTime.Now}> the process : {process.Name} for the executable {process.ExecutableFile} has been added");
             return true;
         }
         return false;
@@ -47,7 +47,7 @@ public class DataManager : IDataManager
         var result = await conn.DeleteAsync(process);
         if (result > 0)
         {
-            _logManager.AddLog($"{DateTime.Now.ToString()}> the process : {process.Name} for the executable {process.ExecutableFile} has been removed");
+            _logManager.AddLog($"{DateTime.Now}> the process : {process.Name} for the executable {process.ExecutableFile} has been removed");
             return true;
         }
         return false;
@@ -58,11 +58,9 @@ public class DataManager : IDataManager
         var result = await conn.UpdateAsync(process);
         if (result > 0)
         {
-            _logManager.AddLog($"{DateTime.Now.ToString()}> the process : {process.Name} for the executable {process.ExecutableFile} has been updated");
+            _logManager.AddLog($"{DateTime.Now}> the process : {process.Name} for the executable {process.ExecutableFile} has been updated");
             return true;
         }
         return false;
     }
-
 }
-

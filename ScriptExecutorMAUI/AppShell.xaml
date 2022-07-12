@@ -10,5 +10,4 @@
         Title="ScriptExecutor"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
 </Shell>

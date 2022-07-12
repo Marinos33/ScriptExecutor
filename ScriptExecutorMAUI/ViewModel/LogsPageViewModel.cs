@@ -1,6 +1,4 @@
-﻿using ScriptExecutorMAUI.DTOModel;
-
-namespace ScriptExecutorMAUI.ViewModel
+﻿namespace ScriptExecutorMAUI.ViewModel
 {
     public partial class LogsPageViewModel : ObservableObject
     {
@@ -18,10 +16,7 @@ namespace ScriptExecutorMAUI.ViewModel
         {
             var logs = await _logManager.ReadLog();
             var logsList = logs.Split(Environment.NewLine).ToList();
-            logsList.ForEach((log) =>
-            {
-                Logs.Add(new Log(log));
-            });
+            logsList.ForEach((log) => Logs.Add(new Log(log)));
         }
     }
 }

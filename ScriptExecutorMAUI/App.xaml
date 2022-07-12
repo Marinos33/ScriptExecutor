@@ -9,7 +9,7 @@
             <Color x:Key="TextColor">White</Color>
             <Color x:Key="SperatorColor">#d4d4d6</Color>
             <Color x:Key="ButtonTextColor">WhiteSmoke</Color>
-            
+
             <Style ApplyToDerivedTypes="True" TargetType="CollectionView">
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource Background}}" />
             </Style>

@@ -2,6 +2,7 @@
 using ScriptExecutorMAUI.Services;
 using ScriptExecutorMAUI.View;
 using ScriptExecutorMAUI.ViewModel;
+
 #if WINDOWS
 using WinUIEx;
 #endif
@@ -10,44 +11,43 @@ using WinUIEx;
 
 //TODO mettre app en systemtray (feature missing for now)
 
-
 namespace ScriptExecutorMAUI;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
         builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
 #if WINDOWS
-            //used to set the window size on startup
-            builder.ConfigureLifecycleEvents(events =>
+        //used to set the window size on startup
+        builder.ConfigureLifecycleEvents(events =>
+        {
+            events.AddWindows(wndLifeCycleBuilder =>
             {
-                events.AddWindows(wndLifeCycleBuilder =>
+                wndLifeCycleBuilder.OnWindowCreated(window =>
                 {
-                    wndLifeCycleBuilder.OnWindowCreated(window =>
-                    {
-                        //Set size and center on screen using WinUIEx extension method
-                        window.CenterOnScreen(662,950); 
-                    });
+                    //Set size and center on screen using WinUIEx extension method
+                    window.CenterOnScreen(662, 950);
                 });
             });
+        });
 #endif
 
         builder.Services.AddSingleton<IThreadsService, ThreadsService>();
-		builder.Services.AddSingleton<MainPageViewModel>();
+        builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<MainPage>();
 
         builder.Services.AddTransient<DetailsPageViewModel>();
-		builder.Services.AddTransient<DetailsPage>();
-		builder.Services.AddTransient<AddPage>();
+        builder.Services.AddTransient<DetailsPage>();
+        builder.Services.AddTransient<AddPage>();
         builder.Services.AddTransient<AddPageViewModel>();
         builder.Services.AddTransient<LogsPage>();
         builder.Services.AddTransient<LogsPageViewModel>();
@@ -68,5 +68,5 @@ public static class MauiProgram
         serviceProcessingService.Start();
 
         return builder.Build();
-	}
+    }
 }

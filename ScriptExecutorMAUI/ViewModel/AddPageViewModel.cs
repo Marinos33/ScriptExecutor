@@ -1,19 +1,21 @@
-﻿using ScriptExecutorMAUI.View;
-
-namespace ScriptExecutorMAUI.ViewModel
+﻿namespace ScriptExecutorMAUI.ViewModel
 {
     public partial class AddPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        string name;
+        private string name;
+
         [ObservableProperty]
-        string executableFile;
+        private string executableFile;
+
         [ObservableProperty]
-        string script;
+        private string script;
+
         [ObservableProperty]
-        bool runOnStart;
+        private bool runOnStart;
+
         [ObservableProperty]
-        bool runAfterShutdown = true;
+        private bool runAfterShutdown = true;
 
         private readonly IDataManager _dataManager;
 
@@ -25,13 +27,13 @@ namespace ScriptExecutorMAUI.ViewModel
         [RelayCommand]
         public async Task AddProcess()
         {
-            if(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(executableFile))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(executableFile))
             {
-                await Shell.Current.DisplayAlert("form completion error", "either the name or the executable was not fullfilled", "ok" );
+                await Shell.Current.DisplayAlert("form completion error", "either the name or the executable was not fullfilled", "ok");
                 return;
             }
 
-            if(!runOnStart && !runAfterShutdown)
+            if (!runOnStart && !runAfterShutdown)
             {
                 await Shell.Current.DisplayAlert("choose when to run", "either choose between run on start or after shutdown", "ok");
                 return;
@@ -50,7 +52,6 @@ namespace ScriptExecutorMAUI.ViewModel
             {
                 await Shell.Current.GoToAsync("..");
             }
-
         }
     }
 }

@@ -5,6 +5,7 @@ namespace ScriptExecutorMAUI.View;
 public partial class MainPage : ContentPage
 {
     private readonly IThreadsService _threadsService;
+
     public MainPage(MainPageViewModel viewModel, IThreadsService threadsService)
     {
         InitializeComponent();
@@ -17,8 +18,6 @@ public partial class MainPage : ContentPage
         var viewModel = (MainPageViewModel)BindingContext;
         viewModel.GetProcessesCommand.Execute(null);
 
-
         await _threadsService.RestartThread();
     }
 }
-

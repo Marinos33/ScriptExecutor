@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ScriptExecutorMAUI.DTOModel;
-using System.Xml.Linq;
 
 namespace ScriptExecutorMAUI.ViewModel;
 
@@ -8,7 +7,7 @@ namespace ScriptExecutorMAUI.ViewModel;
 public partial class DetailsPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    ProcessDto process;
+    private ProcessDto process;
 
     private readonly IDataManager _dataManager;
     private readonly IScriptRunner _scriptRunner;
@@ -23,7 +22,7 @@ public partial class DetailsPageViewModel : ObservableObject
 
     [RelayCommand]
     public async Task UpdateProcess()
-{
+    {
         if (string.IsNullOrEmpty(process.Name) || string.IsNullOrEmpty(process.ExecutableFile))
         {
             await Shell.Current.DisplayAlert("form completion error", "either the name or the executable was not fullfilled", "ok");
@@ -50,4 +49,3 @@ public partial class DetailsPageViewModel : ObservableObject
         await _scriptRunner.RunScript(process.Script);
     }
 }
-

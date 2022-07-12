@@ -78,11 +78,11 @@ namespace ScriptExecutorMAUI.Services
                 "   AND TargetInstance.Name = '" + processName + "'";
 
             // The dot in the scope means use the current machine
-            string scope = @"\\.\root\CIMV2";
+            const string scope = @"\\.\root\CIMV2";
 
             // Create a watcher and listen for events
-            ManagementEventWatcher watcher = new ManagementEventWatcher(scope, queryString);
-            watcher.EventArrived += ProcessStarted;
+            ManagementEventWatcher watcher = new(scope, queryString);
+            watcher.EventArrived += OnProcessEvent;
             watcher.Start();
             return watcher;
         }
@@ -97,16 +97,16 @@ namespace ScriptExecutorMAUI.Services
                 "   AND TargetInstance.Name = '" + processName + "'";
 
             // The dot in the scope means use the current machine
-            string scope = @"\\.\root\CIMV2";
+            const string scope = @"\\.\root\CIMV2";
 
             // Create a watcher and listen for events
-            ManagementEventWatcher watcher = new ManagementEventWatcher(scope, queryString);
-            watcher.EventArrived += ProcessEnded;
+            ManagementEventWatcher watcher = new(scope, queryString);
+            watcher.EventArrived += OnProcessEvent;
             watcher.Start();
             return watcher;
         }
 
-        private void ProcessStarted(object sender, EventArrivedEventArgs e)
+        private void OnProcessEvent(object sender, EventArrivedEventArgs e)
         {
             ManagementBaseObject targetInstance = (ManagementBaseObject)e.NewEvent.Properties["TargetInstance"].Value;
             string processName = targetInstance.Properties["Name"].Value.ToString();
@@ -125,36 +125,13 @@ namespace ScriptExecutorMAUI.Services
             });
         }
 
-        private void ProcessEnded(object sender, EventArrivedEventArgs e)
-        {
-            ManagementBaseObject targetInstance = (ManagementBaseObject)e.NewEvent.Properties["TargetInstance"].Value;
-            string processName = targetInstance.Properties["Name"].Value.ToString();
-            Task.Run(async () =>
-            {
-                var process = await _dataManager.GetProcessByExecutableFileName(processName);
-                var isSucceed = await _scriptRunner.RunScript(process.Script);
-                if (isSucceed)
-                {
-                    _logManager.AddLog($"{DateTime.Now.ToString()}> script runned for {processName}");
-                }
-                else
-                {
-                    _logManager.AddLog($"{DateTime.Now.ToString()}> failed to run script for {processName}");
-                }
-            });
-        }
-
         public async Task RestartThread()
         {
-            watcherList.ForEach(watcher =>
-            {
-                watcher.Stop();
-            });
+            watcherList.ForEach(watcher => watcher.Stop());
 
             watcherList.Clear();
 
             await DoWorkAsync();
         }
-
     }
 }

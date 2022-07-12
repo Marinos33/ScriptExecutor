@@ -16,17 +16,27 @@ namespace ScriptExecutorMAUI.ViewModel
         bool runAfterShutdown = true;
 
         private readonly IDataManager _dataManager;
-        private readonly IThreadsService _threadsService;
 
-        public AddPageViewModel(IDataManager dataManager, IThreadsService threadsService)
+        public AddPageViewModel(IDataManager dataManager)
         {
             _dataManager = dataManager;
-            _threadsService = threadsService;
         }
 
         [RelayCommand]
         public async Task AddProcess()
         {
+            if(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(executableFile))
+            {
+                await Shell.Current.DisplayAlert("form completion error", "either the name or the executable was not fullfilled", "ok" );
+                return;
+            }
+
+            if(!runOnStart && !runAfterShutdown)
+            {
+                await Shell.Current.DisplayAlert("choose when to run", "either choose between run on start or after shutdown", "ok");
+                return;
+            }
+
             var isSucceed = await _dataManager.AddProcess(new Process
             {
                 Name = name,

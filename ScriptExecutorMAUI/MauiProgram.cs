@@ -6,8 +6,6 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
-//TODO ajouter ecran pour lire les logs
-//TODO ajouter popup alert pour le remplissage des form
 //TODO ajouter theming
 //TODO ajouter automapper
 //TODO add comments

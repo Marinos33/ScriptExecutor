@@ -1,4 +1,5 @@
 ﻿using ScriptExecutorMAUI.DTOModel;
+using System.Xml.Linq;
 
 namespace ScriptExecutorMAUI.ViewModel;
 
@@ -19,7 +20,19 @@ public partial class DetailsPageViewModel : ObservableObject
 
     [RelayCommand]
     public async Task UpdateProcess()
-    {
+{
+        if (string.IsNullOrEmpty(process.Name) || string.IsNullOrEmpty(process.ExecutableFile))
+        {
+            await Shell.Current.DisplayAlert("form completion error", "either the name or the executable was not fullfilled", "ok");
+            return;
+        }
+
+        if (!process.RunOnStart && !process.RunAfterShutdown)
+        {
+            await Shell.Current.DisplayAlert("choose when to run", "either choose between run on start or after shutdown", "ok");
+            return;
+        }
+
         var isSucceed = await _dataManager.UpdateProcess(new Process
         {
             Id = process.Id,

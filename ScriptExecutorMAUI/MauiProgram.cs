@@ -6,12 +6,16 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
-//TODO mettre app en systemtray
 //TODO ajouter des logs dans un fichier texte pour les erreurs et les lancement de scripts
 //TODO ajouter ecran pour lire les logs
 //TODO ajouter popup alert pour le remplissage des form
 //TODO ajouter theming
 //TODO ajouter automapper
+//TODO add comments
+//TODO rajouter un dossier custom pour le stockage des logs et db si la version release ne le fait pas
+
+//TODO mettre app en systemtray (feature missing for now)
+
 
 namespace ScriptExecutorMAUI;
 
@@ -54,7 +58,7 @@ public static class MauiProgram
 
         builder.Services.AddScoped<IDataManager, DataManager>();
         builder.Services.AddScoped<IScriptRunner, ScriptRunner>();
-
+        builder.Services.AddScoped<ILogManager, LogManager>();
 
         var serviceProcessingService = builder
             .Services

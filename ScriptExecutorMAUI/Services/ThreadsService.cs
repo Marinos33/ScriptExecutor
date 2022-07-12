@@ -1,20 +1,21 @@
-﻿using ScriptExecutorMAUI.Interfaces;
-using System.Management;
+﻿using System.Management;
 
 namespace ScriptExecutorMAUI.Services
 {
-    public class ThreadsService: IThreadsService
+    public class ThreadsService : IThreadsService
     {
         private Task _timerTask;
         private readonly CancellationTokenSource _cts = new();
         private readonly List<ManagementEventWatcher> watcherList = new();
         private readonly IDataManager _dataManager;
         private readonly IScriptRunner _scriptRunner;
+        private readonly ILogManager _logManager;
 
-        public ThreadsService(IDataManager dataManager, IScriptRunner scriptRunner)
+        public ThreadsService(IDataManager dataManager, IScriptRunner scriptRunner, ILogManager logManager)
         {
             _dataManager = dataManager;
             _scriptRunner = scriptRunner;
+            _logManager = logManager;
         }
 
         public void Start()
@@ -112,7 +113,15 @@ namespace ScriptExecutorMAUI.Services
             Task.Run(async () =>
             {
                 var process = await _dataManager.GetProcessByExecutableFileName(processName);
-                await _scriptRunner.RunScript(process.Script);
+                var isSucceed = await _scriptRunner.RunScript(process.Script);
+                if (isSucceed)
+                {
+                    _logManager.AddLog($"{DateTime.Now.ToString()}> script runned for {processName}");
+                }
+                else
+                {
+                    _logManager.AddLog($"{DateTime.Now.ToString()}> failed to run script for {processName}");
+                }
             });
         }
 
@@ -123,7 +132,15 @@ namespace ScriptExecutorMAUI.Services
             Task.Run(async () =>
             {
                 var process = await _dataManager.GetProcessByExecutableFileName(processName);
-                await _scriptRunner.RunScript(process.Script);
+                var isSucceed = await _scriptRunner.RunScript(process.Script);
+                if (isSucceed)
+                {
+                    _logManager.AddLog($"{DateTime.Now.ToString()}> script runned for {processName}");
+                }
+                else
+                {
+                    _logManager.AddLog($"{DateTime.Now.ToString()}> failed to run script for {processName}");
+                }
             });
         }
 

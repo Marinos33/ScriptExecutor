@@ -1,5 +1,4 @@
 ﻿using SQLite;
-using System.Xml.Linq;
 
 namespace ScriptExecutorMAUI.Services;
 
@@ -7,12 +6,14 @@ public class DataManager : IDataManager
 {
     private const string DBNAME = "data";
     private SQLiteAsyncConnection conn;
+    private readonly ILogManager _logManager;
 
-    public DataManager()
-{
+    public DataManager(ILogManager logManager)
+    {
         var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DBNAME);
         conn = new SQLiteAsyncConnection(dbPath);
         conn.CreateTableAsync<Process>();
+        _logManager = logManager;
     }
 
     public async Task<IEnumerable<Process>> GetAllProcess()
@@ -33,8 +34,9 @@ public class DataManager : IDataManager
     public async Task<bool> AddProcess(Process process)
     {
         var result = await conn.InsertAsync(process);
-        if(result > 0)
+        if (result > 0)
         {
+            _logManager.AddLog($"{DateTime.Now.ToString()}> the process : {process.Name} for the executable {process.ExecutableFile} has been added");
             return true;
         }
         return false;
@@ -45,6 +47,7 @@ public class DataManager : IDataManager
         var result = await conn.DeleteAsync(process);
         if (result > 0)
         {
+            _logManager.AddLog($"{DateTime.Now.ToString()}> the process : {process.Name} for the executable {process.ExecutableFile} has been removed");
             return true;
         }
         return false;
@@ -55,6 +58,7 @@ public class DataManager : IDataManager
         var result = await conn.UpdateAsync(process);
         if (result > 0)
         {
+            _logManager.AddLog($"{DateTime.Now.ToString()}> the process : {process.Name} for the executable {process.ExecutableFile} has been updated");
             return true;
         }
         return false;

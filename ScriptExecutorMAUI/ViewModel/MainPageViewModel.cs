@@ -45,7 +45,7 @@ namespace ScriptExecutorMAUI.ViewModel
             }
             catch (Exception e)
             {
-                await Shell.Current.DisplayAlert("Error! Could not read JSON data", e.Message, "OK");
+                await Shell.Current.DisplayAlert("Error! Could not get process from db", e.Message, "Such sadness");
             }
         }
 

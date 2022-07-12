@@ -6,7 +6,6 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
-//TODO ajouter theming
 //TODO ajouter automapper
 //TODO add comments
 //TODO rajouter un dossier custom pour le stockage des logs et db si la version release ne le fait pas

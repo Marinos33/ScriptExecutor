@@ -5,6 +5,27 @@
              x:Class="ScriptExecutorMAUI.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="Background">#292929</Color>
+            <Color x:Key="TextColor">White</Color>
+            <Color x:Key="SperatorColor">#d4d4d6</Color>
+            <Color x:Key="ButtonTextColor">WhiteSmoke</Color>
+            
+            <Style ApplyToDerivedTypes="True" TargetType="CollectionView">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Background}, Dark={StaticResource Background}}" />
+            </Style>
+            <Style ApplyToDerivedTypes="True" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+            <Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="Black" />
+            </Style>
+            <Style ApplyToDerivedTypes="True" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+            </Style>
+            <Style ApplyToDerivedTypes="True" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

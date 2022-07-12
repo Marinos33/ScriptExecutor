@@ -5,8 +5,7 @@
              xmlns:model="clr-namespace:ScriptExecutorMAUI.DTOModel"
              xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
              x:DataType="viewmodel:AddPageViewModel"
-             Title="Add a program"
-             BackgroundColor="Black">
+             Title="Add a program">
     <VerticalStackLayout 
         Padding="24" 
         Margin="20,50,20,50" 
@@ -17,8 +16,6 @@
             <Label 
                 Text="Name of the profile"/>
             <Entry 
-                BackgroundColor="White" 
-                TextColor="Black"
                 Text="{Binding Name}"
                 HeightRequest="40"/>
         </VerticalStackLayout>
@@ -58,6 +55,7 @@
                 Text="run script"
                 HorizontalOptions="End" 
                 Margin="0,10,0,0" 
+                BackgroundColor="WhiteSmoke"
                 BorderColor="Black" 
                 TextColor="Black"/>
         </VerticalStackLayout>
@@ -90,6 +88,7 @@
         <Button Text="Add" 
                 BorderColor="Black" 
                 TextColor="Black" 
+                BackgroundColor="WhiteSmoke"
                 HorizontalOptions="Center" 
                 VerticalOptions="End"
                 Margin="0,50,0,0"

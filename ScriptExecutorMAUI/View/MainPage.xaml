@@ -4,12 +4,10 @@
              x:Class="ScriptExecutorMAUI.View.MainPage"
              xmlns:model="clr-namespace:ScriptExecutorMAUI.DTOModel"
              xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
-             x:DataType="viewmodel:MainPageViewModel"
-             BackgroundColor="Black">
+             x:DataType="viewmodel:MainPageViewModel">
     <Grid >
         <CollectionView 
                 ItemsSource="{Binding Processes}" 
-                BackgroundColor="#292929"
                 SelectionMode="None"
                 Margin="20,20,20,100">
             <CollectionView.Header>
@@ -24,7 +22,6 @@
                           FontSize="Title"
                           FontAttributes="Bold"
                           HorizontalTextAlignment="Center" 
-                          TextColor="White"
                           VerticalTextAlignment="Center"/>
                     <Line 
                          X1="50" 
@@ -39,7 +36,6 @@
                          Text="Status" 
                          Grid.Column="1" 
                          FontSize="Title"
-                         TextColor="White"
                          FontAttributes="Bold"
                          HorizontalTextAlignment="Center" 
                          VerticalTextAlignment="Center" />
@@ -56,7 +52,6 @@
                          Text="Actions" 
                          Grid.Column="2"
                          FontSize="Title"
-                         TextColor="White"
                          FontAttributes="Bold"
                          HorizontalTextAlignment="Center" 
                          Grid.ColumnSpan="2" 
@@ -89,7 +84,7 @@
                                 X2="50" 
                                 Y1="0" 
                                 Y2="120" 
-                                Stroke="#d4d4d6" 
+                                Stroke="{StaticResource SperatorColor}" 
                                 HorizontalOptions="EndAndExpand" 
                                 Grid.Column="0" 
                                 ScaleX="5" 
@@ -107,7 +102,7 @@
                                     X2="50" 
                                     Y1="0" 
                                     Y2="120" 
-                                    Stroke="#d4d4d6" 
+                                    Stroke="{StaticResource SperatorColor}" 
                                     HorizontalOptions="EndAndExpand" 
                                     Grid.Column="1" 
                                     ScaleX="5" 
@@ -118,7 +113,6 @@
                                     Grid.Column="2" 
                                     VerticalOptions="Center" 
                                     BackgroundColor="#03156b"
-                                    TextColor="WhiteSmoke"
                                     BorderColor="Black"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToDetailsCommand}"
                                     CommandParameter="{Binding .}"
@@ -128,14 +122,13 @@
                                     Grid.Column="3" 
                                     VerticalOptions="Center"
                                     BackgroundColor="#03156b"
-                                    TextColor="WhiteSmoke"
                                     BorderColor="Black"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=RemoveProcessCommand}"
                                     CommandParameter="{Binding .}"
                                     FontSize="Small"/>
                             <BoxView 
                                     HeightRequest="5"
-                                    Color="#d4d4d6"
+                                    Color="{StaticResource SperatorColor}"
                                     Grid.ColumnSpan="4"
                                     VerticalOptions="End" 
                                     TranslationY="10" 
@@ -150,7 +143,6 @@
                Grid.Column="3" 
                VerticalOptions="End"
                BackgroundColor="Gray"
-               TextColor="WhiteSmoke"
                BorderColor="Black"
                FontSize="Small" 
                Command="{Binding GoToNewCommand}"
@@ -161,7 +153,6 @@
                Command="{Binding GoToLogsCommand}"
                VerticalOptions="End"
                BackgroundColor="Gray"
-               TextColor="WhiteSmoke"
                BorderColor="Black"
                FontSize="Small"/>
         </HorizontalStackLayout>

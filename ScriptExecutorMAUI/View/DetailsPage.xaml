@@ -5,19 +5,17 @@
              xmlns:model="clr-namespace:ScriptExecutorMAUI.DTOModel"
              xmlns:viewmodel="clr-namespace:ScriptExecutorMAUI.ViewModel"
              x:DataType="viewmodel:DetailsPageViewModel"
-             Title="{Binding Process.Name}"
-             BackgroundColor="Black">
+             Title="{Binding Process.Name}">
     <VerticalStackLayout 
         Padding="24" 
         Margin="20,50,20,50" 
         HeightRequest="850"
         WidthRequest="600"
-        BackgroundColor="#292929">
+        BackgroundColor="{StaticResource Background}">
         <VerticalStackLayout>
             <Label 
                 Text="Name of the profile"/>
             <Entry 
-                BackgroundColor="White" 
                 TextColor="Black" 
                 HeightRequest="40" 
                 Text="{Binding Process.Name}"/>
@@ -29,8 +27,6 @@
             <HorizontalStackLayout>
                 <Entry
                     x:Name="ExecutableEntry"
-                    BackgroundColor="White" 
-                    TextColor="Black" 
                     WidthRequest="350" 
                     Text="{Binding Process.ExecutableFile}"/>
                 <Button 
@@ -57,6 +53,7 @@
             <Button 
                 Command="{Binding TestScriptCommand}"
                 Text="run script"
+                BackgroundColor="WhiteSmoke"
                 HorizontalOptions="End" 
                 Margin="0,10,0,0" 
                 BorderColor="Black" 
@@ -91,6 +88,7 @@
         <Button Text="Validate" 
                 BorderColor="Black" 
                 TextColor="Black" 
+                BackgroundColor="WhiteSmoke"
                 HorizontalOptions="Center" 
                 VerticalOptions="End"
                 Margin="0,50,0,0"

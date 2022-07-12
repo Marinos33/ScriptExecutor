@@ -1,5 +1,7 @@
 ﻿using ScriptExecutorMAUI.DTOModel;
 using ScriptExecutorMAUI.View;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace ScriptExecutorMAUI.ViewModel
 {
@@ -9,12 +11,14 @@ namespace ScriptExecutorMAUI.ViewModel
         private readonly IDataManager _dataManager;
         private readonly IThreadsService _threadsService;
         private readonly IServiceScopeFactory _serviceScopeFactory;
+        private readonly IMapper _mapper;
 
-        public MainPageViewModel(IDataManager dataManager, IThreadsService threadsService, IServiceScopeFactory serviceScopeFactory)
+        public MainPageViewModel(IDataManager dataManager, IThreadsService threadsService, IServiceScopeFactory serviceScopeFactory, IMapper mapper)
         {
             _dataManager = dataManager;
             _threadsService = threadsService;
             _serviceScopeFactory = serviceScopeFactory;
+            _mapper = mapper;
         }
 
         [RelayCommand]
@@ -30,20 +34,10 @@ namespace ScriptExecutorMAUI.ViewModel
 
                 foreach (var process in processes)
                 {
-                    var g = new ProcessDto
-                    {
-                        Id = process.Id,
-                        Name = process.Name,
-                        Script = process.Script,
-                        ExecutableFile = process.ExecutableFile,
-                        RunOnStart = process.RunOnStart,
-                        RunAfterShutdown = process.RunAfterShutdown,
-                        ImagePath = !string.IsNullOrEmpty(process.ExecutableFile) && !string.IsNullOrEmpty(process.Name) ? "check.png" : "error.png"
-                    };
+                    var g = _mapper.Map<ProcessDto>(process);
 
                     Processes.Add(g);
                 }
-
             }
             catch (Exception e)
             {
@@ -56,15 +50,7 @@ namespace ScriptExecutorMAUI.ViewModel
         {
             Processes.Remove(process);
 
-            await _dataManager.RemoveProcess(new Process
-            {
-                Id = process.Id,
-                Name = process.Name,
-                Script = process.Script,
-                ExecutableFile = process.ExecutableFile,
-                RunOnStart = process.RunOnStart,
-                RunAfterShutdown = process.RunAfterShutdown
-            });
+            await _dataManager.RemoveProcess(_mapper.Map<Process>(process));
 
             await _threadsService.RestartThread();
         }

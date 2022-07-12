@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 
 namespace ScriptExecutorMAUI.DTOModel
 {
-    public class ProcessDto
+    public class ProcessDto : IMapFrom<Process>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,5 +11,11 @@ namespace ScriptExecutorMAUI.DTOModel
         public string ImagePath { get; set; }
         public bool RunOnStart { get; set; }
         public bool RunAfterShutdown { get; set; } = true;
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Process, ProcessDto>()
+                .ForMember(dest => dest.ImagePath, opt => opt.MapFrom(p => !string.IsNullOrEmpty(p.ExecutableFile) && !string.IsNullOrEmpty(p.Name) ? "check.png" : "error.png"));
+        }
     }
 }

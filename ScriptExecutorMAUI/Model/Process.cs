@@ -1,14 +1,10 @@
-﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ScriptExecutorMAUI.DTOModel;
+using SQLite;
 
 namespace ScriptExecutorMAUI.Model
 {
     [Table("process")]
-    public  class Process
+    public class Process : IMapFrom<ProcessDto>
     {
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }

@@ -1,4 +1,5 @@
-﻿using ScriptExecutorMAUI.DTOModel;
+﻿using AutoMapper;
+using ScriptExecutorMAUI.DTOModel;
 using System.Xml.Linq;
 
 namespace ScriptExecutorMAUI.ViewModel;
@@ -11,11 +12,13 @@ public partial class DetailsPageViewModel : ObservableObject
 
     private readonly IDataManager _dataManager;
     private readonly IScriptRunner _scriptRunner;
+    private readonly IMapper _mapper;
 
-    public DetailsPageViewModel(IDataManager dataManager, IScriptRunner scriptRunner)
+    public DetailsPageViewModel(IDataManager dataManager, IScriptRunner scriptRunner, IMapper mapper)
     {
         _dataManager = dataManager;
         _scriptRunner = scriptRunner;
+        _mapper = mapper;
     }
 
     [RelayCommand]
@@ -33,15 +36,7 @@ public partial class DetailsPageViewModel : ObservableObject
             return;
         }
 
-        var isSucceed = await _dataManager.UpdateProcess(new Process
-        {
-            Id = process.Id,
-            Name = process.Name,
-            Script = process.Script,
-            ExecutableFile = process.ExecutableFile,
-            RunOnStart = process.RunOnStart,
-            RunAfterShutdown = process.RunAfterShutdown,
-        });
+        var isSucceed = await _dataManager.UpdateProcess(_mapper.Map<Process>(process));
 
         if (isSucceed)
         {

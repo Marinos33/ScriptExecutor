@@ -6,7 +6,6 @@ using ScriptExecutorMAUI.ViewModel;
 using WinUIEx;
 #endif
 
-//TODO ajouter automapper
 //TODO add comments
 //TODO rajouter un dossier custom pour le stockage des logs et db si la version release ne le fait pas
 
@@ -57,6 +56,8 @@ public static class MauiProgram
         builder.Services.AddScoped<IDataManager, DataManager>();
         builder.Services.AddScoped<IScriptRunner, ScriptRunner>();
         builder.Services.AddScoped<ILogManager, LogManager>();
+
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         var serviceProcessingService = builder
             .Services

@@ -12,10 +12,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>ScriptExecutorMAUI</ApplicationTitle>
+		<ApplicationTitle>ScriptExecutor</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.scriptexecutormaui</ApplicationId>
+		<ApplicationId>com.marinos33.scriptexecutor</ApplicationId>
 		<ApplicationIdGuid>9B81D92E-DD43-4319-B1B2-4AC820711A2B</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -30,9 +30,14 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
+		<GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
+		<AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+		<PackageCertificateThumbprint>DA93803E1B7AB6BA824BFCC14243DEACCF94BE8E</PackageCertificateThumbprint>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -81,6 +86,10 @@
 	  <MauiXaml Update="View\LogsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiIcon Include="Resources\AppIcon\logo.png" />
 	</ItemGroup>
 
 </Project>

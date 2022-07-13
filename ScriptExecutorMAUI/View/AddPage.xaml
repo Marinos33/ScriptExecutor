@@ -52,6 +52,7 @@
                 Text="{Binding Script}"
                 HeightRequest="200" />
             <Button
+                Command="{Binding TestScriptCommand}"
                 Text="run script"
                 HorizontalOptions="End"
                 Margin="0,10,0,0"

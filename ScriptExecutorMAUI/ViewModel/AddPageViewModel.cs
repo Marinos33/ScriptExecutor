@@ -18,10 +18,12 @@
         private bool runAfterShutdown = true;
 
         private readonly IDataManager _dataManager;
+        private readonly IScriptRunner _scriptRunner;
 
-        public AddPageViewModel(IDataManager dataManager)
+        public AddPageViewModel(IDataManager dataManager, IScriptRunner scriptRunner)
         {
             _dataManager = dataManager;
+            _scriptRunner = scriptRunner;
         }
 
         [RelayCommand]
@@ -52,6 +54,12 @@
             {
                 await Shell.Current.GoToAsync("..");
             }
+        }
+
+        [RelayCommand]
+        public async Task TestScript()
+        {
+            await _scriptRunner.RunScript(script);
         }
     }
 }

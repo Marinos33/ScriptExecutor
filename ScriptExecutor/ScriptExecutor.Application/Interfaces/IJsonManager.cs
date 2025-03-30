@@ -1,8 +1,8 @@
-﻿using ScriptExecutor.Model;
+﻿using ScriptExecutor.Domain.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ScriptExecutor.Interfaces
+namespace ScriptExecutor.Application.Interfaces
 {
     public interface IJsonManager
     {

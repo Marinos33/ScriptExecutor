@@ -1,13 +1,12 @@
-﻿using ScriptExecutor.Interfaces;
+﻿using ScriptExecutor.Application.Interfaces;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace ScriptExecutor.Persistence
+namespace ScriptExecutor.Infrastrucuture.Persistence
 {
     public class ThreadSystem : IThreadSystem
     {
@@ -92,7 +91,8 @@ namespace ScriptExecutor.Persistence
             }
             else
             {
-                MessageBox.Show("ScriptExecutor: unable to run the script");
+                // TODO
+                //MessageBox.Show("ScriptExecutor: unable to run the script");
                 _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script for " + _data.CurrentGame.ExecutableFile);
             }
         }

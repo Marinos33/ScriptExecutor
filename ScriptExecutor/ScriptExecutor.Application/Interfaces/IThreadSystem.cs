@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ScriptExecutor.Interfaces
+namespace ScriptExecutor.Application.Interfaces
 {
     public interface IThreadSystem
     {

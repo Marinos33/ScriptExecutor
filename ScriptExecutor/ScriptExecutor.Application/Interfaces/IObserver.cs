@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ScriptExecutor.Interfaces
+namespace ScriptExecutor.Application.Interfaces
 {
-    internal interface IObserver
+    public interface IObserver
     {
         /// <summary>
         /// what to do when the observable has changed

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ScriptExecutor.Interfaces
+namespace ScriptExecutor.Domain
 {
-    internal interface IObservable
+    public interface IObservable
     {
         /// <summary>
         /// the 'variable' which contain another event to fire when this one is invoked

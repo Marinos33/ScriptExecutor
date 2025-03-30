@@ -1,6 +1,4 @@
-﻿using ScriptExecutor.Interfaces;
-using ScriptExecutor.Model;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace ScriptExecutor.UI

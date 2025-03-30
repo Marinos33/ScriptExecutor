@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ScriptExecutor.Interfaces
+namespace ScriptExecutor.Application.Interfaces
 {
     public interface IScriptRunner
     {

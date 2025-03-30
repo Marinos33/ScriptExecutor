@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using ScriptExecutor.Interfaces;
-using ScriptExecutor.Model;
+using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ScriptExecutor.Services
+namespace ScriptExecutor.Infrastrucuture.Services
 {
     public class JsonManager : IJsonManager
     {

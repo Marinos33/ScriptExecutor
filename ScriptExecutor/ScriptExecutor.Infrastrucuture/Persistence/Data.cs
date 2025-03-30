@@ -1,9 +1,9 @@
-﻿using ScriptExecutor.Interfaces;
-using ScriptExecutor.Model;
+﻿using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ScriptExecutor.Persistence
+namespace ScriptExecutor.Infrastrucuture.Persistence
 {
     public class Data : IData
     {

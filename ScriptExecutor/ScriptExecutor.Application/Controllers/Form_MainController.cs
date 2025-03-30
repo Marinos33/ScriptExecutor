@@ -1,10 +1,10 @@
-﻿using ScriptExecutor.Interfaces;
-using ScriptExecutor.Model;
+﻿using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
 using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace ScriptExecutor.Controllers
+namespace ScriptExecutor.Application.Controllers
 {
     public class Form_MainController : IForm_MainController
     {

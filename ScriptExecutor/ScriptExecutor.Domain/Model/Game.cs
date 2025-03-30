@@ -1,7 +1,6 @@
-﻿using ScriptExecutor.Interfaces;
-using System;
+﻿using System;
 
-namespace ScriptExecutor.Model
+namespace ScriptExecutor.Domain.Model
 {
     public class Game : IObservable
     {
@@ -18,14 +17,14 @@ namespace ScriptExecutor.Model
 
         public Game DeepCopy()
         {
-            return (Game)(new()
+            return new()
             {
                 Name = Name,
                 ExecutableFile = ExecutableFile,
                 Script = Script,
                 RunOnStart = RunOnStart,
                 RunAfterShutdown = RunAfterShutdown
-            });
+            };
         }
     }
 }

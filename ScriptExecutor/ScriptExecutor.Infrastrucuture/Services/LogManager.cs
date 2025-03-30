@@ -1,10 +1,10 @@
-﻿using ScriptExecutor.Interfaces;
+﻿using ScriptExecutor.Application.Interfaces;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
 //the file to manage the log
-namespace ScriptExecutor.Services
+namespace ScriptExecutor.Infrastrucuture.Services
 {
     public class LogManager : ILogManager
     {

@@ -1,10 +1,10 @@
-﻿using ScriptExecutor.Interfaces;
+﻿using ScriptExecutor.Application.Interfaces;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace ScriptExecutor.Services
+namespace ScriptExecutor.Infrastrucuture.Services
 {
     public class ScriptRunner : IScriptRunner
     {

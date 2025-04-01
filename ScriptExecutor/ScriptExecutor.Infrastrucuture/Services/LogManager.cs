@@ -13,7 +13,7 @@ namespace ScriptExecutor.Infrastrucuture.Services
         /// </summary>
         private const string LOGFILENAME = "Logs.txt";
 
-        public async Task<string> ReadLog()
+        public async Task<string> ReadLogAsync()
         {
             if (File.Exists(LOGFILENAME))
             {
@@ -22,9 +22,9 @@ namespace ScriptExecutor.Infrastrucuture.Services
             return string.Empty;
         }
 
-        public async void AddLog(string text)
+        public async Task WriteLogAsync(string text)
         {
-            var previousText = ReadLog();
+            var previousText = ReadLogAsync();
             try
             {
                 using StreamWriter sw = File.CreateText(LOGFILENAME);

@@ -1,4 +1,5 @@
 ﻿using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -10,14 +11,16 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
 {
     public class ThreadSystem : IThreadSystem
     {
-        private readonly IData _data;
+        private readonly IGameRepository _gameRepository;
         private readonly IScriptRunner _scriptRunner;
         private readonly ILogManager _logManager;
+        public Game? RunningGame { get; private set; }
+
         private const int timer = 2000;
 
-        public ThreadSystem(IData data, IScriptRunner scriptRunner, ILogManager logManager)
+        public ThreadSystem(IGameRepository gameRepository, IScriptRunner scriptRunner, ILogManager logManager)
         {
-            _data = data;
+            _gameRepository = gameRepository;
             _scriptRunner = scriptRunner;
             _logManager = logManager;
         }
@@ -32,20 +35,21 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
             int i = 0;
             while (!found) //until a game has been found
             {
-                if (_data.ListOfGame.Count > 0
-                    && i <= _data.ListOfGame.Count
-                    && Process.GetProcessesByName(Path.ChangeExtension(_data.ListOfGame[i].ExecutableFile, null)).Length != 0) //check if the game to observe is not null or ""
+                var gamesList = _gameRepository.GetGames();
+                if (gamesList.Count > 0
+                    && i <= gamesList.Count
+                    && Process.GetProcessesByName(Path.ChangeExtension(gamesList[i].ExecutableFile, null)).Length != 0) //check if the game to observe is not null or ""
                 {
                     found = true;
-                    _data.CurrentGame = _data.ListOfGame[i].DeepCopy(); //take the game actually running in memory
-                    _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
-                    _data.CurrentGame.Update();
+                    RunningGame = gamesList[i].DeepCopy(); //take the game actually running in memory
+                    RunningGame.SomethingHappened += HandleEvent; //event for observer pattern
+                    RunningGame.Update();
                     break; //stop the loop
                 }
 
                 i++;
 
-                if (i >= _data.ListOfGame.Count) //go back to the start of the list
+                if (i >= gamesList.Count) //go back to the start of the list
                 {
                     i = 0;
                 }
@@ -55,45 +59,45 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
 
             Process runningApp = (from p
                              in Process.GetProcesses()
-                                  where p.ProcessName == Path.ChangeExtension(_data.CurrentGame.ExecutableFile, null)
+                                  where p.ProcessName == Path.ChangeExtension(RunningGame.ExecutableFile, null)
                                   select p)
                              .FirstOrDefault(); //select the first process with the given name in the process running
 
-            if (_data.CurrentGame.RunOnStart && _data.CurrentGame.RunAfterShutdown)
+            if (RunningGame.RunOnStart && RunningGame.RunAfterShutdown)
             {
                 await RunScript().ConfigureAwait(false);
                 runningApp.WaitForExit(); //the thread wait until the process has stopped
                 await RunScript().ConfigureAwait(false);
             }
-            else if (_data.CurrentGame.RunAfterShutdown)
+            else if (RunningGame.RunAfterShutdown)
             {
                 runningApp.WaitForExit(); //the thread wait until the process has stopped
                 await RunScript().ConfigureAwait(false);
             }
-            else if (_data.CurrentGame.RunOnStart)
+            else if (RunningGame.RunOnStart)
             {
                 await RunScript().ConfigureAwait(false);
                 runningApp.WaitForExit(); //the thread wait until the process has stopped
             }
 
-            _data.ResetCurrentGame();
-            _data.CurrentGame.SomethingHappened += HandleEvent; //event for observer pattern
+            RunningGame = null;
+            RunningGame.SomethingHappened += HandleEvent; //event for observer pattern
 
             SearchProcess(HandleEvent);
         }
 
         private async Task RunScript()
         {
-            bool isScriptExecuted = await _scriptRunner.RunScript(_data.CurrentGame.Script).ConfigureAwait(false); //run a script
+            bool isScriptExecuted = await _scriptRunner.RunScript(RunningGame.Script).ConfigureAwait(false); //run a script
             if (isScriptExecuted)
             {
-                _logManager.AddLog(DateTime.Now.ToString() + "> script for " + _data.CurrentGame.ExecutableFile + " has been launched");
+                await _logManager.WriteLogAsync(DateTime.Now.ToString() + "> script for " + RunningGame.ExecutableFile + " has been launched");
             }
             else
             {
                 // TODO
                 //MessageBox.Show("ScriptExecutor: unable to run the script");
-                _logManager.AddLog(DateTime.Now.ToString() + "> unable to run the script for " + _data.CurrentGame.ExecutableFile);
+                await _logManager.WriteLogAsync(DateTime.Now.ToString() + "> unable to run the script for " + RunningGame.ExecutableFile);
             }
         }
     }

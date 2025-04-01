@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Domain.Model;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +7,20 @@ using System.Threading.Tasks;
 
 namespace ScriptExecutor.Infrastrucuture.Services
 {
+    public interface IJsonManager
+    {
+        /// <summary>
+        /// completely rewrite the json
+        /// </summary>
+        Task WriteJsonAsync(IEnumerable<Game> games);
+
+        /// <summary>
+        /// read the Json, convert all entry to Game object and retunr a list of items
+        /// </summary>
+        /// <returns>the list of Game from the Json</returns>
+        Task<IEnumerable<Game>> ReadJsonAsync();
+    }
+
     public class JsonManager : IJsonManager
     {
         /// <summary>
@@ -15,14 +28,11 @@ namespace ScriptExecutor.Infrastrucuture.Services
         /// </summary>
         private const string CSV_PATH = "Data.json";
 
-        private readonly IData _data;
-
-        public JsonManager(IData data)
+        public JsonManager()
         {
-            _data = data;
         }
 
-        public async Task<IEnumerable<Game>> ReadJson()
+        public async Task<IEnumerable<Game>> ReadJsonAsync()
         {
             if (File.Exists(CSV_PATH))
             {
@@ -32,11 +42,9 @@ namespace ScriptExecutor.Infrastrucuture.Services
             return Enumerable.Empty<Game>();
         }
 
-        public async void WriteJson()
+        public async Task WriteJsonAsync(IEnumerable<Game> games)
         {
-            var records = _data.ListOfGame;
-
-            string json = JsonConvert.SerializeObject(records);
+            string json = JsonConvert.SerializeObject(games);
             await File.WriteAllTextAsync(CSV_PATH, json).ConfigureAwait(false);
         }
     }

@@ -8,12 +8,12 @@ namespace ScriptExecutor.Application.Interfaces
         /// read the log file
         /// </summary>
         /// <returns>return a string with the content of the file</returns>
-        Task<string> ReadLog();
+        Task<string> ReadLogAsync();
 
         /// <summary>
         /// add an entry to the log file
         /// </summary>
         /// <param name="text"></param>
-        void AddLog(string text);
+        Task WriteLogAsync(string text);
     }
 }

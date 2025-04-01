@@ -1,4 +1,6 @@
-﻿namespace ScriptExecutor.Application.Interfaces
+﻿using ScriptExecutor.Domain.Model;
+
+namespace ScriptExecutor.Application.Interfaces
 {
     public interface IForm_MainController
     {

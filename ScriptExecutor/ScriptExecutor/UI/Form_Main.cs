@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
+using System;
 using System.Drawing;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -10,23 +11,22 @@ namespace ScriptExecutor.UI
     {
         private Form_AddGame form_AddGame; //the form to add a game
 
-        private readonly IJsonManager _jsonManager; //the model from MVC pattern
         private readonly ILogManager _logManager; //the model from MVC pattern
-        private readonly IData _data; //the model wihch contains the data
+        private readonly IGameRepository _gameRepository; //the model wihch contains the data
         private readonly IForm_MainController _form_MainController;
         private readonly IThreadSystem _threadSystem;
         private readonly IScriptRunner _scriptRunner;
 
         private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(IJsonManager jsonManager, ILogManager logManager, IData data, IForm_MainController form_MainController, IThreadSystem threadSystem, IScriptRunner scriptRunner)
+        public Form_Main(ILogManager logManager, IGameRepository gameRepository, IForm_MainController form_MainController, IThreadSystem threadSystem, IScriptRunner scriptRunner)
         {
-            _jsonManager = jsonManager;
             _logManager = logManager;
-            _data = data;
+            _gameRepository = gameRepository;
             _form_MainController = form_MainController;
             _threadSystem = threadSystem;
             _scriptRunner = scriptRunner;
+
             Init();
         }
 
@@ -96,8 +96,6 @@ namespace ScriptExecutor.UI
 
         private void Init()
         {
-            _data.ListOfGame = _jsonManager.ReadJson().Result.ToList();
-
             InitializeComponent();
 
             FormClosing += Form1_FormClosing; //add event when click on the cross of the form
@@ -114,16 +112,17 @@ namespace ScriptExecutor.UI
 
             myThread.Start();
 
-            _logManager.AddLog(DateTime.Now.ToString() + " > the program has been started");
+            _logManager.WriteLogAsync(DateTime.Now.ToString() + " > the program has been started");
         }
 
         private void PopulateGridView()
         {
-            if (_data.ListOfGame.Count > 0)
+            var games = _gameRepository.GetGames();
+            if (games.Count > 0)
             {
                 dgvProgram.Rows.Clear();
 
-                foreach (Game game in _data.ListOfGame)
+                foreach (Game game in games)
                 {
                     //if the game added has been setup properly, use a green check, if not use a red cross
                     Bitmap picture;
@@ -170,7 +169,7 @@ namespace ScriptExecutor.UI
         private void OnModifyClick(int index)
         {
             //get the game to edit
-            Game game = _data.ListOfGame[index];
+            Game game = _gameRepository.GetGames()[index];
             form_AddGame = new Form_AddGame(game, _scriptRunner);
 
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
@@ -205,7 +204,7 @@ namespace ScriptExecutor.UI
         private void OnExit()
         {
             isExist = true;
-            _logManager.AddLog(DateTime.Now.ToString() + "> the program has been shutdown");
+            _logManager.WriteLogAsync(DateTime.Now.ToString() + "> the program has been shutdown");
             Close();
         }
 
@@ -220,14 +219,16 @@ namespace ScriptExecutor.UI
         public void HandleEvent(object sender, EventArgs args)
         {
             string text;
-            if (_data.CurrentGame.Name == null && _data.CurrentGame.ExecutableFile == null && _data.CurrentGame.Script == null)
+            var game = _threadSystem.RunningGame;
+            if (game.Name == null && game.ExecutableFile == null && game.Script == null)
             {
                 text = "";
             }
             else
             {
-                text = "Waiting for " + _data.CurrentGame.ExecutableFile + " to close";
+                text = "Waiting for " + game.ExecutableFile + " to close";
             }
+
             //to change te text in the UI thread by another thread
             lbProgamObserved.Invoke((MethodInvoker)(() => lbProgamObserved.Text = text));
         }

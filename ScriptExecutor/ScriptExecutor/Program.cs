@@ -1,7 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
+using ScriptExecutor.Application.Controllers;
+using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Infrastrucuture;
 using ScriptExecutor.UI;
 using System;
 using System.Windows.Forms;
+using App = System.Windows.Forms.Application;
 
 namespace ScriptExecutor
 {
@@ -13,24 +17,22 @@ namespace ScriptExecutor
         [STAThread]
         private static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            App.SetHighDpiMode(HighDpiMode.SystemAware);
+            App.EnableVisualStyles();
+            App.SetCompatibleTextRenderingDefault(false);
 
             var services = new ServiceCollection();
             ConfigureServices(services);
             using ServiceProvider serviceProvider = services.BuildServiceProvider();
             var formMain = serviceProvider.GetRequiredService<Form_Main>();
-            Application.Run(formMain);
+            App.Run(formMain);
         }
 
         private static void ConfigureServices(ServiceCollection services)
         {
-            services.AddSingleton<IData, Data>()
-                    .AddSingleton<IThreadSystem, ThreadSystem>()
-                    .AddScoped<IScriptRunner, ScriptRunner>()
-                    .AddScoped<ILogManager, LogManager>()
-                    .AddScoped<IJsonManager, JsonManager>()
+            services.AddInfrastructure();
+
+            services
                     .AddScoped<IForm_MainController, Form_MainController>()
                     .AddScoped<IForm_AddGameController, Form_AddGameController>();
 

@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using ScriptExecutor.Application.Controllers;
-using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Application;
 using ScriptExecutor.Infrastrucuture;
 using ScriptExecutor.UI;
 using System;
@@ -31,12 +30,7 @@ namespace ScriptExecutor
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddInfrastructure();
-
-            services
-                    .AddScoped<IForm_MainController, Form_MainController>()
-                    .AddScoped<IForm_AddGameController, Form_AddGameController>();
-
-            services.AddScoped<Form_Main>();
+            services.AddApplication();
         }
     }
 }

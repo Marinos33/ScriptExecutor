@@ -1,4 +1,5 @@
-﻿using ScriptExecutor.Application.Interfaces;
+﻿using ScriptExecutor.Application;
+using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Domain.Model;
 using System;
 using System.Drawing;
@@ -13,17 +14,17 @@ namespace ScriptExecutor.UI
 
         private readonly ILogManager _logManager; //the model from MVC pattern
         private readonly IGameRepository _gameRepository; //the model wihch contains the data
-        private readonly IForm_MainController _form_MainController;
+        private readonly IGameService _gameService;
         private readonly IThreadSystem _threadSystem;
         private readonly IScriptRunner _scriptRunner;
 
         private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(ILogManager logManager, IGameRepository gameRepository, IForm_MainController form_MainController, IThreadSystem threadSystem, IScriptRunner scriptRunner)
+        public Form_Main(ILogManager logManager, IGameRepository gameRepository, IGameService gameService, IThreadSystem threadSystem, IScriptRunner scriptRunner)
         {
             _logManager = logManager;
             _gameRepository = gameRepository;
-            _form_MainController = form_MainController;
+            _gameService = gameService;
             _threadSystem = threadSystem;
             _scriptRunner = scriptRunner;
 
@@ -76,7 +77,7 @@ namespace ScriptExecutor.UI
 
         private void BtnLogs_Click(object sender, EventArgs e)
         {
-            bool isOpened = _form_MainController.OpenLogs();
+            bool isOpened = _logManager.OpenLogs();
 
             if (!isOpened)
             {
@@ -161,7 +162,7 @@ namespace ScriptExecutor.UI
             form_AddGame = new Form_AddGame(_scriptRunner); //reset every input of the form to add game
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {
-                _form_MainController.AddGame(form_AddGame.Game);
+                _gameService.AddGameAsync(form_AddGame.Game);
                 PopulateGridView();
             }
         }
@@ -174,14 +175,14 @@ namespace ScriptExecutor.UI
 
             if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
             {
-                _form_MainController.OnModifyClick(form_AddGame.Game, index);
+                _gameService.EditGameAsync(form_AddGame.Game, index);
                 PopulateGridView(); //recreate grid
             }
         }
 
         private void OnDeleteClick(int index)
         {
-            _form_MainController.OnDeleteClick(index);
+            _gameService.DeleteGameAsync(index);
             dgvProgram.Rows.RemoveAt(index);
         }
 

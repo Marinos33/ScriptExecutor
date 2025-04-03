@@ -4,6 +4,8 @@ namespace ScriptExecutor.Application.Interfaces
 {
     public interface ILogManager
     {
+        bool OpenLogs();
+
         /// <summary>
         /// read the log file
         /// </summary>

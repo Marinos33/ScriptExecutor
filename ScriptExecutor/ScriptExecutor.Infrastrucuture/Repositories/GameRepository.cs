@@ -3,6 +3,7 @@ using ScriptExecutor.Domain.Model;
 using ScriptExecutor.Infrastrucuture.Persistence;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ScriptExecutor.Infrastrucuture.Repositories
 {
@@ -15,30 +16,30 @@ namespace ScriptExecutor.Infrastrucuture.Repositories
             _dataPersistence = dataPersistence;
         }
 
-        public void AddGame(Game game)
+        public async Task AddGameAsync(Game game)
         {
             _dataPersistence
                 .GamesList
                 .Add(game);
 
-            _dataPersistence.SaveDataAsync();
+            await _dataPersistence.SaveDataAsync();
         }
 
-        public void RemoveGame(int index)
+        public async Task RemoveGameAsync(int index)
         {
             _dataPersistence
                 .GamesList
                 .RemoveAt(index);
 
-            _dataPersistence.SaveDataAsync();
+            await _dataPersistence.SaveDataAsync();
         }
 
-        public void EditGame(Game game, int index)
+        public async Task EditGameAsync(Game game, int index)
         {
             _dataPersistence
                 .GamesList[index] = game;
 
-            _dataPersistence.SaveDataAsync();
+            await _dataPersistence.SaveDataAsync();
         }
 
         public List<Game> GetGames()

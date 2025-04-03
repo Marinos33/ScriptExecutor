@@ -9,13 +9,16 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
     public interface IDataPersistence
     {
         List<Game> GamesList { get; set; }
+
         Task<List<Game>> LoadDataAsync();
+
         Task SaveDataAsync();
     }
 
     public class DataPersistence : IDataPersistence
     {
         private List<Game> _gamesList;
+
         public List<Game> GamesList
         {
             get => OrderByName(_gamesList).ToList();

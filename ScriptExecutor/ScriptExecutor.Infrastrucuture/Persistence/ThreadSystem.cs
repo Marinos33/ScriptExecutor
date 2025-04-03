@@ -88,7 +88,7 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
 
         private async Task RunScript()
         {
-            bool isScriptExecuted = await _scriptRunner.RunScript(RunningGame.Script).ConfigureAwait(false); //run a script
+            bool isScriptExecuted = await _scriptRunner.RunScriptAsync(RunningGame.Script).ConfigureAwait(false); //run a script
             if (isScriptExecuted)
             {
                 await _logManager.WriteLogAsync(DateTime.Now.ToString() + "> script for " + RunningGame.ExecutableFile + " has been launched");

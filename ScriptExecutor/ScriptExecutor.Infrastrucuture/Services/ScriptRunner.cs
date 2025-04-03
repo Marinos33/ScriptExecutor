@@ -8,7 +8,7 @@ namespace ScriptExecutor.Infrastrucuture.Services
 {
     public class ScriptRunner : IScriptRunner
     {
-        public async Task<bool> RunScript(string script)
+        public async Task<bool> RunScriptAsync(string script)
         {
             if (script != "")
             {

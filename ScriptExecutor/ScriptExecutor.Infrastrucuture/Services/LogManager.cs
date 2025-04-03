@@ -52,6 +52,7 @@ namespace ScriptExecutor.Infrastrucuture.Services
 
                 return p.Start();
             }
+
             return false;
         }
     }

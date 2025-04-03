@@ -13,17 +13,15 @@ namespace ScriptExecutor.UI
         private Form_AddGame form_AddGame; //the form to add a game
 
         private readonly ILogManager _logManager; //the model from MVC pattern
-        private readonly IGameRepository _gameRepository; //the model wihch contains the data
         private readonly IGameService _gameService;
         private readonly IThreadSystem _threadSystem;
         private readonly IScriptRunner _scriptRunner;
 
         private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(ILogManager logManager, IGameRepository gameRepository, IGameService gameService, IThreadSystem threadSystem, IScriptRunner scriptRunner)
+        public Form_Main(ILogManager logManager, IGameService gameService, IThreadSystem threadSystem, IScriptRunner scriptRunner)
         {
             _logManager = logManager;
-            _gameRepository = gameRepository;
             _gameService = gameService;
             _threadSystem = threadSystem;
             _scriptRunner = scriptRunner;
@@ -81,7 +79,7 @@ namespace ScriptExecutor.UI
 
             if (!isOpened)
             {
-                MessageBox.Show("No logs yet");
+                MessageBox.Show("No logs file yet");
             }
         }
 
@@ -97,93 +95,128 @@ namespace ScriptExecutor.UI
 
         private void Init()
         {
-            InitializeComponent();
-
-            FormClosing += Form1_FormClosing; //add event when click on the cross of the form
-
-            notifyIcon.Icon = Resource.logo;
-
-            PopulateGridView();
-
-            //launch the thread, in background, responsible to find the game to backup
-            Thread myThread = new(() => _threadSystem.SearchProcess(HandleEvent))
+            try
             {
-                IsBackground = true
-            };
+                InitializeComponent();
 
-            myThread.Start();
+                FormClosing += Form1_FormClosing; //add event when click on the cross of the form
 
-            _logManager.WriteLogAsync(DateTime.Now.ToString() + " > the program has been started");
+                notifyIcon.Icon = Resource.logo;
+
+                PopulateGridView();
+
+                //launch the thread, in background, responsible to find the game to backup
+                Thread myThread = new(() => _threadSystem.SearchProcess(HandleEvent))
+                {
+                    IsBackground = true
+                };
+
+                myThread.Start();
+
+                _logManager.WriteLogAsync(DateTime.Now.ToString() + " > the program has been started");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void PopulateGridView()
         {
-            var games = _gameRepository.GetGames();
-            if (games.Count > 0)
+            try
             {
-                dgvProgram.Rows.Clear();
-
-                foreach (Game game in games)
+                var games = _gameService.GetGames();
+                if (games.Count > 0)
                 {
-                    //if the game added has been setup properly, use a green check, if not use a red cross
-                    Bitmap picture;
-                    if (!game.ExecutableFile.Equals("") && !game.Script.Equals(""))
+                    dgvProgram.Rows.Clear();
+
+                    foreach (Game game in games)
                     {
-                        picture = new Bitmap(Resource.check);
+                        //if the game added has been setup properly, use a green check, if not use a red cross
+                        Bitmap picture;
+                        if (!game.ExecutableFile.Equals("") && !game.Script.Equals(""))
+                        {
+                            picture = new Bitmap(Resource.check);
+                        }
+                        else
+                        {
+                            picture = new Bitmap(Resource.error);
+                        }
+
+                        Button button = new()
+                        {
+                            Text = "Edit",
+                            AutoSize = true,
+                            BackColor = Color.Gray,
+                            ForeColor = Color.White
+                        };
+
+                        Button button2 = new()
+                        {
+                            Text = "Delete",
+                            AutoSize = true,
+                            BackColor = Color.Gray,
+                            ForeColor = Color.White
+                        };
+
+                        dgvProgram.Rows.Add(new object[] { game.Name, picture, button, button2 });
                     }
-                    else
-                    {
-                        picture = new Bitmap(Resource.error);
-                    }
-
-                    Button button = new()
-                    {
-                        Text = "Edit",
-                        AutoSize = true,
-                        BackColor = Color.Gray,
-                        ForeColor = Color.White
-                    };
-
-                    Button button2 = new()
-                    {
-                        Text = "Delete",
-                        AutoSize = true,
-                        BackColor = Color.Gray,
-                        ForeColor = Color.White
-                    };
-
-                    dgvProgram.Rows.Add(new object[] { game.Name, picture, button, button2 });
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void AddGame()
         {
-            form_AddGame = new Form_AddGame(_scriptRunner); //reset every input of the form to add game
-            if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
+            try
             {
-                _gameService.AddGameAsync(form_AddGame.Game);
-                PopulateGridView();
+                form_AddGame = new Form_AddGame(_scriptRunner); //reset every input of the form to add game
+                if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
+                {
+                    _gameService.AddGameAsync(form_AddGame.Game);
+                    PopulateGridView();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void OnModifyClick(int index)
         {
-            //get the game to edit
-            Game game = _gameRepository.GetGames()[index];
-            form_AddGame = new Form_AddGame(game, _scriptRunner);
-
-            if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
+            try
             {
-                _gameService.EditGameAsync(form_AddGame.Game, index);
-                PopulateGridView(); //recreate grid
+                //get the game to edit
+                Game game = _gameService.GetGames()[index];
+                form_AddGame = new Form_AddGame(game, _scriptRunner);
+
+                if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
+                {
+                    _gameService.EditGameAsync(form_AddGame.Game, index);
+                    PopulateGridView(); //recreate grid
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void OnDeleteClick(int index)
         {
-            _gameService.DeleteGameAsync(index);
-            dgvProgram.Rows.RemoveAt(index);
+            try
+            {
+                _gameService.DeleteGameAsync(index);
+                dgvProgram.Rows.RemoveAt(index);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void OnCellContentClick(int colIndex, int rowIndex)
@@ -204,9 +237,16 @@ namespace ScriptExecutor.UI
         // the true exit
         private void OnExit()
         {
-            isExist = true;
-            _logManager.WriteLogAsync(DateTime.Now.ToString() + "> the program has been shutdown");
-            Close();
+            try
+            {
+                isExist = true;
+                _logManager.WriteLogAsync(DateTime.Now.ToString() + "> the program has been shutdown");
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void OnToolStripClick()
@@ -219,19 +259,26 @@ namespace ScriptExecutor.UI
 
         public void HandleEvent(object sender, EventArgs args)
         {
-            string text;
-            var game = _threadSystem.RunningGame;
-            if (game.Name == null && game.ExecutableFile == null && game.Script == null)
+            try
             {
-                text = "";
-            }
-            else
-            {
-                text = "Waiting for " + game.ExecutableFile + " to close";
-            }
+                string text;
+                var game = _threadSystem.RunningGame;
+                if (game.Name == null && game.ExecutableFile == null && game.Script == null)
+                {
+                    text = "";
+                }
+                else
+                {
+                    text = "Waiting for " + game.ExecutableFile + " to close";
+                }
 
-            //to change te text in the UI thread by another thread
-            lbProgamObserved.Invoke((MethodInvoker)(() => lbProgamObserved.Text = text));
+                //to change te text in the UI thread by another thread
+                lbProgamObserved.Invoke((MethodInvoker)(() => lbProgamObserved.Text = text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

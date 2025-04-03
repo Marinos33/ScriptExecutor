@@ -1,6 +1,7 @@
 ﻿using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Domain.Model;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ScriptExecutor.Application
@@ -25,6 +26,8 @@ namespace ScriptExecutor.Application
         /// </summary>
         /// <param name="index">the index of the game in the list</param>
         Task DeleteGameAsync(int index);
+
+        List<Game> GetGames();
     }
 
     public class GameService : IGameService
@@ -58,6 +61,11 @@ namespace ScriptExecutor.Application
             await _gameRepository.RemoveGameAsync(index);
 
             await _logManager.WriteLogAsync(DateTime.Now.ToString() + "> the game : " + oldGame + " has been deleted");
+        }
+
+        public List<Game> GetGames()
+        {
+            return _gameRepository.GetGames();
         }
     }
 }

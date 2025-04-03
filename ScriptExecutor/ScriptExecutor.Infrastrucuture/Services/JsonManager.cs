@@ -24,28 +24,25 @@ namespace ScriptExecutor.Infrastrucuture.Services
     public class JsonManager : IJsonManager
     {
         /// <summary>
-        /// the path to the CSV which contains all the game (use to do the save system)
+        /// the path to the file data (json) which contains all the games (use to do the save system)
         /// </summary>
-        private const string CSV_PATH = "Data.json";
-
-        public JsonManager()
-        {
-        }
+        private const string DATAFILE_PATH = "Data.json";
 
         public async Task<IEnumerable<Game>> ReadJsonAsync()
         {
-            if (File.Exists(CSV_PATH))
+            if (File.Exists(DATAFILE_PATH))
             {
-                string json = await File.ReadAllTextAsync(CSV_PATH).ConfigureAwait(false);
+                string json = await File.ReadAllTextAsync(DATAFILE_PATH).ConfigureAwait(false);
                 return JsonConvert.DeserializeObject<IEnumerable<Game>>(json); //pass all record to the list
             }
+
             return Enumerable.Empty<Game>();
         }
 
         public async Task WriteJsonAsync(IEnumerable<Game> games)
         {
             string json = JsonConvert.SerializeObject(games);
-            await File.WriteAllTextAsync(CSV_PATH, json).ConfigureAwait(false);
+            await File.WriteAllTextAsync(DATAFILE_PATH, json).ConfigureAwait(false);
         }
     }
 }

@@ -17,20 +17,14 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
 
     public class DataPersistence : IDataPersistence
     {
-        private List<Game> _gamesList;
-
-        public List<Game> GamesList
-        {
-            get => OrderByName(_gamesList).ToList();
-            set => _gamesList = value;
-        }
+        public List<Game> GamesList { get; set; } = new List<Game>();
 
         private readonly IJsonManager _jsonManager;
 
         public DataPersistence(IJsonManager jsonManager)
         {
             _jsonManager = jsonManager;
-            _gamesList = LoadDataAsync().Result;
+            GamesList = LoadDataAsync().Result;
         }
 
         public async Task<List<Game>> LoadDataAsync()
@@ -43,11 +37,6 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
         public async Task SaveDataAsync()
         {
             await _jsonManager.WriteJsonAsync(GamesList);
-        }
-
-        private static IEnumerable<Game> OrderByName(IEnumerable<Game> list)
-        {
-            return list.OrderBy(game => game.Name);
         }
     }
 }

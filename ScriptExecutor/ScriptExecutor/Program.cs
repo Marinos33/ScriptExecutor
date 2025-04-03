@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using ScriptExecutor.Application;
+using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Infrastrucuture;
 using ScriptExecutor.UI;
 using System;
@@ -23,7 +24,18 @@ namespace ScriptExecutor
             var services = new ServiceCollection();
             ConfigureServices(services);
             using ServiceProvider serviceProvider = services.BuildServiceProvider();
-            var formMain = serviceProvider.GetRequiredService<Form_Main>();
+
+            var logManager = serviceProvider.GetRequiredService<ILogManager>();
+            var gameService = serviceProvider.GetRequiredService<IGameService>();
+            var threadSystem = serviceProvider.GetRequiredService<IThreadSystem>();
+            var scriptRunner = serviceProvider.GetRequiredService<IScriptRunner>();
+
+            var formMain = new Form_Main(
+                logManager,
+                gameService,
+                threadSystem,
+                scriptRunner
+                );
             App.Run(formMain);
         }
 

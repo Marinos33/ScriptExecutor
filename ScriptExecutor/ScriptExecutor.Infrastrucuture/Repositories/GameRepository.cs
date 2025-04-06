@@ -52,14 +52,6 @@ namespace ScriptExecutor.Infrastrucuture.Repositories
 
         public async Task EditGameAsync(Game game, int index)
         {
-            var gameToEdit = _dataPersistence.GamesList[index];
-
-            //if game is the same as the one in the list, do nothing
-            if (CheckIfGamesAreEquals(game, gameToEdit))
-            {
-                return;
-            }
-
             _dataPersistence
                 .GamesList[index] = game;
 

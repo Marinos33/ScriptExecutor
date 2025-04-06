@@ -22,20 +22,26 @@ namespace ScriptExecutor
             App.SetCompatibleTextRenderingDefault(false);
 
             var services = new ServiceCollection();
+
             ConfigureServices(services);
+
             using ServiceProvider serviceProvider = services.BuildServiceProvider();
 
             var logManager = serviceProvider.GetRequiredService<ILogManager>();
             var gameService = serviceProvider.GetRequiredService<IGameService>();
-            var threadSystem = serviceProvider.GetRequiredService<IThreadSystem>();
             var scriptRunner = serviceProvider.GetRequiredService<IScriptRunner>();
+
+            var quartzService = serviceProvider.GetRequiredService<IQuartzService>();
+            quartzService.StartAsync().GetAwaiter().GetResult();
 
             var formMain = new Form_Main(
                 logManager,
                 gameService,
-                threadSystem,
                 scriptRunner
                 );
+
+            App.ApplicationExit += (s, e) => quartzService.StopAsync().GetAwaiter().GetResult();
+
             App.Run(formMain);
         }
 

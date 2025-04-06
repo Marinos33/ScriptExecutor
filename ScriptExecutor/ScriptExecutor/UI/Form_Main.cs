@@ -3,27 +3,24 @@ using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Domain.Model;
 using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace ScriptExecutor.UI
 {
-    public partial class Form_Main : Form, IObserver
+    public partial class Form_Main : Form
     {
         private Form_AddGame form_AddGame; //the form to add a game
 
         private readonly ILogManager _logManager; //the model from MVC pattern
         private readonly IGameService _gameService;
-        private readonly IThreadSystem _threadSystem;
         private readonly IScriptRunner _scriptRunner;
 
         private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(ILogManager logManager, IGameService gameService, IThreadSystem threadSystem, IScriptRunner scriptRunner)
+        public Form_Main(ILogManager logManager, IGameService gameService, IScriptRunner scriptRunner)
         {
             _logManager = logManager;
             _gameService = gameService;
-            _threadSystem = threadSystem;
             _scriptRunner = scriptRunner;
 
             Init();
@@ -104,14 +101,6 @@ namespace ScriptExecutor.UI
                 notifyIcon.Icon = Resource.logo;
 
                 PopulateGridView();
-
-                //launch the thread, in background, responsible to find the game to backup
-                Thread myThread = new(() => _threadSystem.SearchProcess(HandleEvent))
-                {
-                    IsBackground = true
-                };
-
-                myThread.Start();
 
                 _logManager.WriteLogAsync(DateTime.Now.ToString() + " > the program has been started");
             }
@@ -253,32 +242,6 @@ namespace ScriptExecutor.UI
         {
             Show();
             WindowState = FormWindowState.Normal;
-        }
-
-        /*event fired when the current game change*/
-
-        public void HandleEvent(object sender, EventArgs args)
-        {
-            try
-            {
-                string text;
-                var game = _threadSystem.RunningGame;
-                if (game.Name == null && game.ExecutableFile == null && game.Script == null)
-                {
-                    text = "";
-                }
-                else
-                {
-                    text = "Waiting for " + game.ExecutableFile + " to close";
-                }
-
-                //to change te text in the UI thread by another thread
-                lbProgamObserved.Invoke((MethodInvoker)(() => lbProgamObserved.Text = text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
     }
 }

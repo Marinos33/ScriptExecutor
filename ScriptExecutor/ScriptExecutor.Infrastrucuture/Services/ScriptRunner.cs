@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ScriptExecutor.Infrastrucuture.Services
@@ -10,33 +11,99 @@ namespace ScriptExecutor.Infrastrucuture.Services
     {
         public async Task<bool> RunScriptAsync(string script)
         {
-            if (script != "")
+            if (string.IsNullOrEmpty(script))
             {
-                /*
-                 * generate a file with the script => run the script => delete the file with the script
-                 * **/
+                return false;
+            }
 
-                var fileName = Guid.NewGuid().ToString() + ".bat"; //generate random name for the file
-                var batchPath = Path.Combine(Environment.GetEnvironmentVariable("temp"), fileName); //set the path of the file to write in the appdata/temp
+            try
+            {
+                // Generate a file with the script
+                var fileName = Guid.NewGuid().ToString() + ".bat"; // Generate random name for the file
+                var batchPath = Path.Combine(Path.GetTempPath(), fileName); // Use Path.GetTempPath() for better compatibility
 
-                var batchCode = script; //the script
-                await File.WriteAllTextAsync(batchPath, batchCode).ConfigureAwait(false); //create the file in appdata/temp with the script as content
+                // Write the script to a temp file
+                await File.WriteAllTextAsync(batchPath, script).ConfigureAwait(false);
 
-                Process process = new();
+                // Create process with output capture
+                var process = new Process();
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.FileName = batchPath;
                 process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
 
-                //run the script
+                StringBuilder output = new();
+                StringBuilder error = new();
+
+                // Set up output and error handlers
+                process.OutputDataReceived += (sender, e) =>
+                {
+                    if (e.Data != null)
+                    {
+                        output.AppendLine(e.Data);
+                    }
+                };
+
+                process.ErrorDataReceived += (sender, e) =>
+                {
+                    if (e.Data != null)
+                    {
+                        error.AppendLine(e.Data);
+                    }
+                };
+
+                // Start the process
                 if (process.Start())
                 {
+                    // Begin reading outputs
+                    process.BeginOutputReadLine();
+                    process.BeginErrorReadLine();
+
+                    // Wait for process to exit
                     process.WaitForExit();
-                    File.Delete(batchPath); //delete the script
-                    return true;
+
+                    // Get exit code (0 typically means success)
+                    int exitCode = process.ExitCode;
+
+                    // Log the results - you could inject ILogManager here as well
+                    Debug.WriteLine($"Script {fileName} completed with exit code: {exitCode}");
+
+                    if (output.Length > 0)
+                    {
+                        Debug.WriteLine($"Output: {output}");
+                    }
+
+                    if (error.Length > 0)
+                    {
+                        Debug.WriteLine($"Errors: {error}");
+                    }
+
+                    // Delete the script file
+                    File.Delete(batchPath);
+
+                    // Return true if exit code is 0 (success)
+                    return exitCode == 0;
+                }
+                else
+                {
+                    Debug.WriteLine("Failed to start the script process");
+
+                    // Clean up the file
+                    if (File.Exists(batchPath))
+                    {
+                        File.Delete(batchPath);
+                    }
+
+                    return false;
                 }
             }
-
-            return false;
+            catch (Exception ex)
+            {
+                // Log any exceptions
+                Debug.WriteLine($"Error executing script: {ex.Message}");
+                return false;
+            }
         }
     }
 }

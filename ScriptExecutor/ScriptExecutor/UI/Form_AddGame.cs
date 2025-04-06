@@ -5,19 +5,19 @@ using System.Windows.Forms;
 
 namespace ScriptExecutor.UI
 {
-    public partial class Form_AddGame : Form
+    public partial class Form_AddProcess : Form
     {
         /// <summary>
-        /// the game to add or edit
+        /// the process to add or edit
         /// </summary>
-        public Game Game { get; set; }
+        public Process Process { get; set; }
 
         private readonly IScriptRunner _scriptRunner;
 
         /// <summary>
-        /// when click on AddGame on the main form
+        /// when click on AddProcess on the main form
         /// </summary>
-        public Form_AddGame(IScriptRunner scriptRunner)
+        public Form_AddProcess(IScriptRunner scriptRunner)
         {
             InitializeComponent();
             _scriptRunner = scriptRunner;
@@ -26,20 +26,20 @@ namespace ScriptExecutor.UI
         /// <summary>
         /// when click on modify on the main form
         /// </summary>
-        /// <param name="oldGame">the data of the game to edit if click on edit button in the grid of main form</param>
-        public Form_AddGame(Game oldGame, IScriptRunner scriptRunner)
+        /// <param name="oldProcess">the data of the process to edit if click on edit button in the grid of main form</param>
+        public Form_AddProcess(Process oldProcess, IScriptRunner scriptRunner)
         {
             InitializeComponent();
-            Game = oldGame;
+            Process = oldProcess;
 
             //set the text field to match the one which is currently modifying
-            tbName.Text = Game.Name;
-            tbExeFile.Text = Game.ExecutableFile;
-            tbScript.Text = Game.Script;
-            cbAfterShutdown.Checked = Game.RunAfterShutdown;
-            cbOnLaunch.Checked = Game.RunOnStart;
+            tbName.Text = Process.Name;
+            tbExeFile.Text = Process.ExecutableFile;
+            tbScript.Text = Process.Script;
+            cbAfterShutdown.Checked = Process.RunAfterShutdown;
+            cbOnLaunch.Checked = Process.RunOnStart;
 
-            openFileExe.FileName = Game.ExecutableFile;
+            openFileExe.FileName = Process.ExecutableFile;
 
             _scriptRunner = scriptRunner;
         }
@@ -64,10 +64,10 @@ namespace ScriptExecutor.UI
         {
             try
             {
-                //create the game
-                if (Game == null)
+                //create the process
+                if (Process == null)
                 {
-                    Game = new Game
+                    Process = new Process
                     {
                         Name = tbName.Text,
                         ExecutableFile = tbExeFile.Text,
@@ -76,16 +76,16 @@ namespace ScriptExecutor.UI
                         RunOnStart = cbOnLaunch.Checked
                     };
                 }
-                //edit the game
+                //edit the process
                 else
                 {
-                    Game.Name = tbName.Text;
-                    Game.ExecutableFile = tbExeFile.Text;
-                    Game.Script = tbScript.Text;
-                    Game.RunAfterShutdown = cbAfterShutdown.Checked;
-                    Game.RunOnStart = cbOnLaunch.Checked;
+                    Process.Name = tbName.Text;
+                    Process.ExecutableFile = tbExeFile.Text;
+                    Process.Script = tbScript.Text;
+                    Process.RunAfterShutdown = cbAfterShutdown.Checked;
+                    Process.RunOnStart = cbOnLaunch.Checked;
                 }
-                DialogResult = DialogResult.OK; //tell the software that a game will be added
+                DialogResult = DialogResult.OK; //tell the software that a process will be added
                 Close();
             }
             catch (Exception ex)

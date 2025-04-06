@@ -80,7 +80,7 @@ namespace ScriptExecutor.UI
             this.btnAddProgram.TabIndex = 1;
             this.btnAddProgram.Text = "Add Program";
             this.btnAddProgram.UseVisualStyleBackColor = false;
-            this.btnAddProgram.Click += new System.EventHandler(this.BtAddGame_Click);
+            this.btnAddProgram.Click += new System.EventHandler(this.BtAddProcess_Click);
             // 
             // btnExit
             // 
@@ -125,7 +125,7 @@ namespace ScriptExecutor.UI
             this.addProgramToolStripMenuItem.Name = "addProgramToolStripMenuItem";
             this.addProgramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addProgramToolStripMenuItem.Text = "add program";
-            this.addProgramToolStripMenuItem.Click += new System.EventHandler(this.AddGameToolStripMenuItem_Click);
+            this.addProgramToolStripMenuItem.Click += new System.EventHandler(this.AddProcessToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -195,7 +195,7 @@ namespace ScriptExecutor.UI
             this.dgvProgram.ShowCellToolTips = false;
             this.dgvProgram.Size = new System.Drawing.Size(518, 549);
             this.dgvProgram.TabIndex = 5;
-            this.dgvProgram.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvGame_CellContentClick);
+            this.dgvProgram.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProcess_CellContentClick);
             // 
             // programColName
             // 

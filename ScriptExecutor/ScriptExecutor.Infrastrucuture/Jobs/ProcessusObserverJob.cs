@@ -1,31 +1,31 @@
 ﻿using Quartz;
 using ScriptExecutor.Application.Interfaces;
-using ScriptExecutor.Domain.Model;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using Process = System.Diagnostics.Process;
+using ProcessEntity = ScriptExecutor.Domain.Model.Process;
 
 namespace ScriptExecutor.Infrastrucuture.Jobs
 {
     [DisallowConcurrentExecution]
     internal class ProcessusObserverJob : IJob
     {
-        private readonly IGameRepository _gameRepository;
+        private readonly IProcessRepository _processRepository;
         private readonly IScriptRunner _scriptRunner;
         private readonly ILogManager _logManager;
 
-        private static readonly Dictionary<int, Game> _runningGames = new();
-        private static readonly HashSet<int> _processedGameInstances = new();
+        private static readonly Dictionary<int, ProcessEntity> _runningProcesses = new();
+        private static readonly HashSet<int> _processedProcessInstances = new();
         private static readonly Dictionary<int, Process> _watchedProcesses = new();
 
         // Lock object for thread safety when updating static collections
         private static readonly object _lockObject = new();
 
-        public ProcessusObserverJob(IGameRepository gameRepository, IScriptRunner scriptRunner, ILogManager logManager)
+        public ProcessusObserverJob(IProcessRepository processRepository, IScriptRunner scriptRunner, ILogManager logManager)
         {
-            _gameRepository = gameRepository;
+            _processRepository = processRepository;
             _scriptRunner = scriptRunner;
             _logManager = logManager;
         }
@@ -34,17 +34,17 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
         {
             try
             {
-                var gamesList = _gameRepository.GetGames();
+                var processesList = _processRepository.GetProcesses();
 
-                if (gamesList.Count <= 0)
+                if (processesList.Count <= 0)
                 {
                     return;
                 }
 
-                // Check for all running games
-                foreach (var game in gamesList)
+                // Check for all running processes
+                foreach (var item in processesList)
                 {
-                    var processName = Path.GetFileNameWithoutExtension(game.ExecutableFile);
+                    var processName = Path.GetFileNameWithoutExtension(item.ExecutableFile);
                     Process[] processes = null;
 
                     try
@@ -52,10 +52,10 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                         processes = Process.GetProcessesByName(processName);
                         if (processes.Length > 0)
                         {
-                            // Process each running instance of the game
+                            // Process each running instance of the process
                             foreach (var process in processes)
                             {
-                                await HandleGameProcess(game, process).ConfigureAwait(false);
+                                await HandleProcessProcess(item, process).ConfigureAwait(false);
                             }
                         }
                     }
@@ -75,7 +75,7 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                     }
                 }
 
-                // Check for games that no longer exist and clean up
+                // Check for processes that no longer exist and clean up
                 CleanupNonExistentProcesses();
             }
             catch (Exception ex)
@@ -84,9 +84,9 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
             }
         }
 
-        private async Task HandleGameProcess(Game game, Process process)
+        private async Task HandleProcessProcess(ProcessEntity entity, Process process)
         {
-            Process gameProcess = null;
+            Process processProcess = null;
             try
             {
                 int processId = process.Id;
@@ -94,52 +94,52 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                 lock (_lockObject)
                 {
                     // If we're already tracking this process, nothing more to do
-                    if (_runningGames.ContainsKey(processId))
+                    if (_runningProcesses.ContainsKey(processId))
                     {
                         return;
                     }
 
-                    _runningGames[processId] = game.DeepCopy();
+                    _runningProcesses[processId] = entity.DeepCopy();
                 }
 
-                await _logManager.WriteLogAsync($"{DateTime.Now}> Detected running game: {game.Name} (PID: {processId})");
+                await _logManager.WriteLogAsync($"{DateTime.Now}> Detected running process: {entity.Name} (PID: {processId})");
 
                 // Get a fresh process handle to use for monitoring
-                gameProcess = Process.GetProcessById(processId);
+                processProcess = Process.GetProcessById(processId);
 
                 lock (_lockObject)
                 {
                     // Set up process monitoring if not already watching
                     if (!_watchedProcesses.ContainsKey(processId))
                     {
-                        gameProcess.EnableRaisingEvents = true;
+                        processProcess.EnableRaisingEvents = true;
 
-                        gameProcess.Exited += async (sender, args) =>
+                        processProcess.Exited += async (sender, args) =>
                         {
-                            Game exitedGame = null;
+                            ProcessEntity exitedProcess = null;
 
                             lock (_lockObject)
                             {
-                                _processedGameInstances.Remove(processId);
+                                _processedProcessInstances.Remove(processId);
 
-                                if (_runningGames.TryGetValue(processId, out exitedGame))
+                                if (_runningProcesses.TryGetValue(processId, out exitedProcess))
                                 {
-                                    _runningGames.Remove(processId);
+                                    _runningProcesses.Remove(processId);
                                 }
 
                                 _watchedProcesses.Remove(processId);
                             }
 
-                            if (exitedGame?.RunAfterShutdown == true)
+                            if (exitedProcess?.RunAfterShutdown == true)
                             {
-                                await RunScriptAsync(exitedGame).ConfigureAwait(false);
-                                await _logManager.WriteLogAsync($"{DateTime.Now}> RunAfterShutdown script executed for {exitedGame.Name} (PID: {processId})");
+                                await RunScriptAsync(exitedProcess).ConfigureAwait(false);
+                                await _logManager.WriteLogAsync($"{DateTime.Now}> RunAfterShutdown script executed for {exitedProcess.Name} (PID: {processId})");
                             }
 
                             await _logManager.WriteLogAsync($"{DateTime.Now}> Process exited: {processId}");
                         };
 
-                        _watchedProcesses[processId] = gameProcess;
+                        _watchedProcesses[processId] = processProcess;
                     }
                 }
 
@@ -149,25 +149,25 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                 // Handle RunOnStart script execution
                 lock (_lockObject)
                 {
-                    if (game.RunOnStart && !_processedGameInstances.Contains(processId))
+                    if (entity.RunOnStart && !_processedProcessInstances.Contains(processId))
                     {
                         Task.Run(async () =>
                         {
-                            await RunScriptAsync(game).ConfigureAwait(false);
+                            await RunScriptAsync(entity).ConfigureAwait(false);
 
                             lock (_lockObject)
                             {
-                                _processedGameInstances.Add(processId);
+                                _processedProcessInstances.Add(processId);
                             }
 
-                            await _logManager.WriteLogAsync($"{DateTime.Now}> RunOnStart script executed for {game.Name} (PID: {processId})");
+                            await _logManager.WriteLogAsync($"{DateTime.Now}> RunOnStart script executed for {entity.Name} (PID: {processId})");
                         });
                     }
                 }
             }
             catch (Exception ex)
             {
-                await _logManager.WriteLogAsync($"{DateTime.Now}> Error handling game process: {ex.Message}");
+                await _logManager.WriteLogAsync($"{DateTime.Now}> Error handling process process: {ex.Message}");
             }
         }
 
@@ -177,7 +177,7 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
 
             lock (_lockObject)
             {
-                foreach (var pid in _runningGames.Keys)
+                foreach (var pid in _runningProcesses.Keys)
                 {
                     try
                     {
@@ -194,8 +194,8 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                 // Remove dead processes from tracking collections
                 foreach (var pid in processesToRemove)
                 {
-                    _runningGames.Remove(pid);
-                    _processedGameInstances.Remove(pid);
+                    _runningProcesses.Remove(pid);
+                    _processedProcessInstances.Remove(pid);
 
                     if (_watchedProcesses.TryGetValue(pid, out var process))
                     {
@@ -206,19 +206,19 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
             }
         }
 
-        private async Task RunScriptAsync(Game game)
+        private async Task RunScriptAsync(ProcessEntity process)
         {
             try
             {
-                bool isScriptExecuted = await _scriptRunner.RunScriptAsync(game.Script).ConfigureAwait(false);
+                bool isScriptExecuted = await _scriptRunner.RunScriptAsync(process.Script).ConfigureAwait(false);
 
                 if (isScriptExecuted)
                 {
-                    await _logManager.WriteLogAsync($"{DateTime.Now}> Script for {game.ExecutableFile} has been launched");
+                    await _logManager.WriteLogAsync($"{DateTime.Now}> Script for {process.ExecutableFile} has been launched");
                 }
                 else
                 {
-                    await _logManager.WriteLogAsync($"{DateTime.Now}> Unable to run the script for {game.ExecutableFile}");
+                    await _logManager.WriteLogAsync($"{DateTime.Now}> Unable to run the script for {process.ExecutableFile}");
                 }
             }
             catch (Exception ex)

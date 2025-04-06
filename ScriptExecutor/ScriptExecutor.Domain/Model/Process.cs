@@ -1,6 +1,6 @@
 ﻿namespace ScriptExecutor.Domain.Model
 {
-    public class Game
+    public class Process
     {
         public string Name { get; set; }
         public string ExecutableFile { get; set; }
@@ -8,7 +8,7 @@
         public bool RunOnStart { get; set; }
         public bool RunAfterShutdown { get; set; } = true;
 
-        public Game DeepCopy()
+        public Process DeepCopy()
         {
             return new()
             {

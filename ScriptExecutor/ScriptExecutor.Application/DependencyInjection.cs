@@ -6,7 +6,7 @@ namespace ScriptExecutor.Application
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IProcessService, ProcessService>();
         }
     }
 }

@@ -9,18 +9,18 @@ namespace ScriptExecutor.UI
 {
     public partial class Form_Main : Form
     {
-        private Form_AddGame form_AddGame; //the form to add a game
+        private Form_AddProcess form_AddProcess; //the form to add a process
 
         private readonly ILogManager _logManager; //the model from MVC pattern
-        private readonly IGameService _gameService;
+        private readonly IProcessService _processService;
         private readonly IScriptRunner _scriptRunner;
 
         private bool isExist; //boolean to know if the app have to go minimize or completely exit, false = minimized/ true = quit
 
-        public Form_Main(ILogManager logManager, IGameService gameService, IScriptRunner scriptRunner)
+        public Form_Main(ILogManager logManager, IProcessService processService, IScriptRunner scriptRunner)
         {
             _logManager = logManager;
-            _gameService = gameService;
+            _processService = processService;
             _scriptRunner = scriptRunner;
 
             Init();
@@ -40,9 +40,9 @@ namespace ScriptExecutor.UI
                     //notifyIcon.Visible = true;
         }
 
-        private void BtAddGame_Click(object sender, EventArgs e)
+        private void BtAddProcess_Click(object sender, EventArgs e)
         {
-            AddGame();
+            AddProcess();
         }
 
         private void BtExit_Click(object sender, EventArgs e)
@@ -55,9 +55,9 @@ namespace ScriptExecutor.UI
             OnToolStripClick();
         }
 
-        private void AddGameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddProcessToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddGame();
+            AddProcess();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace ScriptExecutor.UI
             }
         }
 
-        private void DgvGame_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvProcess_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -114,16 +114,16 @@ namespace ScriptExecutor.UI
         {
             try
             {
-                var games = _gameService.GetGames();
-                if (games.Count > 0)
+                var processs = _processService.GetProcesses();
+                if (processs.Count > 0)
                 {
                     dgvProgram.Rows.Clear();
 
-                    foreach (Game game in games)
+                    foreach (Process process in processs)
                     {
-                        //if the game added has been setup properly, use a green check, if not use a red cross
+                        //if the process added has been setup properly, use a green check, if not use a red cross
                         Bitmap picture;
-                        if (!game.ExecutableFile.Equals("") && !game.Script.Equals(""))
+                        if (!process.ExecutableFile.Equals("") && !process.Script.Equals(""))
                         {
                             picture = new Bitmap(Resource.check);
                         }
@@ -148,7 +148,7 @@ namespace ScriptExecutor.UI
                             ForeColor = Color.White
                         };
 
-                        dgvProgram.Rows.Add(new object[] { game.Name, picture, button, button2 });
+                        dgvProgram.Rows.Add(new object[] { process.Name, picture, button, button2 });
                     }
                 }
             }
@@ -158,14 +158,14 @@ namespace ScriptExecutor.UI
             }
         }
 
-        private void AddGame()
+        private void AddProcess()
         {
             try
             {
-                form_AddGame = new Form_AddGame(_scriptRunner); //reset every input of the form to add game
-                if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
+                form_AddProcess = new Form_AddProcess(_scriptRunner); //reset every input of the form to add process
+                if (form_AddProcess.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add process
                 {
-                    _gameService.AddGameAsync(form_AddGame.Game);
+                    _processService.AddProcessAsync(form_AddProcess.Process);
                     PopulateGridView();
                 }
             }
@@ -179,14 +179,14 @@ namespace ScriptExecutor.UI
         {
             try
             {
-                //get the game to edit
-                Game game = _gameService.GetGames()[index];
-                form_AddGame = new Form_AddGame(game, _scriptRunner);
+                //get the process to edit
+                Process process = _processService.GetProcesses()[index];
+                form_AddProcess = new Form_AddProcess(process, _scriptRunner);
 
-                if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
+                if (form_AddProcess.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add process
                 {
-                    game = null;
-                    _gameService.EditGameAsync(form_AddGame.Game, index);
+                    process = null;
+                    _processService.EditProcessAsync(form_AddProcess.Process, index);
                     PopulateGridView(); //recreate grid
                 }
             }
@@ -200,7 +200,7 @@ namespace ScriptExecutor.UI
         {
             try
             {
-                _gameService.DeleteGameAsync(index);
+                _processService.DeleteProcessAsync(index);
                 dgvProgram.Rows.RemoveAt(index);
             }
             catch (Exception ex)

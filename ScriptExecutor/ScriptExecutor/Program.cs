@@ -28,7 +28,7 @@ namespace ScriptExecutor
             using ServiceProvider serviceProvider = services.BuildServiceProvider();
 
             var logManager = serviceProvider.GetRequiredService<ILogManager>();
-            var gameService = serviceProvider.GetRequiredService<IGameService>();
+            var processService = serviceProvider.GetRequiredService<IProcessService>();
             var scriptRunner = serviceProvider.GetRequiredService<IScriptRunner>();
 
             var quartzService = serviceProvider.GetRequiredService<IQuartzService>();
@@ -36,7 +36,7 @@ namespace ScriptExecutor
 
             var formMain = new Form_Main(
                 logManager,
-                gameService,
+                processService,
                 scriptRunner
                 );
 

@@ -8,35 +8,35 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
 {
     public interface IDataPersistence
     {
-        List<Game> GamesList { get; set; }
+        List<Process> ProcessesList { get; set; }
 
-        Task<List<Game>> LoadDataAsync();
+        Task<List<Process>> LoadDataAsync();
 
         Task SaveDataAsync();
     }
 
     public class DataPersistence : IDataPersistence
     {
-        public List<Game> GamesList { get; set; } = new List<Game>();
+        public List<Process> ProcessesList { get; set; } = new List<Process>();
 
         private readonly IJsonManager _jsonManager;
 
         public DataPersistence(IJsonManager jsonManager)
         {
             _jsonManager = jsonManager;
-            GamesList = LoadDataAsync().Result;
+            ProcessesList = LoadDataAsync().Result;
         }
 
-        public async Task<List<Game>> LoadDataAsync()
+        public async Task<List<Process>> LoadDataAsync()
         {
-            var games = await _jsonManager.ReadJsonAsync();
+            var processes = await _jsonManager.ReadJsonAsync();
 
-            return games.ToList();
+            return processes.ToList();
         }
 
         public async Task SaveDataAsync()
         {
-            await _jsonManager.WriteJsonAsync(GamesList);
+            await _jsonManager.WriteJsonAsync(ProcessesList);
         }
     }
 }

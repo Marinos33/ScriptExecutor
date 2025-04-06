@@ -12,37 +12,37 @@ namespace ScriptExecutor.Infrastrucuture.Services
         /// <summary>
         /// completely rewrite the json
         /// </summary>
-        Task WriteJsonAsync(IEnumerable<Game> games);
+        Task WriteJsonAsync(IEnumerable<Process> processes);
 
         /// <summary>
-        /// read the Json, convert all entry to Game object and retunr a list of items
+        /// read the Json, convert all entry to Process object and retunr a list of items
         /// </summary>
-        /// <returns>the list of Game from the Json</returns>
-        Task<IEnumerable<Game>> ReadJsonAsync();
+        /// <returns>the list of Process from the Json</returns>
+        Task<IEnumerable<Process>> ReadJsonAsync();
     }
 
     public class JsonManager : IJsonManager
     {
         /// <summary>
-        /// the path to the file data (json) which contains all the games (use to do the save system)
+        /// the path to the file data (json) which contains all the processes (use to do the save system)
         /// </summary>
         private const string DATAFILE_PATH = "Data.json";
 
-        public async Task<IEnumerable<Game>> ReadJsonAsync()
+        public async Task<IEnumerable<Process>> ReadJsonAsync()
         {
             if (File.Exists(DATAFILE_PATH))
             {
                 string json = await File.ReadAllTextAsync(DATAFILE_PATH).ConfigureAwait(false);
-                var games = JsonConvert.DeserializeObject<IEnumerable<Game>>(json);
-                return games ?? Enumerable.Empty<Game>();
+                var processes = JsonConvert.DeserializeObject<IEnumerable<Process>>(json);
+                return processes ?? Enumerable.Empty<Process>();
             }
 
-            return Enumerable.Empty<Game>();
+            return Enumerable.Empty<Process>();
         }
 
-        public async Task WriteJsonAsync(IEnumerable<Game> games)
+        public async Task WriteJsonAsync(IEnumerable<Process> processes)
         {
-            string json = JsonConvert.SerializeObject(games);
+            string json = JsonConvert.SerializeObject(processes);
             await File.WriteAllTextAsync(DATAFILE_PATH, json).ConfigureAwait(false);
         }
     }

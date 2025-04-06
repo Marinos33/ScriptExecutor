@@ -20,7 +20,7 @@ namespace ScriptExecutor.Infrastrucuture
 
             services.AddScoped<IJsonManager, JsonManager>();
             services.AddScoped<ILogManager, LogManager>();
-            services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IProcessRepository, ProcessRepository>();
             services.AddScoped<IScriptRunner, ScriptRunner>();
 
             services.AddQuartz(q =>

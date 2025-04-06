@@ -1,7 +1,7 @@
 ﻿
 namespace ScriptExecutor.UI
 {
-    partial class Form_AddGame
+    partial class Form_AddProcess
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ScriptExecutor.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddGame));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddProcess));
             this.lbTitleAddProgram = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lbProgramName = new System.Windows.Forms.Label();
@@ -204,7 +204,7 @@ namespace ScriptExecutor.UI
             this.cbAfterShutdown.Text = "After Shutdown";
             this.cbAfterShutdown.UseVisualStyleBackColor = true;
             // 
-            // Form_AddGame
+            // Form_AddProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -223,7 +223,7 @@ namespace ScriptExecutor.UI
             this.Controls.Add(this.lbTitleAddProgram);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form_AddGame";
+            this.Name = "Form_AddProcess";
             this.Text = "Script Executor";
             ((System.ComponentModel.ISupportInitialize)(this.pbExePathDialog)).EndInit();
             this.gbChoiceRunningWhen.ResumeLayout(false);

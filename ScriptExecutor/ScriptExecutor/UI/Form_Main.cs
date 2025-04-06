@@ -185,6 +185,7 @@ namespace ScriptExecutor.UI
 
                 if (form_AddGame.ShowDialog() == DialogResult.OK) //if everything went fine in the form to add game
                 {
+                    game = null;
                     _gameService.EditGameAsync(form_AddGame.Game, index);
                     PopulateGridView(); //recreate grid
                 }

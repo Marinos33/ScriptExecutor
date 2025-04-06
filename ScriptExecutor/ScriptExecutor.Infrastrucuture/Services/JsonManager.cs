@@ -33,7 +33,8 @@ namespace ScriptExecutor.Infrastrucuture.Services
             if (File.Exists(DATAFILE_PATH))
             {
                 string json = await File.ReadAllTextAsync(DATAFILE_PATH).ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<IEnumerable<Game>>(json); //pass all record to the list
+                var games = JsonConvert.DeserializeObject<IEnumerable<Game>>(json);
+                return games ?? Enumerable.Empty<Game>();
             }
 
             return Enumerable.Empty<Game>();

@@ -2,6 +2,7 @@
 using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Domain.Model;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
         private readonly IScriptRunner _scriptRunner;
         private readonly ILogManager _logManager;
         public Game RunningGame { get; private set; }
+
+        private static readonly HashSet<int> _processedGameInstances = new();
+        private static readonly Dictionary<int, Process> _watchedProcesses = new();
 
         public ProcessusObserverJob(IGameRepository gameRepository, IScriptRunner scriptRunner, ILogManager logManager)
         {
@@ -46,7 +50,6 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                         if (processes.Length > 0)
                         {
                             RunningGame = game.DeepCopy();
-                            RunningGame.Update();
                             await _logManager.WriteLogAsync($"{DateTime.Now}> Detected running game: {game.Name}");
                             break;
                         }
@@ -83,23 +86,52 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                         return;
                     }
 
-                    if (RunningGame.RunOnStart)
+                    // Use the process ID to uniquely identify this instance of the game
+                    int processId = runningApp.Id;
+
+                    // Check if we're already watching this process
+                    if (!_watchedProcesses.ContainsKey(processId))
                     {
-                        await RunScript().ConfigureAwait(false);
+                        // Create a new Process object specifically for watching
+                        Process watchProcess = Process.GetProcessById(processId);
+                        watchProcess.EnableRaisingEvents = true;
+
+                        // Set up event handler for both cases
+                        watchProcess.Exited += async (sender, args) =>
+                        {
+                            _processedGameInstances.Remove(processId);
+
+                            if (RunningGame?.RunAfterShutdown == true)
+                            {
+                                await RunScript().ConfigureAwait(false);
+                                await _logManager.WriteLogAsync($"{DateTime.Now}> RunAfterShutdown script executed for {RunningGame.Name}");
+                            }
+
+                            // Clean up the watched process
+                            _watchedProcesses.Remove(processId);
+
+                            RunningGame = null;
+
+                            await _logManager.WriteLogAsync($"{DateTime.Now}> Process exited: {processId}");
+                        };
+
+                        // Store the process for later cleanup
+                        _watchedProcesses[processId] = watchProcess;
+
+                        await _logManager.WriteLogAsync($"{DateTime.Now}> Started watching process: {processId}");
                     }
 
-                    if (RunningGame.RunAfterShutdown)
+                    if (RunningGame.RunOnStart)
                     {
-                        runningApp.EnableRaisingEvents = true;
-                        runningApp.Exited += async (sender, args) =>
+                        // Only run the script if we haven't processed this specific process instance
+                        if (!_processedGameInstances.Contains(processId))
                         {
                             await RunScript().ConfigureAwait(false);
-                            RunningGame = null;
-                        };
-                    }
-                    else
-                    {
-                        RunningGame = null;
+
+                            _processedGameInstances.Add(processId);
+
+                            await _logManager.WriteLogAsync($"{DateTime.Now}> RunOnStart script executed for {RunningGame.Name} (PID: {processId})");
+                        }
                     }
                 }
                 catch (Exception ex)

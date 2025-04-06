@@ -20,17 +20,21 @@ namespace ScriptExecutor.Infrastrucuture.Services
             {
                 return await File.ReadAllTextAsync(LOG_FILENAME).ConfigureAwait(false);
             }
+
             return string.Empty;
         }
 
         public async Task WriteLogAsync(string text)
         {
-            var previousText = ReadLogAsync();
+            if (string.IsNullOrEmpty(text))
+                return;
+
             try
             {
-                using StreamWriter sw = File.CreateText(LOG_FILENAME);
-                await sw.WriteLineAsync(text).ConfigureAwait(false);
-                await sw.WriteLineAsync(previousText.Result).ConfigureAwait(false);
+                string existingContent = await ReadLogAsync().ConfigureAwait(false);
+                string newContent = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {text}{Environment.NewLine}{existingContent}";
+
+                await File.WriteAllTextAsync(LOG_FILENAME, newContent).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -42,15 +46,23 @@ namespace ScriptExecutor.Infrastrucuture.Services
         {
             if (File.Exists(LOG_FILENAME))
             {
-                var p = new Process
+                try
                 {
-                    StartInfo = new ProcessStartInfo(LOG_FILENAME)
+                    var p = new Process
                     {
-                        UseShellExecute = true
-                    }
-                };
+                        StartInfo = new ProcessStartInfo(LOG_FILENAME)
+                        {
+                            UseShellExecute = true
+                        }
+                    };
 
-                return p.Start();
+                    return p.Start();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error opening log file: {ex.Message}");
+                    return false;
+                }
             }
 
             return false;

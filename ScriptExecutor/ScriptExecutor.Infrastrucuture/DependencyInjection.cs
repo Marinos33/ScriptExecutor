@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Quartz;
+using Quartz.Simpl;
 using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Infrastrucuture.Jobs;
 using ScriptExecutor.Infrastrucuture.Persistence;
 using ScriptExecutor.Infrastrucuture.Repositories;
 using ScriptExecutor.Infrastrucuture.Services;
-using System;
-using System.Threading.Tasks;
 
 namespace ScriptExecutor.Infrastrucuture
 {
@@ -26,7 +25,7 @@ namespace ScriptExecutor.Infrastrucuture
 
             services.AddQuartz(q =>
             {
-                q.UseMicrosoftDependencyInjectionJobFactory();
+                q.UseJobFactory<MicrosoftDependencyInjectionJobFactory>();
             });
 
             services.ConfigureOptions<ProcessusObserverJobSetup>();

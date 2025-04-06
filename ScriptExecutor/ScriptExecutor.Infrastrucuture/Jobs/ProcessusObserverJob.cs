@@ -26,64 +26,115 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
 
         public async Task Execute(IJobExecutionContext context)
         {
-            var gamesList = _gameRepository.GetGames();
-
-            if (gamesList.Count <= 0)
+            try
             {
-                return;
-            }
+                var gamesList = _gameRepository.GetGames();
 
-            foreach (var game in gamesList)
-            {
-                if (Process.GetProcessesByName(Path.ChangeExtension(game.ExecutableFile, null)).Length != 0)
+                if (gamesList.Count <= 0)
                 {
-                    RunningGame = game.DeepCopy();
-                    RunningGame.Update();
-                    break;
+                    return;
+                }
+
+                foreach (var game in gamesList)
+                {
+                    var processName = Path.GetFileNameWithoutExtension(game.ExecutableFile);
+                    Process[] processes = null;
+
+                    try
+                    {
+                        processes = Process.GetProcessesByName(processName);
+                        if (processes.Length > 0)
+                        {
+                            RunningGame = game.DeepCopy();
+                            RunningGame.Update();
+                            await _logManager.WriteLogAsync($"{DateTime.Now}> Detected running game: {game.Name}");
+                            break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await _logManager.WriteLogAsync($"{DateTime.Now}> Error detecting processes: {ex.Message}");
+                    }
+                    finally
+                    {
+                        if (processes != null)
+                        {
+                            foreach (var process in processes)
+                            {
+                                process.Dispose();
+                            }
+                        }
+                    }
+                }
+
+                if (RunningGame is null)
+                {
+                    return;
+                }
+
+                Process runningApp = null;
+                try
+                {
+                    var processName = Path.GetFileNameWithoutExtension(RunningGame.ExecutableFile);
+                    runningApp = Process.GetProcessesByName(processName).FirstOrDefault();
+
+                    if (runningApp is null)
+                    {
+                        return;
+                    }
+
+                    if (RunningGame.RunOnStart)
+                    {
+                        await RunScript().ConfigureAwait(false);
+                    }
+
+                    if (RunningGame.RunAfterShutdown)
+                    {
+                        runningApp.EnableRaisingEvents = true;
+                        runningApp.Exited += async (sender, args) =>
+                        {
+                            await RunScript().ConfigureAwait(false);
+                            RunningGame = null;
+                        };
+                    }
+                    else
+                    {
+                        RunningGame = null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await _logManager.WriteLogAsync($"{DateTime.Now}> Error handling process: {ex.Message}");
+                }
+                finally
+                {
+                    runningApp?.Dispose();
                 }
             }
-
-            if(RunningGame is null)
+            catch (Exception ex)
             {
-                return;
+                await _logManager.WriteLogAsync($"{DateTime.Now}> Error in ProcessusObserverJob: {ex.Message}");
             }
-
-            Process runningApp = (from p
-                             in Process.GetProcesses()
-                                  where p.ProcessName == Path.ChangeExtension(RunningGame.ExecutableFile, null)
-                                  select p)
-                             .FirstOrDefault();
-
-            if (runningApp is null)
-            {
-                return;
-            }
-
-            if (RunningGame.RunOnStart)
-            {
-                await RunScript().ConfigureAwait(false);
-            }
-
-            if (RunningGame.RunAfterShutdown)
-            {
-                runningApp.WaitForExit();
-
-                await RunScript().ConfigureAwait(false);
-            }
-
-            RunningGame = null;
         }
 
         private async Task RunScript()
         {
-            bool isScriptExecuted = await _scriptRunner.RunScriptAsync(RunningGame.Script).ConfigureAwait(false); //run a script
-            if (isScriptExecuted)
+            try
             {
-                await _logManager.WriteLogAsync(DateTime.Now.ToString() + "> script for " + RunningGame.ExecutableFile + " has been launched");
+                bool isScriptExecuted = await _scriptRunner.RunScriptAsync(RunningGame.Script).ConfigureAwait(false);
+
+                if (isScriptExecuted)
+                {
+                    await _logManager.WriteLogAsync($"{DateTime.Now}> Script for {RunningGame.ExecutableFile} has been launched");
+                }
+                else
+                {
+                    await _logManager.WriteLogAsync($"{DateTime.Now}> Unable to run the script for {RunningGame.ExecutableFile}");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await _logManager.WriteLogAsync(DateTime.Now.ToString() + "> unable to run the script for " + RunningGame.ExecutableFile);
+                await _logManager.WriteLogAsync($"{DateTime.Now}> Error running script: {ex.Message}");
             }
         }
     }

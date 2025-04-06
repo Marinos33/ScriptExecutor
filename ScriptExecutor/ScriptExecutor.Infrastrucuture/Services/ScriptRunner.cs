@@ -9,6 +9,8 @@ namespace ScriptExecutor.Infrastrucuture.Services
 {
     public class ScriptRunner : IScriptRunner
     {
+        private readonly TimeSpan _timeout = TimeSpan.FromMinutes(5);
+
         public async Task<bool> RunScriptAsync(string script)
         {
             if (string.IsNullOrEmpty(script))
@@ -16,22 +18,23 @@ namespace ScriptExecutor.Infrastrucuture.Services
                 return false;
             }
 
+            string batchPath = null;
+
             try
             {
-                // Generate a file with the script
-                var fileName = Guid.NewGuid().ToString() + ".bat"; // Generate random name for the file
-                var batchPath = Path.Combine(Path.GetTempPath(), fileName); // Use Path.GetTempPath() for better compatibility
+                var fileName = Guid.NewGuid().ToString() + ".bat";
+                batchPath = Path.Combine(Path.GetTempPath(), fileName);
 
-                // Write the script to a temp file
                 await File.WriteAllTextAsync(batchPath, script).ConfigureAwait(false);
 
                 // Create process with output capture
-                var process = new Process();
+                using var process = new Process();
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.FileName = batchPath;
                 process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.WorkingDirectory = Path.GetTempPath(); // Set working directory
 
                 StringBuilder output = new();
                 StringBuilder error = new();
@@ -53,20 +56,23 @@ namespace ScriptExecutor.Infrastrucuture.Services
                     }
                 };
 
-                // Start the process
                 if (process.Start())
                 {
-                    // Begin reading outputs
                     process.BeginOutputReadLine();
                     process.BeginErrorReadLine();
 
-                    // Wait for process to exit
-                    process.WaitForExit();
+                    // Wait for process to exit with timeout
+                    var exited = process.WaitForExit((int)_timeout.TotalMilliseconds);
 
-                    // Get exit code (0 typically means success)
+                    if (!exited)
+                    {
+                        process.Kill(true);
+                        Debug.WriteLine($"Script {fileName} timed out after {_timeout.TotalSeconds} seconds");
+                        return false;
+                    }
+
                     int exitCode = process.ExitCode;
 
-                    // Log the results - you could inject ILogManager here as well
                     Debug.WriteLine($"Script {fileName} completed with exit code: {exitCode}");
 
                     if (output.Length > 0)
@@ -79,30 +85,34 @@ namespace ScriptExecutor.Infrastrucuture.Services
                         Debug.WriteLine($"Errors: {error}");
                     }
 
-                    // Delete the script file
-                    File.Delete(batchPath);
-
                     // Return true if exit code is 0 (success)
                     return exitCode == 0;
                 }
                 else
                 {
                     Debug.WriteLine("Failed to start the script process");
-
-                    // Clean up the file
-                    if (File.Exists(batchPath))
-                    {
-                        File.Delete(batchPath);
-                    }
-
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                // Log any exceptions
                 Debug.WriteLine($"Error executing script: {ex.Message}");
                 return false;
+            }
+            finally
+            {
+                // Clean up the file in finally block to ensure it always gets deleted
+                if (batchPath != null && File.Exists(batchPath))
+                {
+                    try
+                    {
+                        File.Delete(batchPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Failed to delete temporary script file: {ex.Message}");
+                    }
+                }
             }
         }
     }

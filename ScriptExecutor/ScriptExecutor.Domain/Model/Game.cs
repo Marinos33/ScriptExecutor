@@ -1,14 +1,13 @@
-﻿using System;
-
-namespace ScriptExecutor.Domain.Model
+﻿namespace ScriptExecutor.Domain.Model
 {
-    public class Game 
+    public class Game
     {
         public string Name { get; set; }
         public string ExecutableFile { get; set; }
         public string Script { get; set; }
         public bool RunOnStart { get; set; }
         public bool RunAfterShutdown { get; set; } = true;
+
         public Game DeepCopy()
         {
             return new()

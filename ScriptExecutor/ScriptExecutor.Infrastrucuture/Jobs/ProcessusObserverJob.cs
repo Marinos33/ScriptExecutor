@@ -3,6 +3,7 @@ using ScriptExecutor.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Process = System.Diagnostics.Process;
 using ProcessEntity = ScriptExecutor.Domain.Model.Process;
@@ -16,12 +17,12 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
         private readonly IScriptRunner _scriptRunner;
         private readonly ILogManager _logManager;
 
-        private static readonly Dictionary<int, ProcessEntity> _runningProcesses = new();
-        private static readonly HashSet<int> _processedProcessInstances = new();
-        private static readonly Dictionary<int, Process> _watchedProcesses = new();
+        private static readonly Dictionary<int, ProcessEntity> _runningProcesses = [];
+        private static readonly HashSet<int> _processedProcessInstances = [];
+        private static readonly Dictionary<int, Process> _watchedProcesses = [];
 
         // Lock object for thread safety when updating static collections
-        private static readonly object _lockObject = new();
+        private static readonly Lock _lockObject = new();
 
         public ProcessusObserverJob(IProcessRepository processRepository, IScriptRunner scriptRunner, ILogManager logManager)
         {
@@ -50,6 +51,7 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                     try
                     {
                         processes = Process.GetProcessesByName(processName);
+
                         if (processes.Length > 0)
                         {
                             // Process each running instance of the process
@@ -171,9 +173,9 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
             }
         }
 
-        private void CleanupNonExistentProcesses()
+        private static void CleanupNonExistentProcesses()
         {
-            List<int> processesToRemove = new();
+            List<int> processesToRemove = [];
 
             lock (_lockObject)
             {

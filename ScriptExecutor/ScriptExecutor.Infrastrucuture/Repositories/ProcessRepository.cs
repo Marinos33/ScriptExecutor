@@ -69,7 +69,7 @@ namespace ScriptExecutor.Infrastrucuture.Repositories
             return _dataPersistence.ProcessesList.OrderBy(process => process.Name).ToList();
         }
 
-        private bool CheckIfProcessesAreEquals(Process process1, Process process2)
+        private static bool CheckIfProcessesAreEquals(Process process1, Process process2)
         {
             return process1.Name == process2.Name &&
                    process1.ExecutableFile == process2.ExecutableFile &&

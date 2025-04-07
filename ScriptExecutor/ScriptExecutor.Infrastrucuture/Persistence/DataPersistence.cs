@@ -17,7 +17,7 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
 
     public class DataPersistence : IDataPersistence
     {
-        public List<Process> ProcessesList { get; set; } = new List<Process>();
+        public List<Process> ProcessesList { get; set; } = [];
 
         private readonly IJsonManager _jsonManager;
 

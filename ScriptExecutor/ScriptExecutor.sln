@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptExecutor", "ScriptExecutor\ScriptExecutor.csproj", "{F39D9911-32F1-4F24-9405-C7C101684CE4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor.Domain", "ScriptExecutor.Domain\ScriptExecutor.Domain.csproj", "{29293F81-4C97-465C-A8A9-A348054B47E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor.Infrastrucuture", "ScriptExecutor.Infrastrucuture\ScriptExecutor.Infrastrucuture.csproj", "{4181F0C4-0BF0-4796-BE0B-4F2786F2EE0C}"
@@ -19,14 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.All|Any CPU.ActiveCfg = Release|Any CPU
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.All|Any CPU.Build.0 = Release|Any CPU
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F39D9911-32F1-4F24-9405-C7C101684CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29293F81-4C97-465C-A8A9-A348054B47E6}.All|Any CPU.ActiveCfg = Debug|Any CPU
 		{29293F81-4C97-465C-A8A9-A348054B47E6}.All|Any CPU.Build.0 = Debug|Any CPU
 		{29293F81-4C97-465C-A8A9-A348054B47E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

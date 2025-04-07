@@ -34,10 +34,10 @@ namespace ScriptExecutor.Infrastrucuture.Services
             {
                 string json = await File.ReadAllTextAsync(DATAFILE_PATH).ConfigureAwait(false);
                 var processes = JsonConvert.DeserializeObject<IEnumerable<Process>>(json);
-                return processes ?? Enumerable.Empty<Process>();
+                return processes ?? [];
             }
 
-            return Enumerable.Empty<Process>();
+            return [];
         }
 
         public async Task WriteJsonAsync(IEnumerable<Process> processes)

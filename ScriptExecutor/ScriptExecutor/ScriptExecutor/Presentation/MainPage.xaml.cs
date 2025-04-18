@@ -14,8 +14,7 @@ public sealed partial class MainPage : Page
     private void MainPage_Loaded(object sender, RoutedEventArgs e)
     {
         // Add event handlers for buttons after data is loaded
-        var listView = this.FindName("ProcessesListView") as ListView;
-        if (listView != null)
+        if (this.FindName("ProcessesListView") is ListView listView)
         {
             listView.ContainerContentChanging += ListView_ContainerContentChanging;
         }
@@ -25,18 +24,16 @@ public sealed partial class MainPage : Page
     {
         if (args.ItemContainer.ContentTemplateRoot is FrameworkElement root)
         {
-            var editButton = root.FindName("EditButton") as Button;
-            var deleteButton = root.FindName("DeleteButton") as Button;
             var process = args.Item as Process;
 
-            if (editButton != null)
+            if (root.FindName("EditButton") is Button editButton)
             {
                 editButton.Click += async (s, e) =>
                 {
                     if (process != null && ViewModel != null)
                     {
                         var processesMessage = await ViewModel.Processes.GetSource(default).FirstOrDefaultAsync();
-                        var processes = processesMessage.Current.Data.IsSome(out var data) ? data as List<Process> : null;
+                        var processes = processesMessage.Current.Data.IsSome(out var data) ? data : null;
                         if (processes != null)
                         {
                             int index = processes.IndexOf(process);
@@ -49,14 +46,14 @@ public sealed partial class MainPage : Page
                 };
             }
 
-            if (deleteButton != null)
+            if (root.FindName("DeleteButton") is Button deleteButton)
             {
                 deleteButton.Click += async (s, e) =>
                 {
                     if (process != null && ViewModel != null)
                     {
                         var processesMessage = await ViewModel.Processes.GetSource(default).FirstOrDefaultAsync();
-                        var processes = processesMessage.Current.Data.IsSome(out var data) ? data as List<Process> : null;
+                        var processes = processesMessage.Current.Data.IsSome(out var data) ? data : null;
                         if (processes != null)
                         {
                             int index = processes.IndexOf(process);

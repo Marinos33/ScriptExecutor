@@ -32,15 +32,18 @@
                     </Grid>
                 </Border>
                 <!-- Process Items -->
-                <ListView Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Processes}" SelectionMode="None" Padding="0" Background="Transparent" BorderThickness="0">
+                <ListView Grid.Row="1"
+                          Grid.ColumnSpan="3"
+                          ItemsSource="{Binding Processes}"
+                          SelectionMode="None"
+                          Padding="0"
+                          Background="Transparent"
+                          BorderThickness="0">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="Padding" Value="0" />
                         </Style>
-                        <ListView Grid.Row="1" Grid.ColumnSpan="3" x:Name="ProcessesListView" ItemsSource="{Binding Processes}" SelectionMode="None" Padding="0" Background="Transparent" BorderThickness="0">
-                            <!-- Rest of the ListView code stays the same -->
-                        </ListView>
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -59,13 +62,11 @@
                                     <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                                         <Button Background="Transparent" 
                                                ToolTipService.ToolTip="Edit"
-                                               Command="{Binding EditProcessCommand}"
                                                CommandParameter="{Binding}">
                                             <SymbolIcon Symbol="Edit" Foreground="BlueViolet" />
                                         </Button>
                                         <Button Background="Transparent"
                                                 ToolTipService.ToolTip="Remove"
-                                                Command="{Binding DeleteProcessCommand}"
                                                 CommandParameter="{Binding}">
                                             <SymbolIcon Symbol="Delete" Foreground="BlueViolet" />
                                         </Button>

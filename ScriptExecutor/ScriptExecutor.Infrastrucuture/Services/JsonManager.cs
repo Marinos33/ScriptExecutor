@@ -2,7 +2,6 @@
 using ScriptExecutor.Domain.Model;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ScriptExecutor.Infrastrucuture.Services

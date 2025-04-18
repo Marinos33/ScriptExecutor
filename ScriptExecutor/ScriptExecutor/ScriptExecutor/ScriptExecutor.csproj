@@ -46,6 +46,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ScriptExecutor.Application\ScriptExecutor.Application.csproj" />
     <ProjectReference Include="..\..\ScriptExecutor.Domain\ScriptExecutor.Domain.csproj" />
+    <ProjectReference Include="..\..\ScriptExecutor.Infrastrucuture\ScriptExecutor.Infrastrucuture.csproj" />
   </ItemGroup>
 
 </Project>

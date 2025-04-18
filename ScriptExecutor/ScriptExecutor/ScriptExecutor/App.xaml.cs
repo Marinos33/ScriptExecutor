@@ -1,7 +1,8 @@
+using ScriptExecutor.Infrastrucuture;
 using Uno.Resizetizer;
 
 namespace ScriptExecutor;
-public partial class App : Application
+public partial class App : Microsoft.UI.Xaml.Application
 {
     /// <summary>
     /// Initializes the singleton application object. This is the first line of authored code
@@ -62,14 +63,14 @@ public partial class App : Application
                 )
                 .ConfigureServices((context, services) =>
                 {
-                    // TODO: Register your services
-                    //services.AddSingleton<IMyService, MyService>();
+                    services.AddInfrastructure();
+                    services.AddApplication();
                 })
                 .UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes)
             );
         MainWindow = builder.Window;
 
-        MainWindow.AppWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1920/2, Height = 1080 });
+        MainWindow.AppWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1920 / 2, Height = 1080 });
 
 #if DEBUG
         MainWindow.UseStudio();

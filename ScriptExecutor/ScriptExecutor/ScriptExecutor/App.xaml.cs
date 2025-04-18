@@ -69,6 +69,8 @@ public partial class App : Application
             );
         MainWindow = builder.Window;
 
+        MainWindow.AppWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1920/2, Height = 1080 });
+
 #if DEBUG
         MainWindow.UseStudio();
 #endif
@@ -81,8 +83,7 @@ public partial class App : Application
     {
         views.Register(
             new ViewMap(ViewModel: typeof(ShellModel)),
-            new ViewMap<MainPage, MainModel>(),
-            new DataViewMap<SecondPage, SecondModel, Entity>()
+            new ViewMap<MainPage, MainModel>()
         );
 
         routes.Register(
@@ -90,7 +91,6 @@ public partial class App : Application
                 Nested:
                 [
                     new ("Main", View: views.FindByViewModel<MainModel>(), IsDefault:true),
-                    new ("Second", View: views.FindByViewModel<SecondModel>()),
                 ]
             )
         );

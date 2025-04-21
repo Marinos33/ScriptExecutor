@@ -1,18 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197
+VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor", "ScriptExecutor\ScriptExecutor.csproj", "{A3BA6CB6-EB42-4406-926D-CAD85BC04F58}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
-		Directory.Packages.props = Directory.Packages.props
-		global.json = global.json
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor", "ScriptExecutor\ScriptExecutor.csproj", "{5352C139-3436-4C45-B7D1-F2C387E89D7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor.Application", "..\ScriptExecutor.Application\ScriptExecutor.Application.csproj", "{379C45E4-4191-A39D-83B4-C903EBD7AED9}"
 EndProject
@@ -26,12 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A3BA6CB6-EB42-4406-926D-CAD85BC04F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3BA6CB6-EB42-4406-926D-CAD85BC04F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3BA6CB6-EB42-4406-926D-CAD85BC04F58}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{A3BA6CB6-EB42-4406-926D-CAD85BC04F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3BA6CB6-EB42-4406-926D-CAD85BC04F58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3BA6CB6-EB42-4406-926D-CAD85BC04F58}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5352C139-3436-4C45-B7D1-F2C387E89D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5352C139-3436-4C45-B7D1-F2C387E89D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5352C139-3436-4C45-B7D1-F2C387E89D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5352C139-3436-4C45-B7D1-F2C387E89D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{379C45E4-4191-A39D-83B4-C903EBD7AED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{379C45E4-4191-A39D-83B4-C903EBD7AED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{379C45E4-4191-A39D-83B4-C903EBD7AED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,6 +38,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8A125B7-E850-4325-8838-D442124EEBDD}
+		SolutionGuid = {4937502F-BFA4-4A4C-A979-E2DAC4FBCABB}
 	EndGlobalSection
 EndGlobal

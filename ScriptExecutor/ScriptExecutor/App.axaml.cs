@@ -1,5 +1,9 @@
 ﻿using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Microsoft.Extensions.DependencyInjection;
+using ScriptExecutor.Application;
+using ScriptExecutor.Infrastrucuture;
 using ScriptExecutor.ViewModels;
 using ScriptExecutor.Views;
 
@@ -14,18 +18,23 @@ public partial class App : Avalonia.Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        BindingPlugins.DataValidators.RemoveAt(0);
+
+        var collection = new ServiceCollection();
+        collection.AddInfrastructure();
+        collection.AddApplication();
+
+        collection.AddTransient<MainViewModel>();
+
+        var services = collection.BuildServiceProvider();
+
+        var vm = services.GetRequiredService<MainViewModel>();
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel()
-            };
-        }
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        {
-            singleViewPlatform.MainView = new MainView
-            {
-                DataContext = new MainViewModel()
+                DataContext = vm
             };
         }
 

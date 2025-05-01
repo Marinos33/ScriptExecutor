@@ -15,10 +15,10 @@ public partial class MainWindow : ReactiveWindow<MainViewModel>
          action(ViewModel!.ShowAddProcessDialog.RegisterHandler(DoShowDialogAsync)));
     }
 
-    private async Task DoShowDialogAsync(IInteractionContext<AddProcessViewModel,
+    private async Task DoShowDialogAsync(IInteractionContext<EditProcessViewModel,
                                             ProcessViewModel?> interaction)
     {
-        var dialog = new AddProcessWindow
+        var dialog = new EditProcessWindow
         {
             DataContext = interaction.Input
         };

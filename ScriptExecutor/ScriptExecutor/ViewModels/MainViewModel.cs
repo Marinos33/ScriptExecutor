@@ -24,11 +24,11 @@ public class MainViewModel : ViewModelBase
         _processService = processService;
         _scriptRunner = scriptRunner;
 
-        ShowAddProcessDialog = new Interaction<AddProcessViewModel, ProcessViewModel?>();
+        ShowAddProcessDialog = new Interaction<EditProcessViewModel, ProcessViewModel?>();
 
         AddProcessCommand = ReactiveCommand.CreateFromTask(async () =>
         {
-            var addProcessViewModel = new AddProcessViewModel
+            var addProcessViewModel = new EditProcessViewModel
             {
                 // Set the delegate that will be used by ExecuteScriptCommand
                 ExecuteScriptHandler = async (script) =>
@@ -65,7 +65,7 @@ public class MainViewModel : ViewModelBase
 
     public ICommand AddProcessCommand { get; }
     public ICommand RefreshProcesses { get; }
-    public Interaction<AddProcessViewModel, ProcessViewModel?> ShowAddProcessDialog { get; }
+    public Interaction<EditProcessViewModel, ProcessViewModel?> ShowAddProcessDialog { get; }
 
     private void LoadProcesses()
     {

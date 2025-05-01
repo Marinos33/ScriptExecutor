@@ -24,4 +24,13 @@
     <ProjectReference Include="..\ScriptExecutor.Domain\ScriptExecutor.Domain.csproj" />
     <ProjectReference Include="..\ScriptExecutor.Infrastrucuture\ScriptExecutor.Infrastrucuture.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\EditProcessView.axaml.cs">
+      <DependentUpon>EditProcessView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditProcessWindow.axaml.cs">
+      <DependentUpon>EditProcessWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

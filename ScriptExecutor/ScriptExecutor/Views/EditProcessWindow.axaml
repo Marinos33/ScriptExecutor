@@ -6,9 +6,9 @@
 		mc:Ignorable="d" 
 		d:DesignWidth="800"
 		d:DesignHeight="450"
-        x:Class="ScriptExecutor.Views.AddProcessWindow"
-        Title="AddProcessWindow">
+        x:Class="ScriptExecutor.Views.EditProcessWindow"
+        Title="EditProcessWindow">
 	<Panel Margin="40">
-		<views:AddProcessView/>
+		<views:EditProcessView/>
 	</Panel>
 </Window>

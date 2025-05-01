@@ -8,7 +8,7 @@ using ScriptExecutor.Domain.Model;
 
 namespace ScriptExecutor.ViewModels
 {
-    public class AddProcessViewModel : ViewModelBase
+    public class EditProcessViewModel : ViewModelBase
     {
         private string _processName;
         private string _executableFile;
@@ -22,13 +22,14 @@ namespace ScriptExecutor.ViewModels
 
         public ExecuteScriptDelegate ExecuteScriptHandler { get; set; }
 
-        public ReactiveCommand<Unit, ProcessViewModel> AddProcessCommand { get; }
+        public ReactiveCommand<Unit, ProcessViewModel> SaveProcessCommand { get; }
+        public ReactiveCommand<Unit, ProcessViewModel?> CancelCommand { get; }
         public ICommand ExecuteScriptCommand { get; }
         public ICommand BrowseCommand { get; }
 
-        public AddProcessViewModel()
+        public EditProcessViewModel()
         {
-            AddProcessCommand = ReactiveCommand.Create(() =>
+            SaveProcessCommand = ReactiveCommand.Create(() =>
             {
                 var process = new Process
                 {
@@ -80,6 +81,12 @@ namespace ScriptExecutor.ViewModels
                         ExecutableFile = files[0].Name;
                     }
                 }
+            });
+
+            CancelCommand = ReactiveCommand.Create<Unit, ProcessViewModel?>((_) =>
+            {
+                // Return null to indicate that the edit was cancelled
+                return null;
             });
         }
 

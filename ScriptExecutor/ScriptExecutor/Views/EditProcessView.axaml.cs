@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ScriptExecutor.Views;
 
-public partial class AddProcessView : UserControl
+public partial class EditProcessView : UserControl
 {
-    public AddProcessView()
+    public EditProcessView()
     {
         InitializeComponent();
     }

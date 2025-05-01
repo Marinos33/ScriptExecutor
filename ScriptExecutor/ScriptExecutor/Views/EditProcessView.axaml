@@ -3,9 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
-             x:Class="ScriptExecutor.Views.AddProcessView"
+             x:Class="ScriptExecutor.Views.EditProcessView"
 			 xmlns:vm="clr-namespace:ScriptExecutor.ViewModels"
-			 x:DataType="vm:AddProcessViewModel">
+			 x:DataType="vm:EditProcessViewModel">
 	<StackPanel>
 		<TextBlock Text="Add Process" FontSize="24" Margin="20"/>
 		<StackPanel Orientation="Horizontal" Margin="20">
@@ -32,6 +32,7 @@
 			<TextBlock Text="Run After Shutdown:" VerticalAlignment="Center"/>
 			<CheckBox Width="200" Margin="10" IsChecked="{Binding RunAfterShutdown}"/>
 		</StackPanel>
-		<Button Content="Add Process" Command="{Binding AddProcessCommand}" Margin="20"/>
+		<Button Content="Save" Command="{Binding SaveProcessCommand}" Margin="20"/>
+		<Button Content="Cancel" Command="{Binding CancelCommand}" Margin="20"/>
 	</StackPanel>
 </UserControl>

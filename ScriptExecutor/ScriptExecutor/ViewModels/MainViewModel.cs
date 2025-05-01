@@ -58,13 +58,13 @@ public class MainViewModel : ViewModelBase
             }
         });
 
-        RefreshProcesses = ReactiveCommand.Create(LoadProcesses);
+        RefreshProcessesCommand = ReactiveCommand.Create(LoadProcesses);
 
         RxApp.MainThreadScheduler.Schedule(LoadProcesses);
     }
 
     public ICommand AddProcessCommand { get; }
-    public ICommand RefreshProcesses { get; }
+    public ICommand RefreshProcessesCommand { get; }
     public Interaction<EditProcessViewModel, ProcessViewModel?> ShowAddProcessDialog { get; }
 
     private void LoadProcesses()
@@ -73,6 +73,7 @@ public class MainViewModel : ViewModelBase
         {
             var processes = (await _processService.GetProcessesAsync()).Select(x => new ProcessViewModel(x));
 
+            //TODO cant do clear when refreshing
             Processes.Clear();
 
             Processes.AddRange(processes);

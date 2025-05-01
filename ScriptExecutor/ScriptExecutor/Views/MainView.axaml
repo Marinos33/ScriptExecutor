@@ -12,14 +12,24 @@
 				<TextBlock Grid.Row="0" Grid.Column="0" Text="Processes" FontSize="24" Margin="20"/>
 				<Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="auto, auto, auto">
 					<Button Grid.Column="0" Content="Add" Command="{Binding AddProcessCommand}" Margin="20"/>
-					<Button Grid.Column="1" Content="Refresh" Margin="20"/>
+					<Button Grid.Column="1" Content="Refresh" Command="{Binding RefreshProcessesCommand}" Margin="20"/>
 					<Button Grid.Column="2" Content="Logs" Margin="20"/>
 				</Grid>
 			</Grid>
-			<DataGrid Grid.Row="1" Margin="20" ItemsSource="{Binding Processes}"
-				  AutoGenerateColumns="True" IsReadOnly="True"
-				  GridLinesVisibility="All"
-				  BorderThickness="1" BorderBrush="Gray">
+			<DataGrid Grid.Row="1" 
+					  Margin="20" 
+					  ItemsSource="{Binding Processes}"
+				      GridLinesVisibility="All"
+				      BorderThickness="1"
+					  CanUserReorderColumns="False"
+					  CanUserResizeColumns="False"
+					  CanUserSortColumns="False"
+					  BorderBrush="Gray">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Process Name" Binding="{Binding ProcessName}"/>
+					<DataGridTextColumn Header="Executable File" Binding="{Binding ExecutableFile}"/>
+					<DataGridTextColumn Header="Script" Binding="{Binding Script}"/>
+				</DataGrid.Columns>
 			</DataGrid>
 	</Grid>
 </UserControl>

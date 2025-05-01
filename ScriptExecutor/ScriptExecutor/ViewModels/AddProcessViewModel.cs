@@ -1,4 +1,8 @@
 ﻿using System.Reactive;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Platform.Storage;
 using ReactiveUI;
 using ScriptExecutor.Domain.Model;
 
@@ -13,7 +17,14 @@ namespace ScriptExecutor.ViewModels
         private bool _runAfterShutdown = true;
 
         private ProcessViewModel _process;
+
+        public delegate Task<bool> ExecuteScriptDelegate(string script);
+
+        public ExecuteScriptDelegate ExecuteScriptHandler { get; set; }
+
         public ReactiveCommand<Unit, ProcessViewModel> AddProcessCommand { get; }
+        public ICommand ExecuteScriptCommand { get; }
+        public ICommand BrowseCommand { get; }
 
         public AddProcessViewModel()
         {
@@ -31,6 +42,44 @@ namespace ScriptExecutor.ViewModels
                 Process = new ProcessViewModel(process);
 
                 return Process;
+            });
+
+            ExecuteScriptCommand = ReactiveCommand.Create(async () =>
+            {
+                return await ExecuteScriptHandler(Script);
+            });
+
+            BrowseCommand = ReactiveCommand.Create(async () =>
+            {
+                var window = Avalonia.Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
+                ? desktop.MainWindow
+                : null;
+
+                if (window != null)
+                {
+                    var filePickerOptions = new FilePickerOpenOptions
+                    {
+                        Title = "Select Executable File",
+                        AllowMultiple = false,
+                        FileTypeFilter =
+                        [
+                            new FilePickerFileType("Executable Files")
+                            {
+                                Patterns = ["*.exe", "*.bat", "*.cmd", "*.ps1"]
+                            },
+                            new FilePickerFileType("All Files")
+                            {
+                                Patterns = ["*.*"]
+                            }
+                        ]
+                    };
+
+                    var files = await window.StorageProvider.OpenFilePickerAsync(filePickerOptions);
+                    if (files.Count > 0)
+                    {
+                        ExecutableFile = files[0].Name;
+                    }
+                }
             });
         }
 

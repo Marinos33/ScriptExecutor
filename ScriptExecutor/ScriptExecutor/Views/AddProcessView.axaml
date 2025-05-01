@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ScriptExecutor.Views.AddProcessView"
+			 xmlns:vm="clr-namespace:ScriptExecutor.ViewModels"
+			 x:DataType="vm:AddProcessViewModel">
+	<StackPanel>
+		<TextBlock Text="Add Process" FontSize="24" Margin="20"/>
+		<StackPanel Orientation="Horizontal" Margin="20">
+			<TextBlock Text="Process Name:" VerticalAlignment="Center"/>
+			<TextBox Width="200" Margin="10" Text="{Binding ProcessName}"/>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" Margin="20">
+			<TextBlock Text="Process Path:" VerticalAlignment="Center"/>
+			<TextBox Width="200" Margin="10" Text="{Binding ExecutableFile}"/>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" Margin="20">
+			<TextBlock Text="Script" VerticalAlignment="Center"/>
+			<TextBox Width="200" Margin="10" Text="{Binding Script}"/>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" Margin="20">
+			<TextBlock Text="Run On Start:" VerticalAlignment="Center"/>
+			<CheckBox Width="200" Margin="10" IsChecked="{Binding RunOnStart}"/>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" Margin="20">
+			<TextBlock Text="Run After Shutdown:" VerticalAlignment="Center"/>
+			<CheckBox Width="200" Margin="10" IsChecked="{Binding RunAfterShutdown}"/>
+		</StackPanel>
+		<Button Content="Add Process" Command="{Binding AddProcessCommand}" Margin="20"/>
+	</StackPanel>
+</UserControl>

@@ -7,9 +7,19 @@
              xmlns:views="clr-namespace:ScriptExecutor.Views"
 			 x:Class="ScriptExecutor.Views.MainView"
              x:DataType="vm:MainViewModel">
-	<DataGrid Margin="20" ItemsSource="{Binding Processes}"
-          AutoGenerateColumns="True" IsReadOnly="True"
-          GridLinesVisibility="All"
-          BorderThickness="1" BorderBrush="Gray">
-	</DataGrid>
+		<Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto, Auto" Margin="4">
+			<Grid Grid.Row="0" ColumnDefinitions="*,*" RowDefinitions="*">
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Processes" FontSize="24" Margin="20"/>
+				<Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="auto, auto, auto">
+					<Button Grid.Column="0" Content="Add" Command="{Binding AddProcessCommand}" Margin="20"/>
+					<Button Grid.Column="1" Content="Refresh" Margin="20"/>
+					<Button Grid.Column="2" Content="Logs" Margin="20"/>
+				</Grid>
+			</Grid>
+			<DataGrid Grid.Row="1" Margin="20" ItemsSource="{Binding Processes}"
+				  AutoGenerateColumns="True" IsReadOnly="True"
+				  GridLinesVisibility="All"
+				  BorderThickness="1" BorderBrush="Gray">
+			</DataGrid>
+	</Grid>
 </UserControl>

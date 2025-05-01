@@ -1,7 +1,7 @@
-﻿using Quartz;
-using ScriptExecutor.Application.Interfaces;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Quartz;
+using ScriptExecutor.Application.Interfaces;
 
 namespace ScriptExecutor.Infrastrucuture.Services
 {

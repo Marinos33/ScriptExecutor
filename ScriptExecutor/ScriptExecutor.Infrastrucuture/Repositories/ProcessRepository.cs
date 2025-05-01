@@ -1,9 +1,9 @@
-﻿using ScriptExecutor.Application.Interfaces;
-using ScriptExecutor.Domain.Model;
-using ScriptExecutor.Infrastrucuture.Persistence;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
+using ScriptExecutor.Infrastrucuture.Persistence;
 
 namespace ScriptExecutor.Infrastrucuture.Repositories
 {

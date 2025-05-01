@@ -1,8 +1,8 @@
-﻿using ScriptExecutor.Domain.Model;
-using ScriptExecutor.Infrastrucuture.Services;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ScriptExecutor.Domain.Model;
+using ScriptExecutor.Infrastrucuture.Services;
 
 namespace ScriptExecutor.Infrastrucuture.Persistence
 {

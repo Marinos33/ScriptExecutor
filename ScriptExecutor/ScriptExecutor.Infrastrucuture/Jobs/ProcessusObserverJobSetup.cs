@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System;
+using Microsoft.Extensions.Options;
 using Quartz;
-using System;
 
 namespace ScriptExecutor.Infrastrucuture.Jobs
 {

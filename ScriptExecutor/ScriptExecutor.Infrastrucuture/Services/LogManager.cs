@@ -1,8 +1,8 @@
-﻿using ScriptExecutor.Application.Interfaces;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using ScriptExecutor.Application.Interfaces;
 
 //the file to manage the log
 namespace ScriptExecutor.Infrastrucuture.Services

@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using ScriptExecutor.Domain.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ScriptExecutor.Domain.Model;
 
 namespace ScriptExecutor.Infrastrucuture.Services
 {

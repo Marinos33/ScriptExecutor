@@ -1,6 +1,6 @@
-﻿using ScriptExecutor.Domain.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ScriptExecutor.Domain.Model;
 
 namespace ScriptExecutor.Application.Interfaces
 {

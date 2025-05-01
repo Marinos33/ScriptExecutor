@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Reactive;
 using ReactiveUI;
-using ScriptExecutor.Application;
 using ScriptExecutor.Domain.Model;
 
 namespace ScriptExecutor.ViewModels
@@ -19,14 +12,14 @@ namespace ScriptExecutor.ViewModels
         private bool _runOnStart;
         private bool _runAfterShutdown = true;
 
-        private Process _process;
-        public ReactiveCommand<Unit, Process> AddProcessCommand { get; }
+        private ProcessViewModel _process;
+        public ReactiveCommand<Unit, ProcessViewModel> AddProcessCommand { get; }
 
         public AddProcessViewModel()
         {
             AddProcessCommand = ReactiveCommand.Create(() =>
             {
-                Process = new Process
+                var process = new Process
                 {
                     Name = ProcessName,
                     ExecutableFile = ExecutableFile,
@@ -35,10 +28,11 @@ namespace ScriptExecutor.ViewModels
                     RunAfterShutdown = RunAfterShutdown
                 };
 
+                Process = new ProcessViewModel(process);
+
                 return Process;
             });
         }
-
 
         public string ProcessName
         {
@@ -70,7 +64,7 @@ namespace ScriptExecutor.ViewModels
             set => this.RaiseAndSetIfChanged(ref _runAfterShutdown, value);
         }
 
-        public Process Process
+        public ProcessViewModel Process
         {
             get => _process;
             set
@@ -78,7 +72,7 @@ namespace ScriptExecutor.ViewModels
                 this.RaiseAndSetIfChanged(ref _process, value);
                 if (value != null)
                 {
-                    ProcessName = value.Name;
+                    ProcessName = value.ProcessName;
                     ExecutableFile = value.ExecutableFile;
                     Script = value.Script;
                     RunOnStart = value.RunOnStart;

@@ -1,9 +1,7 @@
-using Avalonia;
+using System;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using ReactiveUI;
-using ScriptExecutor;
 using ScriptExecutor.ViewModels;
 
 namespace ScriptExecutor.Views;

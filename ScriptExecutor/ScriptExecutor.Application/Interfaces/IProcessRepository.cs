@@ -10,7 +10,7 @@ namespace ScriptExecutor.Application.Interfaces
 
         Task EditProcessAsync(Process process, int index);
 
-        List<Process> GetProcesses();
+        Task<List<Process>> GetProcessesAsync();
 
         Task RemoveProcessAsync(int index);
     }

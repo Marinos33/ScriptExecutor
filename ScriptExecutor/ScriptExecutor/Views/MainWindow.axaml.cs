@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 using ReactiveUI;
-using ScriptExecutor.Domain.Model;
 using ScriptExecutor.ViewModels;
 
 namespace ScriptExecutor.Views;
@@ -18,14 +16,14 @@ public partial class MainWindow : ReactiveWindow<MainViewModel>
     }
 
     private async Task DoShowDialogAsync(IInteractionContext<AddProcessViewModel,
-                                            Process?> interaction)
+                                            ProcessViewModel?> interaction)
     {
         var dialog = new AddProcessWindow
         {
             DataContext = interaction.Input
         };
 
-        var result = await dialog.ShowDialog<Process?>(this);
+        var result = await dialog.ShowDialog<ProcessViewModel?>(this);
 
         interaction.SetOutput(result);
     }

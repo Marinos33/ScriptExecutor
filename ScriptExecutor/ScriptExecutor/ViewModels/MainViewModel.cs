@@ -1,26 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System;
-using ScriptExecutor.Domain.Model;
-using ScriptExecutor.Application;
-using System.Windows.Input;
+using System.Linq;
 using System.Reactive.Concurrency;
-using ReactiveUI;
-using DynamicData;
-using System.Threading.Tasks;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using DynamicData;
+using ReactiveUI;
+using ScriptExecutor.Application;
+using ScriptExecutor.Domain.Model;
+
 namespace ScriptExecutor.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
     private readonly IProcessService _processService;
-    public ObservableCollection<Process> Processes { get; } = [];
+    public ObservableCollection<ProcessViewModel> Processes { get; } = [];
 
     public MainViewModel(IProcessService processService)
     {
         _processService = processService;
 
-        ShowAddProcessDialog = new Interaction<AddProcessViewModel, Process?>();
+        ShowAddProcessDialog = new Interaction<AddProcessViewModel, ProcessViewModel?>();
 
         AddProcessCommand = ReactiveCommand.CreateFromTask(async () =>
         {
@@ -30,21 +31,34 @@ public class MainViewModel : ViewModelBase
 
             if (result != null)
             {
-                await _processService.AddProcessAsync(result);
+                Processes.Add(result);
+
+                var process = new Process
+                {
+                    Name = result.ProcessName,
+                    ExecutableFile = result.ExecutableFile,
+                    Script = result.Script,
+                    RunOnStart = result.RunOnStart,
+                    RunAfterShutdown = result.RunAfterShutdown
+                };
+
+                await _processService.AddProcessAsync(process);
             }
         });
+
+        RefreshProcesses = ReactiveCommand.Create(LoadProcesses);
 
         RxApp.MainThreadScheduler.Schedule(LoadProcesses);
     }
 
     public ICommand AddProcessCommand { get; }
-    public Interaction<AddProcessViewModel, Process?> ShowAddProcessDialog { get; }
-
-    private async void LoadProcesses()
+    public ICommand RefreshProcesses { get; }
+    public Interaction<AddProcessViewModel, ProcessViewModel?> ShowAddProcessDialog { get; }
+    private void LoadProcesses()
     {
-        await Task.Run(() =>
+        Task.Run(async () =>
         {
-            var processes = _processService.GetProcesses();
+            var processes = (await _processService.GetProcessesAsync()).Select(x => new ProcessViewModel(x));
 
             Processes.Clear();
 

@@ -27,7 +27,7 @@ namespace ScriptExecutor.Application
         /// <param name="index">the index of the process in the list</param>
         Task DeleteProcessAsync(int index);
 
-        List<Process> GetProcesses();
+        Task<List<Process>> GetProcessesAsync();
     }
 
     public class ProcessService : IProcessService
@@ -57,15 +57,15 @@ namespace ScriptExecutor.Application
 
         public async Task DeleteProcessAsync(int index)
         {
-            string oldProcess = _processRepository.GetProcesses()[index].Name;
+            string oldProcess = (await _processRepository.GetProcessesAsync())[index].Name;
             await _processRepository.RemoveProcessAsync(index);
 
             await _logManager.WriteLogAsync(DateTime.Now.ToString() + "> the process : " + oldProcess + " has been deleted");
         }
 
-        public List<Process> GetProcesses()
+        public async Task<List<Process>> GetProcessesAsync()
         {
-            return _processRepository.GetProcesses();
+            return await _processRepository.GetProcessesAsync();
         }
     }
 }

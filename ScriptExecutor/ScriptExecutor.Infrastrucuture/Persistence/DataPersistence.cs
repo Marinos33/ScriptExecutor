@@ -24,12 +24,13 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
         public DataPersistence(IJsonManager jsonManager)
         {
             _jsonManager = jsonManager;
-            ProcessesList = LoadDataAsync().Result;
         }
 
         public async Task<List<Process>> LoadDataAsync()
         {
             var processes = await _jsonManager.ReadJsonAsync();
+
+            ProcessesList = processes.ToList();
 
             return processes.ToList();
         }

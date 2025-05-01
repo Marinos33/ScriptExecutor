@@ -35,7 +35,7 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
         {
             try
             {
-                var processesList = _processRepository.GetProcesses();
+                var processesList = await _processRepository.GetProcessesAsync();
 
                 if (processesList.Count <= 0)
                 {

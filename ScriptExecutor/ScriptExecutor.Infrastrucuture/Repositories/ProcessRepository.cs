@@ -64,9 +64,11 @@ namespace ScriptExecutor.Infrastrucuture.Repositories
             }
         }
 
-        public List<Process> GetProcesses()
+        public async Task<List<Process>> GetProcessesAsync()
         {
-            return _dataPersistence.ProcessesList.OrderBy(process => process.Name).ToList();
+            var processes = await _dataPersistence.LoadDataAsync();
+
+            return processes.OrderBy(process => process.Name).ToList();
         }
 
         private static bool CheckIfProcessesAreEquals(Process process1, Process process2)

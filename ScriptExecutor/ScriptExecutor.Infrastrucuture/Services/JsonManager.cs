@@ -25,8 +25,7 @@ namespace ScriptExecutor.Infrastrucuture.Services
         /// <summary>
         /// the path to the file data (json) which contains all the processes (use to do the save system)
         /// </summary>
-        private const string DATAFILE_PATH = "Data.json";
-
+        private const string DATAFILE_PATH = "C:\\Users\\loicm\\Downloads\\Data.json";
         public async Task<IEnumerable<Process>> ReadJsonAsync()
         {
             if (File.Exists(DATAFILE_PATH))

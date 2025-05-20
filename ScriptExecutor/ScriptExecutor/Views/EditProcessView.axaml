@@ -2,37 +2,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="720"
              x:Class="ScriptExecutor.Views.EditProcessView"
 			 xmlns:vm="clr-namespace:ScriptExecutor.ViewModels"
 			 x:DataType="vm:EditProcessViewModel">
 	<StackPanel>
 		<TextBlock Text="Add Process" FontSize="24" Margin="20"/>
-		<StackPanel Orientation="Horizontal" Margin="20">
-			<TextBlock Text="Process Name:" VerticalAlignment="Center"/>
-			<TextBox Width="200" Margin="10" Text="{Binding ProcessName}"/>
+		<StackPanel Orientation="Vertical" Margin="20">
+			<TextBlock Text="Process Name"  HorizontalAlignment="Left" />
+			<TextBox  Text="{Binding ProcessName}" Margin="0 10 75 0" HorizontalAlignment="Stretch"/>
 		</StackPanel>
-		<StackPanel Orientation="Horizontal" Margin="20">
-			<TextBlock Text="Process Path:" VerticalAlignment="Center"/>
-			<TextBox Width="200" Margin="10" Text="{Binding ExecutableFile}"/>
-			<Button Content="Folder Browser" Command="{Binding BrowseCommand}" Margin="10"/>
+		<StackPanel Orientation="Vertical" Margin="20">
+			<TextBlock Text="Process Path" HorizontalAlignment="Left" />
+			<Grid Margin="0 10 30 0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<TextBox Text="{Binding ExecutableFile}" Grid.Column="0" Margin="0 0 5 0"/>
+				<Button Command="{Binding BrowseCommand}" Grid.Column="1">
+					<PathIcon Data="{StaticResource folder_regular}" Width="20" Height="20"/>
+				</Button>
+			</Grid>
 		</StackPanel>
-		<StackPanel Orientation="Horizontal" Margin="20">
-			<TextBlock Text="Script" VerticalAlignment="Center"/>
-			<TextBox Width="200" Margin="10" Text="{Binding Script}"/>
+		<StackPanel Orientation="Vertical" Margin="20">
+			<TextBlock Text="Script" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+			<TextBox  Text="{Binding Script}" Margin="0 10 75 0" HorizontalAlignment="Stretch"/>
 		</StackPanel>
 		<StackPanel Orientation="Horizontal" Margin="20">
 			<Button Content="Try script" Command="{Binding ExecuteScriptCommand}" Margin="10"/>
 		</StackPanel>
-		<StackPanel Orientation="Horizontal" Margin="20">
-			<TextBlock Text="Run On Start:" VerticalAlignment="Center"/>
-			<CheckBox Width="200" Margin="10" IsChecked="{Binding RunOnStart}"/>
+		<StackPanel Orientation="Vertical" Margin="20">
+			<Grid>
+				<Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Margin="0,10,0,0">
+					<StackPanel Margin="10 15 10 10">
+						<StackPanel Orientation="Horizontal" Margin="5">
+							<CheckBox IsChecked="{Binding RunOnStart}"/>
+							<TextBlock Text="On Launch" VerticalAlignment="Center" Margin="5,0,0,0"/>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="5">
+							<CheckBox IsChecked="{Binding RunAfterShutdown}"/>
+							<TextBlock Text="After Shutdown" VerticalAlignment="Center" Margin="5,0,0,0"/>
+						</StackPanel>
+					</StackPanel>
+				</Border>
+				<TextBlock Text="When to run the script" Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+						   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Padding="5,0,5,0"/>
+			</Grid>
 		</StackPanel>
-		<StackPanel Orientation="Horizontal" Margin="20">
-			<TextBlock Text="Run After Shutdown:" VerticalAlignment="Center"/>
-			<CheckBox Width="200" Margin="10" IsChecked="{Binding RunAfterShutdown}"/>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+			<Button Content="Cancel" Command="{Binding CancelCommand}" Margin="20" HorizontalAlignment="Right"/>
+			<Button Content="Save" Command="{Binding SaveProcessCommand}" Margin="20" HorizontalAlignment="Left"/>
 		</StackPanel>
-		<Button Content="Save" Command="{Binding SaveProcessCommand}" Margin="20"/>
-		<Button Content="Cancel" Command="{Binding CancelCommand}" Margin="20"/>
 	</StackPanel>
 </UserControl>

@@ -43,8 +43,6 @@ public class MainViewModel : ViewModelBase
 
             if (result != null)
             {
-                Processes.Add(result);
-
                 var process = new Process
                 {
                     Name = result.ProcessName,
@@ -55,6 +53,26 @@ public class MainViewModel : ViewModelBase
                 };
 
                 await _processService.AddProcessAsync(process);
+
+                int insertIndex = 0;
+                while (insertIndex < Processes.Count &&
+                       string.Compare(Processes[insertIndex].ProcessName, result.ProcessName) < 0)
+                {
+                    insertIndex++;
+                }
+
+                // Insert at the correct position alphabetically
+                Processes.Insert(insertIndex, result);
+            }
+        });
+
+        DeleteProcessCommand = ReactiveCommand.CreateFromTask<ProcessViewModel>(async (process) =>
+        {
+            int index = Processes.IndexOf(process);
+            if (index >= 0)
+            {
+                await _processService.DeleteProcessAsync(index);
+                Processes.RemoveAt(index);
             }
         });
 
@@ -64,6 +82,8 @@ public class MainViewModel : ViewModelBase
     }
 
     public ICommand AddProcessCommand { get; }
+    public ICommand EditProcessCommand { get; }
+    public ICommand DeleteProcessCommand { get; }
     public ICommand RefreshProcessesCommand { get; }
     public Interaction<EditProcessViewModel, ProcessViewModel?> ShowAddProcessDialog { get; }
 
@@ -71,12 +91,15 @@ public class MainViewModel : ViewModelBase
     {
         Task.Run(async () =>
         {
-            var processes = (await _processService.GetProcessesAsync()).Select(x => new ProcessViewModel(x));
+            var processes = (await _processService.GetProcessesAsync())
+            .Select(x => new ProcessViewModel(x))
+            .ToList();
 
-            //TODO cant do clear when refreshing
-            Processes.Clear();
-
-            Processes.AddRange(processes);
+            RxApp.MainThreadScheduler.Schedule(() =>
+            {
+                Processes.Clear();
+                Processes.AddRange(processes);
+            });
         });
     }
 }

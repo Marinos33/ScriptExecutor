@@ -41,14 +41,14 @@
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>	
 					</DataGridTemplateColumn>
-					<DataGridTemplateColumn Header="Actions" >
+					<DataGridTemplateColumn Header="Actions">
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel Orientation="Horizontal">
-									<Button Content="Edit" Command="{Binding DataContext.EditProcessCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Margin="5">
+									<Button Command="{Binding EditProcessCommand}" Margin="5">
 										<PathIcon Data="{StaticResource edit_regular}" Width="16" Height="16"/>
 									</Button>
-									<Button Content="Delete" Command="{Binding DataContext.DeleteProcessCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Margin="5" >
+									<Button Command="{Binding DeleteProcessCommand}" Margin="5" >
 										<PathIcon Data="{StaticResource remove_regular}" Width="16" Height="16"/>
 									</Button>
 								</StackPanel>

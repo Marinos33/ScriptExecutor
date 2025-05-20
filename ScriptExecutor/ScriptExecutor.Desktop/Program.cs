@@ -5,6 +5,13 @@ using Avalonia.ReactiveUI;
 
 namespace ScriptExecutor.Desktop;
 
+//TODO : 
+// 1. repair edit and remove button to be clickable
+// 2. implmement the update
+// 3. implement the remove
+// 4. Implement the try script with a cmd opening when using this
+// 5. Add a run script buttont o grid view to run the script
+// 6. Add styling
 internal class Program
 {
     // Initialization code. Don't use any Avalonia, third-party APIs or any

@@ -37,6 +37,8 @@ namespace ScriptExecutor.Infrastrucuture.Persistence
 
         public async Task SaveDataAsync()
         {
+            ProcessesList = ProcessesList.OrderBy(p => p.Name).ToList();
+
             await _jsonManager.WriteJsonAsync(ProcessesList);
         }
     }

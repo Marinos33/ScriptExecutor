@@ -116,7 +116,7 @@ public class MainViewModel : ViewModelBase
             // Set the delegate that will be used by ExecuteScriptCommand
             ExecuteScriptHandler = async (script) =>
             {
-                var isSuccessful = await _scriptRunner.RunScriptAsync(script);
+                var isSuccessful = await _scriptRunner.RunScriptAsync(script, true);
 
                 return isSuccessful;
             },

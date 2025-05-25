@@ -1,67 +1,120 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:ScriptExecutor.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="900"
-             xmlns:views="clr-namespace:ScriptExecutor.Views"
-			 x:Class="ScriptExecutor.Views.MainView"
-             x:DataType="vm:MainViewModel">
-		<Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto, Auto" Margin="4">
-			<Grid Grid.Row="0" ColumnDefinitions="*,*" RowDefinitions="*">
-				<TextBlock Grid.Row="0" Grid.Column="0" Text="Script Executor" FontSize="24" Margin="20"/>
-				<Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="auto, auto, auto" HorizontalAlignment="Right" Margin="15">
-					<Button Grid.Column="0" Command="{Binding AddProcessCommand}" Margin="5" >
-						<PathIcon Data="{StaticResource plus_regular}" Width="16" Height="16"/>
-					</Button>
-					<Button Grid.Column="1"  Command="{Binding RefreshProcessesCommand}" Margin="5" >
-						<PathIcon Data="{StaticResource arrow_sync_circle_regular}" Width="16" Height="16"/>
-					</Button>
-					<Button Grid.Column="2" Content="Logs" Margin="5"/>
-				</Grid>
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:ScriptExecutor.ViewModels"
+  mc:Ignorable="d"
+  d:DesignWidth="800"
+  d:DesignHeight="900" xmlns:views="clr-namespace:ScriptExecutor.Views"
+  x:Class="ScriptExecutor.Views.MainView"
+  x:DataType="vm:MainViewModel">
+	<Grid
+	  ColumnDefinitions="*"
+	  RowDefinitions="Auto, Auto, Auto"
+	  Margin="4">
+		<Grid
+		  Grid.Row="0"
+		  ColumnDefinitions="*,*"
+		  RowDefinitions="*">
+			<TextBlock
+			  Grid.Row="0"
+			  Grid.Column="0"
+			  Text="Script Executor"
+			  FontSize="24"
+			  Margin="20" />
+			<Grid
+			  Grid.Row="0"
+			  Grid.Column="1"
+			  ColumnDefinitions="auto, auto, auto"
+			  HorizontalAlignment="Right"
+			  Margin="15">
+				<Button
+				  Grid.Column="0"
+				  Command="{Binding AddProcessCommand}"
+				  Margin="5">
+					<PathIcon
+					  Data="{StaticResource plus_regular}"
+					  Width="16"
+					  Height="16" />
+				</Button>
+				<Button
+				  Grid.Column="1"
+				  Command="{Binding RefreshProcessesCommand}"
+				  Margin="5">
+					<PathIcon
+					  Data="{StaticResource arrow_sync_circle_regular}"
+					  Width="16"
+					  Height="16" />
+				</Button>
+				<Button
+				  Grid.Column="2"
+				  Content="Logs"
+				  Margin="5" />
 			</Grid>
-			<DataGrid Grid.Row="1" 
-					  Margin="20" 
-					  Height="770"
-					  ItemsSource="{Binding Processes}"
-				      GridLinesVisibility="All"
-				      BorderThickness="1"
-					  IsReadOnly="True"
-					  CanUserReorderColumns="False"
-					  CanUserResizeColumns="False"
-					  CanUserSortColumns="False"
-					  BorderBrush="Gray">
-				<DataGrid.Columns>
-					<DataGridTextColumn Header="Process Name" Binding="{Binding ProcessName}" Width="*"/>
-					<DataGridTemplateColumn Header="Status">
-						<DataGridTemplateColumn.CellTemplate>
-							<DataTemplate>
-								<PathIcon Foreground="Blue"
-											Data="{StaticResource cross_regular}"/>							
-							</DataTemplate>
-						</DataGridTemplateColumn.CellTemplate>	
-					</DataGridTemplateColumn>
-					<DataGridTemplateColumn Header="Actions">
-						<DataGridTemplateColumn.CellTemplate>
-							<DataTemplate>
-								<StackPanel Orientation="Horizontal">
-									<Button Command="{Binding DataContext.EditProcessCommand, 
-											 RelativeSource={RelativeSource AncestorType=DataGrid}}"
-											CommandParameter="{Binding}"
-											Margin="5">
-										<PathIcon Data="{StaticResource edit_regular}" Width="16" Height="16"/>
-									</Button>
-									<Button Command="{Binding DataContext.DeleteProcessCommand, 
-											 RelativeSource={RelativeSource AncestorType=DataGrid}}"
-											 CommandParameter="{Binding}"
-											 Margin="5">
-										<PathIcon Data="{StaticResource remove_regular}" Width="16" Height="16"/>
-									</Button>
-								</StackPanel>
-							</DataTemplate>
-						</DataGridTemplateColumn.CellTemplate>
-					</DataGridTemplateColumn>
-				</DataGrid.Columns>
-			</DataGrid>
+		</Grid>
+		<DataGrid
+		  Grid.Row="1"
+		  Margin="20"
+		  Height="770"
+		  ItemsSource="{Binding Processes}"
+		  GridLinesVisibility="All"
+		  BorderThickness="1"
+		  IsReadOnly="True"
+		  CanUserReorderColumns="False"
+		  CanUserResizeColumns="False"
+		  CanUserSortColumns="False"
+		  BorderBrush="Gray">
+			<DataGrid.Columns>
+				<DataGridTextColumn
+				  Header="Process Name"
+				  Binding="{Binding ProcessName}"
+				  Width="*" />
+				<DataGridTemplateColumn
+				  Header="Status">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Panel>
+								<PathIcon
+								  Data="{StaticResource checkmark_regular}"
+								  Width="16"
+								  Height="16"
+								  Foreground="Green"
+								  IsVisible="{Binding IsReady}" />
+								<PathIcon
+								  Data="{StaticResource cross_regular}"
+								  Width="16"
+								  Height="16"
+								  Foreground="Red"
+								  IsVisible="{Binding !IsReady}" />
+							</Panel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn
+				  Header="Actions">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel
+							  Orientation="Horizontal">
+								<Button
+								  Command="{Binding DataContext.EditProcessCommand, &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; RelativeSource={RelativeSource AncestorType=DataGrid}}"
+								  CommandParameter="{Binding}"
+								  Margin="5">
+									<PathIcon
+									  Data="{StaticResource edit_regular}"
+									  Width="16"
+									  Height="16" />
+								</Button>
+								<Button
+								  Command="{Binding DataContext.DeleteProcessCommand, &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; RelativeSource={RelativeSource AncestorType=DataGrid}}"
+								  CommandParameter="{Binding}"
+								  Margin="5">
+									<PathIcon
+									  Data="{StaticResource remove_regular}"
+									  Width="16"
+									  Height="16" />
+								</Button>
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
 	</Grid>
 </UserControl>

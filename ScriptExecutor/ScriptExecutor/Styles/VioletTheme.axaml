@@ -1,0 +1,103 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Styles.Resources>
+        <!-- Color Palette - Darker with more pronounced violet highlights -->
+        <Color x:Key="VioletDarkBackground">#121016</Color>          <!-- Darker background -->
+        <Color x:Key="VioletDarkBackgroundSecondary">#1E1A2E</Color> <!-- Slightly violet dark secondary -->
+        <Color x:Key="VioletPrimary">#9D4EFF</Color>                 <!-- Vibrant violet -->
+        <Color x:Key="VioletSecondary">#7B4FD3</Color>               <!-- Deeper violet -->
+        <Color x:Key="VioletAccent">#BE95FF</Color>                  <!-- Lighter violet for accents -->
+        <Color x:Key="VioletBorder">#362B59</Color>                  <!-- Subtle violet borders -->
+        <Color x:Key="VioletHighlight">#4A2C7D</Color>               <!-- For hover effects -->
+        
+        <!-- Brushes -->
+        <SolidColorBrush x:Key="ButtonBackground" Color="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource VioletHighlight}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource VioletSecondary}"/>
+        <SolidColorBrush x:Key="ButtonBorderBrush" Color="{StaticResource VioletBorder}"/>
+        
+        <!-- DataGrid brushes -->
+        <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundBrush" Color="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <SolidColorBrush x:Key="DataGridRowBackgroundBrush" Color="{StaticResource VioletDarkBackground}"/>
+        <SolidColorBrush x:Key="DataGridRowBackgroundPointerOverBrush" Color="#291E40"/> <!-- Dark violet hover -->
+        <SolidColorBrush x:Key="DataGridRowBackgroundSelectedBrush" Color="{StaticResource VioletHighlight}"/>
+        <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource VioletBorder}"/>
+        <SolidColorBrush x:Key="DataGridGridLinesBrush" Color="{StaticResource VioletBorder}"/>
+    </Styles.Resources>
+
+    <!-- Window style overrides -->
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{StaticResource VioletDarkBackground}"/>
+    </Style>
+
+    <!-- Button style overrides -->
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBorderBrush}"/>
+    </Style>
+
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundPointerOver}"/>
+    </Style>
+
+    <Style Selector="Button:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundPressed}"/>
+    </Style>
+
+    <!-- PathIcon style overrides - More pronounced violet icon coloring -->
+    <Style Selector="PathIcon">
+        <Setter Property="Foreground" Value="{StaticResource VioletAccent}"/>
+    </Style>
+
+    <!-- TextBlock style overrides -->
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <!-- DataGrid style overrides -->
+    <Style Selector="DataGrid">
+        <Setter Property="BorderBrush" Value="{StaticResource DataGridBorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource VioletDarkBackground}"/>
+    </Style>
+
+    <Style Selector="DataGridRow">
+        <Setter Property="Background" Value="{StaticResource DataGridRowBackgroundBrush}"/>
+    </Style>
+
+    <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="Fill" Value="{StaticResource DataGridRowBackgroundPointerOverBrush}"/>
+    </Style>
+
+    <Style Selector="DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="Fill" Value="{StaticResource DataGridRowBackgroundSelectedBrush}"/>
+        <Setter Property="Opacity" Value="0.8"/>
+    </Style>
+
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="Background" Value="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="{StaticResource VioletBorder}"/>
+    </Style>
+
+    <!-- Add a subtle violet glow to focused elements -->
+    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="{StaticResource VioletPrimary}"/>
+        <Setter Property="BoxShadow" Value="0 0 3 1 #7B4FD380"/>
+    </Style>
+    
+    <!-- Add more styles for other controls -->
+    <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+        <Setter Property="Background" Value="{StaticResource VioletPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource VioletSecondary}"/>
+    </Style>
+    
+    <Style Selector="ComboBox">
+        <Setter Property="Background" Value="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource VioletBorder}"/>
+    </Style>
+    
+    <Style Selector="ComboBox:pointerover /template/ Border">
+        <Setter Property="BorderBrush" Value="{StaticResource VioletAccent}"/>
+    </Style>
+</Styles>

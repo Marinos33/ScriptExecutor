@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+	<AvaloniaResource Include="Styles\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,8 +35,4 @@
       <DependentUpon>EditProcessWindow.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
-
-	<ItemGroup>
-		<AvaloniaResource Include="Assets/avalonia-logo.ico" />
-	</ItemGroup>
 </Project>

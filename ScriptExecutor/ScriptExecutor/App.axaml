@@ -4,6 +4,45 @@
              RequestedThemeVariant="Dark">
     <Application.Styles>
         <FluentTheme />
-		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
-    </Application.Styles>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+        <!-- Include our custom styles -->
+		<StyleInclude Source="avares://ScriptExecutor/Styles/VioletTheme.axaml"/>
+	</Application.Styles>
+
+    <!-- Violet Dark Theme Resources -->
+    <Application.Resources>
+        <!-- Color Palette -->
+        <Color x:Key="VioletDarkBackground">#1A1528</Color>
+        <Color x:Key="VioletDarkBackgroundSecondary">#251B36</Color>
+        <Color x:Key="VioletPrimary">#8A4FFF</Color>
+        <Color x:Key="VioletSecondary">#B088FF</Color>
+        <Color x:Key="VioletAccent">#D0BCFF</Color>
+        <Color x:Key="VioletBorder">#47376B</Color>
+        
+        <!-- Override base colors -->
+        <SolidColorBrush x:Key="SystemControlBackgroundAltHighBrush" Color="{StaticResource VioletDarkBackground}"/>
+        <SolidColorBrush x:Key="SystemControlBackgroundBaseHighBrush" Color="{StaticResource VioletDarkBackground}"/>
+        <SolidColorBrush x:Key="SystemControlBackgroundBaseLowBrush" Color="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <SolidColorBrush x:Key="SystemControlBackgroundBaseMediumBrush" Color="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <SolidColorBrush x:Key="SystemControlBackgroundBaseMediumLowBrush" Color="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <SolidColorBrush x:Key="SystemControlForegroundBaseHighBrush" Color="White"/>
+        
+        <!-- Accent color -->
+        <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{StaticResource VioletPrimary}"/>
+        <SolidColorBrush x:Key="SystemControlHighlightAltAccentBrush" Color="{StaticResource VioletPrimary}"/>
+        
+        <!-- Button styles -->
+        <SolidColorBrush x:Key="ButtonBackground" Color="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource VioletPrimary}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{StaticResource VioletSecondary}"/>
+        <SolidColorBrush x:Key="ButtonBorderBrush" Color="{StaticResource VioletBorder}"/>
+        
+        <!-- DataGrid styles -->
+        <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundBrush" Color="{StaticResource VioletDarkBackgroundSecondary}"/>
+        <SolidColorBrush x:Key="DataGridRowBackgroundBrush" Color="{StaticResource VioletDarkBackground}"/>
+        <SolidColorBrush x:Key="DataGridRowBackgroundPointerOverBrush" Color="#332752"/>
+        <SolidColorBrush x:Key="DataGridRowBackgroundSelectedBrush" Color="{StaticResource VioletPrimary}"/>
+        <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource VioletBorder}"/>
+        <SolidColorBrush x:Key="DataGridGridLinesBrush" Color="{StaticResource VioletBorder}"/>
+    </Application.Resources>
 </Application>

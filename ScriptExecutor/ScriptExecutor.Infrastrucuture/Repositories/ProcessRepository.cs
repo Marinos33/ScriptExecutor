@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ScriptExecutor.Application.Interfaces;
+﻿using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Domain.Model;
 using ScriptExecutor.Infrastrucuture.Persistence;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ScriptExecutor.Infrastrucuture.Repositories
 {
@@ -58,7 +58,7 @@ namespace ScriptExecutor.Infrastrucuture.Repositories
             await _dataPersistence.SaveDataAsync();
 
             //check if edit worked
-            if (!CheckIfProcessesAreEquals(process, _dataPersistence.ProcessesList[index]))
+            if (!CheckIfProcessesAreEquals(process, _dataPersistence.ProcessesList.First(p => p == process)))
             {
                 throw new System.Exception("Process was not edited");
             }

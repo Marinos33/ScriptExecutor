@@ -45,10 +45,16 @@
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel Orientation="Horizontal">
-									<Button Command="{Binding EditProcessCommand}" Margin="5">
+									<Button Command="{Binding DataContext.EditProcessCommand, 
+											 RelativeSource={RelativeSource AncestorType=DataGrid}}"
+											CommandParameter="{Binding}"
+											Margin="5">
 										<PathIcon Data="{StaticResource edit_regular}" Width="16" Height="16"/>
 									</Button>
-									<Button Command="{Binding DeleteProcessCommand}" Margin="5" >
+									<Button Command="{Binding DataContext.DeleteProcessCommand, 
+											 RelativeSource={RelativeSource AncestorType=DataGrid}}"
+											 CommandParameter="{Binding}"
+											 Margin="5">
 										<PathIcon Data="{StaticResource remove_regular}" Width="16" Height="16"/>
 									</Button>
 								</StackPanel>

@@ -1,10 +1,10 @@
-﻿using System.Reactive;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Avalonia.Controls.ApplicationLifetimes;
+﻿using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform.Storage;
 using ReactiveUI;
 using ScriptExecutor.Domain.Model;
+using System.Reactive;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ScriptExecutor.ViewModels
 {

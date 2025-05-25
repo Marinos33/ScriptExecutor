@@ -1,8 +1,8 @@
-﻿using System;
+﻿using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ScriptExecutor.Application.Interfaces;
-using ScriptExecutor.Domain.Model;
 
 namespace ScriptExecutor.Application
 {

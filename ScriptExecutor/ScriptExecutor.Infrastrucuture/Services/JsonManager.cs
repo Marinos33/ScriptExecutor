@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using ScriptExecutor.Domain.Model;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using ScriptExecutor.Domain.Model;
 
 namespace ScriptExecutor.Infrastrucuture.Services
 {
@@ -26,6 +26,7 @@ namespace ScriptExecutor.Infrastrucuture.Services
         /// the path to the file data (json) which contains all the processes (use to do the save system)
         /// </summary>
         private const string DATAFILE_PATH = "C:\\Users\\loicm\\Downloads\\Data.json";
+
         public async Task<IEnumerable<Process>> ReadJsonAsync()
         {
             if (File.Exists(DATAFILE_PATH))

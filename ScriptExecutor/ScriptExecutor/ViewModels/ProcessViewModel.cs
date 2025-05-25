@@ -16,5 +16,13 @@ namespace ScriptExecutor.ViewModels
         public string Script => _process.Script;
         public bool RunOnStart => _process.RunOnStart;
         public bool RunAfterShutdown => _process.RunAfterShutdown;
+
+        public bool IsReady()
+        {
+            return !string.IsNullOrWhiteSpace(_process.Name) &&
+                   !string.IsNullOrWhiteSpace(_process.ExecutableFile) &&
+                   !string.IsNullOrWhiteSpace(_process.Script)
+                   && (_process.RunOnStart || _process.RunAfterShutdown);
+        }
     }
 }

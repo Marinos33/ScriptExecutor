@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Quartz;
+using ScriptExecutor.Application.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Quartz;
-using ScriptExecutor.Application.Interfaces;
 using Process = System.Diagnostics.Process;
 using ProcessEntity = ScriptExecutor.Domain.Model.Process;
 

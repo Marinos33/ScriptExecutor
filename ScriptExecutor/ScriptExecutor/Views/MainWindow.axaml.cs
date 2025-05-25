@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Avalonia.ReactiveUI;
+﻿using Avalonia.ReactiveUI;
 using ReactiveUI;
 using ScriptExecutor.ViewModels;
+using System.Threading.Tasks;
 
 namespace ScriptExecutor.Views;
 

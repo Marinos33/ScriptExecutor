@@ -1,11 +1,10 @@
-﻿using System;
-
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.ReactiveUI;
+using System;
 
 namespace ScriptExecutor.Desktop;
 
-//TODO : 
+//TODO :
 // 1. repair edit and remove button to be clickable
 // 2. implmement the update
 // 3. implement the remove

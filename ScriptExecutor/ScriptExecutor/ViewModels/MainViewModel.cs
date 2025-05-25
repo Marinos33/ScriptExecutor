@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using DynamicData;
+using ReactiveUI;
+using ScriptExecutor.Application;
+using ScriptExecutor.Application.Interfaces;
+using ScriptExecutor.Domain.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using DynamicData;
-using ReactiveUI;
-using ScriptExecutor.Application;
-using ScriptExecutor.Application.Interfaces;
-using ScriptExecutor.Domain.Model;
 
 namespace ScriptExecutor.ViewModels;
 
@@ -26,55 +26,11 @@ public class MainViewModel : ViewModelBase
 
         ShowAddProcessDialog = new Interaction<EditProcessViewModel, ProcessViewModel?>();
 
-        AddProcessCommand = ReactiveCommand.CreateFromTask(async () =>
-        {
-            var addProcessViewModel = new EditProcessViewModel
-            {
-                // Set the delegate that will be used by ExecuteScriptCommand
-                ExecuteScriptHandler = async (script) =>
-                {
-                    var isSuccessful = await _scriptRunner.RunScriptAsync(script);
+        AddProcessCommand = ReactiveCommand.CreateFromTask(AddProcess);
 
-                    return isSuccessful;
-                }
-            };
+        EditProcessCommand = ReactiveCommand.CreateFromTask<ProcessViewModel>(EditProcess);
 
-            var result = await ShowAddProcessDialog.Handle(addProcessViewModel);
-
-            if (result != null)
-            {
-                var process = new Process
-                {
-                    Name = result.ProcessName,
-                    ExecutableFile = result.ExecutableFile,
-                    Script = result.Script,
-                    RunOnStart = result.RunOnStart,
-                    RunAfterShutdown = result.RunAfterShutdown
-                };
-
-                await _processService.AddProcessAsync(process);
-
-                int insertIndex = 0;
-                while (insertIndex < Processes.Count &&
-                       string.Compare(Processes[insertIndex].ProcessName, result.ProcessName) < 0)
-                {
-                    insertIndex++;
-                }
-
-                // Insert at the correct position alphabetically
-                Processes.Insert(insertIndex, result);
-            }
-        });
-
-        DeleteProcessCommand = ReactiveCommand.CreateFromTask<ProcessViewModel>(async (process) =>
-        {
-            int index = Processes.IndexOf(process);
-            if (index >= 0)
-            {
-                await _processService.DeleteProcessAsync(index);
-                Processes.RemoveAt(index);
-            }
-        });
+        DeleteProcessCommand = ReactiveCommand.CreateFromTask<ProcessViewModel>(DeleteProcess);
 
         RefreshProcessesCommand = ReactiveCommand.Create(LoadProcesses);
 
@@ -101,5 +57,90 @@ public class MainViewModel : ViewModelBase
                 Processes.AddRange(processes);
             });
         });
+    }
+
+    private async Task DeleteProcess(ProcessViewModel process)
+    {
+        int index = Processes.IndexOf(process);
+        if (index >= 0)
+        {
+            await _processService.DeleteProcessAsync(index);
+            Processes.RemoveAt(index);
+        }
+    }
+
+    private async Task AddProcess()
+    {
+        var addProcessViewModel = new EditProcessViewModel
+        {
+            // Set the delegate that will be used by ExecuteScriptCommand
+            ExecuteScriptHandler = async (script) =>
+            {
+                var isSuccessful = await _scriptRunner.RunScriptAsync(script);
+
+                return isSuccessful;
+            }
+        };
+
+        var result = await ShowAddProcessDialog.Handle(addProcessViewModel);
+
+        if (result != null)
+        {
+            var process = new Process
+            {
+                Name = result.ProcessName,
+                ExecutableFile = result.ExecutableFile,
+                Script = result.Script,
+                RunOnStart = result.RunOnStart,
+                RunAfterShutdown = result.RunAfterShutdown
+            };
+
+            await _processService.AddProcessAsync(process);
+
+            int insertIndex = 0;
+            while (insertIndex < Processes.Count &&
+                   string.Compare(Processes[insertIndex].ProcessName, result.ProcessName) < 0)
+            {
+                insertIndex++;
+            }
+
+            // Insert at the correct position alphabetically
+            Processes.Insert(insertIndex, result);
+        }
+    }
+
+    private async Task EditProcess(ProcessViewModel process)
+    {
+        var editProcessViewModel = new EditProcessViewModel
+        {
+            // Set the delegate that will be used by ExecuteScriptCommand
+            ExecuteScriptHandler = async (script) =>
+            {
+                var isSuccessful = await _scriptRunner.RunScriptAsync(script);
+
+                return isSuccessful;
+            },
+            Process = process
+        };
+
+        var result = await ShowAddProcessDialog.Handle(editProcessViewModel);
+
+        if (result != null)
+        {
+            int index = Processes.IndexOf(process);
+
+            var editedProcess = new Process
+            {
+                Name = result.ProcessName,
+                ExecutableFile = result.ExecutableFile,
+                Script = result.Script,
+                RunOnStart = result.RunOnStart,
+                RunAfterShutdown = result.RunAfterShutdown
+            };
+
+            await _processService.EditProcessAsync(editedProcess, index);
+
+            LoadProcesses();
+        }
     }
 }

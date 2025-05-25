@@ -1,8 +1,8 @@
-using System;
 using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 using ReactiveUI;
 using ScriptExecutor.ViewModels;
+using System;
 
 namespace ScriptExecutor.Views;
 

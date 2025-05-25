@@ -1,4 +1,6 @@
 ﻿using DynamicData;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 using ReactiveUI;
 using ScriptExecutor.Application;
 using ScriptExecutor.Application.Interfaces;
@@ -17,12 +19,14 @@ public class MainViewModel : ViewModelBase
 {
     private readonly IProcessService _processService;
     private readonly IScriptRunner _scriptRunner;
+    private readonly ILogManager _logManager;
     public ObservableCollection<ProcessViewModel> Processes { get; } = [];
 
-    public MainViewModel(IProcessService processService, IScriptRunner scriptRunner)
+    public MainViewModel(IProcessService processService, IScriptRunner scriptRunner, ILogManager logManager)
     {
         _processService = processService;
         _scriptRunner = scriptRunner;
+        _logManager = logManager;
 
         ShowAddProcessDialog = new Interaction<EditProcessViewModel, ProcessViewModel?>();
 
@@ -34,6 +38,10 @@ public class MainViewModel : ViewModelBase
 
         RefreshProcessesCommand = ReactiveCommand.Create(LoadProcesses);
 
+        ExecuteScriptCommand = ReactiveCommand.CreateFromTask<ProcessViewModel>(ExecuteScript);
+
+        ShowLogsCommand = ReactiveCommand.CreateFromTask(ShowLogs);
+
         RxApp.MainThreadScheduler.Schedule(LoadProcesses);
     }
 
@@ -41,6 +49,8 @@ public class MainViewModel : ViewModelBase
     public ICommand EditProcessCommand { get; }
     public ICommand DeleteProcessCommand { get; }
     public ICommand RefreshProcessesCommand { get; }
+    public ICommand ExecuteScriptCommand { get; }
+    public ICommand ShowLogsCommand { get; set; }
     public Interaction<EditProcessViewModel, ProcessViewModel?> ShowAddProcessDialog { get; }
 
     private void LoadProcesses()
@@ -142,5 +152,43 @@ public class MainViewModel : ViewModelBase
 
             LoadProcesses();
         }
+    }
+
+    public async Task ExecuteScript(ProcessViewModel process)
+    {
+        var script = process.Script;
+
+        if (string.IsNullOrEmpty(script))
+        {
+            var scriptBox = MessageBoxManager
+                .GetMessageBoxStandard("Error", "Script cannot be empty.",
+                    ButtonEnum.Ok, Icon.Error);
+
+            await scriptBox.ShowAsync();
+
+            return;
+        }
+
+        var isSuccesful = await _scriptRunner.RunScriptAsync(script);
+
+        var message = isSuccesful ?
+            "Script executed successfully." :
+            "Script execution failed.";
+
+        var box = MessageBoxManager
+            .GetMessageBoxStandard("Result", message,
+                ButtonEnum.Ok, Icon.Info);
+
+        await box.ShowAsync();
+    }
+
+    public async Task ShowLogs()
+    {
+        await Task.Run(
+            () =>
+            {
+                _logManager.OpenLogs();
+            }
+        );
     }
 }

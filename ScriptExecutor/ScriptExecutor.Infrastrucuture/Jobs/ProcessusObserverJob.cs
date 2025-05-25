@@ -46,7 +46,7 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                 foreach (var item in processesList)
                 {
                     var processName = Path.GetFileNameWithoutExtension(item.ExecutableFile);
-                    Process[] processes = null;
+                    Process[]? processes = null;
 
                     try
                     {

@@ -44,8 +44,13 @@
 				</Button>
 				<Button
 				  Grid.Column="2"
-				  Content="Logs"
-				  Margin="5" />
+				  Command="{Binding ShowLogsCommand}"
+				  Margin="5">
+					<PathIcon
+					  Data="{StaticResource notebook_error_regular}"
+					  Width="16"
+					  Height="16" />
+				</Button>
 			</Grid>
 		</Grid>
 		<DataGrid
@@ -93,7 +98,16 @@
 							<StackPanel
 							  Orientation="Horizontal">
 								<Button
-								  Command="{Binding DataContext.EditProcessCommand, &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; RelativeSource={RelativeSource AncestorType=DataGrid}}"
+								  Command="{Binding DataContext.ExecuteScriptCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+								  CommandParameter="{Binding}"
+								  Margin="5">
+									<PathIcon
+									  Data="{StaticResource play_circle_regular}"
+									  Width="16"
+									  Height="16" />
+								</Button>
+								<Button
+								  Command="{Binding DataContext.EditProcessCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
 								  CommandParameter="{Binding}"
 								  Margin="5">
 									<PathIcon
@@ -102,7 +116,7 @@
 									  Height="16" />
 								</Button>
 								<Button
-								  Command="{Binding DataContext.DeleteProcessCommand, &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; RelativeSource={RelativeSource AncestorType=DataGrid}}"
+								  Command="{Binding DataContext.DeleteProcessCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
 								  CommandParameter="{Binding}"
 								  Margin="5">
 									<PathIcon

@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="22.7" version="22.7" Modules="simple" RootPath="." Language="en" Id="{47CE1B5F-B981-47F2-AF02-16D63B9F95A2}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_PRODUCTNAME_ARP" Value="ScriptExecutor"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Base.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Controls.ColorPicker.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Controls.DataGrid.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Controls.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.DesignerSupport.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Desktop.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Diagnostics.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Dialogs.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Fonts.Inter.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.FreeDesktop.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Markup.Xaml.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Markup.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Metal.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.MicroCom.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Native.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.OpenGL.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.ReactiveUI.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Remote.Protocol.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Skia.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Themes.Fluent.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Themes.Simple.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Vulkan.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Win32.Automation.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.Win32.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.X11.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Avalonia.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DialogHost.Avalonia.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DynamicData.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_HarfBuzzSharp.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MicroCom.Runtime.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Configuration.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Console.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Debug.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Options.ConfigurationExtensions.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Options.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Primitives.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MsBox.Avalonia.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Quartz.Extensions.DependencyInjection.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Quartz.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ReactiveUI.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Application.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.deps.json" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.exe" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.runtimeconfig.json" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Domain.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Infrastrucuture.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SkiaSharp.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Splat.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Reactive.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Tmds.DBus.Protocol.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_av_libglesv2.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-arm64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_av_libglesv2.dll_1" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-x64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_av_libglesv2.dll_2" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-x86\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libAvaloniaNative.dylib" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\osx\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-arm64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dll_1" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-x64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dll_2" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-x86\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dylib" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\osx\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-arm\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so_1" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-arm64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so_2" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-musl-x64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so_3" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-x64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dll" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-arm64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dll_1" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-x64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dll_2" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\win-x86\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dylib" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\osx\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-arm\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so_1" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-arm64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so_2" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-musl-x64\native"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so_3" Value="..\ScriptExecutor.Desktop\bin\Release\net9.0\publish\runtimes\linux-x64\native"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Base.dll" Value="Avalonia.Base.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.ColorPicker.dll" Value="Avalonia.Controls.ColorPicker.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.DataGrid.dll" Value="Avalonia.Controls.DataGrid.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.dll" Value="Avalonia.Controls.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.DesignerSupport.dll" Value="Avalonia.DesignerSupport.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Desktop.dll" Value="Avalonia.Desktop.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Diagnostics.dll" Value="Avalonia.Diagnostics.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Dialogs.dll" Value="Avalonia.Dialogs.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Fonts.Inter.dll" Value="Avalonia.Fonts.Inter.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.FreeDesktop.dll" Value="Avalonia.FreeDesktop.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Markup.Xaml.dll" Value="Avalonia.Markup.Xaml.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Markup.dll" Value="Avalonia.Markup.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Metal.dll" Value="Avalonia.Metal.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.MicroCom.dll" Value="Avalonia.MicroCom.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Native.dll" Value="Avalonia.Native.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.OpenGL.dll" Value="Avalonia.OpenGL.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.ReactiveUI.dll" Value="Avalonia.ReactiveUI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Remote.Protocol.dll" Value="Avalonia.Remote.Protocol.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Skia.dll" Value="Avalonia.Skia.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Themes.Fluent.dll" Value="Avalonia.Themes.Fluent.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Themes.Simple.dll" Value="Avalonia.Themes.Simple.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Vulkan.dll" Value="Avalonia.Vulkan.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Win32.Automation.dll" Value="Avalonia.Win32.Automation.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Win32.dll" Value="Avalonia.Win32.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.X11.dll" Value="Avalonia.X11.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Avalonia.dll" Value="Avalonia.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DialogHost.Avalonia.dll" Value="DialogHost.Avalonia.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DynamicData.dll" Value="DynamicData.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_HarfBuzzSharp.dll" Value="HarfBuzzSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MicroCom.Runtime.dll" Value="MicroCom.Runtime.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll" Value="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll" Value="Microsoft.Extensions.Configuration.Binder.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.dll" Value="Microsoft.Extensions.Configuration.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll" Value="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.dll" Value="Microsoft.Extensions.DependencyInjection.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll" Value="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Configuration.dll" Value="Microsoft.Extensions.Logging.Configuration.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Console.dll" Value="Microsoft.Extensions.Logging.Console.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Debug.dll" Value="Microsoft.Extensions.Logging.Debug.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.dll" Value="Microsoft.Extensions.Logging.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.ConfigurationExtensions.dll" Value="Microsoft.Extensions.Options.ConfigurationExtensions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.dll" Value="Microsoft.Extensions.Options.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Primitives.dll" Value="Microsoft.Extensions.Primitives.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MsBox.Avalonia.dll" Value="MsBox.Avalonia.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll" Value="Newtonsoft.Json.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Quartz.Extensions.DependencyInjection.dll" Value="Quartz.Extensions.DependencyInjection.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Quartz.dll" Value="Quartz.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ReactiveUI.dll" Value="ReactiveUI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Application.dll" Value="ScriptExecutor.Application.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.deps.json" Value="ScriptExecutor.Desktop.deps.json"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.dll" Value="ScriptExecutor.Desktop.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.exe" Value="ScriptExecutor.Desktop.exe"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.runtimeconfig.json" Value="ScriptExecutor.Desktop.runtimeconfig.json"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Domain.dll" Value="ScriptExecutor.Domain.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Infrastrucuture.dll" Value="ScriptExecutor.Infrastrucuture.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.dll" Value="ScriptExecutor.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.dll" Value="SkiaSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Splat.dll" Value="Splat.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Reactive.dll" Value="System.Reactive.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Tmds.DBus.Protocol.dll" Value="Tmds.DBus.Protocol.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll" Value="av_libglesv2.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll_1" Value="av_libglesv2.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll_2" Value="av_libglesv2.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libAvaloniaNative.dylib" Value="libAvaloniaNative.dylib"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll" Value="libHarfBuzzSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll_1" Value="libHarfBuzzSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll_2" Value="libHarfBuzzSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dylib" Value="libHarfBuzzSharp.dylib"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so" Value="libHarfBuzzSharp.so"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_1" Value="libHarfBuzzSharp.so"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_2" Value="libHarfBuzzSharp.so"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_3" Value="libHarfBuzzSharp.so"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll" Value="libSkiaSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll_1" Value="libSkiaSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll_2" Value="libSkiaSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dylib" Value="libSkiaSharp.dylib"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so" Value="libSkiaSharp.so"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_1" Value="libSkiaSharp.so"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_2" Value="libSkiaSharp.so"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_3" Value="libSkiaSharp.so"/>
+    <ROW Property="AI_UNINSTALLER" Value="msiexec.exe"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPNOREPAIR" Value="1"/>
+    <ROW Property="ARPPRODUCTICON" Value="logo.exe" Type="8"/>
+    <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>
+    <ROW Property="ARPURLINFOABOUT" Value="https://github.com/Marinos33/ScriptExecutor/releases"/>
+    <ROW Property="Manufacturer" Value="Marinos33"/>
+    <ROW Property="ProductCode" Value="1033:{609B4C83-FC5E-4C84-B030-13056EAE9D99} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Script Executor"/>
+    <ROW Property="ProductVersion" Value="3.0.0" Options="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{8B0F11F3-27DE-4A5D-BE0B-5C4EA3B94DCA}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60Display" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1" DirectoryOptions="3"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="ScriptExecutor.Desktop_Dir" Directory_Parent="APPDIR" DefaultDir="SCRIPT~1.DES|ScriptExecutor.Desktop" DirectoryOptions="3"/>
+    <ROW Directory="StartupFolder" Directory_Parent="TARGETDIR" DefaultDir="STARTU~1|StartupFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="linuxarm64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="LINUX-~2|linux-arm64" DirectoryOptions="3"/>
+    <ROW Directory="linuxarm_Dir" Directory_Parent="runtimes_Dir" DefaultDir="LINUX-~1|linux-arm" DirectoryOptions="3"/>
+    <ROW Directory="linuxmuslx64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="LINUX-~3|linux-musl-x64" DirectoryOptions="3"/>
+    <ROW Directory="linuxx64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="LINUX-~4|linux-x64" DirectoryOptions="3"/>
+    <ROW Directory="native_1_Dir" Directory_Parent="linuxarm64_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_2_Dir" Directory_Parent="linuxmuslx64_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_3_Dir" Directory_Parent="linuxx64_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_4_Dir" Directory_Parent="osx_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_5_Dir" Directory_Parent="winarm64_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_6_Dir" Directory_Parent="winx64_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_7_Dir" Directory_Parent="winx86_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_Dir" Directory_Parent="linuxarm_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="osx_Dir" Directory_Parent="runtimes_Dir" DefaultDir="osx" DirectoryOptions="3"/>
+    <ROW Directory="runtimes_Dir" Directory_Parent="ScriptExecutor.Desktop_Dir" DefaultDir="runtimes" DirectoryOptions="3"/>
+    <ROW Directory="winarm64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="WIN-AR~1|win-arm64" DirectoryOptions="3"/>
+    <ROW Directory="winx64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x64" DirectoryOptions="3"/>
+    <ROW Directory="winx86_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x86" DirectoryOptions="3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SideBySideGuidComponent">
+    <ROW Component="APPDIR" Value="{323D57D3-AF51-48A7-9454-C57BD19225DD}"/>
+    <ROW Component="ProductInformation" Value="{CCC49EA5-340C-40F5-AB72-E886C873CCA0}"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AI_CustomARPName" ComponentId="{5FC5F319-6462-4AB3-82E2-F989008C504F}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="APPDIR" ComponentId="{323D57D3-AF51-48A7-9454-C57BD19225DD}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="ProductInformation" ComponentId="{CCC49EA5-340C-40F5-AB72-E886C873CCA0}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{A6D2C557-435A-47EE-9061-A323C735DA8C}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="ScriptExecutor.Desktop_PrimaryOutput" ComponentId="{D59A46C7-265D-43AB-B310-F5F1772E46D0}" Directory_="ScriptExecutor.Desktop_Dir" Attributes="0" KeyPath="ScriptExecutor.Desktop.dll"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput" ComponentId="{D3A4334B-0243-4D9E-8DDB-CFB0E51514F6}" Directory_="ScriptExecutor.Desktop_Dir" Attributes="0" KeyPath="Tmds.DBus.Protocol.dll"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm64_native" ComponentId="{6CEED951-0E97-422F-A54B-A4332FBEE092}" Directory_="native_1_Dir" Attributes="0" KeyPath="libHarfBuzzSharp.so_1" Type="0"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm_native" ComponentId="{E543861F-25BE-441E-AE2F-A495B2F9DF08}" Directory_="native_Dir" Attributes="0" KeyPath="libHarfBuzzSharp.so" Type="0"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxmuslx64_native" ComponentId="{B20A2059-BFED-4A4E-93CD-29E5B1A207AA}" Directory_="native_2_Dir" Attributes="0" KeyPath="libHarfBuzzSharp.so_2" Type="0"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxx64_native" ComponentId="{1D89173A-68BE-46F5-962B-74623CCFB95B}" Directory_="native_3_Dir" Attributes="0" KeyPath="libHarfBuzzSharp.so_3" Type="0"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_osx_native" ComponentId="{760316E9-C966-41FB-BB9A-03731D116257}" Directory_="native_4_Dir" Attributes="0" KeyPath="libAvaloniaNative.dylib" Type="0"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_winarm64_native" ComponentId="{9EEAD2D0-FA48-4742-96C3-A9CEBCC9F851}" Directory_="native_5_Dir" Attributes="256" KeyPath="libSkiaSharp.dll"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_winx64_native" ComponentId="{71E67967-85BA-4D9D-B367-09640396ADAC}" Directory_="native_6_Dir" Attributes="256" KeyPath="libSkiaSharp.dll_1"/>
+    <ROW Component="ScriptExecutor.Desktop_PublishOutput_runtimes_winx86_native" ComponentId="{1FE46BC9-8705-43F7-899F-4809C8CAF767}" Directory_="native_7_Dir" Attributes="0" KeyPath="libSkiaSharp.dll_2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="ScriptExecutor.Desktop.dll" Component_="ScriptExecutor.Desktop_PrimaryOutput" FileName="SCRIPT~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Base.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Base.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Base.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Controls.ColorPicker.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.ColorPicker.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Controls.ColorPicker.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Controls.DataGrid.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.DataGrid.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Controls.DataGrid.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Controls.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Controls.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.DesignerSupport.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.DesignerSupport.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.DesignerSupport.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Desktop.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~7.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Desktop.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Desktop.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Diagnostics.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~8.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Diagnostics.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Diagnostics.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Dialogs.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALON~9.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Dialogs.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Dialogs.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Fonts.Inter.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~10.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Fonts.Inter.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Fonts.Inter.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.FreeDesktop.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~11.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.FreeDesktop.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.FreeDesktop.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Markup.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~12.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Markup.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Markup.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Markup.Xaml.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~13.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Markup.Xaml.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Markup.Xaml.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Metal.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~14.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Metal.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Metal.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.MicroCom.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~15.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.MicroCom.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.MicroCom.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Native.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~16.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Native.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Native.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.OpenGL.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~17.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.OpenGL.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.OpenGL.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.ReactiveUI.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~18.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.ReactiveUI.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.ReactiveUI.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Remote.Protocol.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~19.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Remote.Protocol.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Remote.Protocol.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Skia.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~20.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Skia.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Skia.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Themes.Fluent.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~21.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Themes.Fluent.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Themes.Fluent.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Themes.Simple.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~22.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Themes.Simple.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Themes.Simple.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Vulkan.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~23.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Vulkan.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Vulkan.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Win32.Automation.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~24.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Win32.Automation.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Win32.Automation.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.Win32.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~25.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Win32.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.Win32.dll&gt;" SelfReg="false"/>
+    <ROW File="Avalonia.X11.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="AVALO~26.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.X11.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Avalonia.X11.dll&gt;" SelfReg="false"/>
+    <ROW File="DialogHost.Avalonia.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="DIALOG~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_DialogHost.Avalonia.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DialogHost.Avalonia.dll&gt;" SelfReg="false"/>
+    <ROW File="DynamicData.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="DYNAMI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_DynamicData.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DynamicData.dll&gt;" SelfReg="false"/>
+    <ROW File="HarfBuzzSharp.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="HARFBU~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_HarfBuzzSharp.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_HarfBuzzSharp.dll&gt;" SelfReg="false"/>
+    <ROW File="MicroCom.Runtime.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROC~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MicroCom.Runtime.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MicroCom.Runtime.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.Abstractions.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.Binder.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Abstractions.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~7.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Configuration.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~8.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Configuration.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Configuration.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Console.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICROS~9.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Console.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Console.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Debug.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICRO~10.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Debug.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Debug.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICRO~11.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Options.ConfigurationExtensions.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICRO~12.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.ConfigurationExtensions.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Options.ConfigurationExtensions.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Options.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICRO~13.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Options.dll&gt;" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Primitives.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MICRO~14.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Primitives.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Primitives.dll&gt;" SelfReg="false"/>
+    <ROW File="MsBox.Avalonia.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="MSBOXA~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MsBox.Avalonia.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MsBox.Avalonia.dll&gt;" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="NEWTON~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Newtonsoft.Json.dll&gt;" SelfReg="false"/>
+    <ROW File="Quartz.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Quartz.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Quartz.dll&gt;" SelfReg="false"/>
+    <ROW File="Quartz.Extensions.DependencyInjection.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="QUARTZ~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Quartz.Extensions.DependencyInjection.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Quartz.Extensions.DependencyInjection.dll&gt;" SelfReg="false"/>
+    <ROW File="ReactiveUI.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="REACTI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ReactiveUI.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ReactiveUI.dll&gt;" SelfReg="false"/>
+    <ROW File="ScriptExecutor.Application.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SCRIPT~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Application.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.Application.dll&gt;" SelfReg="false"/>
+    <ROW File="ScriptExecutor.Desktop.deps.json" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SCRIPT~2.JSO|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.deps.json]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.deps.json&gt;" SelfReg="false"/>
+    <ROW File="ScriptExecutor.Desktop.exe" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SCRIPT~2.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.exe]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.exe&gt;" SelfReg="false" DigSign="true"/>
+    <ROW File="ScriptExecutor.Desktop.runtimeconfig.json" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SCRIPT~3.JSO|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.runtimeconfig.json]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.runtimeconfig.json&gt;" SelfReg="false"/>
+    <ROW File="ScriptExecutor.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SCRIPT~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.dll&gt;" SelfReg="false"/>
+    <ROW File="ScriptExecutor.Domain.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SCRIPT~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Domain.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.Domain.dll&gt;" SelfReg="false"/>
+    <ROW File="ScriptExecutor.Infrastrucuture.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SCRIPT~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Infrastrucuture.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ScriptExecutor.Infrastrucuture.dll&gt;" SelfReg="false"/>
+    <ROW File="SkiaSharp.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SKIASH~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SkiaSharp.dll&gt;" SelfReg="false"/>
+    <ROW File="Splat.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Splat.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Splat.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Reactive.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="SYSTEM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Reactive.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Reactive.dll&gt;" SelfReg="false"/>
+    <ROW File="Tmds.DBus.Protocol.dll" Component_="ScriptExecutor.Desktop_PublishOutput" FileName="TMDSDB~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Tmds.DBus.Protocol.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Tmds.DBus.Protocol.dll&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.so" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm_native" FileName="LIBHAR~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.so&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.so" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm_native" FileName="LIBSKI~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.so&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.so_1" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm64_native" FileName="LIBHAR~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_1]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.so_1&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.so_1" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm64_native" FileName="LIBSKI~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_1]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.so_1&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.so_2" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxmuslx64_native" FileName="LIBHAR~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_2]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.so_2&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.so_2" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxmuslx64_native" FileName="LIBSKI~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_2]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.so_2&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.so_3" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxx64_native" FileName="LIBHAR~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_3]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.so_3&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.so_3" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxx64_native" FileName="LIBSKI~2.SO|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_3]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.so_3&gt;" SelfReg="false"/>
+    <ROW File="libAvaloniaNative.dylib" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_osx_native" FileName="LIBAVA~2.DYL|[|AI_PROPPATH_FILENAME_PERBUILD_libAvaloniaNative.dylib]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libAvaloniaNative.dylib&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.dylib" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_osx_native" FileName="LIBHAR~2.DYL|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dylib]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.dylib&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.dylib" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_osx_native" FileName="LIBSKI~2.DYL|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dylib]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.dylib&gt;" SelfReg="false"/>
+    <ROW File="av_libglesv2.dll" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winarm64_native" FileName="AV_LIB~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_av_libglesv2.dll&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.dll" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winarm64_native" FileName="LIBHAR~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.dll&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.dll" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winarm64_native" FileName="LIBSKI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.dll&gt;" SelfReg="false"/>
+    <ROW File="av_libglesv2.dll_1" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx64_native" FileName="AV_LIB~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll_1]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_av_libglesv2.dll_1&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.dll_1" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx64_native" FileName="LIBHAR~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll_1]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.dll_1&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.dll_1" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx64_native" FileName="LIBSKI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll_1]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.dll_1&gt;" SelfReg="false"/>
+    <ROW File="av_libglesv2.dll_2" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx86_native" FileName="AV_LIB~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll_2]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_av_libglesv2.dll_2&gt;" SelfReg="false"/>
+    <ROW File="libHarfBuzzSharp.dll_2" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx86_native" FileName="LIBHAR~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll_2]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libHarfBuzzSharp.dll_2&gt;" SelfReg="false"/>
+    <ROW File="libSkiaSharp.dll_2" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx86_native" FileName="LIBSKI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll_2]" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_libSkiaSharp.dll_2&gt;" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Base.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Base.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Base.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Controls.ColorPicker.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Controls.ColorPicker.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.ColorPicker.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Controls.DataGrid.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Controls.DataGrid.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.DataGrid.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Controls.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Controls.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Controls.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.DesignerSupport.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.DesignerSupport.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.DesignerSupport.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Desktop.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Desktop.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Desktop.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Diagnostics.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Diagnostics.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Diagnostics.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Dialogs.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Dialogs.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Dialogs.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Fonts.Inter.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Fonts.Inter.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Fonts.Inter.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.FreeDesktop.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.FreeDesktop.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.FreeDesktop.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Markup.Xaml.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Markup.Xaml.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Markup.Xaml.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Markup.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Markup.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Markup.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Metal.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Metal.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Metal.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.MicroCom.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.MicroCom.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.MicroCom.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Native.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Native.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Native.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.OpenGL.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.OpenGL.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.OpenGL.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.ReactiveUI.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.ReactiveUI.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.ReactiveUI.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Remote.Protocol.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Remote.Protocol.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Remote.Protocol.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Skia.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Skia.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Skia.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Themes.Fluent.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Themes.Fluent.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Themes.Fluent.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Themes.Simple.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Themes.Simple.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Themes.Simple.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Vulkan.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Vulkan.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Vulkan.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Win32.Automation.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Win32.Automation.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Win32.Automation.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.Win32.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.Win32.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.Win32.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.X11.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.X11.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.X11.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Avalonia.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Avalonia.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Avalonia.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DialogHost.Avalonia.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_DialogHost.Avalonia.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_DialogHost.Avalonia.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DynamicData.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_DynamicData.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_DynamicData.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_HarfBuzzSharp.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_HarfBuzzSharp.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_HarfBuzzSharp.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MicroCom.Runtime.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MicroCom.Runtime.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MicroCom.Runtime.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Configuration.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Configuration.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Configuration.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Console.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Console.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Console.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Debug.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Debug.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Debug.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Options.ConfigurationExtensions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Options.ConfigurationExtensions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.ConfigurationExtensions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Options.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Options.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Primitives.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Primitives.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Primitives.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MsBox.Avalonia.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MsBox.Avalonia.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MsBox.Avalonia.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Newtonsoft.Json.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Quartz.Extensions.DependencyInjection.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Quartz.Extensions.DependencyInjection.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Quartz.Extensions.DependencyInjection.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Quartz.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Quartz.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Quartz.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ReactiveUI.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ReactiveUI.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ReactiveUI.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.Application.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Application.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Application.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.deps.json" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.deps.json]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.deps.json]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.exe]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.Desktop.runtimeconfig.json" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Desktop.runtimeconfig.json]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Desktop.runtimeconfig.json]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.Domain.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Domain.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Domain.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.Infrastrucuture.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.Infrastrucuture.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.Infrastrucuture.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ScriptExecutor.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ScriptExecutor.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ScriptExecutor.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SkiaSharp.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_SkiaSharp.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Splat.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Splat.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Splat.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Reactive.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Reactive.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Reactive.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Tmds.DBus.Protocol.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Tmds.DBus.Protocol.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Tmds.DBus.Protocol.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_av_libglesv2.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_av_libglesv2.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_av_libglesv2.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_av_libglesv2.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_av_libglesv2.dll_2" Path="[|AI_PROPPATH_DIR_PERBUILD_av_libglesv2.dll_2]\[|AI_PROPPATH_FILENAME_PERBUILD_av_libglesv2.dll_2]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libAvaloniaNative.dylib" Path="[|AI_PROPPATH_DIR_PERBUILD_libAvaloniaNative.dylib]\[|AI_PROPPATH_FILENAME_PERBUILD_libAvaloniaNative.dylib]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.dll_2" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dll_2]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dll_2]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.dylib" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.dylib]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.dylib]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.so" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.so_1" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so_1]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.so_2" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so_2]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_2]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libHarfBuzzSharp.so_3" Path="[|AI_PROPPATH_DIR_PERBUILD_libHarfBuzzSharp.so_3]\[|AI_PROPPATH_FILENAME_PERBUILD_libHarfBuzzSharp.so_3]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.dll_2" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dll_2]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dll_2]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.dylib" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.dylib]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.dylib]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.so" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.so_1" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so_1]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.so_2" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so_2]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_2]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_libSkiaSharp.so_3" Path="[|AI_PROPPATH_DIR_PERBUILD_libSkiaSharp.so_3]\[|AI_PROPPATH_FILENAME_PERBUILD_libSkiaSharp.so_3]" Type="2" Content="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="C:\Users\loicm\Downloads" PackageFileName="ScriptExecutor" Languages="en" InstallationType="4" SummInfoMetadata="Page Count:450" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_GetArpIconPath" Type="1" Source="aicustact.dll" Target="GetArpIconPath"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="AI_CustomARPName"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PrimaryOutput"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm_native"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxarm64_native"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxmuslx64_native"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_linuxx64_native"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_osx_native"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winarm64_native"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx64_native"/>
+    <ROW Feature_="MainFeature" Component_="ScriptExecutor.Desktop_PublishOutput_runtimes_winx86_native"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="logo.exe" SourcePath="..\ScriptExecutor\Assets\logo.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_GetArpIconPath" Sequence="1401"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 600)" Description="[ProductName] cannot be installed on [WindowsTypeNT60Display]." DescriptionLocId="AI.LaunchCondition.NoNT60" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Comments" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Comments" Value="[ARPCOMMENTS]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Contact" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Contact" Value="[ARPCONTACT]" Component_="AI_CustomARPName"/>
+    <ROW Registry="CurrentVersion" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion" Name="\"/>
+    <ROW Registry="DisplayIcon" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayIcon" Value="[ARP_ICON_PATH]" Component_="AI_CustomARPName"/>
+    <ROW Registry="DisplayName" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayName" Value="[AI_PRODUCTNAME_ARP]" Component_="AI_CustomARPName"/>
+    <ROW Registry="DisplayVersion" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayVersion" Value="[ProductVersion]" Component_="AI_CustomARPName"/>
+    <ROW Registry="EstimatedSize" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="EstimatedSize" Value="#[AI_ARP_SIZE]" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="HelpLink" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="HelpLink" Value="[ARPHELPLINK]" Component_="AI_CustomARPName"/>
+    <ROW Registry="HelpTelephone" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="HelpTelephone" Value="[ARPHELPTELEPHONE]" Component_="AI_CustomARPName"/>
+    <ROW Registry="InstallLocation" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="InstallLocation" Value="[APPDIR]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Manufacturer" Root="-1" Key="Software\[Manufacturer]" Name="\"/>
+    <ROW Registry="Microsoft" Root="-1" Key="Software\Microsoft" Name="\"/>
+    <ROW Registry="ModifyPath" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="ModifyPath" Value="[AI_UNINSTALLER] /i [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="NoRepair" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="NoRepair" Value="#1" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
+    <ROW Registry="ProductNameProductVersion" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="\"/>
+    <ROW Registry="Publisher" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Publisher" Value="[Manufacturer]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Readme" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Readme" Value="[ARPREADME]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
+    <ROW Registry="URLInfoAbout" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="URLInfoAbout" Value="[ARPURLINFOABOUT]" Component_="AI_CustomARPName"/>
+    <ROW Registry="URLUpdateInfo" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="URLUpdateInfo" Value="[ARPURLUPDATEINFO]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Uninstall" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall" Name="\"/>
+    <ROW Registry="UninstallPath" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallPath" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="UninstallString" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallString" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+    <ROW Registry="VersionMajor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMajor" Value="#3" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="VersionMinor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMinor" Value="#0" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="Windows" Root="-1" Key="Software\Microsoft\Windows" Name="\"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="ScriptExecutor" Directory_="SHORTCUTDIR" Name="SCRIPT~1|ScriptExecutor" Component_="ProductInformation" Target="[DesktopFolder]" Hotkey="0" Icon_="logo.exe" IconIndex="0" ShowCmd="1"/>
+    <ROW Shortcut="ScriptExecutor_1" Directory_="StartupFolder" Name="SCRIPT~1|ScriptExecutor" Component_="ProductInformation" Target="[DesktopFolder]" Hotkey="0" Icon_="logo.exe" IconIndex="0" ShowCmd="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.VsProjectComponent">
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Base.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Controls.ColorPicker.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Controls.DataGrid.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Controls.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.DesignerSupport.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Desktop.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Diagnostics.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Dialogs.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Fonts.Inter.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.FreeDesktop.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Markup.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Markup.Xaml.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Metal.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.MicroCom.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Native.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.OpenGL.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.ReactiveUI.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Remote.Protocol.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Skia.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Themes.Fluent.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Themes.Simple.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Vulkan.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Win32.Automation.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.Win32.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Avalonia.X11.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="DialogHost.Avalonia.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="DynamicData.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="HarfBuzzSharp.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="MicroCom.Runtime.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Configuration.Binder.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Configuration.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.DependencyInjection.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Logging.Configuration.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Logging.Console.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Logging.Debug.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Logging.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Options.ConfigurationExtensions.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Options.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Microsoft.Extensions.Primitives.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="MsBox.Avalonia.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Newtonsoft.Json.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Quartz.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Quartz.Extensions.DependencyInjection.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ReactiveUI.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.Application.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.Desktop.deps.json"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.Desktop.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.Desktop.exe"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.Desktop.runtimeconfig.json"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.Domain.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="ScriptExecutor.Infrastrucuture.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="SkiaSharp.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Splat.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="System.Reactive.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="Tmds.DBus.Protocol.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.so"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.so"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.so_1"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.so_1"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.so_2"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.so_2"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.so_3"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.so_3"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libAvaloniaNative.dylib"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.dylib"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.dylib"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="av_libglesv2.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.dll"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="av_libglesv2.dll_1"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.dll_1"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.dll_1"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="av_libglesv2.dll_2"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libHarfBuzzSharp.dll_2"/>
+    <ROW ProjectId="{bdc13c7f-bfdf-ca6e-da2e-36e6de3fa3c4}" ProjectName="ScriptExecutor.Desktop" OutputGroup="PublishOutput" OutputFile="libSkiaSharp.dll_2"/>
+  </COMPONENT>
+</DOCUMENT>

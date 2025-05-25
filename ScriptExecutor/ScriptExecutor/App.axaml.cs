@@ -55,7 +55,7 @@ public partial class App : Avalonia.Application
             _trayIcon = new TrayIcon
             {
                 Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://ScriptExecutor/Assets/logo.ico"))),
-                ToolTipText = "Tray Menu Example",
+                ToolTipText = "Script Executor",
                 Menu = []
             };
 

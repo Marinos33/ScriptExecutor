@@ -28,6 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AvaloniaResource Update="Assets\logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Update="Assets\mylogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\EditProcessView.axaml.cs">
       <DependentUpon>EditProcessView.axaml</DependentUpon>
     </Compile>

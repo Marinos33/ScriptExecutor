@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor", "ScriptExecutor\ScriptExecutor.csproj", "{793A391A-8C51-874B-0086-7070BA78DF20}"
 EndProject
@@ -13,32 +13,51 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor.Domain", "Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptExecutor.Infrastrucuture", "ScriptExecutor.Infrastrucuture\ScriptExecutor.Infrastrucuture.csproj", "{5EC68652-ECAF-F364-EBCF-FA7ACE1E5E47}"
 EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "ScriptExecutor.Installer", "ScriptExecutor.Installer\ScriptExecutor.Installer.aiproj", "{43BC39E2-5E94-411B-BF4F-9C63C7F01185}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{793A391A-8C51-874B-0086-7070BA78DF20}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{793A391A-8C51-874B-0086-7070BA78DF20}.All|Any CPU.Build.0 = Debug|Any CPU
 		{793A391A-8C51-874B-0086-7070BA78DF20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{793A391A-8C51-874B-0086-7070BA78DF20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{793A391A-8C51-874B-0086-7070BA78DF20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{793A391A-8C51-874B-0086-7070BA78DF20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC13C7F-BFDF-CA6E-DA2E-36E6DE3FA3C4}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC13C7F-BFDF-CA6E-DA2E-36E6DE3FA3C4}.All|Any CPU.Build.0 = Debug|Any CPU
 		{BDC13C7F-BFDF-CA6E-DA2E-36E6DE3FA3C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDC13C7F-BFDF-CA6E-DA2E-36E6DE3FA3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDC13C7F-BFDF-CA6E-DA2E-36E6DE3FA3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDC13C7F-BFDF-CA6E-DA2E-36E6DE3FA3C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB8C362C-2CBC-8BE8-248D-46E634419F1F}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB8C362C-2CBC-8BE8-248D-46E634419F1F}.All|Any CPU.Build.0 = Debug|Any CPU
 		{EB8C362C-2CBC-8BE8-248D-46E634419F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB8C362C-2CBC-8BE8-248D-46E634419F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB8C362C-2CBC-8BE8-248D-46E634419F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB8C362C-2CBC-8BE8-248D-46E634419F1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F176DF6E-7489-C506-A555-26667ABD8689}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{F176DF6E-7489-C506-A555-26667ABD8689}.All|Any CPU.Build.0 = Debug|Any CPU
 		{F176DF6E-7489-C506-A555-26667ABD8689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F176DF6E-7489-C506-A555-26667ABD8689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F176DF6E-7489-C506-A555-26667ABD8689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F176DF6E-7489-C506-A555-26667ABD8689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC68652-ECAF-F364-EBCF-FA7ACE1E5E47}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC68652-ECAF-F364-EBCF-FA7ACE1E5E47}.All|Any CPU.Build.0 = Debug|Any CPU
 		{5EC68652-ECAF-F364-EBCF-FA7ACE1E5E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EC68652-ECAF-F364-EBCF-FA7ACE1E5E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EC68652-ECAF-F364-EBCF-FA7ACE1E5E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EC68652-ECAF-F364-EBCF-FA7ACE1E5E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43BC39E2-5E94-411B-BF4F-9C63C7F01185}.All|Any CPU.ActiveCfg = DefaultBuild
+		{43BC39E2-5E94-411B-BF4F-9C63C7F01185}.All|Any CPU.Build.0 = DefaultBuild
+		{43BC39E2-5E94-411B-BF4F-9C63C7F01185}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{43BC39E2-5E94-411B-BF4F-9C63C7F01185}.Debug|Any CPU.Build.0 = DefaultBuild
+		{43BC39E2-5E94-411B-BF4F-9C63C7F01185}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{43BC39E2-5E94-411B-BF4F-9C63C7F01185}.Release|Any CPU.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

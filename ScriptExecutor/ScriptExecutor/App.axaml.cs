@@ -5,6 +5,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
 using Microsoft.Extensions.DependencyInjection;
 using ScriptExecutor.Application;
+using ScriptExecutor.Application.Interfaces;
 using ScriptExecutor.Infrastrucuture;
 using ScriptExecutor.ViewModels;
 using ScriptExecutor.Views;
@@ -35,6 +36,8 @@ public partial class App : Avalonia.Application
         var services = collection.BuildServiceProvider();
 
         var vm = services.GetRequiredService<MainViewModel>();
+
+        var quartzService = services.GetRequiredService<IQuartzService>();
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
@@ -71,6 +74,8 @@ public partial class App : Avalonia.Application
 
             desktop.MainWindow = _mainWindow;
         }
+
+        quartzService.StartAsync();
 
         base.OnFrameworkInitializationCompleted();
     }

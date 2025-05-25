@@ -3,6 +3,7 @@ using ScriptExecutor.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Process = System.Diagnostics.Process;
@@ -35,7 +36,12 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
         {
             try
             {
-                var processesList = await _processRepository.GetProcessesAsync();
+                var processesList = (await _processRepository.GetProcessesAsync()).Where(
+                    p => !string.IsNullOrEmpty(p.Name)
+                    && !string.IsNullOrEmpty(p.ExecutableFile)
+                    && !string.IsNullOrEmpty(p.Script)
+                    && (p.RunOnStart || p.RunAfterShutdown))
+                    .ToList();
 
                 if (processesList.Count <= 0)
                 {
@@ -57,7 +63,7 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                             // Process each running instance of the process
                             foreach (var process in processes)
                             {
-                                await HandleProcessProcess(item, process).ConfigureAwait(false);
+                                await HandleProcessing(item, process).ConfigureAwait(false);
                             }
                         }
                     }
@@ -86,9 +92,9 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
             }
         }
 
-        private async Task HandleProcessProcess(ProcessEntity entity, Process process)
+        private async Task HandleProcessing(ProcessEntity entity, Process process)
         {
-            Process processProcess = null;
+            Process? processToProcess = null;
             try
             {
                 int processId = process.Id;
@@ -107,18 +113,18 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                 await _logManager.WriteLogAsync($"{DateTime.Now}> Detected running process: {entity.Name} (PID: {processId})");
 
                 // Get a fresh process handle to use for monitoring
-                processProcess = Process.GetProcessById(processId);
+                processToProcess = Process.GetProcessById(processId);
 
                 lock (_lockObject)
                 {
                     // Set up process monitoring if not already watching
                     if (!_watchedProcesses.ContainsKey(processId))
                     {
-                        processProcess.EnableRaisingEvents = true;
+                        processToProcess.EnableRaisingEvents = true;
 
-                        processProcess.Exited += async (sender, args) =>
+                        processToProcess.Exited += async (sender, args) =>
                         {
-                            ProcessEntity exitedProcess = null;
+                            ProcessEntity? exitedProcess = null;
 
                             lock (_lockObject)
                             {
@@ -141,7 +147,7 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
                             await _logManager.WriteLogAsync($"{DateTime.Now}> Process exited: {processId}");
                         };
 
-                        _watchedProcesses[processId] = processProcess;
+                        _watchedProcesses[processId] = processToProcess;
                     }
                 }
 
@@ -212,6 +218,12 @@ namespace ScriptExecutor.Infrastrucuture.Jobs
         {
             try
             {
+                if (string.IsNullOrEmpty(process.Script))
+                {
+                    await _logManager.WriteLogAsync($"{DateTime.Now}> No script to run for {process.ExecutableFile}");
+                    return;
+                }
+
                 bool isScriptExecuted = await _scriptRunner.RunScriptAsync(process.Script).ConfigureAwait(false);
 
                 if (isScriptExecuted)
